@@ -51,6 +51,6 @@ With the following code you can get the coordinates and the elevation for the me
 library(plyr)
 crete_stations <-subset(stations, WaterDivisionID == 'EL13' & Owner == 'MEE')
 crete_coords <- ldply(crete_stations$ID, function(x) {get_coords(x)})
-crete_coords
+head(crete_coords)
 ```
 
