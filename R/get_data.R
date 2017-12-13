@@ -43,7 +43,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
     wd <- stations$WaterDivision
     wd <- make.names(wd)
     lookup <- c(ANATOLIKE.MAKEDONIA = "EL11",
-                 ANATOLIKE.PELOPONNES = "EL13",
+                 ANATOLIKE.PELOPONNES = "EL03",
                  ANATOLIKE.STEREA.ELL = "EL07",
                  ATTIKE = "EL06",
                  BOREIA.PELOPONNESOS = "EL02",
@@ -85,7 +85,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   return(stations)
 }
 
-get_coords <- function(stationID = '200251') {
+get_coords <- function(stationID = '200280') {
 
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
 
@@ -101,32 +101,20 @@ get_coords <- function(stationID = '200251') {
   }
 
   # read table
-  tb1  <- XML::readHTMLTable(tableNodes[[1]],
+  stat_table  <- XML::readHTMLTable(tableNodes[[1]],
                            header = FALSE,
                            stringsAsFactors = FALSE)
-  # rearrange data
-  tb1u  <- t(utils::unstack(tb1, form=V2~V1))
 
-  # subset data
-  x  <- tb1u[c(4,1,2)]
+  values <- stat_table$V2
+  names(values) <- stat_table$V1
 
-  # get coords and elevation
-  if(class(x) == 'character'){
-    Elevation <-  x[2]
-    Coords <- x[3]
-  } else if (class(x) == 'list') {
-    Elevation <-  x[[2]]
-    Coords <- x[[3]]
-  } else {
-    Elevation <-  NA
-    Coords <- "NA \n NA"
-  }
 
   # convert Coords to Lat and Long
-  Coords <- as.character(Coords)
-  tmp = stringr::str_split(string = Coords, pattern = ',|\n', simplify = TRUE)
-  Lat = as.numeric(tmp[1])
-  Long= as.numeric(tmp[2])
+  Elevation <-as.numeric(values['Altitude'])
+  Coords <- as.character(values['Co-ordinates'])
+  tmp <- stringr::str_split(string = Coords, pattern = ',|\n', simplify = TRUE)
+  Lat <- as.numeric(tmp[1])
+  Long <- as.numeric(tmp[2])
 
   # return results as a dataframe
   data.frame(ID = stationID, Long = Long, Lat = Lat, Elevation = Elevation)

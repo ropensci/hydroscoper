@@ -24,14 +24,14 @@ You can install **hydroscoper** from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("kvantas/hydroscoper")
+# devtools::install_github("kvantas/hydroscoper")
 ```
 
 ## Stations list
 
 This is a basic example which shows you how to get the stations list from the Hydroscope database:
 
-```{r example}
+```{r example stations}
 library(hydroscoper)
 stations <- get_stations()
 head(stations[c("ID", "WaterDivisionID", "Name", "Owner", "Type")])
@@ -42,3 +42,15 @@ The abbreviations in the Owner column are:
 * MEE: Ministry of Environment and Energy
 * NOA: National Observatory of Athens
 * Other owners are Universities, Prefectures of Greece etc.
+
+## Stations coordinates
+
+With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy in the Water Division of Crete, EL13:
+
+```{r example coords}
+library(plyr)
+crete_stations <-subset(stations, WaterDivisionID == 'EL13' & Owner == 'MEE')
+crete_coords <- ldply(crete_stations$ID, function(x) {get_coords(x)})
+crete_coords
+```
+
