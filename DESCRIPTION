@@ -2,8 +2,7 @@ Package: hydroscoper
 Type: Package
 Title: R interface to hydroscope
 Version: 0.0.900
-Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com",
-role = c("aut", "cre"))
+Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: R interface to the greek National Databank for Hydrological and 
              Meteorological Information  at <http://kyy.hydroscope.gr/> with

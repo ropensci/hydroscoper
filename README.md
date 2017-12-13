@@ -18,7 +18,7 @@ devtools::install_github("kvantas/hydroscoper")
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to download data from the Hydroscope:
 
 ``` r
 ## basic example code
