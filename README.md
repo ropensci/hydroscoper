@@ -3,14 +3,14 @@
 hydroscoper
 ===========
 
-The goal of **hydroscoper** is to provide an interface to the greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://kyy.hydroscope.gr/), with functions for stations, timeseries and raw data downloading.
+The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://kyy.hydroscope.gr/). It provides functions for downloading stations and timeseries data.
 
-The stations and timeseries lists in Hydroscope are in greek, so this package transforms the Unicode text to Latin. Also, translates various terms in english. Finally, the **hydroscoper** provides a function to get raw timeseries data into a tidy dataframe.
+The stations and timeseries data in Hydroscope are in Greek, so this package transforms the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw timeseries' data into a tidy dataframe.
 
 Installation
 ------------
 
-You can install hydroscoper from github with:
+You can install **hydroscoper** from github with:
 
 ``` r
 # install.packages("devtools")
@@ -27,12 +27,12 @@ library(hydroscoper)
 stations <- get_stations()
 head(stations[c("ID", "WaterDivisionID", "Name", "Owner", "Type")])
 #>       ID WaterDivisionID          Name Owner         Type
-#> 1 501062            EL11       Peirama Other Meteorogical
-#> 2 200251            EL12          ABAS   MEE Meteorogical
-#> 3 200280            EL13 AG. BASILEIOS   MEE Meteorogical
+#> 1 501062            EL11       Peirama Other MeteoStation
+#> 2 200251            EL12          ABAS   MEE MeteoStation
+#> 3 200280            EL13 AG. BASILEIOS   MEE MeteoStation
 #> 4 501032            EL13 AG. BASILEIOS Other   StreamGage
-#> 5 200171            EL04   AG. BLASIOS   MEE Meteorogical
-#> 6 200292            EL13  AG. GEORGIOS   MEE Meteorogical
+#> 5 200171            EL04   AG. BLASIOS   MEE MeteoStation
+#> 6 200292            EL13  AG. GEORGIOS   MEE MeteoStation
 ```
 
 The abbreviations in the Owner column are:

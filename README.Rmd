@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 
 # hydroscoper
 
-The goal of **hydroscoper** is to provide an interface to the greek National Databank for Hydrological and Meteorological Information,  [Hydroscope](<http://kyy.hydroscope.gr/>), with functions for stations, timeseries and raw data downloading.
+The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](<http://kyy.hydroscope.gr/>). It provides functions for downloading stations and timeseries data.
 
-The stations and timeseries lists in Hydroscope are in greek, so this package transforms the Unicode text to Latin. Also, translates various terms in english. Finally, the **hydroscoper** provides a function to get raw timeseries data into a tidy dataframe.
+The stations and timeseries data in Hydroscope are in Greek, so this package transforms the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw timeseries' data into a tidy dataframe.
 
 ## Installation
 

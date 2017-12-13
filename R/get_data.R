@@ -1,24 +1,24 @@
-get_stations <- function() {
-
-  url = "http://kyy.hydroscope.gr/"
+get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # download stations data
   doc <- XML::htmlParse(url, encoding = "UTF8")
-  table_nodes <-
-    XML::getNodeSet(doc, "/html/body/div[3]/div/div/div/div[2]/div/table")
 
-  # check tableNodes
-  if(is.null(tableNodes)) {
+  # get table nodes
+  html_table <- "/html/body/div[3]/div/div/div/div[2]/div/table"
+  table_nodes <- XML::getNodeSet(doc, html_table)
+
+  # check table nodes
+  if(is.null(table_nodes)) {
     stop(paste0("Couldn't download stations' list from", url))
   }
 
-
+  # read html file to table
   stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
   # make valid names for stations
   if (NROW(stations) > 0 & NCOL(stations) == 7) {
   names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
-                       "PoliticalDivision", "Owner", "type")
+                       "PoliticalDivision", "Owner", "Type")
   } else {
     stop(paste("Couldn't get any station data from url: ", url, ""))
   }
@@ -29,10 +29,10 @@ get_stations <- function() {
   }
 
   # change type to meaningfull names
-  type <- stations$type
+  type <- stations$Type
   type <- ifelse(type %in% c("GEORGIKOS", "KLIMATOLOGIKOS", "METEOROLOGIKOS",
                              "YDROMETEOROLOGIKOS"),
-                 "Meteorogical", type)
+                 "MeteoStation", type)
   type <- ifelse(type == "STATHMEMETRIKOS", "StreamGage", type)
   stations$Type <- type
 
@@ -61,7 +61,7 @@ get_stations <- function() {
   stations$WaterDivisionID <-  wd
   }
 
-  # change owner to meaningfull names
+  # change owners to meaningfull names
   owner <- stations$Owner
   kyy <- "YPOURGEIO PERIBALLONTOS, ENERGEIAS KAI KLIMATIKES ALLAGES"
   noa <- "ETHNIKO ASTEROSKOPEIO ATHENAS"
@@ -161,7 +161,7 @@ get_timeseries <- function(stationID = '200251') {
     tb2[cname] <- greek2latin(tb2[cname])
   }
 
-  # make data meaningfull
+  # make data meaningfull TODO
 
   return(tb2)
 }
