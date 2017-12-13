@@ -20,7 +20,7 @@ The stations and timeseries lists in Hydroscope are in greek, so this package tr
 
 ## Installation
 
-You can install hydroscoper from github with:
+You can install **hydroscoper** from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")

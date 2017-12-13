@@ -1,13 +1,22 @@
-get_stations <- function(url = "http://kyy.hydroscope.gr/") {
+get_stations <- function() {
+
+  url = "http://kyy.hydroscope.gr/"
 
   # download stations data
   doc <- XML::htmlParse(url, encoding = "UTF8")
   table_nodes <-
     XML::getNodeSet(doc, "/html/body/div[3]/div/div/div/div[2]/div/table")
+
+  # check tableNodes
+  if(is.null(tableNodes)) {
+    stop(paste0("Couldn't download stations' list from", url))
+  }
+
+
   stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
   # make valid names for stations
-  if (NROW(stations) > 0 & NCOL(stations == 7)) {
+  if (NROW(stations) > 0 & NCOL(stations) == 7) {
   names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
                        "PoliticalDivision", "Owner", "type")
   } else {
@@ -75,3 +84,85 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   return(stations)
 }
+
+get_coords <- function(stationID = '200251') {
+
+  url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
+
+  doc <- XML::htmlParse(url, encoding = 'UTF8')
+
+  # get table nodes
+  path = "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
+  tableNodes <- XML::getNodeSet(doc, path)
+
+  # check table nodes
+  if(is.null(tableNodes)) {
+    stop(paste0("Couldn't download station data for stationID =",stationID))
+  }
+
+  # read table
+  tb1  <- XML::readHTMLTable(tableNodes[[1]],
+                           header = FALSE,
+                           stringsAsFactors = FALSE)
+  # rearrange data
+  tb1u  <- t(utils::unstack(tb1, form=V2~V1))
+
+  # subset data
+  x  <- tb1u[c(4,1,2)]
+
+  # get coords and elevation
+  if(class(x) == 'character'){
+    Elevation <-  x[2]
+    Coords <- x[3]
+  } else if (class(x) == 'list') {
+    Elevation <-  x[[2]]
+    Coords <- x[[3]]
+  } else {
+    Elevation <-  NA
+    Coords <- "NA \n NA"
+  }
+
+  # convert Coords to Lat and Long
+  Coords <- as.character(Coords)
+  tmp = stringr::str_split(string = Coords, pattern = ',|\n', simplify = TRUE)
+  Lat = as.numeric(tmp[1])
+  Long= as.numeric(tmp[2])
+
+  # return results as a dataframe
+  data.frame(ID = stationID, Long = Long, Lat = Lat, Elevation = Elevation)
+
+}
+
+get_timeseries <- function(stationID = '200251') {
+
+  # parse hydroscope
+  url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
+  doc <- XML::htmlParse(url, encoding = 'UTF8')
+
+  # get table nodes
+  tableNodes <- XML::getNodeSet(doc, '//*[@id="timeseries"]')
+  if(is.null(tableNodes)) {
+    stop(paste("Couldn't download timeseries list for station ID =", stationID))
+  }
+  # read table
+  tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE, stringsAsFactors = FALSE)
+  tb2$StationID <- stationID
+
+  # make valid names for timeseries
+  if (NROW(tb2) > 0 & NCOL(tb2) == 10) {
+    names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit", "Remarks",
+                    "Instrument", "StartDate", "EndDate", "StationID")
+  } else {
+    stop(paste("Couldn't get timeseries data from url: ", url, ""))
+  }
+
+  # convert strings to latin
+  for (cname in c(names(tb2))) {
+    tb2[cname] <- greek2latin(tb2[cname])
+  }
+
+  # make data meaningfull
+
+  return(tb2)
+}
+
