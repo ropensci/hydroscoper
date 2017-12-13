@@ -3,7 +3,9 @@
 hydroscoper
 ===========
 
-The goal of hydroscoper is to provide an interface to the greek National Databank for Hydrological and Meteorological Information at <http://kyy.hydroscope.gr/> with functions for stations, timeseries and raw data downloading.
+The goal of **hydroscoper** is to provide an interface to the greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://kyy.hydroscope.gr/), with functions for stations, timeseries and raw data downloading.
+
+The stations and timeseries lists in Hydroscope are in greek, so this package transforms the Unicode text to Latin. Also, translates various terms in english. Finally, the **hydroscoper** provides a function to get raw timeseries data into a tidy dataframe.
 
 Installation
 ------------
@@ -18,7 +20,7 @@ devtools::install_github("kvantas/hydroscoper")
 Stations list
 -------------
 
-This is a basic example which shows you how to download the stations list from the Hydroscope:
+This is a basic example which shows you how to get the stations list from the Hydroscope database:
 
 ``` r
 library(hydroscoper)
@@ -37,5 +39,4 @@ The abbreviations in the Owner column are:
 
 -   MEE: Ministry of Environment and Energy
 -   NOA: National Observatory of Athens
-
-Other owners are Universities, Prefectures of Greece etc.
+-   Other owners are Universities, Prefectures of Greece etc.
