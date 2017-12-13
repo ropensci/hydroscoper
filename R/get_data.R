@@ -1,38 +1,39 @@
 get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # download stations data
-  doc <- XML::htmlParse(url, encoding = 'UTF8')
-  tableNodes <- XML::getNodeSet(doc, '/html/body/div[3]/div/div/div/div[2]/div/table')
-  Stations <- XML::readHTMLTable(tableNodes[[1]], stringsAsFactors = FALSE)
+  doc <- XML::htmlParse(url, encoding = "UTF8")
+  table_nodes <-
+    XML::getNodeSet(doc, "/html/body/div[3]/div/div/div/div[2]/div/table")
+  stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
   # make valid names for stations
-  if(NROW(Stations) > 0 & NCOL(Stations == 7)) {
-  names(Stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
-                       "PoliticalDivision", "Owner", "Type")
+  if (NROW(stations) > 0 & NCOL(stations == 7)) {
+  names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
+                       "PoliticalDivision", "Owner", "type")
   } else {
-    stop( paste("Couldn't get any station data from url: ", url, ""))
+    stop(paste("Couldn't get any station data from url: ", url, ""))
   }
 
   # replace greek characters with latin
-  for (cname in c(names(Stations)[-1])) {
-    Stations[cname] <- greek2latin(Stations[cname])
+  for (cname in c(names(stations)[-1])) {
+    stations[cname] <- greek2latin(stations[cname])
   }
 
   # change type to meaningfull names
-  Type <- Stations$Type
-  Type <- ifelse(Type %in% c("GEORGIKOS", "KLIMATOLOGIKOS", "METEOROLOGIKOS"),
-                 "Meteorogical", Type)
-  Type <- ifelse(Type == "STATHMEMETRIKOS", "StreamGage", Type)
-  Type <- ifelse(Type == "YDROMETEOROLOGIKOS", "HydroMeteorogical", Type)
-  Stations$Type <- Type
+  type <- stations$type
+  type <- ifelse(type %in% c("GEORGIKOS", "KLIMATOLOGIKOS", "METEOROLOGIKOS",
+                             "YDROMETEOROLOGIKOS"),
+                 "Meteorogical", type)
+  type <- ifelse(type == "STATHMEMETRIKOS", "StreamGage", type)
+  stations$type <- type
 
   # add water division id
-  wd_names <- names(table(Stations$WaterDivision))
-  if(length(wd_names) == 14) {
+  wd_names <- names(table(stations$WaterDivision))
+  if (length(wd_names) == 14) {
 
-    wd <- Stations$WaterDivision
+    wd <- stations$WaterDivision
     wd <- make.names(wd)
-    lookup <- c( ANATOLIKE.MAKEDONIA = "EL11",
+    lookup <- c(ANATOLIKE.MAKEDONIA = "EL11",
                  ANATOLIKE.PELOPONNES = "EL13",
                  ANATOLIKE.STEREA.ELL = "EL07",
                  ATTIKE = "EL06",
@@ -48,25 +49,29 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
                  THRAKE = "EL12")
     wd <- lookup[wd]
     names(wd) <- NULL
-  Stations$WaterDivisionID <-  wd
+  stations$WaterDivisionID <-  wd
   }
 
   # change owner to meaningfull names
-  owner <- Stations$Owner
-  owner <- ifelse(owner == "ETHNIKO ASTEROSKOPEIO ATHENAS",
+  owner <- stations$Owner
+  kyy <- "YPOURGEIO PERIBALLONTOS, ENERGEIAS KAI KLIMATIKES ALLAGES"
+  noa <- "ETHNIKO ASTEROSKOPEIO ATHENAS"
+
+  owner <- ifelse(owner == noa,
                   "NOA",
                   owner)
-  owner <- ifelse(owner == "YPOURGEIO PERIBALLONTOS, ENERGEIAS KAI KLIMATIKES ALLAGES",
+  owner <- ifelse(owner == kyy,
                   "MEE",
                   owner)
   owner <- ifelse(owner %in% c("NOA", "MEE"),
                   owner,
                   "Other")
 
-  Stations$Owner <- owner
+  stations$Owner <- owner
 
   # remove area from water basin values
-  Stations$WaterBasin <- lapply( Stations$WaterBasin, function(str) gsub("\\([^()]*\\)", "", str))
+  stations$WaterBasin <- sapply(stations$WaterBasin,
+                                 function(str) gsub("\\([^()]*\\)", "", str))
 
-  return(Stations)
+  return(stations)
 }
