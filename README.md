@@ -15,11 +15,27 @@ You can install hydroscoper from github with:
 devtools::install_github("kvantas/hydroscoper")
 ```
 
-Example
--------
+Stations list
+-------------
 
-This is a basic example which shows you how to download data from the Hydroscope:
+This is a basic example which shows you how to download the stations list from the Hydroscope:
 
 ``` r
-## basic example code
+library(hydroscoper)
+stations <- get_stations()
+head(stations[c("ID", "WaterDivisionID", "Name", "Owner", "Type")])
+#>       ID WaterDivisionID          Name Owner         Type
+#> 1 501062            EL11       Peirama Other Meteorogical
+#> 2 200251            EL12          ABAS   MEE Meteorogical
+#> 3 200280            EL13 AG. BASILEIOS   MEE Meteorogical
+#> 4 501032            EL13 AG. BASILEIOS Other   StreamGage
+#> 5 200171            EL04   AG. BLASIOS   MEE Meteorogical
+#> 6 200292            EL13  AG. GEORGIOS   MEE Meteorogical
 ```
+
+The abbreviations in the Owner column are:
+
+-   MEE: Ministry of Environment and Energy
+-   NOA: National Observatory of Athens
+
+Other owners are Universities, Prefectures of Greece etc.

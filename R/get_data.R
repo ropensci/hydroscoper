@@ -25,7 +25,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
                              "YDROMETEOROLOGIKOS"),
                  "Meteorogical", type)
   type <- ifelse(type == "STATHMEMETRIKOS", "StreamGage", type)
-  stations$type <- type
+  stations$Type <- type
 
   # add water division id
   wd_names <- names(table(stations$WaterDivision))
