@@ -1,8 +1,6 @@
 get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # Web scrapping --------------------------------------------------------------
-
-  # download stations data
   doc <- XML::htmlParse(url, encoding = "UTF8")
 
   # get table nodes
@@ -11,7 +9,8 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # check table nodes
   if(is.null(table_nodes)) {
-    stop(paste0("Couldn't download stations' list from", url))
+    warning(paste0("Couldn't download stations' list from", url))
+    return(stationsNA)
   }
 
   # read html file to table
@@ -24,11 +23,11 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
                        "PoliticalDivision", "Owner", "Type")
   } else {
-    stop(paste("Couldn't get any station data from url: ", url, ""))
+    warning(paste("Couldn't get expected station's table from url: ", url, ""))
+    return(stationsNA)
   }
 
   # Translations and transliterations ------------------------------------------
-
 
   # replace greek characters with latin
   for (cname in c(names(stations)[-1])) {
@@ -39,10 +38,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   stations$Type <- stations_types(stations$Type)
 
   # add water division id
-  wd_names <- names(table(stations$WaterDivision))
-  if (length(wd_names) == 14) {
-    stations$WaterDivisionID <-  add_wd_id(stations$WaterDivision)
-  }
+  stations$WaterDivisionID <-  add_wd_id(stations$WaterDivision)
 
   # use abr/sions for owners' names
   stations$Owner <- owner_names(stations$Owner)
@@ -51,6 +47,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   stations$WaterBasin <- sapply(stations$WaterBasin,
                                  function(str) gsub("\\([^()]*\\)", "", str))
 
+  # Return data ----------------------------------------------------------------
   cnames <- c("ID","Name", "WaterDivisionID","WaterBasin", "PoliticalDivision",
               "Owner", "Type")
 
@@ -60,9 +57,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 get_coords <- function(stationID = '200280') {
 
   # Web scrapping --------------------------------------------------------------
-
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
-
   doc <- XML::htmlParse(url, encoding = 'UTF8')
 
   # get table nodes
@@ -71,7 +66,9 @@ get_coords <- function(stationID = '200280') {
 
   # check table nodes
   if(is.null(tableNodes)) {
-    stop(paste0("Couldn't download station data for stationID =",stationID))
+    warning(paste0("Couldn't download station data for stationID =",stationID))
+    res <-  data.frame(ID = stationID, Long = NA, Lat = NA, Elevation = NA)
+    return(res)
   }
 
   # read table
@@ -100,18 +97,19 @@ get_coords <- function(stationID = '200280') {
 get_timeseries <- function(stationID = '200251') {
 
   # Web scrapping --------------------------------------------------------------
-
-  # parse hydroscope
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
   doc <- XML::htmlParse(url, encoding = 'UTF8')
 
   # get table nodes
   tableNodes <- XML::getNodeSet(doc, '//*[@id="timeseries"]')
   if(is.null(tableNodes)) {
-    stop(paste("Couldn't download timeseries list for station ID =", stationID))
+    warning(paste("Couldn't download timeseries list for station ID =",
+                  stationID))
+    return(timeserNA)
   }
   # read table
-  tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE, stringsAsFactors = FALSE)
+  tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
+                            stringsAsFactors = FALSE)
   tb2$StationID <- stationID
 
   # make valid names for timeseries --------------------------------------------
@@ -120,18 +118,32 @@ get_timeseries <- function(stationID = '200251') {
                     "Remarks",  "Instrument", "StartDate", "EndDate",
                     "StationID")
   } else {
-    stop(paste("Couldn't get timeseries data from url: ", url, ""))
+    warning(paste("Couldn't get expected timeseries table from url: ", url, ""))
+    return(timeserNA)
   }
 
   # Translations and transliterations ------------------------------------------
-
-  # convert strings to latin
   for (cname in c(names(tb2))) {
     tb2[cname] <- greek2latin(tb2[cname])
   }
 
-  # translations TODO
+  # remove columns without data
+  tb2$Name <- NULL
+  tb2$Remarks <- NULL
+
+  # translations
+  tb2$Variable <- ts_variable(tb2$Variable)
+  tb2$TimeStep <- ts_timestep(tb2$TimeStep)
+
+  # convert start and end dates to posixct -------------------------------------
+
+  tb2$StartDate <- ifelse(tb2$StartDate == "", NA, tb2$StartDate)
+  tb2$EndDate <- ifelse(tb2$EndDate == "", NA, tb2$EndDate)
+
+  time_format <- "%Y/%m/%d %H:%M"
+  tb2$StartDate <- as.POSIXct(tb2$StartDate, format = time_format, tz = "")
+  tb2$EndDate <- as.POSIXct(tb2$EndDate, format = time_format, tz = "")
 
   return(tb2)
-}
+  }
 

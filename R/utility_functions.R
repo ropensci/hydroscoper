@@ -6,41 +6,42 @@ greek2latin <- function(x) {
     })
 }
 
+# stations types translation
 stations_types <- function(type) {
-
-  # convert stations types to meteorological station and stream gage
-  type <- ifelse(type %in% c("GEORGIKOS", "KLIMATOLOGIKOS", "METEOROLOGIKOS",
-                             "YDROMETEOROLOGIKOS"),
-                 "MeteoStation", type)
-  type <- ifelse(type == "STATHMEMETRIKOS", "StreamGage", type)
-
-  return(type)
+  sapply(type, function(x) {
+    switch (x,
+            GEORGIKOS = "MeteoStation",
+            KLIMATOLOGIKOS = "MeteoStation",
+            METEOROLOGIKOS = "MeteoStation",
+            YDROMETEOROLOGIKOS = "MeteoStation",
+            STATHMEMETRIKOS = "StreamGage",
+            "unknown")
+  })
 }
 
+# water divisions id creation
 add_wd_id <- function(wd) {
-
-  # use a lookup table to create Water Division IDs
-  wd_names <- make.names(wd)
-  lookup <- c(DYTIKE.PELOPONNESOS = "GR01",
-              BOREIA.PELOPONNESOS = "GR02",
-              ANATOLIKE.PELOPONNES = "GR03",
-              DYTIKE.STEREA.ELLADA = "GR04",
-              EPEIROS = "GR05",
-              ATTIKE = "GR06",
-              ANATOLIKE.STEREA.ELL = "GR07",
-              THESSALIA = "GR08",
-              DYTIKE.MAKEDONIA = "GR09",
-              KENTRIKE.MAKEDONIA = "GR10",
-              ANATOLIKE.MAKEDONIA = "GR11",
-              THRAKE = "GR12",
-              KRETE = "GR13",
-              NESOI.AIGAIOU = "GR14")
-  wd <- lookup[wd_names]
-  names(wd) <- NULL
-
-  return(wd)
+  sapply(make.names(wd), function(x){
+    switch (x,
+            DYTIKE.PELOPONNESOS = "GR01",
+            BOREIA.PELOPONNESOS = "GR02",
+            ANATOLIKE.PELOPONNES = "GR03",
+            DYTIKE.STEREA.ELLADA = "GR04",
+            EPEIROS = "GR05",
+            ATTIKE = "GR06",
+            ANATOLIKE.STEREA.ELL = "GR07",
+            THESSALIA = "GR08",
+            DYTIKE.MAKEDONIA = "GR09",
+            KENTRIKE.MAKEDONIA = "GR10",
+            ANATOLIKE.MAKEDONIA = "GR11",
+            THRAKE = "GR12",
+            KRETE = "GR13",
+            NESOI.AIGAIOU = "GR14",
+            "unknown")
+  })
 }
 
+# translate owners' names
 owner_names <- function(owner) {
 
   # abr/sions strings
@@ -48,15 +49,122 @@ owner_names <- function(owner) {
   noa <- "ETHNIKO ASTEROSKOPEIO ATHENAS"
 
   # change owners' names
-  owner <- ifelse(owner == noa,
-                  "NOA",
-                  owner)
-  owner <- ifelse(owner == kyy,
-                  "MEE",
-                  owner)
-  owner <- ifelse(owner %in% c("NOA", "MEE"),
-                  owner,
-                  "Other")
+  owner <- ifelse(owner == noa, "NOA", owner)
+  owner <- ifelse(owner == kyy, "MEE",  owner)
+  owner <- ifelse(owner %in% c("NOA", "MEE"),  owner, "Other")
 
   return(owner)
+}
+
+# translate timeseries' variables names
+ts_variable <- function(variable) {
+  sapply( make.names(variable), function(x){
+    switch (x,
+            ANEMOS..DIEUTHYNSE. = "wind_direc",
+            ANEMOS..TACHYTETA. = "wind_speed",
+            ANEMOS..TACHYTETA.MESE. = "wind_speed_av",
+            ASBESTIO = "calcium",
+            BATHOS.YGROU..CHIONOBROCHOMETRO. = "rain_snow",
+            BROCHOPTOSE = "rainfall",
+            CHIONI = "snow",
+            CHIONI...BROCHE..CHIONOBROCHOMETRO. = "rain_snow",
+            EXATMISE..EKTIMEMENE. = "evap_estim",
+            EXATMISE..PAROUSA. = "evap_actual",
+            PAROCHE = "flow",
+            PIESE..ATMOSPHAIRIKE. = "pressure",
+            STATHME = "water_level",
+            STATHME..PLEMMYRA. = "water_level_flood",
+            THERMOKRASIA..AERA. = "air_temp",
+            THERMOKRASIA..EDAPHOUS. = "ground_temp",
+            THERMOKRASIA..EDAPHOUS.EL.. = "ground_temp_min",
+            THERMOKRASIA..EDAPHOUS.MEG.. = "ground_temp_max",
+            THERMOKRASIA..ELACHISTE. = "temp_min",
+            THERMOKRASIA..MEGISTE. = "temp_max",
+            YDROMETRESE = "flow",
+            YGRASIA..APOLYTE. = "humid_absol",
+            YGRASIA..SCHETIKE. = "humid_rel",
+            "unknown")
+  })
+}
+
+# translate timestep names
+ts_timestep <- function(variable) {
+  sapply( make.names(variable), function(x){
+    switch (x,
+            Emeresia...1.day.s. = "day",
+            Meniaia...0.year.s. = "month",
+            Variable.step = "variable",
+            X10lepte...0.day.s. = "10min",
+            X30lepte...0.day.s. = "30min",
+            X5lepte...0.day.s. = "5min",
+            "unknown")
+    })
+}
+
+# Data creation functions ------------------------------------------------------
+
+# stations dataframe with NA values
+stationsNA <- function() {
+  data.frame(ID = NA,
+             Name = NA,
+             WaterDivisionID = NA,
+             WaterBasin = NA,
+             PoliticalDivision = NA,
+             Owner = NA,
+             Type = NA)
+}
+
+# timeseries dataframe with NA values
+timeserNA <- function(){
+  data.frame(TimeSeriesID = NA,
+             Variable = NA,
+             TimeStep = NA,
+             Unit = NA,
+             Instrument = NA,
+             StartDate = NA,
+             EndDate = NA,
+             StationID = stationID)
+}
+
+# create stations' database
+stations_db <- function() {
+
+  # download data
+   stations <- get_stations()
+   coords <- plyr::ldply(stations$ID, function(id) get_coords(id))
+
+   # merge data
+   stations <- merge(stations, coords, by = 'ID')
+
+   # replace empty values with NA
+   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA, stations$WaterBasin)
+   stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA, stations$PoliticalDivision)
+   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA, stations$WaterBasin)
+
+   return(stations)
+
+}
+
+# create timeseries database
+timeseries_db <- function() {
+
+  # download data
+  stations <- get_stations()
+
+  timeseries <- plyr::ldply(stations$ID, function(id) {print(id); get_timeseries(id) })
+
+  # timeseries$Name <- NULL
+  # timeseries$Variable <- ts_variable(timeseries$Variable)
+  # timeseries$Remarks <- NULL
+  # timeseries$TimeStep <- ts_timestep(timeseries$TimeStep)
+  # timeseries$StartDate <- ifelse(timeseries$StartDate == "", NA, timeseries$StartDate)
+  # timeseries$EndDate <- ifelse(timeseries$EndDate == "", NA, timeseries$EndDate)
+  #
+  # time_format <- "%Y/%m/%d %H:%M"
+  # timeseries$StartDate <- as.POSIXct(timeseries$StartDate,
+  #                                    format = time_format, tz = "")
+  # timeseries$EndDate <- as.POSIXct(timeseries$EndDate,
+  #                                    format = time_format, tz = "")
+
+
 }
