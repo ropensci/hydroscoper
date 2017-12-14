@@ -15,7 +15,6 @@
 \item{Type}{}
 \item{Long}{}
 \item{Lat}{}
-\item{Elevation}{}
 \item{Elevation}{}}}
 \usage{
 stations

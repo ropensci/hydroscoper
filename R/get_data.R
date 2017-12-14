@@ -8,7 +8,7 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   table_nodes <- XML::getNodeSet(doc, html_table)
 
   # check table nodes
-  if(is.null(table_nodes)) {
+  if (is.null(table_nodes)) {
     warning(paste0("Couldn't download stations' list from", url))
     return(stationsNA)
   }
@@ -20,10 +20,10 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # make valid names for stations if there are rows and the columns are 7
   if (NROW(stations) > 0 & NCOL(stations) == 7) {
-  names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
-                       "PoliticalDivision", "Owner", "Type")
+    names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
+                         "PoliticalDivision", "Owner", "Type")
   } else {
-    warning(paste("Couldn't get expected station's table from url: ", url, ""))
+    warning(paste("Couldn't get expected station's table from: ", url))
     return(stationsNA)
   }
 
@@ -38,43 +38,43 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   stations$Type <- stations_types(stations$Type)
 
   # add water division id
-  stations$WaterDivisionID <-  add_wd_id(stations$WaterDivision)
+  stations$WaterDivisionID <- add_wd_id(stations$WaterDivision)
 
   # use abr/sions for owners' names
   stations$Owner <- owner_names(stations$Owner)
 
   # remove area from water basin values
-  stations$WaterBasin <- sapply(stations$WaterBasin,
-                                 function(str) gsub("\\([^()]*\\)", "", str))
+  stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
+    gsub("\\([^()]*\\)", "", str)
+    })
 
   # Return data ----------------------------------------------------------------
-  cnames <- c("ID","Name", "WaterDivisionID","WaterBasin", "PoliticalDivision",
-              "Owner", "Type")
+  cnames <- c("ID", "Name", "WaterDivisionID", "WaterBasin", "PoliticalDivision",
+    "Owner", "Type")
 
   return(stations[cnames])
 }
 
-get_coords <- function(stationID = '200280') {
+get_coords <- function(stationID = "200280") {
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
-  doc <- XML::htmlParse(url, encoding = 'UTF8')
+  doc <- XML::htmlParse(url, encoding = "UTF8")
 
   # get table nodes
-  path = "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
+  path <- "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
   tableNodes <- XML::getNodeSet(doc, path)
 
   # check table nodes
-  if(is.null(tableNodes)) {
-    warning(paste0("Couldn't download station data for stationID =",stationID))
-    res <-  data.frame(ID = stationID, Long = NA, Lat = NA, Elevation = NA)
+  if (is.null(tableNodes)) {
+    warning(paste0("Couldn't download station data for stationID =", stationID))
+    res <- data.frame(ID = stationID, Long = NA, Lat = NA, Elevation = NA)
     return(res)
   }
 
   # read table
-  stat_table  <- XML::readHTMLTable(tableNodes[[1]],
-                           header = FALSE,
-                           stringsAsFactors = FALSE)
+  stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
+                                   stringsAsFactors = FALSE)
 
   # get values from table
   values <- stat_table$V2
@@ -83,9 +83,9 @@ get_coords <- function(stationID = '200280') {
   # Coordinates creation -------------------------------------------------------
 
   # convert Coords to Lat and Long
-  Elevation <-as.numeric(values['Altitude'])
-  Coords <- as.character(values['Co-ordinates'])
-  tmp <- stringr::str_split(string = Coords, pattern = ',|\n', simplify = TRUE)
+  Elevation <- as.numeric(values["Altitude"])
+  Coords <- as.character(values["Co-ordinates"])
+  tmp <- stringr::str_split(string = Coords, pattern = ",|\n", simplify = TRUE)
   Lat <- as.numeric(tmp[1])
   Long <- as.numeric(tmp[2])
 
@@ -94,15 +94,15 @@ get_coords <- function(stationID = '200280') {
 
 }
 
-get_timeseries <- function(stationID = '200251') {
+get_timeseries <- function(stationID = "200251") {
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
-  doc <- XML::htmlParse(url, encoding = 'UTF8')
+  doc <- XML::htmlParse(url, encoding = "UTF8")
 
   # get table nodes
-  tableNodes <- XML::getNodeSet(doc, '//*[@id="timeseries"]')
-  if(is.null(tableNodes)) {
+  tableNodes <- XML::getNodeSet(doc, "//*[@id=\"timeseries\"]")
+  if (is.null(tableNodes)) {
     warning(paste("Couldn't download timeseries list for station ID =",
                   stationID))
     return(timeserNA)
@@ -115,8 +115,7 @@ get_timeseries <- function(stationID = '200251') {
   # make valid names for timeseries --------------------------------------------
   if (NROW(tb2) > 0 & NCOL(tb2) == 10) {
     names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
-                    "Remarks",  "Instrument", "StartDate", "EndDate",
-                    "StationID")
+                    "Remarks", "Instrument", "StartDate", "EndDate", "StationID")
   } else {
     warning(paste("Couldn't get expected timeseries table from url: ", url, ""))
     return(timeserNA)
@@ -145,5 +144,9 @@ get_timeseries <- function(stationID = '200251') {
   tb2$EndDate <- as.POSIXct(tb2$EndDate, format = time_format, tz = "")
 
   return(tb2)
-  }
+}
 
+get_data <- function(timeserID) {
+
+  return(NULL)
+}
