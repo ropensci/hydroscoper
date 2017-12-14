@@ -24,7 +24,7 @@ You can install **hydroscoper** from github with:
 
 ```{r gh-installation, eval = FALSE}
 # install.packages("devtools")
-# devtools::install_github("kvantas/hydroscoper")
+devtools::install_github("kvantas/hydroscoper")
 ```
 
 ## Stations list
@@ -45,12 +45,13 @@ The abbreviations in the Owner column are:
 
 ## Stations coordinates
 
-With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy in the Water Division of Crete, EL13:
+With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy in the Water Division of Crete, GR13:
 
 ```{r example coords}
 library(plyr)
-crete_stations <-subset(stations, WaterDivisionID == 'EL13' & Owner == 'MEE')
+crete_stations <-subset(stations, WaterDivisionID == 'GR13' & Owner == 'MEE')
 crete_coords <- ldply(crete_stations$ID, function(x) {get_coords(x)})
 head(crete_coords)
 ```
+
 

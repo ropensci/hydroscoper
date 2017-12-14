@@ -14,7 +14,7 @@ You can install **hydroscoper** from github with:
 
 ``` r
 # install.packages("devtools")
-# devtools::install_github("kvantas/hydroscoper")
+devtools::install_github("kvantas/hydroscoper")
 ```
 
 Stations list
@@ -27,12 +27,12 @@ library(hydroscoper)
 stations <- get_stations()
 head(stations[c("ID", "WaterDivisionID", "Name", "Owner", "Type")])
 #>       ID WaterDivisionID          Name Owner         Type
-#> 1 501062            EL11       Peirama Other MeteoStation
-#> 2 200251            EL12          ABAS   MEE MeteoStation
-#> 3 200280            EL13 AG. BASILEIOS   MEE MeteoStation
-#> 4 501032            EL13 AG. BASILEIOS Other   StreamGage
-#> 5 200171            EL04   AG. BLASIOS   MEE MeteoStation
-#> 6 200292            EL13  AG. GEORGIOS   MEE MeteoStation
+#> 1 501062            GR11       Peirama Other MeteoStation
+#> 2 200251            GR12          ABAS   MEE MeteoStation
+#> 3 200280            GR13 AG. BASILEIOS   MEE MeteoStation
+#> 4 501032            GR13 AG. BASILEIOS Other   StreamGage
+#> 5 200171            GR04   AG. BLASIOS   MEE MeteoStation
+#> 6 200292            GR13  AG. GEORGIOS   MEE MeteoStation
 ```
 
 The abbreviations in the Owner column are:
@@ -51,11 +51,5 @@ library(plyr)
 crete_stations <-subset(stations, WaterDivisionID == 'EL13' & Owner == 'MEE')
 crete_coords <- ldply(crete_stations$ID, function(x) {get_coords(x)})
 head(crete_coords)
-#>       ID     Long      Lat Elevation
-#> 1 200280 24.45425 35.24414     298.6
-#> 2 200292 25.48357 35.16758     836.4
-#> 3 200288 25.03400 35.14504     563.6
-#> 4 200281 24.58291 35.16440     511.7
-#> 5 200291 25.16082 35.23747     392.3
-#> 6 200282 24.45970 35.30145     373.3
+#> data frame with 0 columns and 0 rows
 ```
