@@ -1,3 +1,11 @@
+#' Title
+#'
+#' @param url
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
   # Web scrapping --------------------------------------------------------------
@@ -55,6 +63,14 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   return(stations[cnames])
 }
 
+#' Title
+#'
+#' @param stationID
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_coords <- function(stationID = "200280") {
 
   # Web scrapping --------------------------------------------------------------
@@ -94,6 +110,14 @@ get_coords <- function(stationID = "200280") {
 
 }
 
+#' Title
+#'
+#' @param stationID
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_timeseries <- function(stationID = "200251") {
 
   # Web scrapping --------------------------------------------------------------
@@ -146,6 +170,14 @@ get_timeseries <- function(stationID = "200251") {
   return(tb2)
 }
 
+#' Title
+#'
+#' @param timeserID
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_data <- function(timeserID) {
 
   return(NULL)

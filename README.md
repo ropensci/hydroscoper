@@ -44,12 +44,18 @@ The abbreviations in the Owner column are:
 Stations coordinates
 --------------------
 
-With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy in the Water Division of Crete, EL13:
+With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy in the Water Division of Crete, GR13:
 
 ``` r
 library(plyr)
-crete_stations <-subset(stations, WaterDivisionID == 'EL13' & Owner == 'MEE')
+crete_stations <-subset(stations, WaterDivisionID == 'GR13' & Owner == 'MEE')
 crete_coords <- ldply(crete_stations$ID, function(x) {get_coords(x)})
 head(crete_coords)
-#> data frame with 0 columns and 0 rows
+#>       ID     Long      Lat Elevation
+#> 1 200280 24.45425 35.24414     298.6
+#> 2 200292 25.48357 35.16758     836.4
+#> 3 200288 25.03400 35.14504     563.6
+#> 4 200281 24.58291 35.16440     511.7
+#> 5 200291 25.16082 35.23747     392.3
+#> 6 200282 24.45970 35.30145     373.3
 ```
