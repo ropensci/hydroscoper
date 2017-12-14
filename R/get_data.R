@@ -1,5 +1,7 @@
 get_stations <- function(url = "http://kyy.hydroscope.gr/") {
 
+  # Web scrapping --------------------------------------------------------------
+
   # download stations data
   doc <- XML::htmlParse(url, encoding = "UTF8")
 
@@ -15,7 +17,9 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
   # read html file to table
   stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
-  # make valid names for stations
+  # Make valid names -----------------------------------------------------------
+
+  # make valid names for stations if there are rows and the columns are 7
   if (NROW(stations) > 0 & NCOL(stations) == 7) {
   names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
                        "PoliticalDivision", "Owner", "Type")
@@ -23,69 +27,39 @@ get_stations <- function(url = "http://kyy.hydroscope.gr/") {
     stop(paste("Couldn't get any station data from url: ", url, ""))
   }
 
+  # Translations and transliterations ------------------------------------------
+
+
   # replace greek characters with latin
   for (cname in c(names(stations)[-1])) {
     stations[cname] <- greek2latin(stations[cname])
   }
 
-  # change type to meaningfull names
-  type <- stations$Type
-  type <- ifelse(type %in% c("GEORGIKOS", "KLIMATOLOGIKOS", "METEOROLOGIKOS",
-                             "YDROMETEOROLOGIKOS"),
-                 "MeteoStation", type)
-  type <- ifelse(type == "STATHMEMETRIKOS", "StreamGage", type)
-  stations$Type <- type
+  # translate types
+  stations$Type <- stations_types(stations$Type)
 
   # add water division id
   wd_names <- names(table(stations$WaterDivision))
   if (length(wd_names) == 14) {
-
-    wd <- stations$WaterDivision
-    wd <- make.names(wd)
-    lookup <- c(ANATOLIKE.MAKEDONIA = "EL11",
-                 ANATOLIKE.PELOPONNES = "EL03",
-                 ANATOLIKE.STEREA.ELL = "EL07",
-                 ATTIKE = "EL06",
-                 BOREIA.PELOPONNESOS = "EL02",
-                 DYTIKE.MAKEDONIA = "EL09",
-                 DYTIKE.PELOPONNESOS = "EL01",
-                 DYTIKE.STEREA.ELLADA = "EL04",
-                 EPEIROS = "EL05",
-                 KENTRIKE.MAKEDONIA = "EL10",
-                 KRETE = "EL13",
-                 NESOI.AIGAIOU = "EL14",
-                 THESSALIA = "EL06",
-                 THRAKE = "EL12")
-    wd <- lookup[wd]
-    names(wd) <- NULL
-  stations$WaterDivisionID <-  wd
+    stations$WaterDivisionID <-  add_wd_id(stations$WaterDivision)
   }
 
-  # change owners to meaningfull names
-  owner <- stations$Owner
-  kyy <- "YPOURGEIO PERIBALLONTOS, ENERGEIAS KAI KLIMATIKES ALLAGES"
-  noa <- "ETHNIKO ASTEROSKOPEIO ATHENAS"
-
-  owner <- ifelse(owner == noa,
-                  "NOA",
-                  owner)
-  owner <- ifelse(owner == kyy,
-                  "MEE",
-                  owner)
-  owner <- ifelse(owner %in% c("NOA", "MEE"),
-                  owner,
-                  "Other")
-
-  stations$Owner <- owner
+  # use abr/sions for owners' names
+  stations$Owner <- owner_names(stations$Owner)
 
   # remove area from water basin values
   stations$WaterBasin <- sapply(stations$WaterBasin,
                                  function(str) gsub("\\([^()]*\\)", "", str))
 
-  return(stations)
+  cnames <- c("ID","Name", "WaterDivisionID","WaterBasin", "PoliticalDivision",
+              "Owner", "Type")
+
+  return(stations[cnames])
 }
 
 get_coords <- function(stationID = '200280') {
+
+  # Web scrapping --------------------------------------------------------------
 
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
 
@@ -105,9 +79,11 @@ get_coords <- function(stationID = '200280') {
                            header = FALSE,
                            stringsAsFactors = FALSE)
 
+  # get values from table
   values <- stat_table$V2
   names(values) <- stat_table$V1
 
+  # Coordinates creation -------------------------------------------------------
 
   # convert Coords to Lat and Long
   Elevation <-as.numeric(values['Altitude'])
@@ -123,6 +99,8 @@ get_coords <- function(stationID = '200280') {
 
 get_timeseries <- function(stationID = '200251') {
 
+  # Web scrapping --------------------------------------------------------------
+
   # parse hydroscope
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
   doc <- XML::htmlParse(url, encoding = 'UTF8')
@@ -136,20 +114,23 @@ get_timeseries <- function(stationID = '200251') {
   tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE, stringsAsFactors = FALSE)
   tb2$StationID <- stationID
 
-  # make valid names for timeseries
+  # make valid names for timeseries --------------------------------------------
   if (NROW(tb2) > 0 & NCOL(tb2) == 10) {
-    names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit", "Remarks",
-                    "Instrument", "StartDate", "EndDate", "StationID")
+    names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
+                    "Remarks",  "Instrument", "StartDate", "EndDate",
+                    "StationID")
   } else {
     stop(paste("Couldn't get timeseries data from url: ", url, ""))
   }
+
+  # Translations and transliterations ------------------------------------------
 
   # convert strings to latin
   for (cname in c(names(tb2))) {
     tb2[cname] <- greek2latin(tb2[cname])
   }
 
-  # make data meaningfull TODO
+  # translations TODO
 
   return(tb2)
 }
