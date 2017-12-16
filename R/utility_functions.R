@@ -99,6 +99,11 @@ ts_timestep <- function(variable) {
 
 # Data creation functions ------------------------------------------------------
 
+hydroscope_url <- function(domain) {
+return(paste0("http://", domain, ".hydroscope.gr"))
+
+}
+
 # stations dataframe with NA values
 stationsNA <- function() {
   data.frame(ID = NA,

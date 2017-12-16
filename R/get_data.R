@@ -1,12 +1,16 @@
 #' Title
 #'
-#' @param url
+#' @param subdomain
 #'
 #' @return
 #' @export
 #'
 #' @examples
-get_stations <- function(url = "http://kyy.hydroscope.gr/") {
+get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
+
+  # match subdomain values
+  subdomain <- match.arg(subdomain)
+  url <- hydroscope_url(subdomain)
 
   # Web scrapping --------------------------------------------------------------
   doc <- XML::htmlParse(url, encoding = "UTF8")

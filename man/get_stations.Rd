@@ -4,10 +4,10 @@
 \alias{get_stations}
 \title{Title}
 \usage{
-get_stations(url = "http://kyy.hydroscope.gr/")
+get_stations(subdomain = c("kyy", "ypaat", "emy"))
 }
 \arguments{
-\item{url}{}
+\item{subdomain}{}
 }
 \description{
 Title
