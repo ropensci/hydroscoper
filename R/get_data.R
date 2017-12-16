@@ -61,8 +61,8 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
     })
 
   # Return data ----------------------------------------------------------------
-  cnames <- c("ID", "Name", "WaterDivisionID", "WaterBasin", "PoliticalDivision",
-    "Owner", "Type")
+  cnames <- c("ID", "Name", "WaterDivisionID", "WaterBasin",
+              "PoliticalDivision", "Owner", "Type")
 
   return(stations[cnames])
 }
@@ -143,7 +143,8 @@ get_timeseries <- function(stationID = "200251") {
   # make valid names for timeseries --------------------------------------------
   if (NROW(tb2) > 0 & NCOL(tb2) == 10) {
     names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
-                    "Remarks", "Instrument", "StartDate", "EndDate", "StationID")
+                    "Remarks", "Instrument", "StartDate", "EndDate",
+                    "StationID")
   } else {
     warning(paste("Couldn't get expected timeseries table from url: ", url, ""))
     return(timeserNA)
@@ -163,7 +164,6 @@ get_timeseries <- function(stationID = "200251") {
   tb2$TimeStep <- ts_timestep(tb2$TimeStep)
 
   # convert start and end dates to posixct -------------------------------------
-
   tb2$StartDate <- ifelse(tb2$StartDate == "", NA, tb2$StartDate)
   tb2$EndDate <- ifelse(tb2$EndDate == "", NA, tb2$EndDate)
 

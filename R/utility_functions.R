@@ -9,11 +9,11 @@ greek2latin <- function(x) {
 # stations types translation
 stations_types <- function(type) {
   sapply(type, function(x) {
-    switch(x, GEORGIKOS = "MeteoStation",
-           KLIMATOLOGIKOS = "MeteoStation",
-           METEOROLOGIKOS = "MeteoStation",
-           YDROMETEOROLOGIKOS = "MeteoStation",
-           STATHMEMETRIKOS = "StreamGage",
+    switch(x, GEORGIKOS = "meteo_station",
+           KLIMATOLOGIKOS = "meteo_station",
+           METEOROLOGIKOS = "meteo_station",
+           YDROMETEOROLOGIKOS = "meteo_station",
+           STATHMEMETRIKOS = "stream_gage",
            "unknown")
   })
 }
@@ -41,17 +41,14 @@ add_wd_id <- function(wd) {
 
 # translate owners' names
 owner_names <- function(owner) {
-
-  # abr/sions strings
-  kyy <- "YPOURGEIO PERIBALLONTOS, ENERGEIAS KAI KLIMATIKES ALLAGES"
-  noa <- "ETHNIKO ASTEROSKOPEIO ATHENAS"
-
-  # change owners' names
-  owner <- ifelse(owner == noa, "NOA", owner)
-  owner <- ifelse(owner == kyy, "MEE", owner)
-  owner <- ifelse(owner %in% c("NOA", "MEE"), owner, "Other")
-
-  return(owner)
+  sapply(make.names(owner), function(x) {
+    switch(x, YPOURGEIO.PERIBALLONTOS..ENERGEIAS.KAI.KLIMATIKES.ALLAGES =
+             "min_env",
+           ETHNIKO.ASTEROSKOPEIO.ATHENAS = "noa",
+           YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON = "min_rur",
+           NOMARCHIAKE.AUTODIOIKESE = "prefec",
+           "other")
+  })
 }
 
 # translate timeseries' variables names
