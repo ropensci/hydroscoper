@@ -1,3 +1,4 @@
+
 #' Title
 #'
 #' @param subdomain
@@ -67,8 +68,10 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
   return(stations[cnames])
 }
 
+
 #' Title
 #'
+#' @param subdomain
 #' @param stationID
 #'
 #' @return
@@ -80,6 +83,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
   url <- hydroscope_url(subdomain)
+  url <- paste0(url,"/stations/d/", stationID, "/")
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
@@ -118,19 +122,22 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
 
 }
 
+
 #' Title
 #'
+#' @param subdomain
 #' @param stationID
 #'
 #' @return
 #' @export
 #'
 #' @examples
-get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), station) {
+get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
-  url <- hydroscope_url(subdomain)s
+  url <- hydroscope_url(subdomain)
+  url <- paste0(url,"/stations/d/", stationID, "/")
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
@@ -182,9 +189,11 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), station) {
   return(tb2)
 }
 
+
 #' Title
 #'
-#' @param timeserID
+#' @param subdomain
+#' @param timeID
 #'
 #' @return
 #' @export
@@ -195,6 +204,52 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
   url <- hydroscope_url(subdomain)
+  url <- paste0(url, "/timeseries/d/", timeID, "/download/")
 
-  return(NULL)
+  # Download and convert hydroscope file to dataframe --------------------------
+
+  # create a temp file
+  tmp <- tempfile()
+  suppressWarnings(
+    result <- tryCatch({
+
+      # download file
+      download.file(url = url, destfile = tmp)
+
+      # Count the number of fields in each line of a file
+      cf <- readr::count_fields(tmp,
+                                tokenizer = readr::tokenizer_csv(),
+                                n_max = 50)
+
+      # check the number of columns in hts file
+      if(any(cf == 3)) {
+
+        # read timeseries data
+        tmFormat <- "%Y-%m-%d %H:%M"
+        result <- readr::read_csv(file = tmp,
+                                  skip =  sum(cf < 3),
+                                  col_names = c('Date', 'Value', 'Comment'),
+                                  col_types = list(
+                                    readr::col_datetime(format = tmFormat),
+                                    readr::col_double(),
+                                    readr::col_character()))
+
+        # remove NA Date values
+        result <- result[!is.na(result$Date), ]
+
+      } else {
+        result <- dataNA()
+      }
+
+    }, error = function(e) {
+      # return NA values
+      warning(paste("Couldn't get timeseries' data from "), url)
+      result <- dataNA()
+
+    }, finally = {
+      # delete temp file
+      unlink(tmp)
+    })
+  )
+  return(result)
 }

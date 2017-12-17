@@ -47,6 +47,7 @@ owner_names <- function(owner) {
            ETHNIKO.ASTEROSKOPEIO.ATHENAS = "noa",
            YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON = "min_rur",
            NOMARCHIAKE.AUTODIOIKESE = "prefec",
+           ETHNIKE.METEOROLOGIKE.YPERESIA = "emy",
            "other")
   })
 }
@@ -121,6 +122,11 @@ timeserNA <- function() {
              StartDate = NA,
              EndDate = NA,
              StationID = stationID)
+}
+
+# timeseries dataframe with NA values
+dataNA <- function(){
+  data.frame(Date = NA, Value = NA, Comment = NA)
 }
 
 # create stations' database
