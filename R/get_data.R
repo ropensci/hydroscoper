@@ -8,7 +8,7 @@
 #' @examples
 get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 
-  # match subdomain values
+  # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
   url <- hydroscope_url(subdomain)
 
@@ -75,7 +75,11 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 #' @export
 #'
 #' @examples
-get_coords <- function(stationID = "200280") {
+get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
+
+  # match subdomain values -----------------------------------------------------
+  subdomain <- match.arg(subdomain)
+  url <- hydroscope_url(subdomain)
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
@@ -122,7 +126,11 @@ get_coords <- function(stationID = "200280") {
 #' @export
 #'
 #' @examples
-get_timeseries <- function(stationID = "200251") {
+get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), station) {
+
+  # match subdomain values -----------------------------------------------------
+  subdomain <- match.arg(subdomain)
+  url <- hydroscope_url(subdomain)s
 
   # Web scrapping --------------------------------------------------------------
   url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
@@ -182,7 +190,11 @@ get_timeseries <- function(stationID = "200251") {
 #' @export
 #'
 #' @examples
-get_data <- function(timeserID) {
+get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
+
+  # match subdomain values -----------------------------------------------------
+  subdomain <- match.arg(subdomain)
+  url <- hydroscope_url(subdomain)
 
   return(NULL)
 }
