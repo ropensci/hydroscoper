@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_data.R
 \name{get_timeseries}
 \alias{get_timeseries}
-\title{Title}
+\title{Get timeseries corresponding to a station}
 \usage{
-get_timeseries(stationID = "200251")
+get_timeseries(subdomain = c("main", "kyy", "ypaat", "emy"), stationID)
 }
 \arguments{
 \item{stationID}{}
 }
 \description{
-Title
+Get timeseries corresponding to a station
 }

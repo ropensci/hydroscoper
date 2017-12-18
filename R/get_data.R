@@ -1,12 +1,60 @@
 
-#' Title
+#' Get stations data
 #'
-#' @param subdomain
+#' \code{get_stations} returns a dataframe with data from the stations that
+#' exist in a database of Hydroscope.
 #'
-#' @return
-#' @export
+#' @param subdomain One of the subdomains of hydroscope.gr
+#'
+#' @return If \code{subdomain} is one in \code{"kyy", "ypaat", "emy"},
+#' returns a tidy dataframe with stations' data from the corresponding database
+#' of hydroscope.gr. Otherwise gives an error message.
+#'
+#' The dataframe columns are:
+#' \describe{
+#'     \item{ID}{The station's ID from the database}
+#'     \item{Name}{The station's name}
+#'     \item{WaterDivisionID}{The station's Water Division ID, see details}
+#'     \item{WaterBasin}{The station's Water Basin}
+#'     \item{PoliticalDivision}{The station's Political Division}
+#'     \item{Owner}{The station's owner, see details}
+#'     \item{Type}{The station's type, see details}
+#' }
+#' @details
+#' Stations' IDs might not be unique at the different databases records.
+#' Also, the stations' data in http://main.hydroscope.gr have been
+#' copied from the corresponding databases with new IDs.
+#'
 #'
 #' @examples
+#' # get stations' data from the Greek Ministry of Environment and Energy
+#' kyy_stations <- get_stations()
+#'
+#' # get stations' data from the Greek National Meteorological Service
+#' emy_stations <- get_stations(subdomain = "emy")
+#'
+#' \dontrun{
+#' dei_stations <- get_stations(subdomain = "dei")
+#' }
+#'
+#' @references
+#' Stations' data are retrieved from the Hydroscope's databases:
+#' \itemize{
+#' \item Ministry of Environment, Energy and Climate Change,
+#' \url{http://kyy.hydroscope.gr}
+#' \item Ministry of Rural Development and Food,
+#' \url{http://ypaat.hydroscope.gr}
+#' \item National Meteorological Service,
+#' \url{http://emy.hydroscope.gr}
+#'}
+#' European Terrestrial Reference System 1989 (ETRS)
+#' \url{https://en.wikipedia.org/wiki/European_Terrestrial_Reference_System_1989}
+#'
+#' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
+#'
+#' @import XML
+#'
+#' @export get_stations
 get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 
   # match subdomain values -----------------------------------------------------
@@ -69,16 +117,24 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 }
 
 
-#' Title
+#' Get station's coordinates
 #'
 #' @param subdomain
 #' @param stationID
 #'
 #' @return
+#' #' The dataframe columns are:
+#' \describe{
+#'     \item{ID}{The stationID from the database}
+#'     \item{Long}{The station's longitude in decimal degrees, ETRS89}
+#'     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
+#'     \item{Elevation}{The station's altitude, meters above sea level}
+#' }
 #' @export
 #'
 #' @examples
-get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
+get_coords <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
+                       stationID) {
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
@@ -123,7 +179,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
 }
 
 
-#' Title
+#' Get timeseries corresponding to a station
 #'
 #' @param subdomain
 #' @param stationID
@@ -132,7 +188,8 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
 #' @export
 #'
 #' @examples
-get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
+get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
+                           stationID) {
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
@@ -148,7 +205,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
   if (is.null(tableNodes)) {
     warning(paste("Couldn't download timeseries list for station ID =",
                   stationID))
-    return(timeserNA)
+    return(timeserNA(stationID))
   }
   # read table
   tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
@@ -162,7 +219,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
                     "StationID")
   } else {
     warning(paste("Couldn't get expected timeseries table from url: ", url, ""))
-    return(timeserNA)
+    return(timeserNA(stationID))
   }
 
   # Translations and transliterations ------------------------------------------
@@ -190,7 +247,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"), stationID) {
 }
 
 
-#' Title
+#' Get timeseries data in a tidy dataframe
 #'
 #' @param subdomain
 #' @param timeID
@@ -214,7 +271,8 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
     result <- tryCatch({
 
       # download file
-      download.file(url = url, destfile = tmp)
+      dl_code <- utils::download.file(url = url, destfile = tmp)
+      if(dl_code != 0) stop()
 
       # Count the number of fields in each line of a file
       cf <- readr::count_fields(tmp,

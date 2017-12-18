@@ -2,13 +2,64 @@
 % Please edit documentation in R/get_data.R
 \name{get_stations}
 \alias{get_stations}
-\title{Title}
+\title{Get stations data}
 \usage{
 get_stations(subdomain = c("kyy", "ypaat", "emy"))
 }
 \arguments{
-\item{subdomain}{}
+\item{subdomain}{One of the subdomains of hydroscope.gr}
+}
+\value{
+If \code{subdomain} is one in \code{"kyy", "ypaat", "emy"},
+returns a tidy dataframe with stations' data from the corresponding database
+of hydroscope.gr. Otherwise gives an error message.
+
+The dataframe columns are:
+("ID", "Name", "WaterDivisionID", "WaterBasin", "PoliticalDivision", "Owner", "Type")
+\describe{
+    \item{ID}{The station's ID from the database}
+    \item{Name}{The station's name}
+    \item{WaterDivisionID}{The station's Water Division ID, see details}
+    \item{WaterBasin}{The station's Water Basin}
+    \item{PoliticalDivision}{The station's Political Division}
+    \item{Owner}{The station's owner, see details}
+    \item{Type}{The station's type, see details}
+}
 }
 \description{
-Title
+\code{get_stations} returns a dataframe with data from the stations that
+exist in a database of Hydroscope.
+}
+\details{
+Stations' IDs might not be unique at the different databases records.
+Also, the stations' data in http://main.hydroscope.gr have been
+copied from the corresponding databases with new IDs.
+}
+\examples{
+# get stations' data from the Greek Ministry of Environment and Energy
+kyy_stations <- get_stations()
+
+# get stations' data from the Greek National Meteorological Service
+emy_stations <- get_stations(subdomain = "emy")
+
+\dontrun{
+dei_stations <- get_stations(subdomain = "dei")
+}
+
+}
+\references{
+Stations' data are retrieved from the hydroscope's databases:
+\itemize{
+\item Ministry of Environment, Energy and Climate Change,
+\url{http://kyy.hydroscope.gr}
+\item Ministry of Rural Development and Food,
+\url{http://ypaat.hydroscope.gr}
+\item National Meteorological Service,
+\url{http://emy.hydroscope.gr}
+}
+European Terrestrial Reference System 1989 (ETRS)
+\url{https://en.wikipedia.org/wiki/European_Terrestrial_Reference_System_1989}
+}
+\author{
+Konstantinos Vantas, \email{kon.vantas@gmail.com}
 }

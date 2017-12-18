@@ -48,6 +48,7 @@ owner_names <- function(owner) {
            YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON = "min_rur",
            NOMARCHIAKE.AUTODIOIKESE = "prefec",
            ETHNIKE.METEOROLOGIKE.YPERESIA = "emy",
+           DEMOSIA.EPICHEIRISE.ELEKTRISMOU = "dei",
            "other")
   })
 }
@@ -113,7 +114,7 @@ stationsNA <- function() {
 }
 
 # timeseries dataframe with NA values
-timeserNA <- function() {
+timeserNA <- function(stationID) {
   data.frame(TimeSeriesID = NA,
              Variable = NA,
              TimeStep = NA,
@@ -129,34 +130,34 @@ dataNA <- function(){
   data.frame(Date = NA, Value = NA, Comment = NA)
 }
 
-# create stations' database
-stations_db <- function() {
-
-  # download data
-  stations <- get_stations()
-  coords <- plyr::ldply(stations$ID, function(id) get_coords(id))
-
-  # merge data
-  stations <- merge(stations, coords, by = "ID")
-
-  # replace empty values with NA
-  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-                                stations$WaterBasin)
-  stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA,
-                                       stations$PoliticalDivision)
-  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-                                stations$WaterBasin)
-
-  return(stations)
-
-}
-
-# create timeseries database
-timeseries_db <- function() {
-
-  # download data
-  stations <- get_stations()
-  timeseries <- plyr::ldply(stations$ID, function(id) get_timeseries(id))
-  return(timeseries)
-
-}
+# # create stations' database
+# stations_db <- function() {
+#
+#   # download data
+#   stations <- get_stations()
+#   coords <- plyr::ldply(stations$ID, function(id) get_coords(id))
+#
+#   # merge data
+#   stations <- merge(stations, coords, by = "ID")
+#
+#   # replace empty values with NA
+#   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
+#                                 stations$WaterBasin)
+#   stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA,
+#                                        stations$PoliticalDivision)
+#   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
+#                                 stations$WaterBasin)
+#
+#   return(stations)
+#
+# }
+#
+# # create timeseries database
+# timeseries_db <- function() {
+#
+#   # download data
+#   stations <- get_stations()
+#   timeseries <- plyr::ldply(stations$ID, function(id) get_timeseries(id))
+#   return(timeseries)
+#
+# }

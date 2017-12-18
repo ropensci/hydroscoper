@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_data.R
 \name{get_data}
 \alias{get_data}
-\title{Title}
+\title{Get timeseries data in a tidy dataframe}
 \usage{
-get_data(timeserID)
+get_data(subdomain = c("kyy", "ypaat", "emy"), timeID)
 }
 \arguments{
-\item{timeserID}{}
+\item{timeID}{}
 }
 \description{
-Title
+Get timeseries data in a tidy dataframe
 }

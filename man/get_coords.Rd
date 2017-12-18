@@ -2,13 +2,22 @@
 % Please edit documentation in R/get_data.R
 \name{get_coords}
 \alias{get_coords}
-\title{Title}
+\title{Get station's coordinates}
 \usage{
-get_coords(stationID = "200280")
+get_coords(subdomain = c("main", "kyy", "ypaat", "emy"), stationID)
 }
 \arguments{
 \item{stationID}{}
 }
+\value{
+#' The dataframe columns are:
+\describe{
+    \item{ID}{The stationID from the database}
+    \item{Long}{The station's longitude in decimal degrees, ETRS89}
+    \item{Lat}{The station's latitude in decimal degrees, ETRS89}
+    \item{Elevation}{The station's altitude, meters above sea level}
+}
+}
 \description{
-Title
+Get station's coordinates
 }

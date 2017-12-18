@@ -5,7 +5,7 @@ Version: 0.0.900
 Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the Greek National Databank for Hydrological and 
-             Meteorological Information  at <http://kyy.hydroscope.gr/> with
+             Meteorological Information  at <http://www.hydroscope.gr/> with
              functions for stations, timeseries and raw data downloading.
 URL: https://github.com/kvantas/hydroscoper
 BugReports: https://github.com/kvantas/hydroscoper/issues             
@@ -14,3 +14,8 @@ License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Imports: stringi,
+    XML,
+    stringr,
+    readr,
+    utils
