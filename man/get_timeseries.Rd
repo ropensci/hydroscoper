@@ -4,8 +4,7 @@
 \alias{get_timeseries}
 \title{Get timeseries corresponding to a station}
 \usage{
-get_timeseries(subdomain = c("main", "kyy", "ypaat", "emy", "main"),
-  stationID)
+get_timeseries(subdomain = c("kyy", "ypaat", "emy", "main"), stationID)
 }
 \arguments{
 \item{stationID}{}

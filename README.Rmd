@@ -34,7 +34,7 @@ This is a basic example which shows you how to get the stations list from the Hy
 ```{r example stations}
 library(hydroscoper)
 stations <- get_stations(subdomain = "kyy")
-head(stations[c("ID", "WaterDivisionID", "Name", "Owner", "Type")])
+head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 ```
 
 
@@ -67,7 +67,7 @@ With the following code you can get the timeseries values from using a timeserie
 ts_raw <- get_data(subdomain = "kyy", timeID = 1022)
 ```
 
-Let's create a nice plot for the rainfall data:
+Let's create a plot for the rainfall data:
 ```{r plot data}
 suppressPackageStartupMessages(library(ggplot2))
 ggplot(data = ts_raw, aes(x = Date, y = Value))+

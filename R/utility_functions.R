@@ -9,7 +9,8 @@ greek2latin <- function(x) {
 # stations types translation
 stations_types <- function(type) {
   sapply(type, function(x) {
-    switch(x, GEORGIKOS = "meteo_station",
+    switch(x,
+           GEORGIKOS = "meteo_station",
            KLIMATOLOGIKOS = "meteo_station",
            METEOROLOGIKOS = "meteo_station",
            YDROMETEOROLOGIKOS = "meteo_station",
@@ -21,7 +22,8 @@ stations_types <- function(type) {
 # water divisions id creation
 add_wd_id <- function(wd) {
   sapply(make.names(wd), function(x) {
-    switch(x, DYTIKE.PELOPONNESOS = "GR01",
+    switch(x,
+           DYTIKE.PELOPONNESOS = "GR01",
            BOREIA.PELOPONNESOS = "GR02",
            ANATOLIKE.PELOPONNES = "GR03",
            DYTIKE.STEREA.ELLADA = "GR04",
@@ -42,7 +44,8 @@ add_wd_id <- function(wd) {
 # translate owners' names
 owner_names <- function(owner) {
   sapply(make.names(owner), function(x) {
-    switch(x, YPOURGEIO.PERIBALLONTOS..ENERGEIAS.KAI.KLIMATIKES.ALLAGES =
+    switch(x,
+           YPOURGEIO.PERIBALLONTOS..ENERGEIAS.KAI.KLIMATIKES.ALLAGES =
              "min_env",
            ETHNIKO.ASTEROSKOPEIO.ATHENAS = "noa",
            YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON = "min_rur",
@@ -56,7 +59,8 @@ owner_names <- function(owner) {
 # translate timeseries' variables names
 ts_variable <- function(variable) {
   sapply(make.names(variable), function(x) {
-    switch(x, ANEMOS..DIEUTHYNSE. = "wind_direc",
+    switch(x,
+           ANEMOS..DIEUTHYNSE. = "wind_direc",
            ANEMOS..TACHYTETA. = "wind_speed",
            ANEMOS..TACHYTETA.MESE. = "wind_speed_av",
            ASBESTIO = "calcium",
@@ -86,7 +90,8 @@ ts_variable <- function(variable) {
 # translate timestep names
 ts_timestep <- function(variable) {
   sapply(make.names(variable), function(x) {
-    switch(x, Emeresia...1.day.s. = "day",
+    switch(x,
+           Emeresia...1.day.s. = "day",
            Meniaia...0.year.s. = "month",
            Variable.step = "variable",
            X10lepte...0.day.s. = "10min",
@@ -100,17 +105,17 @@ ts_timestep <- function(variable) {
 
 hydroscope_url <- function(domain) {
 return(paste0("http://", domain, ".hydroscope.gr"))
-
 }
 
 # stations dataframe with NA values
 stationsNA <- function() {
-  data.frame(ID = NA,
+  data.frame(StationID = NA,
              Name = NA,
              WaterDivisionID = NA,
              WaterBasin = NA,
              PoliticalDivision = NA,
-             Owner = NA, Type = NA)
+             Owner = NA,
+             Type = NA)
 }
 
 # timeseries dataframe with NA values
@@ -130,6 +135,14 @@ dataNA <- function(){
   data.frame(Date = NA, Value = NA, Comment = NA)
 }
 
+# coords dataframe with NA values
+coordsNA <- function(stationID) {
+  data.frame(StationID = stationID,
+             Long = NA,
+             Lat = NA,
+             Elevation = NA)
+}
+
 # create stations' database
 stations_db <- function(subdomain = "kyy") {
 
@@ -140,7 +153,7 @@ stations_db <- function(subdomain = "kyy") {
     })
 
   # merge data
-  stations <- merge(stations, coords, by = "ID")
+  stations <- merge(stations, coords, by = "StationID")
 
   # replace empty values with NA
   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,

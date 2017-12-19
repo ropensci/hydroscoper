@@ -4,20 +4,68 @@
 \alias{get_coords}
 \title{Get station's coordinates}
 \usage{
-get_coords(subdomain = c("main", "kyy", "ypaat", "emy", "main"), stationID)
+get_coords(subdomain = c("kyy", "ypaat", "emy", "main"), stationID)
 }
 \arguments{
-\item{stationID}{}
+\item{subdomain}{One of the subdomains of hydroscope.gr}
+
+\item{stationID}{A station ID}
 }
 \value{
-#' The dataframe columns are:
+If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+\code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+databases, merged), and stationID is not NULL, returns a dataframe with
+station's coordinates and elevation from the corresponding database of
+hydroscope.gr. Otherwise gives an error message.
+
+ If the station ID does not exist in the database, returns a
+ dataframe with NA values.
+
+The dataframe columns are:
 \describe{
-    \item{ID}{The stationID from the database}
+    \item{StationID}{The stationID from the database}
     \item{Long}{The station's longitude in decimal degrees, ETRS89}
     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
     \item{Elevation}{The station's altitude, meters above sea level}
 }
 }
 \description{
-Get station's coordinates
+\code{get_coords} returns a dataframe with the coordinates and elevation from
+a station in a database of Hydroscope.
+}
+\note{
+Stations' IDs might not be unique at the different databases records from the
+different Hydroscope domains.
+}
+\examples{
+# get station 200171 coords from the Greek Ministry of Environment and Energy
+get_coords(stationID = 200171)
+
+# get station data from the Greek National Meteorological Service
+get_coords("emy", 20035)
+
+\dontrun{
+get_coords("emy")
+}
+
+}
+\references{
+European Terrestrial Reference System 1989 (ETRS),
+\url{http://bit.ly/2kJwFuf}
+
+Stations' data are retrieved from the Hydroscope's databases:
+\itemize{
+\item Ministry of Environment, Energy and Climate Change,
+\url{http://kyy.hydroscope.gr}
+\item Ministry of Rural Development and Food,
+\url{http://ypaat.hydroscope.gr}
+\item National Meteorological Service,
+\url{http://emy.hydroscope.gr}
+\item Main Hydroscope's database,
+\url{http://main.hydroscope.gr}
+}
+}
+\author{
+Konstantinos Vantas, \email{kon.vantas@gmail.com}
 }

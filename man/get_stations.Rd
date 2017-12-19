@@ -10,14 +10,16 @@ get_stations(subdomain = c("kyy", "ypaat", "emy", "main"))
 \item{subdomain}{One of the subdomains of hydroscope.gr}
 }
 \value{
-If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"},
-\code{"emy"} or \code{"main"}, returns a tidy dataframe with stations' data
+If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+\code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+databases, merged), returns a tidy dataframe with stations' data
 from the corresponding database of hydroscope.gr. Otherwise gives an error
 message.
 
 The dataframe columns are:
 \describe{
-    \item{ID}{The station's ID from the domain's database}
+    \item{StationID}{The station's ID from the domain's database}
     \item{Name}{The station's name}
     \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
     GR14}

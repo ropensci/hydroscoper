@@ -6,14 +6,16 @@
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
 #'
-#' @return If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"},
-#' \code{"emy"} or \code{"main"}, returns a tidy dataframe with stations' data
+#' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+#' databases, merged), returns a tidy dataframe with stations' data
 #' from the corresponding database of hydroscope.gr. Otherwise gives an error
 #' message.
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{ID}{The station's ID from the domain's database}
+#'     \item{StationID}{The station's ID from the domain's database}
 #'     \item{Name}{The station's name}
 #'     \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
 #'     GR14}
@@ -124,7 +126,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 
   # make valid names for stations if there are rows and the columns are 7
   if (NROW(stations) > 0 & NCOL(stations) == 7) {
-    names(stations) <- c("ID", "Name", "WaterBasin", "WaterDivision",
+    names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
                          "PoliticalDivision", "Owner", "Type")
   } else {
     warning(paste("Couldn't get expected station's table from: ", url))
@@ -150,10 +152,10 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
   # remove area from water basin values
   stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
     gsub("\\([^()]*\\)", "", str)
-    })
+  })
 
   # Return data ----------------------------------------------------------------
-  cnames <- c("ID", "Name", "WaterDivisionID", "WaterBasin",
+  cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
               "PoliticalDivision", "Owner", "Type")
 
   return(stations[cnames])
@@ -165,65 +167,114 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 #' \code{get_coords} returns a dataframe with the coordinates and elevation from
 #' a station in a database of Hydroscope.
 #'
-#' @param subdomain
-#' @param stationID
+#' @param subdomain One of the subdomains of hydroscope.gr
+#' @param stationID A station ID
 #'
-#' @return
-#' #' The dataframe columns are:
+#' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+#' databases, merged), and stationID is not NULL, returns a dataframe with
+#' station's coordinates and elevation from the corresponding database of
+#' hydroscope.gr. Otherwise gives an error message.
+#'
+#'  If the station ID does not exist in the database, returns a
+#'  dataframe with NA values.
+#'
+#' The dataframe columns are:
 #' \describe{
-#'     \item{ID}{The stationID from the database}
+#'     \item{StationID}{The stationID from the database}
 #'     \item{Long}{The station's longitude in decimal degrees, ETRS89}
 #'     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
 #'     \item{Elevation}{The station's altitude, meters above sea level}
 #' }
-#' @export
+#'
+#' @note
+#' Stations' IDs might not be unique at the different databases records from the
+#' different Hydroscope domains.
 #'
 #' @examples
+#' # get station 200171 coords from the Greek Ministry of Environment and Energy
+#' get_coords(stationID = 200171)
+#'
+#' # get station data from the Greek National Meteorological Service
+#' get_coords("emy", 20035)
+#'
+#' \dontrun{
+#' get_coords("emy")
+#' }
+#'
+#' @references
+#' European Terrestrial Reference System 1989 (ETRS),
+#' \url{http://bit.ly/2kJwFuf}
+#'
+#' Stations' data are retrieved from the Hydroscope's databases:
+#' \itemize{
+#' \item Ministry of Environment, Energy and Climate Change,
+#' \url{http://kyy.hydroscope.gr}
+#' \item Ministry of Rural Development and Food,
+#' \url{http://ypaat.hydroscope.gr}
+#' \item National Meteorological Service,
+#' \url{http://emy.hydroscope.gr}
+#' \item Main Hydroscope's database,
+#' \url{http://main.hydroscope.gr}
+#'}
+#' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
+#' @import XML
+#' @export get_coords
 get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                        stationID) {
 
   # check that stationID is given
-  if(is.null(stationID)) stop("argument \"stationID\" is missing")
+  if (is.null(stationID)) stop("argument \"stationID\" is missing")
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
+
+  # create url
   url <- hydroscope_url(subdomain)
-  url <- paste0(url,"/stations/d/", stationID, "/")
+  url <- paste0(url, "/stations/d/", stationID, "/")
 
   # Web scrapping --------------------------------------------------------------
-  url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
-  doc <- XML::htmlParse(url, encoding = "UTF8")
+  tryCatch({
 
-  # get table nodes
-  path <- "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
-  tableNodes <- XML::getNodeSet(doc, path)
+    # parse url
+    doc <- XML::htmlParse(url, encoding = "UTF8")
 
-  # check table nodes
-  if (is.null(tableNodes)) {
-    warning(paste0("Couldn't download station data for stationID =", stationID))
-    res <- data.frame(ID = stationID, Long = NA, Lat = NA, Elevation = NA)
-    return(res)
-  }
+    # get table nodes
+    path <- "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
+    tableNodes <- XML::getNodeSet(doc, path)
 
-  # read table
-  stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
-                                   stringsAsFactors = FALSE)
+    # check table nodes
+    if (is.null(tableNodes)) {
+      warning(paste0("Couldn't download station data for stationID =", stationID))
+      coordsNA(stationID)
+    }
 
-  # get values from table
-  values <- stat_table$V2
-  names(values) <- stat_table$V1
+    # read table
+    stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
+                                     stringsAsFactors = FALSE)
+    # get values from table
+    values <- stat_table$V2
+    names(values) <- stat_table$V1
 
-  # Coordinates creation -------------------------------------------------------
+    # convert Coords to Lat and Long
+    Elevation <- as.numeric(values["Altitude"])
+    Coords <- as.character(values["Co-ordinates"])
+    tmp <- stringr::str_split(string = Coords, pattern = ",|\n", simplify = TRUE)
+    Lat <- as.numeric(tmp[1])
+    Long <- as.numeric(tmp[2])
 
-  # convert Coords to Lat and Long
-  Elevation <- as.numeric(values["Altitude"])
-  Coords <- as.character(values["Co-ordinates"])
-  tmp <- stringr::str_split(string = Coords, pattern = ",|\n", simplify = TRUE)
-  Lat <- as.numeric(tmp[1])
-  Long <- as.numeric(tmp[2])
+    # return results as a dataframe
+    data.frame(StationID = stationID,
+                      Long = Long,
+                      Lat = Lat,
+                      Elevation = Elevation)
 
-  # return results as a dataframe
-  data.frame(ID = stationID, Long = Long, Lat = Lat, Elevation = Elevation)
+  },
+  error = function(e) {
+    warning(paste0("Failed to parse url: ", url))
+    coordsNA(stationID)
+  })
 
 }
 
@@ -237,19 +288,19 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' @export
 #'
 #' @examples
-get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy", "main"),
+get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                            stationID) {
 
   # check that stationID is given
-  if(is.null(stationID)) stop("argument \"stationID\" is missing")
+  if (is.null(stationID)) stop("argument \"stationID\" is missing")
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
   url <- hydroscope_url(subdomain)
-  url <- paste0(url,"/stations/d/", stationID, "/")
+  url <- paste0(url, "/stations/d/", stationID, "/")
 
   # Web scrapping --------------------------------------------------------------
-  url <- paste0("http://kyy.hydroscope.gr/stations/d/", stationID, "/")
+
   doc <- XML::htmlParse(url, encoding = "UTF8")
 
   # get table nodes
@@ -311,7 +362,7 @@ get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy", "main")
 get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
   # check that stationID is given
-  if(is.null(timeID)) stop("argument \"timeID\" is missing")
+  if (is.null(timeID)) stop("argument \"timeID\" is missing")
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
@@ -327,7 +378,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
       # download file
       dl_code <- utils::download.file(url = url, destfile = tmp)
-      if(dl_code != 0) stop()
+      if (dl_code != 0) stop()
 
       # Count the number of fields in each line of a file
       cf <- readr::count_fields(tmp,
@@ -335,13 +386,13 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
                                 n_max = 50)
 
       # check the number of columns in hts file
-      if(any(cf == 3)) {
+      if (any(cf == 3)) {
 
         # read timeseries data
         tmFormat <- "%Y-%m-%d %H:%M"
         result <- readr::read_csv(file = tmp,
                                   skip =  sum(cf < 3),
-                                  col_names = c('Date', 'Value', 'Comment'),
+                                  col_names = c("Date", "Value", "Comment"),
                                   col_types = list(
                                     readr::col_datetime(format = tmFormat),
                                     readr::col_double(),
@@ -353,13 +404,14 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
       } else {
         result <- dataNA()
       }
-
-    }, error = function(e) {
+    },
+    error = function(e) {
       # return NA values
       warning(paste("Couldn't get timeseries' data from "), url)
       result <- dataNA()
 
-    }, finally = {
+    },
+    finally = {
       # delete temp file
       unlink(tmp)
     })
