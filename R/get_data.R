@@ -6,25 +6,62 @@
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
 #'
-#' @return If \code{subdomain} is one in \code{"kyy", "ypaat", "emy"},
-#' returns a tidy dataframe with stations' data from the corresponding database
-#' of hydroscope.gr. Otherwise gives an error message.
+#' @return If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"} or
+#' \code{"emy"},returns a tidy dataframe with stations' data from the
+#' corresponding database of hydroscope.gr. Otherwise gives an error message.
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{ID}{The station's ID from the database}
+#'     \item{ID}{The station's ID from the domain's database}
 #'     \item{Name}{The station's name}
-#'     \item{WaterDivisionID}{The station's Water Division ID, see details}
+#'     \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
+#'     GR14}
 #'     \item{WaterBasin}{The station's Water Basin}
 #'     \item{PoliticalDivision}{The station's Political Division}
-#'     \item{Owner}{The station's owner, see details}
-#'     \item{Type}{The station's type, see details}
+#'     \item{Owner}{The station's owner}
+#'     \item{Type}{The station's type}
 #' }
-#' @details
-#' Stations' IDs might not be unique at the different databases records.
-#' Also, the stations' data in http://main.hydroscope.gr have been
-#' copied from the corresponding databases with new IDs.
 #'
+#' @note
+#' Stations' IDs might not be unique at the different databases records from the
+#' different Hydroscope domains.
+#'
+#' The Greek Water Divisions ID are:
+#' \tabular{ll}{
+#' \strong{Code}  \tab \strong{Name} \cr
+#' GR01 \tab DYTIKE PELOPONNESOS \cr
+#' GR02 \tab BOREIA PELOPONNESOS \cr
+#' GR03 \tab ANATOLIKE PELOPONNESOS \cr
+#' GR04 \tab DYTIKE STEREA ELLADA \cr
+#' GR05 \tab EPEIROS  \cr
+#' GR06 \tab ATTIKE  \cr
+#' GR07 \tab ANATOLIKE STEREA ELLADA \cr
+#' GR08 \tab THESSALIA  \cr
+#' GR09 \tab DYTIKE MAKEDONIA  \cr
+#' GR10 \tab KENTRIKE MAKEDONIA  \cr
+#' GR11 \tab ANATOLIKE MAKEDONIA  \cr
+#' GR12 \tab THRAKE  \cr
+#' GR13 \tab KRETE  \cr
+#' GR14 \tab NESOI AIGAIOU  \cr
+#' }
+#'
+#' The codes used in Owner variable are:
+#' \tabular{ll}{
+#' \strong{Code}  \tab \strong{Name} \cr
+#' min_env \tab Ministry of Environment and Energy \cr
+#' noa \tab National Observatory of Athens \cr
+#' min_rur \tab  Ministry of Rural Development \cr
+#' prefec \tab Prefectures of Greece  \cr
+#' emy \tab National Meteorological Service  \cr
+#' dei \tab Public Power Corporation  \cr
+#' }
+#'
+#' The types used at station's type are:
+#' \tabular{ll}{
+#' \strong{Code}  \tab \strong{Description} \cr
+#' meteo_station \tab Weather station \cr
+#' stream_gage \tab Gauging station  \cr
+#' }
 #'
 #' @examples
 #' # get stations' data from the Greek Ministry of Environment and Energy
@@ -38,6 +75,9 @@
 #' }
 #'
 #' @references
+#' European Terrestrial Reference System 1989 (ETRS),
+#' \url{http://bit.ly/2kJwFuf}
+#'
 #' Stations' data are retrieved from the Hydroscope's databases:
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change,
@@ -47,13 +87,12 @@
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
 #'}
-#' European Terrestrial Reference System 1989 (ETRS)
-#' \url{https://en.wikipedia.org/wiki/European_Terrestrial_Reference_System_1989}
+#' Greek Water Divisions,
+#' \url{http://bit.ly/2kk0tOm}
+#'
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
-#'
 #' @import XML
-#'
 #' @export get_stations
 get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 
@@ -136,6 +175,9 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 get_coords <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
                        stationID) {
 
+  # check that stationID is given
+  if(is.null(stationID)) stop("argument \"stationID\" is missing")
+
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
   url <- hydroscope_url(subdomain)
@@ -190,6 +232,9 @@ get_coords <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
 #' @examples
 get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
                            stationID) {
+
+  # check that stationID is given
+  if(is.null(stationID)) stop("argument \"stationID\" is missing")
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
@@ -257,6 +302,9 @@ get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
 #'
 #' @examples
 get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
+
+  # check that stationID is given
+  if(is.null(timeID)) stop("argument \"timeID\" is missing")
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
