@@ -130,34 +130,38 @@ dataNA <- function(){
   data.frame(Date = NA, Value = NA, Comment = NA)
 }
 
-# # create stations' database
-# stations_db <- function() {
-#
-#   # download data
-#   stations <- get_stations()
-#   coords <- plyr::ldply(stations$ID, function(id) get_coords(id))
-#
-#   # merge data
-#   stations <- merge(stations, coords, by = "ID")
-#
-#   # replace empty values with NA
-#   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-#                                 stations$WaterBasin)
-#   stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA,
-#                                        stations$PoliticalDivision)
-#   stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-#                                 stations$WaterBasin)
-#
-#   return(stations)
-#
-# }
-#
-# # create timeseries database
-# timeseries_db <- function() {
-#
-#   # download data
-#   stations <- get_stations()
-#   timeseries <- plyr::ldply(stations$ID, function(id) get_timeseries(id))
-#   return(timeseries)
-#
-# }
+# create stations' database
+stations_db <- function(subdomain = "kyy") {
+
+  # download data
+  stations <- get_stations(subdomain)
+  coords <- plyr::ldply(stations$ID, function(id) {
+    get_coords(subdomain, id)
+    })
+
+  # merge data
+  stations <- merge(stations, coords, by = "ID")
+
+  # replace empty values with NA
+  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
+                                stations$WaterBasin)
+  stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA,
+                                       stations$PoliticalDivision)
+  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
+                                stations$WaterBasin)
+
+  return(stations)
+
+}
+
+# create timeseries database
+timeseries_db <- function(subdomain = "kyy") {
+
+  # download data
+  stations <- get_stations(subdomain)
+  timeseries <- plyr::ldply(stations$ID, function(id) {
+    get_timeseries(subdomain, stationID = id)
+    })
+  return(timeseries)
+
+}
