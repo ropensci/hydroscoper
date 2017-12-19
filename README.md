@@ -20,7 +20,7 @@ devtools::install_github("kvantas/hydroscoper")
 Stations list
 -------------
 
-This is a basic example which shows you how to get the stations list from the Hydroscope database:
+This is a basic example which shows you how to get the stations list from the Hydroscope's Ministry of Environment and Energy database (subdomain *kyy*):
 
 ``` r
 library(hydroscoper)
