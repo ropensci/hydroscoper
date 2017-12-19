@@ -4,7 +4,7 @@
 \alias{get_coords}
 \title{Get station's coordinates}
 \usage{
-get_coords(subdomain = c("main", "kyy", "ypaat", "emy"), stationID)
+get_coords(subdomain = c("main", "kyy", "ypaat", "emy", "main"), stationID)
 }
 \arguments{
 \item{stationID}{}

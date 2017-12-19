@@ -4,15 +4,16 @@
 \alias{get_stations}
 \title{Get stations data}
 \usage{
-get_stations(subdomain = c("kyy", "ypaat", "emy"))
+get_stations(subdomain = c("kyy", "ypaat", "emy", "main"))
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
 }
 \value{
-If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"} or
-\code{"emy"},returns a tidy dataframe with stations' data from the
-corresponding database of hydroscope.gr. Otherwise gives an error message.
+If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"},
+\code{"emy"} or \code{"main"}, returns a tidy dataframe with stations' data
+from the corresponding database of hydroscope.gr. Otherwise gives an error
+message.
 
 The dataframe columns are:
 \describe{
@@ -58,7 +59,7 @@ The codes used in Owner variable are:
 \strong{Code}  \tab \strong{Name} \cr
 min_env \tab Ministry of Environment and Energy \cr
 noa \tab National Observatory of Athens \cr
-min_rur \tab  Ministry of Rural Development \cr
+min_rur \tab  Ministry of Rural Development and Food\cr
 prefec \tab Prefectures of Greece  \cr
 emy \tab National Meteorological Service  \cr
 dei \tab Public Power Corporation  \cr
@@ -87,6 +88,9 @@ dei_stations <- get_stations(subdomain = "dei")
 European Terrestrial Reference System 1989 (ETRS),
 \url{http://bit.ly/2kJwFuf}
 
+Greek Water Divisions,
+\url{http://bit.ly/2kk0tOm}
+
 Stations' data are retrieved from the Hydroscope's databases:
 \itemize{
 \item Ministry of Environment, Energy and Climate Change,
@@ -95,9 +99,9 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
+\item Main Hydroscope's database,
+\url{http://main.hydroscope.gr}
 }
-Greek Water Divisions,
-\url{http://bit.ly/2kk0tOm}
 }
 \author{
 Konstantinos Vantas, \email{kon.vantas@gmail.com}

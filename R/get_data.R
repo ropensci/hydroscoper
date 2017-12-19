@@ -6,9 +6,10 @@
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
 #'
-#' @return If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"} or
-#' \code{"emy"},returns a tidy dataframe with stations' data from the
-#' corresponding database of hydroscope.gr. Otherwise gives an error message.
+#' @return If \code{subdomain} is one of \code{"kyy"}, \code{"ypaat"},
+#' \code{"emy"} or \code{"main"}, returns a tidy dataframe with stations' data
+#' from the corresponding database of hydroscope.gr. Otherwise gives an error
+#' message.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -50,7 +51,7 @@
 #' \strong{Code}  \tab \strong{Name} \cr
 #' min_env \tab Ministry of Environment and Energy \cr
 #' noa \tab National Observatory of Athens \cr
-#' min_rur \tab  Ministry of Rural Development \cr
+#' min_rur \tab  Ministry of Rural Development and Food\cr
 #' prefec \tab Prefectures of Greece  \cr
 #' emy \tab National Meteorological Service  \cr
 #' dei \tab Public Power Corporation  \cr
@@ -78,6 +79,9 @@
 #' European Terrestrial Reference System 1989 (ETRS),
 #' \url{http://bit.ly/2kJwFuf}
 #'
+#' Greek Water Divisions,
+#' \url{http://bit.ly/2kk0tOm}
+#'
 #' Stations' data are retrieved from the Hydroscope's databases:
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change,
@@ -86,15 +90,15 @@
 #' \url{http://ypaat.hydroscope.gr}
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
+#' \item Main Hydroscope's database,
+#' \url{http://main.hydroscope.gr}
 #'}
-#' Greek Water Divisions,
-#' \url{http://bit.ly/2kk0tOm}
 #'
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import XML
 #' @export get_stations
-get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
+get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 
   # match subdomain values -----------------------------------------------------
   subdomain <- match.arg(subdomain)
@@ -158,6 +162,9 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 
 #' Get station's coordinates
 #'
+#' \code{get_coords} returns a dataframe with the coordinates and elevation from
+#' a station in a database of Hydroscope.
+#'
 #' @param subdomain
 #' @param stationID
 #'
@@ -172,7 +179,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 #' @export
 #'
 #' @examples
-get_coords <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
+get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                        stationID) {
 
   # check that stationID is given
@@ -230,7 +237,7 @@ get_coords <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
 #' @export
 #'
 #' @examples
-get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy"),
+get_timeseries <- function(subdomain =  c("main", "kyy", "ypaat", "emy", "main"),
                            stationID) {
 
   # check that stationID is given
