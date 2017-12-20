@@ -1,7 +1,7 @@
 Package: hydroscoper
 Type: Package
 Title: R interface to hydroscope
-Version: 0.0.900
+Version: 0.1.0
 Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the Greek National Databank for Hydrological and 

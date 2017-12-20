@@ -47,7 +47,7 @@ library(plyr)
 crete_stations <-subset(stations, WaterDivisionID == "GR13")
 crete_coords <- ldply(crete_stations$StationID, function(x) {
   get_coords(subdomain = "kyy", stationID = x)})
-#> Warning in value[[3L]](cond): Failed to parse url: http://kyy.hydroscope.gr/stations/d/501032/
+#> Warning: Failed to parse url: http://kyy.hydroscope.gr/stations/d/501032/
 head(crete_coords)
 #>   StationID     Long      Lat Elevation
 #> 1    200280 24.45425 35.24414     298.6

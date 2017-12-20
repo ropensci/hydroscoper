@@ -116,13 +116,13 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
     table_nodes <- XML::getNodeSet(doc, html_table)
 
     # check if table nodes is NULL
-    if (is.null(table_nodes))  stop()
+    if (is.null(table_nodes))  stop("")
 
     # read html file to table
     stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
     # check table's numbers of rows and cols
-    if (NROW(stations) == 0 | NCOL(stations) != 7) stop()
+    if (NROW(stations) == 0 | NCOL(stations) != 7) stop("")
 
     # Make valid names
     names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
@@ -156,7 +156,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
     stations[cnames]
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"))
+    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
     stationsNA()
   })
 }
@@ -245,7 +245,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     tableNodes <- XML::getNodeSet(doc, path)
 
     # check if table nodes is NULL
-    if (is.null(tableNodes)) stop()
+    if (is.null(tableNodes)) stop("")
 
     # read table
     stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
@@ -269,7 +269,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                Elevation = Elevation)
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"))
+    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
     # return NA values
     coordsNA(stationID)
   })
@@ -382,7 +382,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     tableNodes <- XML::getNodeSet(doc, "//*[@id=\"timeseries\"]")
 
     # check if table nodes is NULL
-    if (is.null(tableNodes)) stop()
+    if (is.null(tableNodes)) stop("")
 
     # read table
     ts_table <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
@@ -390,7 +390,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     ts_table$StationID <- stationID
 
     # check table dimensions
-    if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) stop()
+    if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) stop("")
 
     # make names for table
     names(ts_table) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
@@ -426,7 +426,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"))
+    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
     timeserNA(stationID)
   })
 }
@@ -502,7 +502,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
       # download file
       dl_code <- utils::download.file(url = url, destfile = tmp)
-      if (dl_code != 0) stop()
+      if (dl_code != 0) stop("")
 
       # Count the number of fields in each line of a file
       cf <- readr::count_fields(tmp,
@@ -531,7 +531,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
     },
     error = function(e) {
       # return NA values
-      warning(paste("Couldn't get time series' data from "), url, "\n")
+      warning(paste("Couldn't get time series' data from ", url), call. = FALSE)
       dataNA()
 
     },
