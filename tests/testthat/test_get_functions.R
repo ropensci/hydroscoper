@@ -1,6 +1,6 @@
 context("Get data from Hydroscope functions")
 
-test_that("get functions give errors", {
+test_that("get_ functions give errors", {
 
   expect_error(get_stations("none"))
 
@@ -14,7 +14,11 @@ test_that("get functions give errors", {
   expect_error(get_data(subdomain = "kyy"))
 })
 
-
+test_that("get_ functions give warnings", {
+  expect_warning(get_coords("kyy", "a"))
+  expect_warning(get_timeseries("emy", "a"))
+  expect_warning(get_data("emy", "a"))
+})
 
 test_that("get_ functions return dataframes", {
   expect_is(get_stations("emy"), "data.frame")

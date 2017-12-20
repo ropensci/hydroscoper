@@ -498,7 +498,6 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
   # create a temp file
   tmp <- tempfile()
-  suppressWarnings(
     result<- tryCatch({
 
       # download file
@@ -515,13 +514,13 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
         # read timeseries data
         tmFormat <- "%Y-%m-%d %H:%M"
-        result <- readr::read_csv(file = tmp,
+        result <- suppressWarnings(readr::read_csv(file = tmp,
                                   skip =  sum(cf < 3),
                                   col_names = c("Date", "Value", "Comment"),
                                   col_types = list(
                                     readr::col_datetime(format = tmFormat),
                                     readr::col_double(),
-                                    readr::col_character()))
+                                    readr::col_character())))
 
         # remove NA Date values and return dataframe
         result[!is.na(result$Date), ]
@@ -539,6 +538,6 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
     finally = {
       # delete temp file
       unlink(tmp)
-    }))
+    })
   return(result)
 }
