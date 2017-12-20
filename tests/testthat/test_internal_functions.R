@@ -39,8 +39,8 @@ test_that("NA functions return dataframe with NA values", {
 
   expect_error(timeserNA())
   expect_is(timeserNA(1), "data.frame")
-  expect_equal(NCOL(timeserNA(1)), 8)
-  expect_true(all(is.na(timeserNA(1)[-8])))
+  expect_equal(NCOL(timeserNA(1)), 10)
+  expect_true(all(is.na(timeserNA(1)[-10])))
 
   expect_is(dataNA(), "data.frame")
   expect_equal(NCOL(dataNA()), 3)

@@ -33,7 +33,7 @@ devtools::install_github("kvantas/hydroscoper")
 
 ## Stations list
 
-This is a basic example which shows you how to get the stations list from the Hydroscope's Ministry of Environment and Energy database (subdomain *kyy*):
+This is a basic example which shows you how to get the stations list from the Hydroscope's Ministry of Environment and Energy database (subdomain **kyy**):
 
 ```{r example stations}
 library(hydroscoper)
@@ -44,11 +44,11 @@ head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 
 ## Stations coordinates
 
-With the following code you can get the coordinates and the elevation for the meteorological stations from Ministry of Environment and Energy (min_env) in the Water Division of Crete, GR13:
+With the following code you can get the coordinates and the elevation for the stations from the Water Division of Crete, GR13:
 
 ```{r example coords}
 library(plyr)
-crete_stations <-subset(stations, WaterDivisionID == 'GR13' & Owner == 'min_env')
+crete_stations <-subset(stations, WaterDivisionID == "GR13")
 crete_coords <- ldply(crete_stations$StationID, function(x) {
   get_coords(subdomain = "kyy", stationID = x)})
 head(crete_coords)
@@ -56,17 +56,17 @@ head(crete_coords)
 
 ## Time series list
 
-To get the time series list in a dataframe from a specific station you can use the following code:
+To get the time series list in a dataframe from the station **200292** you can use the following code:
 
 ```{r get time series}
 
 ts_data <- get_timeseries(subdomain = "kyy", stationID = 200292)
-ts_data
+ts_data[c("TimeSeriesID", "Variable", "TimeStep", "Unit", "StartDate","EndDate")]
 ```
 
 ## Raw data
 
-With the following code you can get the time series values from using a time series ID
+You can get the time series **1022** rainfall data using:
 ```{r}
 ts_raw <- get_data(subdomain = "kyy", timeID = 1022)
 ```

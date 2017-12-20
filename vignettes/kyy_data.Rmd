@@ -18,46 +18,42 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kky.hydroscope.gr
+This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/emy.hydroscope.gr
 
 ## Get stations values
 
-The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the values of the stations, including their coordinates and elevation, from a subdomain.
+The following code, with the use of ldply function from plyr package, shows how to create a tidy dataframe with all the values of the stations, including their coordinates and elevation, from a subdomain.
 
-```{r}
+```{r stations df creation, eval = FALSE}
 library(hydroscoper)
 library(plyr)
 
-subdomain <- "kyy"
+subdomain <- "emy"
 
 # get stations data
 stations <- get_stations(subdomain)
  
 # get coordinates and elevation
 coords <- ldply(stations$StationID, function(id) {
-   suppressWarnings(get_coords(subdomain, id))
+   get_coords(subdomain, id)
 })
 
 # merge data
-stations_coords <- merge(stations, coords, by = "StationID", all.x = TRUE)
+stations <- merge(stations, coords, by = "StationID", all.x = TRUE)
 
 # show data
-head(stations_coords)
+head(stations)
 ```
 
 
 ## Get time-series values
 
-The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the time series from a subdomain.
+The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the time series from the subdomain.
 
-```{r}
-
-# subdomain to use
-subdomain <- "kyy"
-
+```{r timeseries creation, eval = FALSE}
 # create timeseries dataframe
 timeseries <- ldply(stations$StationID, function(id) {
-  suppressWarnings(get_timeseries(subdomain, stationID = id))
+  get_timeseries(subdomain, id)
 })
 
 head(timeseries)

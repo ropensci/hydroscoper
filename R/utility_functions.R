@@ -122,9 +122,11 @@ stationsNA <- function() {
 # timeseries dataframe with NA values
 timeserNA <- function(stationID) {
   data.frame(TimeSeriesID = NA,
+             Name = NA,
              Variable = NA,
              TimeStep = NA,
              Unit = NA,
+             Remarks = NA,
              Instrument = NA,
              StartDate = NA,
              EndDate = NA,

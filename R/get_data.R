@@ -156,7 +156,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
     stations[cnames]
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url))
+    warning(paste0("Failed to parse url: ", url, "\n"))
     stationsNA()
   })
 }
@@ -269,7 +269,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                Elevation = Elevation)
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url))
+    warning(paste0("Failed to parse url: ", url, "\n"))
     # return NA values
     coordsNA(stationID)
   })
@@ -426,7 +426,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url))
+    warning(paste0("Failed to parse url: ", url, "\n"))
     timeserNA(stationID)
   })
 }
@@ -532,7 +532,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
     },
     error = function(e) {
       # return NA values
-      warning(paste("Couldn't get time series' data from "), url)
+      warning(paste("Couldn't get time series' data from "), url, "\n")
       dataNA()
 
     },
