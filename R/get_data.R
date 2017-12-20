@@ -102,63 +102,71 @@
 #' @export get_stations
 get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 
-  # match subdomain values -----------------------------------------------------
+  # match subdomain values
   subdomain <- match.arg(subdomain)
+
+  # create url
   url <- hydroscope_url(subdomain)
 
   # Web scrapping --------------------------------------------------------------
-  doc <- XML::htmlParse(url, encoding = "UTF8")
+  tryCatch({
+    # parse url
+    doc <- XML::htmlParse(url, encoding = "UTF8")
 
-  # get table nodes
-  html_table <- "/html/body/div[3]/div/div/div/div[2]/div/table"
-  table_nodes <- XML::getNodeSet(doc, html_table)
+    # get table nodes
+    html_table <- "/html/body/div[3]/div/div/div/div[2]/div/table"
+    table_nodes <- XML::getNodeSet(doc, html_table)
 
-  # check table nodes
-  if (is.null(table_nodes)) {
-    warning(paste0("Couldn't download stations' list from", url))
-    return(stationsNA)
-  }
+    # check if table nodes is NULL
+    if (is.null(tableNodes)) {
+      warning(paste("Table from ", url, "is empty"))
+      stop()
+    }
 
-  # read html file to table
-  stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
+    # read html file to table
+    stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
-  # Make valid names -----------------------------------------------------------
+    # make valid names for stations if there are rows and the columns are 7
+    if (NROW(stations) == 0 | NCOL(stations) != 7) {
+      warning(paste("Could not get table from ", url))
+      stop()
+    }
 
-  # make valid names for stations if there are rows and the columns are 7
-  if (NROW(stations) > 0 & NCOL(stations) == 7) {
+    # Make valid names
     names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
-                         "PoliticalDivision", "Owner", "Type")
-  } else {
-    warning(paste("Couldn't get expected station's table from: ", url))
-    return(stationsNA)
-  }
+                           "PoliticalDivision", "Owner", "Type")
 
-  # Translations and transliterations ------------------------------------------
+    # Translations and transliterations ----------------------------------------
 
-  # replace greek characters with latin
-  for (cname in c(names(stations)[-1])) {
-    stations[cname] <- greek2latin(stations[cname])
-  }
+    # replace greek characters with latin
+    for (cname in c(names(stations)[-1])) {
+      stations[cname] <- greek2latin(stations[cname])
+    }
 
-  # translate types
-  stations$Type <- stations_types(stations$Type)
+    # translate types
+    stations$Type <- stations_types(stations$Type)
 
-  # add water division id
-  stations$WaterDivisionID <- add_wd_id(stations$WaterDivision)
+    # add water division id
+    stations$WaterDivisionID <- add_wd_id(stations$WaterDivision)
 
-  # use abr/sions for owners' names
-  stations$Owner <- owner_names(stations$Owner)
+    # use abr/sions for owners' names
+    stations$Owner <- owner_names(stations$Owner)
 
-  # remove area from water basin values
-  stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
-    gsub("\\([^()]*\\)", "", str)
+    # remove area from water basin values
+    stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
+      gsub("\\([^()]*\\)", "", str)
+    })
+
+    # Return data ----------------------------------------------------------------
+    cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
+                "PoliticalDivision", "Owner", "Type")
+
+    stations[cnames]
+  },
+  error = function(e) {
+    warning(paste0("Failed to parse url: ", url))
+    stationsNA()
   })
-
-  # Return data ----------------------------------------------------------------
-  cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
-              "PoliticalDivision", "Owner", "Type")
-
-  return(stations[cnames])
 }
 
 
@@ -370,7 +378,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     ts_table$StationID <- stationID
 
     # make valid names for timeseries --------------------------------------------
-    if (NROW(ts_table) == 0 & NCOL(ts_table != 10)) {
+    if (NROW(ts_table) == 0 | NCOL(ts_table != 10)) {
       warning(paste("Could not get table from ", url))
       stop()
     }
