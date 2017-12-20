@@ -33,7 +33,7 @@ The dataframe columns are:
     \item{Instrument}{The instrument ID}
     \item{StartDate}{The starting date of time series values}
     \item{EndDate}{The ending date of time series values}
-    \item{StationID}{The coresponding station's ID}
+    \item{StationID}{The corresponding station's ID}
 }
 }
 \description{
@@ -56,7 +56,7 @@ rainfall \tab Rain Height  \cr
 snow \tab Snow Height  \cr
 evap_estim \tab Estimated Evaporation   \cr
 evap_actual \tab Measured Evaporation \cr
-flow \tab Dishcharge  \cr
+flow \tab Discharge  \cr
 pressure \tab Atmospheric Pressure  \cr
 water_level_flood \tab Flood Water Level   \cr
 air_temp \tab Air Temperature  \cr

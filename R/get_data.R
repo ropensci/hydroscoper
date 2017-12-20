@@ -116,19 +116,13 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
     table_nodes <- XML::getNodeSet(doc, html_table)
 
     # check if table nodes is NULL
-    if (is.null(table_nodes)) {
-      warning(paste("Table from ", url, "is empty"))
-      stop()
-    }
+    if (is.null(table_nodes))  stop()
 
     # read html file to table
     stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
 
-    # make valid names for stations if there are rows and the columns are 7
-    if (NROW(stations) == 0 | NCOL(stations) != 7) {
-      warning(paste("Could not get table from ", url))
-      stop()
-    }
+    # check table's numbers of rows and cols
+    if (NROW(stations) == 0 | NCOL(stations) != 7) stop()
 
     # Make valid names
     names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
@@ -251,31 +245,28 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     tableNodes <- XML::getNodeSet(doc, path)
 
     # check if table nodes is NULL
-    if (is.null(tableNodes)) {
-      warning(paste("Table from ", url, "is empty"))
-      stop()
-    }
+    if (is.null(tableNodes)) stop()
 
-      # read table
-      stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
-                                       stringsAsFactors = FALSE)
-      # get values from table
-      values <- stat_table$V2
-      names(values) <- stat_table$V1
+    # read table
+    stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
+                                     stringsAsFactors = FALSE)
+    # get values from table
+    values <- stat_table$V2
+    names(values) <- stat_table$V1
 
-      # convert Coords to Lat and Long
-      Elevation <- as.numeric(values["Altitude"])
-      Coords <- as.character(values["Co-ordinates"])
-      tmp <- stringr::str_split(string = Coords, pattern = ",|\n",
-                                simplify = TRUE)
-      Lat <- as.numeric(tmp[1])
-      Long <- as.numeric(tmp[2])
+    # convert Coords to Lat and Long
+    Elevation <- as.numeric(values["Altitude"])
+    Coords <- as.character(values["Co-ordinates"])
+    tmp <- stringr::str_split(string = Coords, pattern = ",|\n",
+                              simplify = TRUE)
+    Lat <- as.numeric(tmp[1])
+    Long <- as.numeric(tmp[2])
 
-      # return results as a dataframe
-      data.frame(StationID = stationID,
-                 Long = Long,
-                 Lat = Lat,
-                 Elevation = Elevation)
+    # return results as a dataframe
+    data.frame(StationID = stationID,
+               Long = Long,
+               Lat = Lat,
+               Elevation = Elevation)
   },
   error = function(e) {
     warning(paste0("Failed to parse url: ", url))
@@ -391,21 +382,15 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     tableNodes <- XML::getNodeSet(doc, "//*[@id=\"timeseries\"]")
 
     # check if table nodes is NULL
-    if (is.null(tableNodes)) {
-      warning(paste("Table from ", url, "is empty"))
-      stop()
-    }
+    if (is.null(tableNodes)) stop()
 
     # read table
     ts_table <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
                               stringsAsFactors = FALSE)
     ts_table$StationID <- stationID
 
-    # make valid names for timeseries ------------------------------------------
-    if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) {
-      warning(paste("Could not get table from ", url))
-      stop()
-    }
+    # check table dimensions
+    if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) stop()
 
     # make names for table
     names(ts_table) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",

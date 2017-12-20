@@ -20,4 +20,7 @@ Imports: stringi (>= 1.1.6),
     readr (>= 1.1.1),
     utils (>= 3.4.0)
 Suggests: plyr (>= 1.8.4),
-    ggplot2 (>= 2.2.1)
+    ggplot2 (>= 2.2.1),
+    knitr (>= 1.17),
+    rmarkdown (>= 1.8)
+VignetteBuilder: knitr

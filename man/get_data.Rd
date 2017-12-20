@@ -19,7 +19,7 @@ returns a tidy dataframe with the time series values from the corresponding
 time series and database of hydroscope.gr. Otherwise gives an error message.
 
 If the time series ID does not exist in the database, or the url from
-hydroscope could not parsed, returns a dataframe with NA values.
+Hydroscope could not parsed, returns a dataframe with NA values.
 
 The dataframe columns are:
 \describe{

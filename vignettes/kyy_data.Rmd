@@ -1,0 +1,64 @@
+---
+title: "Using hydroscoper to get stations' and time-series' data"
+author: "Konstantinos Vantas"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kky.hydroscope.gr
+
+## Get stations values
+
+The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the values of the stations, including their coordinates and elevation, from a subdomain.
+
+```{r}
+library(hydroscoper)
+library(plyr)
+
+subdomain <- "kyy"
+
+# get stations data
+stations <- get_stations(subdomain)
+ 
+# get coordinates and elevation
+coords <- ldply(stations$StationID, function(id) {
+   suppressWarnings(get_coords(subdomain, id))
+})
+
+# merge data
+stations_coords <- merge(stations, coords, by = "StationID", all.x = TRUE)
+
+# show data
+head(stations_coords)
+```
+
+
+## Get time-series values
+
+The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the time series from a subdomain.
+
+```{r}
+
+# subdomain to use
+subdomain <- "kyy"
+
+# create timeseries dataframe
+timeseries <- ldply(stations$StationID, function(id) {
+  suppressWarnings(get_timeseries(subdomain, stationID = id))
+})
+
+head(timeseries)
+```

@@ -3,7 +3,7 @@
 \docType{data}
 \name{timeseries}
 \alias{timeseries}
-\title{Timeseries}
+\title{timeseries}
 \format{A data frame:
 \describe{
     \item{TimeSeriesID}{The time series ID from the database}
@@ -19,7 +19,7 @@
 timeseries
 }
 \description{
-Timeseries' data from the Greek National Databank for Hydrological and
+Time series' data from the Greek National Databank for Hydrological and
 Meteorological Information database \url{http://kyy.hydroscope.gr/}
 }
 \keyword{datasets}

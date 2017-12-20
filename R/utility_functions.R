@@ -103,6 +103,7 @@ ts_timestep <- function(variable) {
 
 # Data creation functions ------------------------------------------------------
 
+# create url
 hydroscope_url <- function(domain) {
 return(paste0("http://", domain, ".hydroscope.gr"))
 }
@@ -141,40 +142,4 @@ coordsNA <- function(stationID) {
              Long = NA,
              Lat = NA,
              Elevation = NA)
-}
-
-# create stations' database
-stations_db <- function(subdomain = "kyy") {
-
-  # download data
-  stations <- get_stations(subdomain)
-  coords <- plyr::ldply(stations$ID, function(id) {
-    get_coords(subdomain, id)
-    })
-
-  # merge data
-  stations <- merge(stations, coords, by = "StationID")
-
-  # replace empty values with NA
-  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-                                stations$WaterBasin)
-  stations$PoliticalDivision <- ifelse(stations$PoliticalDivision == "", NA,
-                                       stations$PoliticalDivision)
-  stations$WaterBasin <- ifelse(stations$WaterBasin == "", NA,
-                                stations$WaterBasin)
-
-  return(stations)
-
-}
-
-# create timeseries database
-timeseries_db <- function(subdomain = "kyy") {
-
-  # download data
-  stations <- get_stations(subdomain)
-  timeseries <- plyr::ldply(stations$ID, function(id) {
-    get_timeseries(subdomain, stationID = id)
-    })
-  return(timeseries)
-
 }
