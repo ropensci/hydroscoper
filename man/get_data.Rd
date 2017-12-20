@@ -39,7 +39,7 @@ not contain the raw data of the time series.
 }
 \examples{
 # get time series 912 from the Greek Ministry of Environment and Energy
-df1 <-get_data("kyy", 912)
+df <-get_data("kyy", 912)
 
 \dontrun{
 get_data("ypaat")

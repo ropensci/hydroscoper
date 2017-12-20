@@ -463,7 +463,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #'
 #' @examples
 #' # get time series 912 from the Greek Ministry of Environment and Energy
-#' df1 <-get_data("kyy", 912)
+#' df <-get_data("kyy", 912)
 #'
 #' \dontrun{
 #' get_data("ypaat")
@@ -499,7 +499,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
   # create a temp file
   tmp <- tempfile()
   suppressWarnings(
-    result <- tryCatch({
+    result<- tryCatch({
 
       # download file
       dl_code <- utils::download.file(url = url, destfile = tmp)
@@ -523,23 +523,22 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
                                     readr::col_double(),
                                     readr::col_character()))
 
-        # remove NA Date values
-        result <- result[!is.na(result$Date), ]
+        # remove NA Date values and return dataframe
+        result[!is.na(result$Date), ]
 
       } else {
-        result <- dataNA()
+        dataNA()
       }
     },
     error = function(e) {
       # return NA values
       warning(paste("Couldn't get time series' data from "), url)
-      result <- dataNA()
+      dataNA()
 
     },
     finally = {
       # delete temp file
       unlink(tmp)
-    })
-  )
+    }))
   return(result)
 }
