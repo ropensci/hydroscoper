@@ -5,9 +5,9 @@
 hydroscoper
 ===========
 
-The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). It provides functions for downloading stations and timeseries data.
+The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). It provides functions for downloading stations and time series data.
 
-The stations and timeseries data in Hydroscope are in Greek, so this package transliterates the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw timeseries' data into a tidy dataframe.
+The stations and time series data in Hydroscope are in Greek, so this package transliterates the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw time series' data into a tidy dataframe.
 
 Installation
 ------------
@@ -45,37 +45,48 @@ With the following code you can get the coordinates and the elevation for the me
 ``` r
 library(plyr)
 crete_stations <-subset(stations, WaterDivisionID == 'GR13' & Owner == 'min_env')
-crete_coords <- ldply(crete_stations$ID, function(x) {
+crete_coords <- ldply(crete_stations$StationID, function(x) {
   get_coords(subdomain = "kyy", stationID = x)})
 head(crete_coords)
-#> data frame with 0 columns and 0 rows
+#>   StationID     Long      Lat Elevation
+#> 1    200280 24.45425 35.24414     298.6
+#> 2    200292 25.48357 35.16758     836.4
+#> 3    200288 25.03400 35.14504     563.6
+#> 4    200281 24.58291 35.16440     511.7
+#> 5    200291 25.16082 35.23747     392.3
+#> 6    200282 24.45970 35.30145     373.3
 ```
 
-Timeseries list
----------------
+Time series list
+----------------
 
-To get the timeseries list in a dataframe from a specific station you can use the following code:
+To get the time series list in a dataframe from a specific station you can use the following code:
 
 ``` r
 
 ts_data <- get_timeseries(subdomain = "kyy", stationID = 200292)
 ts_data
-#>   TimeSeriesID   Variable TimeStep Unit Instrument           StartDate
-#> 1         1023       snow      day   mm   20029203 1954-09-01 08:00:00
-#> 2         1024 wind_direc variable    °   20029204 1964-05-01 08:00:00
-#> 3         1022   rainfall      day   mm   20029201 1954-09-01 08:00:00
-#> 4           78   rainfall    30min   mm   20029202 1954-08-30 07:30:00
-#>               EndDate StationID
-#> 1 1996-12-31 08:00:00    200292
-#> 2 1996-12-31 08:00:00    200292
-#> 3 2001-08-31 01:00:00    200292
-#> 4 1996-12-29 22:00:00    200292
+#>   TimeSeriesID Name   Variable TimeStep Unit
+#> 1         1023            snow      day   mm
+#> 2         1024      wind_direc variable    °
+#> 3         1022        rainfall      day   mm
+#> 4           78        rainfall    30min   mm
+#>                                                                                                                                                    Remarks
+#> 1                                                                                                                                                         
+#> 2                                                                                                                                                         
+#> 3 MONADES (mm)\n\nTa dedomena apo 1997-09-01 00:00 os 2001-08-31 00:00 psephiopoiethekan apo Lekka kai eisechthesan ste base dedomenon to Septembrio 2013.
+#> 4                                                                                                                                             MONADES (mm)
+#>   Instrument           StartDate             EndDate StationID
+#> 1   20029203 1954-09-01 08:00:00 1996-12-31 08:00:00    200292
+#> 2   20029204 1964-05-01 08:00:00 1996-12-31 08:00:00    200292
+#> 3   20029201 1954-09-01 08:00:00 2001-08-31 01:00:00    200292
+#> 4   20029202 1954-08-30 07:30:00 1996-12-29 22:00:00    200292
 ```
 
 Raw data
 --------
 
-With the following code you can get the timeseries values from using a timeseries ID
+With the following code you can get the time series values from using a time series ID
 
 ``` r
 ts_raw <- get_data(subdomain = "kyy", timeID = 1022)

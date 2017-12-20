@@ -49,7 +49,7 @@ With the following code you can get the coordinates and the elevation for the me
 ```{r example coords}
 library(plyr)
 crete_stations <-subset(stations, WaterDivisionID == 'GR13' & Owner == 'min_env')
-crete_coords <- ldply(crete_stations$ID, function(x) {
+crete_coords <- ldply(crete_stations$StationID, function(x) {
   get_coords(subdomain = "kyy", stationID = x)})
 head(crete_coords)
 ```

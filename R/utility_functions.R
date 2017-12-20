@@ -1,6 +1,6 @@
 # Translations and transliterations --------------------------------------------
 greek2latin <- function(x) {
-  lapply(x, function(str) {
+  sapply(x, function(str) {
     str <- stringi::stri_trans_general(str, "Latin")
     stringi::stri_trans_general(str, "latin-ascii")
   })
