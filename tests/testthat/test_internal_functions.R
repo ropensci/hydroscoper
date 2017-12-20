@@ -16,7 +16,8 @@ test_that("Translations and transliterations return a character vector", {
   expect_is(add_wd_id("DYTIKE.PELOPONNESOS "), "character")
   expect_is(add_wd_id(c("BOREIA.PELOPONNESOS", "ANATOLIKE.PELOPONNES")),
             "character")
-  expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA","EPEIROS", "ATTIKE", "d")),
+  expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA","EPEIROS", "ATTIKE",
+                        "DYTIKE.PELOPONNESOS", "d")),
             "character")
   expect_is(add_wd_id(c("ANATOLIKE.STEREA.ELL","THESSALIA", "DYTIKE.MAKEDONIA",
                         "KENTRIKE.MAKEDONIA", "ANATOLIKE.MAKEDONIA",
@@ -60,9 +61,10 @@ test_that("Translations and transliterations return a character vector", {
   )
 
   expect_is(ts_timestep("Emeresia...1.day.s."), "character")
-  expect_is(ts_timestep(c("Meniaia...0.year.s. ", "Variable.step")), "character")
+  expect_is(ts_timestep(c("Meniaia...0.year.s.", "Variable.step")), "character")
   expect_is(ts_timestep(c("X10lepte...0.day.s.", "X30lepte...0.day.s.",
-                          "X5lepte...0.day.s.", "x")), "character")
+                          "X5lepte...0.day.s.", "Meniaia...0.year.s.", "x")),
+            "character")
 })
 
 test_that("hydroscope_url returns a character vector", {
