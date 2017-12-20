@@ -19,12 +19,12 @@ databases, merged), and stationID is not NULL, returns a dataframe with
 station's coordinates and elevation from the corresponding database of
 hydroscope.gr. Otherwise gives an error message.
 
- If the station ID does not exist in the database, returns a
- dataframe with NA values.
+ If the station ID does not exist in the database, or the url from hydroscope
+ could not parsed, returns a dataframe with NA values.
 
 The dataframe columns are:
 \describe{
-    \item{StationID}{The stationID from the database}
+    \item{StationID}{The station's ID from the database}
     \item{Long}{The station's longitude in decimal degrees, ETRS89}
     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
     \item{Elevation}{The station's altitude, meters above sea level}

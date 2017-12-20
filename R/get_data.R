@@ -177,12 +177,12 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 #' station's coordinates and elevation from the corresponding database of
 #' hydroscope.gr. Otherwise gives an error message.
 #'
-#'  If the station ID does not exist in the database, returns a
-#'  dataframe with NA values.
+#'  If the station ID does not exist in the database, or the url from hydroscope
+#'  could not parsed, returns a dataframe with NA values.
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{StationID}{The stationID from the database}
+#'     \item{StationID}{The station's ID from the database}
 #'     \item{Long}{The station's longitude in decimal degrees, ETRS89}
 #'     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
 #'     \item{Elevation}{The station's altitude, meters above sea level}
@@ -282,13 +282,62 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 
 #' Get timeseries corresponding to a station
 #'
-#' @param subdomain
-#' @param stationID
+#' \code{get_timeseries} returns a dataframe with the available timeseries from
+#' a station in a database of Hydroscope.
 #'
-#' @return
-#' @export
+#' @param subdomain One of the subdomains of hydroscope.gr
+#' @param stationID A station ID
 #'
+#' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+#' databases, merged), and stationID is not NULL, returns a dataframe with
+#' timeseries data from the corresponding station and database of
+#' hydroscope.gr. Otherwise gives an error message.
+#'
+#'  If the station ID does not exist in the database, or the url from hydroscope
+#'  could not parsed, returns a dataframe with NA values.
+#'
+#' The dataframe columns are:
+#' \describe{
+#'     \item{TimeSeriesID}{The timeseries ID from the database}
+#'     \item{Name}{}
+#'     \item{Variable}{}
+#'     \item{TimeStep}{}
+#'     \item{Unit}{}
+#'     \item{Remarks}{}
+#'     \item{Instrument}{}
+#'     \item{StartDate}{}
+#'     \item{EndDate}{}
+#'     \item{StationID}{}
+#' }
+#'
+#' @note
+#' Stations' and timeseries' IDs might not be unique at the different databases
+#' records from the different Hydroscope domains.
 #' @examples
+#' # get station's timeseries from the Greek Ministry of Environment and Energy
+#' get_timeseries("kyy", 200171)
+#'
+#' \dontrun{
+#' get_timeseries("ypaat")
+#' }
+#'
+#' @references
+#' Stations' data are retrieved from the Hydroscope's databases:
+#' \itemize{
+#' \item Ministry of Environment, Energy and Climate Change,
+#' \url{http://kyy.hydroscope.gr}
+#' \item Ministry of Rural Development and Food,
+#' \url{http://ypaat.hydroscope.gr}
+#' \item National Meteorological Service,
+#' \url{http://emy.hydroscope.gr}
+#' \item Main Hydroscope's database,
+#' \url{http://main.hydroscope.gr}
+#'}
+#' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
+#' @import XML
+#' @export get_timeseries
 get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                            stationID) {
 
@@ -321,7 +370,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     ts_table$StationID <- stationID
 
     # make valid names for timeseries --------------------------------------------
-    if (NROW(ts_table) > 0 & NCOL(ts_table) == 10) {
+    if (NROW(ts_table) == 0 & NCOL(ts_table != 10)) {
       warning(paste("Could not get table from ", url))
       stop()
     }

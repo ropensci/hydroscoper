@@ -7,8 +7,65 @@
 get_timeseries(subdomain = c("kyy", "ypaat", "emy", "main"), stationID)
 }
 \arguments{
-\item{stationID}{}
+\item{subdomain}{One of the subdomains of hydroscope.gr}
+
+\item{stationID}{A station ID}
+}
+\value{
+If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+\code{"emy"} (National Meteorological Service) or \code{"main"} (all the
+databases, merged), and stationID is not NULL, returns a dataframe with
+timeseries data from the corresponding station and database of
+hydroscope.gr. Otherwise gives an error message.
+
+ If the station ID does not exist in the database, or the url from hydroscope
+ could not parsed, returns a dataframe with NA values.
+
+The dataframe columns are:
+\describe{
+    \item{TimeSeriesID}{The timeseries ID from the database}
+    \item{Name}{}
+    \item{Variable}{}
+    \item{TimeStep}{}
+    \item{Unit}{}
+    \item{Remarks}{}
+    \item{Instrument}{}
+    \item{StartDate}{}
+    \item{EndDate}{}
+    \item{StationID}{}
+}
 }
 \description{
-Get timeseries corresponding to a station
+\code{get_timeseries} returns a dataframe with the available timeseries from
+a station in a database of Hydroscope.
+}
+\note{
+Stations' and timeseries' IDs might not be unique at the different databases
+records from the different Hydroscope domains.
+}
+\examples{
+# get station's timeseries from the Greek Ministry of Environment and Energy
+get_timeseries("kyy", 200171)
+
+\dontrun{
+get_timeseries("ypaat")
+}
+
+}
+\references{
+Stations' data are retrieved from the Hydroscope's databases:
+\itemize{
+\item Ministry of Environment, Energy and Climate Change,
+\url{http://kyy.hydroscope.gr}
+\item Ministry of Rural Development and Food,
+\url{http://ypaat.hydroscope.gr}
+\item National Meteorological Service,
+\url{http://emy.hydroscope.gr}
+\item Main Hydroscope's database,
+\url{http://main.hydroscope.gr}
+}
+}
+\author{
+Konstantinos Vantas, \email{kon.vantas@gmail.com}
 }
