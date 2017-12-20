@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 
 # hydroscoper
 
-The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](<http://www.hydroscope.gr/>). It provides functions for downloading stations and timeseries data.
+The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](<http://www.hydroscope.gr/>). It provides functions for downloading stations and time series data.
 
-The stations and timeseries data in Hydroscope are in Greek, so this package transliterates the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw timeseries' data into a tidy dataframe.
+The stations and time series data in Hydroscope are in Greek, so this package transliterates the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw time series' data into a tidy dataframe.
 
 ## Installation
 
@@ -54,11 +54,11 @@ crete_coords <- ldply(crete_stations$ID, function(x) {
 head(crete_coords)
 ```
 
-## Timeseries list
+## Time series list
 
-To get the timeseries list in a dataframe from a specific station you can use the following code:
+To get the time series list in a dataframe from a specific station you can use the following code:
 
-```{r get timeseries}
+```{r get time series}
 
 ts_data <- get_timeseries(subdomain = "kyy", stationID = 200292)
 ts_data
@@ -66,7 +66,7 @@ ts_data
 
 ## Raw data
 
-With the following code you can get the timeseries values from using a timeseries ID
+With the following code you can get the time series values from using a time series ID
 ```{r}
 ts_raw <- get_data(subdomain = "kyy", timeID = 1022)
 ```

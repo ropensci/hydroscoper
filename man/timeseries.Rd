@@ -6,19 +6,20 @@
 \title{Timeseries}
 \format{A data frame:
 \describe{
-\item{TimeSeriesID}{The timeseries ID in Hydroscope}
-\item{Variable}{Station Name}
-\item{TimeStep}{}
-\item{Unit}{}
-\item{Instrument}{}
-\item{StartDate}{}
-\item{EndDate}{}
-\item{StationID}{}}}
+    \item{TimeSeriesID}{The time series ID from the database}
+    \item{Variable}{The time series variable type}
+    \item{TimeStep}{The timestep of time series}
+    \item{Unit}{The units of the time series}
+    \item{Instrument}{The instrument ID}
+    \item{StartDate}{The starting date of time series values}
+    \item{EndDate}{The ending date of time series values}
+    \item{StationID}{The coresponding station's ID}
+}}
 \usage{
 timeseries
 }
 \description{
 Timeseries' data from the Greek National Databank for Hydrological and
-Meteorological Information, Hydroscope.
+Meteorological Information database \url{http://kyy.hydroscope.gr/}
 }
 \keyword{datasets}

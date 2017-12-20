@@ -315,7 +315,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #'     \item{Instrument}{The instrument ID}
 #'     \item{StartDate}{The starting date of time series values}
 #'     \item{EndDate}{The ending date of time series values}
-#'     \item{StationID}{The coresponding station's ID}
+#'     \item{StationID}{The corresponding station's ID}
 #' }
 #'
 #' @note
@@ -334,7 +334,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' snow \tab Snow Height  \cr
 #' evap_estim \tab Estimated Evaporation   \cr
 #' evap_actual \tab Measured Evaporation \cr
-#' flow \tab Dishcharge  \cr
+#' flow \tab Discharge  \cr
 #' pressure \tab Atmospheric Pressure  \cr
 #' water_level_flood \tab Flood Water Level   \cr
 #' air_temp \tab Air Temperature  \cr
@@ -462,7 +462,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' time series and database of hydroscope.gr. Otherwise gives an error message.
 #'
 #' If the time series ID does not exist in the database, or the url from
-#' hydroscope could not parsed, returns a dataframe with NA values.
+#' Hydroscope could not parsed, returns a dataframe with NA values.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -547,7 +547,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
     },
     error = function(e) {
       # return NA values
-      warning(paste("Couldn't get timeseries' data from "), url)
+      warning(paste("Couldn't get time series' data from "), url)
       result <- dataNA()
 
     },

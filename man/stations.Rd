@@ -6,21 +6,23 @@
 \title{stations}
 \format{A data frame:
 \describe{
-\item{ID}{The station ID in Hydroscope}
-\item{Name}{Station Name}
-\item{WaterDivisionID}{}
-\item{WaterBasin}{}
-\item{PoliticalDivision}{}
-\item{Owner}{}
-\item{Type}{}
-\item{Long}{}
-\item{Lat}{}
-\item{Elevation}{}}}
+    \item{StationID}{The station's ID from the domain's database}
+    \item{Name}{The station's name}
+    \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
+    GR14}
+    \item{WaterBasin}{The station's Water Basin}
+    \item{PoliticalDivision}{The station's Political Division}
+    \item{Owner}{The station's owner}
+    \item{Type}{The station's type}
+    \item{Long}{The station's longitude in decimal degrees, ETRS89}
+    \item{Lat}{The station's latitude in decimal degrees, ETRS89}
+    \item{Elevation}{The station's altitude, meters above sea level}
+}}
 \usage{
 stations
 }
 \description{
 Stations' data from the Greek National Databank for Hydrological and
-Meteorological Information, Hydroscope.
+Meteorological Information database \url{http://kyy.hydroscope.gr/}
 }
 \keyword{datasets}

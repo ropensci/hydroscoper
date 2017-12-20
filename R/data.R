@@ -1,35 +1,39 @@
 #' stations
 #'
 #' Stations' data from the Greek National Databank for Hydrological and
-#' Meteorological Information, Hydroscope.
+#' Meteorological Information database \url{http://kyy.hydroscope.gr/}
 #'
 #' @format A data frame:
 #' \describe{
-#' \item{ID}{The station ID in Hydroscope}
-#' \item{Name}{Station Name}
-#' \item{WaterDivisionID}{}
-#' \item{WaterBasin}{}
-#' \item{PoliticalDivision}{}
-#' \item{Owner}{}
-#' \item{Type}{}
-#' \item{Long}{}
-#' \item{Lat}{}
-#' \item{Elevation}{}}
+#'     \item{StationID}{The station's ID from the domain's database}
+#'     \item{Name}{The station's name}
+#'     \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
+#'     GR14}
+#'     \item{WaterBasin}{The station's Water Basin}
+#'     \item{PoliticalDivision}{The station's Political Division}
+#'     \item{Owner}{The station's owner}
+#'     \item{Type}{The station's type}
+#'     \item{Long}{The station's longitude in decimal degrees, ETRS89}
+#'     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
+#'     \item{Elevation}{The station's altitude, meters above sea level}
+
+#' }
 "stations"
 
-#' Timeseries
+#' timeseries
 #'
-#' Timeseries' data from the Greek National Databank for Hydrological and
-#' Meteorological Information, Hydroscope.
+#' Time series' data from the Greek National Databank for Hydrological and
+#' Meteorological Information database \url{http://kyy.hydroscope.gr/}
 #'
 #' @format A data frame:
 #' \describe{
-#' \item{TimeSeriesID}{The timeseries ID in Hydroscope}
-#' \item{Variable}{Station Name}
-#' \item{TimeStep}{}
-#' \item{Unit}{}
-#' \item{Instrument}{}
-#' \item{StartDate}{}
-#' \item{EndDate}{}
-#' \item{StationID}{}}
+#'     \item{TimeSeriesID}{The time series ID from the database}
+#'     \item{Variable}{The time series variable type}
+#'     \item{TimeStep}{The timestep of time series}
+#'     \item{Unit}{The units of the time series}
+#'     \item{Instrument}{The instrument ID}
+#'     \item{StartDate}{The starting date of time series values}
+#'     \item{EndDate}{The ending date of time series values}
+#'     \item{StationID}{The coresponding station's ID}
+#' }
 "timeseries"
