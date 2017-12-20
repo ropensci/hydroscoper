@@ -244,35 +244,36 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     path <- "/html/body/div[3]/div/div[1]/div/div[2]/div/div[2]/table"
     tableNodes <- XML::getNodeSet(doc, path)
 
-    # check table nodes
+    # check if table nodes is NULL
     if (is.null(tableNodes)) {
-      warning(paste0("Couldn't download station data for stationID =", stationID))
-      coordsNA(stationID)
+      warning(paste("Table from ", url, "is empty"))
+      stop()
     }
 
-    # read table
-    stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
-                                     stringsAsFactors = FALSE)
-    # get values from table
-    values <- stat_table$V2
-    names(values) <- stat_table$V1
+      # read table
+      stat_table <- XML::readHTMLTable(tableNodes[[1]], header = FALSE,
+                                       stringsAsFactors = FALSE)
+      # get values from table
+      values <- stat_table$V2
+      names(values) <- stat_table$V1
 
-    # convert Coords to Lat and Long
-    Elevation <- as.numeric(values["Altitude"])
-    Coords <- as.character(values["Co-ordinates"])
-    tmp <- stringr::str_split(string = Coords, pattern = ",|\n", simplify = TRUE)
-    Lat <- as.numeric(tmp[1])
-    Long <- as.numeric(tmp[2])
+      # convert Coords to Lat and Long
+      Elevation <- as.numeric(values["Altitude"])
+      Coords <- as.character(values["Co-ordinates"])
+      tmp <- stringr::str_split(string = Coords, pattern = ",|\n",
+                                simplify = TRUE)
+      Lat <- as.numeric(tmp[1])
+      Long <- as.numeric(tmp[2])
 
-    # return results as a dataframe
-    data.frame(StationID = stationID,
-                      Long = Long,
-                      Lat = Lat,
-                      Elevation = Elevation)
-
+      # return results as a dataframe
+      data.frame(StationID = stationID,
+                 Long = Long,
+                 Lat = Lat,
+                 Elevation = Elevation)
   },
   error = function(e) {
     warning(paste0("Failed to parse url: ", url))
+    # return NA values
     coordsNA(stationID)
   })
 
@@ -300,53 +301,72 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
   url <- paste0(url, "/stations/d/", stationID, "/")
 
   # Web scrapping --------------------------------------------------------------
+  tryCatch({
 
-  doc <- XML::htmlParse(url, encoding = "UTF8")
+    # parse url
+    doc <- XML::htmlParse(url, encoding = "UTF8")
 
-  # get table nodes
-  tableNodes <- XML::getNodeSet(doc, "//*[@id=\"timeseries\"]")
-  if (is.null(tableNodes)) {
-    warning(paste("Couldn't download timeseries list for station ID =",
-                  stationID))
-    return(timeserNA(stationID))
-  }
-  # read table
-  tb2 <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
-                            stringsAsFactors = FALSE)
-  tb2$StationID <- stationID
+    # get table nodes
+    tableNodes <- XML::getNodeSet(doc, "//*[@id=\"timeseries\"]")
 
-  # make valid names for timeseries --------------------------------------------
-  if (NROW(tb2) > 0 & NCOL(tb2) == 10) {
-    names(tb2) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
+    # check if table nodes is NULL
+    if (is.null(tableNodes)) {
+      warning(paste("Table from ", url, "is empty"))
+      stop()
+    }
+
+    # read table
+    ts_table <- XML::readHTMLTable(tableNodes[[1]], header = TRUE,
+                              stringsAsFactors = FALSE)
+    ts_table$StationID <- stationID
+
+    # make valid names for timeseries --------------------------------------------
+    if (NROW(ts_table) > 0 & NCOL(ts_table) == 10) {
+      warning(paste("Could not get table from ", url))
+      stop()
+    }
+
+    # make names for table
+    names(ts_table) <- c("TimeSeriesID", "Name", "Variable", "TimeStep", "Unit",
                     "Remarks", "Instrument", "StartDate", "EndDate",
                     "StationID")
-  } else {
-    warning(paste("Couldn't get expected timeseries table from url: ", url, ""))
-    return(timeserNA(stationID))
-  }
 
-  # Translations and transliterations ------------------------------------------
-  for (cname in c(names(tb2))) {
-    tb2[cname] <- greek2latin(tb2[cname])
-  }
+    # Translations and transliterations ------------------------------------------
+    for (cname in c(names(ts_table))) {
+      ts_table[cname] <- greek2latin(ts_table[cname])
+    }
 
-  # remove columns without data
-  tb2$Name <- NULL
-  tb2$Remarks <- NULL
+    # remove columns without data
+    ts_table$Name <- NULL
+    ts_table$Remarks <- NULL
 
-  # translations
-  tb2$Variable <- ts_variable(tb2$Variable)
-  tb2$TimeStep <- ts_timestep(tb2$TimeStep)
+    # translations
+    ts_table$Variable <- ts_variable(ts_table$Variable)
+    ts_table$TimeStep <- ts_timestep(ts_table$TimeStep)
 
-  # convert start and end dates to posixct -------------------------------------
-  tb2$StartDate <- ifelse(tb2$StartDate == "", NA, tb2$StartDate)
-  tb2$EndDate <- ifelse(tb2$EndDate == "", NA, tb2$EndDate)
+    # convert start and end dates to posixct -------------------------------------
+    ts_table$StartDate <- ifelse(ts_table$StartDate == "",
+                                 NA, ts_table$StartDate)
+    ts_table$EndDate <- ifelse(ts_table$EndDate == "",
+                               NA, ts_table$EndDate)
 
-  time_format <- "%Y/%m/%d %H:%M"
-  tb2$StartDate <- as.POSIXct(tb2$StartDate, format = time_format, tz = "")
-  tb2$EndDate <- as.POSIXct(tb2$EndDate, format = time_format, tz = "")
+    # create dates
+    time_format <- "%Y/%m/%d %H:%M"
+    ts_table$StartDate <- as.POSIXct(ts_table$StartDate,
+                                     format = time_format,
+                                     tz = "")
+    ts_table$EndDate <- as.POSIXct(ts_table$EndDate,
+                                   format = time_format,
+                                   tz = "")
 
-  return(tb2)
+    # return dataframe
+    ts_table
+
+  },
+  error = function(e) {
+    warning(paste0("Failed to parse url: ", url))
+    coordsNA(stationID)
+  })
 }
 
 
