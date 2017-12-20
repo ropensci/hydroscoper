@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kyy.hydroscope.gr
+This vignette shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kyy.hydroscope.gr
 
 ## Get stations values
 
