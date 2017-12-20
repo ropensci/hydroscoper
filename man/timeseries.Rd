@@ -14,6 +14,8 @@
     \item{StartDate}{The starting date of time series values}
     \item{EndDate}{The ending date of time series values}
     \item{StationID}{The coresponding station's ID}
+    \item{Name}{The time series name}
+    \item{Remarks}{Remarmks for time series from Hydroscope}
 }}
 \usage{
 timeseries
