@@ -2,29 +2,67 @@ context("Internal functions")
 
 test_that("Translations and transliterations return a character vector", {
 
+  # greek2latin
   expect_is(greek2latin("one"), "character")
   expect_is(greek2latin(c("one", "two")), "character")
 
+  # stations_types
   expect_is(stations_types("GEORGIKOS"), "character")
-  expect_is(stations_types(c("GEORGIKOS", "STATHMEMETRIKOS")), "character")
-  expect_is(stations_types(c("GEORGIKOS", "x")), "character")
+  expect_is(stations_types(c("KLIMATOLOGIKOS", "METEOROLOGIKOS")), "character")
+  expect_is(stations_types(c("YDROMETEOROLOGIKOS","STATHMEMETRIKOS", "x")),
+            "character")
 
-  expect_is(add_wd_id("EPEIROS"), "character")
-  expect_is(add_wd_id(c("ATTIKE", "KRETE")), "character")
-  expect_is(add_wd_id(c("ATTIKE", "d")), "character")
+  # add_wd_id
+  expect_is(add_wd_id("DYTIKE.PELOPONNESOS "), "character")
+  expect_is(add_wd_id(c("BOREIA.PELOPONNESOS", "ANATOLIKE.PELOPONNES")),
+            "character")
+  expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA","EPEIROS", "ATTIKE", "d")),
+            "character")
+  expect_is(add_wd_id(c("ANATOLIKE.STEREA.ELL","THESSALIA", "DYTIKE.MAKEDONIA",
+                        "KENTRIKE.MAKEDONIA", "ANATOLIKE.MAKEDONIA",
+                        "THRAKE", "KRETE", "NESOI.AIGAIOU")),
+            "character")
 
   expect_is(owner_names("DEMOSIA.EPICHEIRISE.ELEKTRISMOU"), "character")
-  expect_is(owner_names(c("DEMOSIA.EPICHEIRISE.ELEKTRISMOU",
+  expect_is(owner_names(c("ETHNIKO.ASTEROSKOPEIO.ATHENAS",
                              "NOMARCHIAKE.AUTODIOIKESE")), "character")
-  expect_is(owner_names(c("DEMOSIA.EPICHEIRISE.ELEKTRISMOU", "x")), "character")
+  expect_is(
+    owner_names(c("YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON",
+                  "ETHNIKE.METEOROLOGIKE.YPERESIA",
+                  "YPOURGEIO.PERIBALLONTOS..ENERGEIAS.KAI.KLIMATIKES.ALLAGES",
+                  "x")), "character")
 
-  expect_is(ts_variable("CHIONI"), "character")
-  expect_is(ts_variable(c("CHIONI", "PAROCHE")), "character")
-  expect_is(ts_variable(c("CHIONI", "x")), "character")
+  expect_is(ts_variable("ASBESTIO"), "character")
+  expect_is(ts_variable(c("ANEMOS..DIEUTHYNSE.", "ANEMOS..TACHYTETA.")),
+            "character")
+  expect_is(ts_variable(c("ANEMOS..TACHYTETA.MESE.", "x")), "character")
+  expect_is(
+    ts_variable(c("BATHOS.YGROU..CHIONOBROCHOMETRO.",
+                  "BROCHOPTOSE",
+                  "CHIONI",
+                  "CHIONI...BROCHE..CHIONOBROCHOMETRO.",
+                  "EXATMISE..EKTIMEMENE.",
+                  "EXATMISE..PAROUSA.",
+                  "PAROCHE",
+                  "PIESE..ATMOSPHAIRIKE.",
+                  "STATHME",
+                  "STATHME..PLEMMYRA.",
+                  "THERMOKRASIA..AERA.",
+                  "THERMOKRASIA..EDAPHOUS.",
+                  "THERMOKRASIA..EDAPHOUS.EL..",
+                  "THERMOKRASIA..EDAPHOUS.MEG..",
+                  "THERMOKRASIA..ELACHISTE.",
+                  "THERMOKRASIA..MEGISTE.",
+                  "YDROMETRESE",
+                  "YGRASIA..APOLYTE.",
+                  "YGRASIA..SCHETIKE.",
+                  "x")), "character"
+  )
 
   expect_is(ts_timestep("Emeresia...1.day.s."), "character")
-  expect_is(ts_timestep(c("Emeresia...1.day.s.", "Variable.step")), "character")
-  expect_is(ts_timestep(c("Variable.step", "x")), "character")
+  expect_is(ts_timestep(c("Meniaia...0.year.s. ", "Variable.step")), "character")
+  expect_is(ts_timestep(c("X10lepte...0.day.s.", "X30lepte...0.day.s.",
+                          "X5lepte...0.day.s.", "x")), "character")
 })
 
 test_that("hydroscope_url returns a character vector", {
