@@ -3,3 +3,10 @@
 language: R
 sudo: false
 cache: packages
+
+# integrate the project with Codecov.io
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'
