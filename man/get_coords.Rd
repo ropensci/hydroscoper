@@ -40,7 +40,7 @@ different Hydroscope domains.
 }
 \examples{
 # get station 200171 coords from the Greek Ministry of Environment and Energy
-get_coords(stationID = 200171)
+get_coords("kyy", 200171)
 
 # get station data from the Greek National Meteorological Service
 get_coords("emy", 20035)

@@ -130,7 +130,7 @@ timeserNA <- function(stationID) {
              StationID = stationID)
 }
 
-# timeseries dataframe with NA values
+# data dataframe with NA values
 dataNA <- function(){
   data.frame(Date = NA, Value = NA, Comment = NA)
 }

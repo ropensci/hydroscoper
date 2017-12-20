@@ -67,8 +67,6 @@
 #' }
 #'
 #' @examples
-#' # get stations' data from the Greek Ministry of Environment and Energy
-#' kyy_stations <- get_stations()
 #'
 #' # get stations' data from the Greek National Meteorological Service
 #' emy_stations <- get_stations(subdomain = "emy")
@@ -118,7 +116,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
     table_nodes <- XML::getNodeSet(doc, html_table)
 
     # check if table nodes is NULL
-    if (is.null(tableNodes)) {
+    if (is.null(table_nodes)) {
       warning(paste("Table from ", url, "is empty"))
       stop()
     }
@@ -202,7 +200,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 #'
 #' @examples
 #' # get station 200171 coords from the Greek Ministry of Environment and Energy
-#' get_coords(stationID = 200171)
+#' get_coords("kyy", 200171)
 #'
 #' # get station data from the Greek National Meteorological Service
 #' get_coords("emy", 20035)
@@ -288,9 +286,9 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 }
 
 
-#' Get timeseries corresponding to a station
+#' Get time series corresponding to a station
 #'
-#' \code{get_timeseries} returns a dataframe with the available timeseries from
+#' \code{get_timeseries} returns a dataframe with the available time series from
 #' a station in a database of Hydroscope.
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
@@ -300,7 +298,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
 #' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
 #' databases, merged), and stationID is not NULL, returns a dataframe with
-#' timeseries data from the corresponding station and database of
+#' time series data from the corresponding station and database of
 #' hydroscope.gr. Otherwise gives an error message.
 #'
 #'  If the station ID does not exist in the database, or the url from hydroscope
@@ -308,23 +306,49 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{TimeSeriesID}{The timeseries ID from the database}
-#'     \item{Name}{}
-#'     \item{Variable}{}
-#'     \item{TimeStep}{}
-#'     \item{Unit}{}
-#'     \item{Remarks}{}
-#'     \item{Instrument}{}
-#'     \item{StartDate}{}
-#'     \item{EndDate}{}
-#'     \item{StationID}{}
+#'     \item{TimeSeriesID}{The time series ID from the database}
+#'     \item{Name}{The time series name}
+#'     \item{Variable}{The time series variable type}
+#'     \item{TimeStep}{The timestep of time series}
+#'     \item{Unit}{The units of the time series}
+#'     \item{Remarks}{Remarks from Hydroscope}
+#'     \item{Instrument}{The instrument ID}
+#'     \item{StartDate}{The starting date of time series values}
+#'     \item{EndDate}{The ending date of time series values}
+#'     \item{StationID}{The coresponding station's ID}
 #' }
 #'
 #' @note
-#' Stations' and timeseries' IDs might not be unique at the different databases
+#' Stations' and time series' IDs might not be unique at the different databases
 #' records from the different Hydroscope domains.
+#'
+#' The codes used in Variable are:
+#' \tabular{ll}{
+#' \strong{Code}  \tab \strong{Name} \cr
+#' wind_direc \tab Wind Direction \cr
+#' wind_speed \tab Wind Speed \cr
+#' wind_speed_av \tab  Average Wind Speed\cr
+#' calcium \tab Calcium Concentration  \cr
+#' rain_snow \tab Rain and Snow Height  \cr
+#' rainfall \tab Rain Height  \cr
+#' snow \tab Snow Height  \cr
+#' evap_estim \tab Estimated Evaporation   \cr
+#' evap_actual \tab Measured Evaporation \cr
+#' flow \tab Dishcharge  \cr
+#' pressure \tab Atmospheric Pressure  \cr
+#' water_level_flood \tab Flood Water Level   \cr
+#' air_temp \tab Air Temperature  \cr
+#' ground_temp \tab Ground Temperature  \cr
+#' ground_temp_min \tab Minimum Ground Temperature  \cr
+#' ground_temp_max \tab Maximum Ground Temperature  \cr
+#' temp_min \tab Minimum Air Temperature  \cr
+#' temp_max \tab Maximum Air Temperature  \cr
+#' humid_absol \tab Absolute Humidity  \cr
+#' humid_rel \tab Relative Humidity  \cr
+#' }
+#'
 #' @examples
-#' # get station's timeseries from the Greek Ministry of Environment and Energy
+#' # get station's time series from the Greek Ministry of Environment and Energy
 #' get_timeseries("kyy", 200171)
 #'
 #' \dontrun{
@@ -378,7 +402,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     ts_table$StationID <- stationID
 
     # make valid names for timeseries --------------------------------------------
-    if (NROW(ts_table) == 0 | NCOL(ts_table != 10)) {
+    if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) {
       warning(paste("Could not get table from ", url))
       stop()
     }
@@ -392,10 +416,6 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     for (cname in c(names(ts_table))) {
       ts_table[cname] <- greek2latin(ts_table[cname])
     }
-
-    # remove columns without data
-    ts_table$Name <- NULL
-    ts_table$Remarks <- NULL
 
     # translations
     ts_table$Variable <- ts_variable(ts_table$Variable)
@@ -422,20 +442,63 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
   },
   error = function(e) {
     warning(paste0("Failed to parse url: ", url))
-    coordsNA(stationID)
+    timeserNA(stationID)
   })
 }
 
 
-#' Get timeseries data in a tidy dataframe
+#' Get time series values in a tidy dataframe
 #'
-#' @param subdomain
-#' @param timeID
+#' \code{get_data} returns a tidy dataframe with the available data from
+#' a time series in a database of Hydroscope.
 #'
-#' @return
-#' @export
+#' @param subdomain One of the subdomains of hydroscope.gr
+#' @param timeID A time series ID
+#'
+#' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food) or
+#' \code{"emy"} (National Meteorological Service), and timeID is not NULL,
+#' returns a tidy dataframe with the time series values from the corresponding
+#' time series and database of hydroscope.gr. Otherwise gives an error message.
+#'
+#' If the time series ID does not exist in the database, or the url from
+#' hydroscope could not parsed, returns a dataframe with NA values.
+#'
+#' The dataframe columns are:
+#' \describe{
+#'     \item{Date}{The time series Dates (POSIXct)}
+#'     \item{Value}{The time series values (numeric)}
+#'     \item{Comment}{Comments from Hydroscope (character)}
+#' }
+#'
+#' @note
+#' The subdomain "main" from Hydroscope is not used, because it uses different
+#' ID values for time series from the other subdomains and also because it does
+#' not contain the raw data of the time series.
 #'
 #' @examples
+#' # get time series 912 from the Greek Ministry of Environment and Energy
+#' df1 <-get_data("kyy", 912)
+#'
+#' \dontrun{
+#' get_data("ypaat")
+#' }
+#'
+#' @references
+#' Stations' data are retrieved from the Hydroscope's databases:
+#' \itemize{
+#' \item Ministry of Environment, Energy and Climate Change,
+#' \url{http://kyy.hydroscope.gr}
+#' \item Ministry of Rural Development and Food,
+#' \url{http://ypaat.hydroscope.gr}
+#' \item National Meteorological Service,
+#' \url{http://emy.hydroscope.gr}
+#' \item Main Hydroscope's database,
+#' \url{http://main.hydroscope.gr}
+#'}
+#' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
+#' @import readr
+#' @export get_data
 get_data <- function(subdomain =  c("kyy", "ypaat", "emy"), timeID) {
 
   # check that stationID is given

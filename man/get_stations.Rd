@@ -75,8 +75,6 @@ stream_gage \tab Gauging station  \cr
 }
 }
 \examples{
-# get stations' data from the Greek Ministry of Environment and Energy
-kyy_stations <- get_stations()
 
 # get stations' data from the Greek National Meteorological Service
 emy_stations <- get_stations(subdomain = "emy")

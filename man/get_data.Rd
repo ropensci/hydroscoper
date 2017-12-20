@@ -2,13 +2,63 @@
 % Please edit documentation in R/get_data.R
 \name{get_data}
 \alias{get_data}
-\title{Get timeseries data in a tidy dataframe}
+\title{Get time series values in a tidy dataframe}
 \usage{
 get_data(subdomain = c("kyy", "ypaat", "emy"), timeID)
 }
 \arguments{
-\item{timeID}{}
+\item{subdomain}{One of the subdomains of hydroscope.gr}
+
+\item{timeID}{A time series ID}
+}
+\value{
+If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food) or
+\code{"emy"} (National Meteorological Service), and timeID is not NULL,
+returns a tidy dataframe with the time series values from the corresponding
+time series and database of hydroscope.gr. Otherwise gives an error message.
+
+If the time series ID does not exist in the database, or the url from
+hydroscope could not parsed, returns a dataframe with NA values.
+
+The dataframe columns are:
+\describe{
+    \item{Date}{The time series Dates (POSIXct)}
+    \item{Value}{The time series values (numeric)}
+    \item{Comment}{Comments from Hydroscope (character)}
+}
 }
 \description{
-Get timeseries data in a tidy dataframe
+\code{get_data} returns a tidy dataframe with the available data from
+a time series in a database of Hydroscope.
+}
+\note{
+The subdomain "main" from Hydroscope is not used, because it uses different
+ID values for time series from the other subdomains and also because it does
+not contain the raw data of the time series.
+}
+\examples{
+# get time series 912 from the Greek Ministry of Environment and Energy
+df1 <-get_data("kyy", 912)
+
+\dontrun{
+get_data("ypaat")
+}
+
+}
+\references{
+Stations' data are retrieved from the Hydroscope's databases:
+\itemize{
+\item Ministry of Environment, Energy and Climate Change,
+\url{http://kyy.hydroscope.gr}
+\item Ministry of Rural Development and Food,
+\url{http://ypaat.hydroscope.gr}
+\item National Meteorological Service,
+\url{http://emy.hydroscope.gr}
+\item Main Hydroscope's database,
+\url{http://main.hydroscope.gr}
+}
+}
+\author{
+Konstantinos Vantas, \email{kon.vantas@gmail.com}
 }
