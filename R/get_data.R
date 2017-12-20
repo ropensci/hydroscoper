@@ -155,7 +155,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
       gsub("\\([^()]*\\)", "", str)
     })
 
-    # Return data ----------------------------------------------------------------
+    # Return data --------------------------------------------------------------
     cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
                 "PoliticalDivision", "Owner", "Type")
 
@@ -401,7 +401,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                               stringsAsFactors = FALSE)
     ts_table$StationID <- stationID
 
-    # make valid names for timeseries --------------------------------------------
+    # make valid names for timeseries ------------------------------------------
     if (NROW(ts_table) == 0 | NCOL(ts_table) != 10) {
       warning(paste("Could not get table from ", url))
       stop()
@@ -412,7 +412,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
                     "Remarks", "Instrument", "StartDate", "EndDate",
                     "StationID")
 
-    # Translations and transliterations ------------------------------------------
+    # Translations and transliterations ----------------------------------------
     for (cname in c(names(ts_table))) {
       ts_table[cname] <- greek2latin(ts_table[cname])
     }
@@ -421,7 +421,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
     ts_table$Variable <- ts_variable(ts_table$Variable)
     ts_table$TimeStep <- ts_timestep(ts_table$TimeStep)
 
-    # convert start and end dates to posixct -------------------------------------
+    # convert start and end dates to posixct -----------------------------------
     ts_table$StartDate <- ifelse(ts_table$StartDate == "",
                                  NA, ts_table$StartDate)
     ts_table$EndDate <- ifelse(ts_table$EndDate == "",
