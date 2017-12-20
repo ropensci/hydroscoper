@@ -22,5 +22,6 @@ Imports: stringi (>= 1.1.6),
 Suggests: plyr (>= 1.8.4),
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
-    rmarkdown (>= 1.8)
+    rmarkdown (>= 1.8),
+    testthat (>= 1.0.2)
 VignetteBuilder: knitr
