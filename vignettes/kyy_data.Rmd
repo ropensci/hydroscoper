@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/emy.hydroscope.gr
+This vignettes shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kyy.hydroscope.gr
 
 ## Get stations values
 
@@ -28,7 +28,7 @@ The following code, with the use of ldply function from plyr package, shows how 
 library(hydroscoper)
 library(plyr)
 
-subdomain <- "emy"
+subdomain <- "kyy"
 
 # get stations data
 stations <- get_stations(subdomain)
