@@ -9,14 +9,14 @@ test_that("Translations and transliterations return a character vector", {
   # stations_types
   expect_is(stations_types("GEORGIKOS"), "character")
   expect_is(stations_types(c("KLIMATOLOGIKOS", "METEOROLOGIKOS")), "character")
-  expect_is(stations_types(c("YDROMETEOROLOGIKOS","STATHMEMETRIKOS", "x")),
+  expect_is(stations_types(c("YDROMETEOROLOGIKOS", "STATHMEMETRIKOS", "x")),
             "character")
 
   # add_wd_id
   expect_is(add_wd_id("DYTIKE.PELOPONNESOS "), "character")
   expect_is(add_wd_id(c("BOREIA.PELOPONNESOS", "ANATOLIKE.PELOPONNES")),
             "character")
-  expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA","EPEIROS", "ATTIKE",
+  expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA", "EPEIROS", "ATTIKE",
                         "DYTIKE.PELOPONNESOS", "d")),
             "character")
 
@@ -65,4 +65,3 @@ test_that("NA functions return dataframe with NA values", {
   expect_true(all(is.na(coordsNA(1)[-1])))
 
 })
-

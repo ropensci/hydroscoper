@@ -30,5 +30,3 @@ test_that("get_ functions return dataframes", {
   # empty time series
   expect_is(get_data("kyy", 2256), "data.frame")
 })
-
-
