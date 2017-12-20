@@ -21,7 +21,7 @@ test_that("get_ functions give warnings", {
 })
 
 test_that("get_ functions return dataframes", {
-  expect_is(get_stations("emy"), "data.frame")
+  expect_is(get_stations("main"), "data.frame")
   expect_is(get_coords("kyy", 10004), "data.frame")
   expect_is(get_timeseries("kyy", 200206), "data.frame")
   expect_is(get_data("kyy", 789), "data.frame")

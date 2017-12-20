@@ -19,46 +19,19 @@ test_that("Translations and transliterations return a character vector", {
   expect_is(add_wd_id(c("DYTIKE.STEREA.ELLADA","EPEIROS", "ATTIKE",
                         "DYTIKE.PELOPONNESOS", "d")),
             "character")
-  expect_is(add_wd_id(c("ANATOLIKE.STEREA.ELL","THESSALIA", "DYTIKE.MAKEDONIA",
-                        "KENTRIKE.MAKEDONIA", "ANATOLIKE.MAKEDONIA",
-                        "THRAKE", "KRETE", "NESOI.AIGAIOU")),
-            "character")
+
 
   expect_is(owner_names("DEMOSIA.EPICHEIRISE.ELEKTRISMOU"), "character")
   expect_is(owner_names(c("ETHNIKO.ASTEROSKOPEIO.ATHENAS",
                              "NOMARCHIAKE.AUTODIOIKESE")), "character")
   expect_is(
-    owner_names(c("YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON",
-                  "ETHNIKE.METEOROLOGIKE.YPERESIA",
-                  "YPOURGEIO.PERIBALLONTOS..ENERGEIAS.KAI.KLIMATIKES.ALLAGES",
-                  "x")), "character")
+    owner_names(c("YPOURGEIO.AGROTIKES.ANAPTYXES.KAI.TROPHIMON", "x")),
+    "character")
 
   expect_is(ts_variable("ASBESTIO"), "character")
   expect_is(ts_variable(c("ANEMOS..DIEUTHYNSE.", "ANEMOS..TACHYTETA.")),
             "character")
   expect_is(ts_variable(c("ANEMOS..TACHYTETA.MESE.", "x")), "character")
-  expect_is(
-    ts_variable(c("BATHOS.YGROU..CHIONOBROCHOMETRO.",
-                  "BROCHOPTOSE",
-                  "CHIONI",
-                  "CHIONI...BROCHE..CHIONOBROCHOMETRO.",
-                  "EXATMISE..EKTIMEMENE.",
-                  "EXATMISE..PAROUSA.",
-                  "PAROCHE",
-                  "PIESE..ATMOSPHAIRIKE.",
-                  "STATHME",
-                  "STATHME..PLEMMYRA.",
-                  "THERMOKRASIA..AERA.",
-                  "THERMOKRASIA..EDAPHOUS.",
-                  "THERMOKRASIA..EDAPHOUS.EL..",
-                  "THERMOKRASIA..EDAPHOUS.MEG..",
-                  "THERMOKRASIA..ELACHISTE.",
-                  "THERMOKRASIA..MEGISTE.",
-                  "YDROMETRESE",
-                  "YGRASIA..APOLYTE.",
-                  "YGRASIA..SCHETIKE.",
-                  "x")), "character"
-  )
 
   expect_is(ts_timestep("Emeresia...1.day.s."), "character")
   expect_is(ts_timestep(c("Meniaia...0.year.s.", "Variable.step")), "character")
