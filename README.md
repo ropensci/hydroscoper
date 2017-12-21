@@ -10,13 +10,20 @@ Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?b
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
+<img src="man/figures/hydroscoper_hex.png" align="right" height="100"/>
+
 `hydroscoper` is an R interface to the Greek National Databank for
 Hydrological and Meteorological Information,
-[Hydroscope](http://www.hydroscope.gr/). It covers most of Hydroscope’s
-sources and provides functions to transform these untidy data sets into
-tidy dataframes.
+[Hydroscope](http://www.hydroscope.gr/). Hydroscope is the result of
+long-standing efforts by numerous scientists from the Department of
+Water Resources and Environment of the National Technical University of
+Athens in collaboration with various companies and associations. It was
+implemented in three phases, funded by the Ministry of Development, the
+Ministry of Environment and the European Union.
 
-The Hydroscope’s data sets are in Greek, thus limiting their usefulness.
+`hydroscoper` covers most of Hydroscope’s sources and provides functions
+to transform these untidy data sets into tidy dataframes. The
+Hydroscope’s data sets are in Greek, thus limiting their usefulness.
 `hydroscoper` transliterates the Greek Unicode text to Latin, and
 translates various Greek terms to English.
 
