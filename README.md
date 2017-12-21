@@ -152,8 +152,8 @@ ggplot(data = df, aes(x = Date, y = Value))+
     ```
 
   - Please note that this project is released with a [Contributor Code
-    of Conduct](/CONDUCT.md)). By participating in this project you
-    agree to abide by its terms.
+    of Conduct](/CONDUCT.md). By participating in this project you agree
+    to abide by its terms.
 
 ## References
 
