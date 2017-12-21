@@ -5,24 +5,45 @@
 hydroscoper
 ===========
 
-The goal of **hydroscoper** is to provide an interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). It provides functions for downloading stations and time series data.
+`hydroscoper` is an R interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). It covers most of Hydroscope's sources and provides functions to transform these untidy data sets into tidy dataframes.
 
-The stations and time series data in Hydroscope are in Greek, so this package transliterates the Unicode text to Latin, and translates various Greek terms to English. Finally, the **hydroscoper** provides a function to convert raw time series' data into a tidy dataframe.
+The Hydroscope's data sets are in Greek, thus limiting their usefulness. `hydroscoper` transliterates the Greek Unicode text to Latin, and translates various Greek terms to English.
+
+Data sources in hydroscoper
+---------------------------
+
+-   Ministry of Environment and Energy, <http://kyy.hydroscope.gr/>
+-   Ministry of Rural Development and Food, <http://ypaat.hydroscope.gr/>
+-   National Meteorological Service, <http://emy.hydroscope.gr/>
+
+The front end for the data sources of Greek Public Power Corporation, <http://emy.hydroscope.gr/>, uses an old format and it is not currently supported.
+
+Note that only the two Ministries allow freely to download time series values.
 
 Installation
 ------------
 
-You can install **hydroscoper** from github with:
+You can install the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("kvantas/hydroscoper")
 ```
 
-Stations list
--------------
+Using hydroscoper
+-----------------
 
-This is a basic example which shows you how to get the stations list from the Hydroscope's Ministry of Environment and Energy database (subdomain **kyy**):
+The available functions that are provided by `hydroscoper` are:
+
+-   `get_stations` to retrieve a tidy dataframe with stations' data for a given data source.
+-   `get_coords` to retrieve the coordinates and elevation for a given station.
+-   `get_timeseries` to retriece a tidy dataframe with a station's time series.
+-   `get_data` to retriece a tidy dataframe with a time series' values.
+
+Example
+-------
+
+This is a basic example which shows you how to get the stations list from the Ministry of Environment and Energy:
 
 ``` r
 library(hydroscoper)
@@ -37,66 +58,63 @@ head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 #> 6    200292            GR13  AG. GEORGIOS min_env meteo_station
 ```
 
-Stations coordinates
---------------------
-
-With the following code you can get the coordinates and the elevation for the stations from the Water Division of Crete, GR13:
+Using the above data you can get the coordinates and the elevation for a specific station, **200251**:
 
 ``` r
-library(plyr)
-crete_stations <-subset(stations, WaterDivisionID == "GR13")
-crete_coords <- ldply(crete_stations$StationID, function(x) {
-  get_coords(subdomain = "kyy", stationID = x)})
-#> Warning: Failed to parse url: http://kyy.hydroscope.gr/stations/d/501032/
-head(crete_coords)
-#>   StationID     Long      Lat Elevation
-#> 1    200280 24.45425 35.24414     298.6
-#> 2    501032       NA       NA        NA
-#> 3    200292 25.48357 35.16758     836.4
-#> 4    501054 24.13917 35.44500     850.0
-#> 5    200288 25.03400 35.14504     563.6
-#> 6    501033 25.71472 35.19940      30.0
+crds <-  get_coords(subdomain = "kyy", stationID = 200251)
+crds
+#>   StationID     Long    Lat Elevation
+#> 1    200251 25.91659 40.932       114
 ```
 
-Time series list
-----------------
-
-To get the time series list in a dataframe from the station **200292** you can use the following code:
+To get the time series from the same station run:
 
 ``` r
 
-ts_data <- get_timeseries(subdomain = "kyy", stationID = 200292)
+ts_data <- get_timeseries(subdomain = "kyy", stationID = 200251)
 ts_data[c("TimeSeriesID", "Variable", "TimeStep", "Unit", "StartDate","EndDate")]
 #>   TimeSeriesID   Variable TimeStep Unit           StartDate
-#> 1         1023       snow      day   mm 1954-09-01 08:00:00
-#> 2         1024 wind_direc variable    ° 1964-05-01 08:00:00
-#> 3         1022   rainfall      day   mm 1954-09-01 08:00:00
-#> 4           78   rainfall    30min   mm 1954-08-30 07:30:00
+#> 1          913       snow      day   mm 1960-11-01 08:00:00
+#> 2          914 wind_direc variable    ° 1967-01-01 08:00:00
+#> 3          912   rainfall      day   mm 1960-11-01 08:00:00
+#> 4         1451   rainfall variable   mm                <NA>
+#> 5         2173   rainfall    month   mm 1980-10-01 00:00:00
 #>               EndDate
-#> 1 1996-12-31 08:00:00
-#> 2 1996-12-31 08:00:00
-#> 3 2001-08-31 01:00:00
-#> 4 1996-12-29 22:00:00
+#> 1 1997-03-31 09:00:00
+#> 2 1997-03-31 09:00:00
+#> 3 2011-04-30 09:00:00
+#> 4                <NA>
+#> 5 2001-03-01 00:00:00
 ```
 
-Raw data
---------
-
-You can get the time series **1022** rainfall data using:
+You can get the time series **912** to a tidy dataframe with:
 
 ``` r
-ts_raw <- get_data(subdomain = "kyy", timeID = 1022)
+df <- get_data(subdomain = "kyy", timeID = 912)
 ```
 
-Let's create a plot for the rainfall data:
+Let's create a plot for these data:
 
 ``` r
 suppressPackageStartupMessages(library(ggplot2))
-ggplot(data = ts_raw, aes(x = Date, y = Value))+
+ggplot(data = df, aes(x = Date, y = Value))+
   geom_line()+
-  labs(title="Daily rainfall for station 200292",
+  labs(title="Dailly rainfall data for station 200251",
        x="Date", y = "Rain (mm)")+
   theme_classic()
 ```
 
 ![](README-plot%20data-1.png)
+
+Meta
+----
+
+-   Please [report any issues or bugs](https://github.com/kvantas/hydroscoper/issues).
+-   Licence:
+    -   All code is licenced MIT
+    -   All data are from the public data sources in <http://www.hydroscope.gr/>
+
+References
+----------
+
+[Hydroscope](http://www.hydroscope.gr/)
