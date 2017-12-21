@@ -98,6 +98,22 @@ ggplot(data = df, aes(x = Date, y = Value))+
 * Licence:
     + All code is licenced MIT
     + All data are from the public data sources in http://www.hydroscope.gr/
+* To cite `hydroscoper`, please use:
+  ```
+  Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope. R package version 0.1.0.
+  https://github.com/kvantas/hydroscoper
+  ```
+  A BibTeX entry for LaTeX users is
+  ```
+   @Manual{,
+    title = {hydroscoper: Interface to Hydroscope},
+    author = {Konstantinos Vantas},
+    year = {2017},
+    note = {R package version 0.1.0},
+    url = {https://github.com/kvantas/hydroscoper},
+  }
+  ```
+* Please note that this project is released with a [Contributor Code of Conduct](/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## References
 [Hydroscope](http://www.hydroscope.gr/)
