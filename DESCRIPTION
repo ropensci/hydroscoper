@@ -1,11 +1,11 @@
 Package: hydroscoper
 Type: Package
-Title: R Interface to Hydroscope
+Title: Interface to Hydroscope
 Version: 0.1.0
 Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the  Greek National Data Bank for Hydrological and 
-    Meteorological Information, [Hydroscope](<http://www.hydroscope.gr/>). It 
+    Meteorological Information <http://www.hydroscope.gr/>. It 
     covers most of Hydroscope's sources and provides functions to transform 
     these untidy data sets into tidy dataframes.
 URL: https://github.com/kvantas/hydroscoper
