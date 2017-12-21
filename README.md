@@ -31,8 +31,8 @@ The front end for the data sources of Greek Public Power Corporation,
 <http://deh.hydroscope.gr/>, uses an old format and it is not currently
 supported.
 
-Note that only the two Ministries allow freely to download time series
-values.
+Note that only the two Ministries allow to download time series values
+freely.
 
 ## Installation
 
