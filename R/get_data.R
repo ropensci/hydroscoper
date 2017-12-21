@@ -63,7 +63,7 @@
 #' \tabular{ll}{
 #' \strong{Code}  \tab \strong{Description} \cr
 #' meteo_station \tab Weather station \cr
-#' stream_gage \tab Gauging station  \cr
+#' stream_gauge \tab Gauging station  \cr
 #' }
 #'
 #' @examples

@@ -14,7 +14,7 @@ stations_types <- function(type) {
            KLIMATOLOGIKOS = "meteo_station",
            METEOROLOGIKOS = "meteo_station",
            YDROMETEOROLOGIKOS = "meteo_station",
-           STATHMEMETRIKOS = "stream_gage",
+           STATHMEMETRIKOS = "stream_gauge",
            "unknown")
   })
 }
