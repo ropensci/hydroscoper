@@ -120,7 +120,7 @@ ggplot(data = df, aes(x = Date, y = Value))+
   theme_classic()
 ```
 
-![](README-plot_timeseries-1.png)<!-- -->
+![](man/figures/README-plot_timeseries-1.png)<!-- -->
 
 ## Meta
 
