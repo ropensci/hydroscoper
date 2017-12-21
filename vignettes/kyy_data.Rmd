@@ -18,16 +18,18 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This vignette shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is http:/kyy.hydroscope.gr
+This vignette shows how to create a tidy dataframe for the stations' and time-series' data from Hydroscope. The subdomain of Hydroscope that we will aplly the package's functions is **http:/kyy.hydroscope.gr** (Ministry of Environment and Energy).
 
 ## Get stations values
 
-The following code, with the use of ldply function from plyr package, shows how to create a tidy dataframe with all the values of the stations, including their coordinates and elevation, from a subdomain.
+The following code shows how to create a tidy dataframe with stations' data, including their coordinates and elevations.
 
 ```{r stations df creation, eval = FALSE}
+# load libraries
 library(hydroscoper)
 library(plyr)
 
+# set subdomain
 subdomain <- "kyy"
 
 # get stations data
@@ -45,16 +47,16 @@ stations <- merge(stations, coords, by = "StationID", all.x = TRUE)
 head(stations)
 ```
 
-
 ## Get time-series values
 
-The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the time series from the subdomain.
+The following code shows how to create a tidy dataframe with all the time series from the subdomain.
 
 ```{r timeseries creation, eval = FALSE}
-# create timeseries dataframe
+# create time series' dataframe
 timeseries <- ldply(stations$StationID, function(id) {
   get_timeseries(subdomain, id)
 })
 
+# view time series
 head(timeseries)
 ```
