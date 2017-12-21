@@ -4,9 +4,10 @@ Title: R interface to hydroscope
 Version: 0.1.0
 Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
-Description: R interface to the Greek National Databank for Hydrological and 
-             Meteorological Information  at <http://www.hydroscope.gr/> with
-             functions for stations, timeseries and raw data downloading.
+Description: R interface to the  Greek National Databank for Hydrological and 
+    Meteorological Information, [Hydroscope](<http://www.hydroscope.gr/>). It 
+    covers most of Hydroscope's sources and provides functions to transform 
+    these untidy data sets into tidy dataframes.
 URL: https://github.com/kvantas/hydroscoper
 BugReports: https://github.com/kvantas/hydroscoper/issues             
 Depends: R (>= 3.4.0)
