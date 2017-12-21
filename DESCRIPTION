@@ -1,6 +1,6 @@
 Package: hydroscoper
 Type: Package
-Title: R interface to hydroscope
+Title: R Interface to Hydroscope
 Version: 0.1.0
 Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
