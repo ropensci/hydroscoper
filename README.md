@@ -57,8 +57,8 @@ The available functions that are provided by `hydroscoper` are:
 
 ## Example
 
-This is a basic example which shows you how to get the stations list
-from the Ministry of Environment and Energy:
+This is a basic example which shows you how to get a dataframe with
+stations from the Ministry of Environment and Energy:
 
 ``` r
 library(hydroscoper)
@@ -68,7 +68,7 @@ head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 #> 1    501062            GR11       Peirama   other meteo_station
 #> 2    200251            GR12          ABAS min_env meteo_station
 #> 3    200280            GR13 AG. BASILEIOS min_env meteo_station
-#> 4    501032            GR13 AG. BASILEIOS min_rur   stream_gage
+#> 4    501032            GR13 AG. BASILEIOS min_rur  stream_gauge
 #> 5    200171            GR04   AG. BLASIOS min_env meteo_station
 #> 6    200292            GR13  AG. GEORGIOS min_env meteo_station
 ```
