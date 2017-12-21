@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper) 
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
-<img src="man/figures/hydroscoper_hex.png" align="right" height="100"/> 
+<img src="man/figures/hydroscoper_hex.png" align="right" height="220"/> 
 
 `hydroscoper` is an R interface to the  Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). Hydroscope is the result of long-standing efforts by numerous scientists from the Department of Water Resources and Environment of the National Technical University of Athens in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and the European Union.
 

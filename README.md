@@ -10,7 +10,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?b
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
-<img src="man/figures/hydroscoper_hex.png" align="right" height="100"/>
+<img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
 
 `hydroscoper` is an R interface to the Greek National Databank for
 Hydrological and Meteorological Information,
