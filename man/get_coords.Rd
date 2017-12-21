@@ -4,7 +4,7 @@
 \alias{get_coords}
 \title{Get station's coordinates}
 \usage{
-get_coords(subdomain = c("kyy", "ypaat", "emy", "main"), stationID)
+get_coords(subdomain = c("kyy", "ypaat", "emy"), stationID)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
@@ -14,10 +14,9 @@ get_coords(subdomain = c("kyy", "ypaat", "emy", "main"), stationID)
 \value{
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
 and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-\code{"emy"} (National Meteorological Service) or \code{"main"} (all the
-databases, merged), and stationID is not NULL, returns a dataframe with
-station's coordinates and elevation from the corresponding database of
-hydroscope.gr. Otherwise gives an error message.
+\code{"emy"} (National Meteorological Service) and stationID is not NULL,
+returns a dataframe with station's coordinates and elevation from the
+corresponding database of hydroscope.gr. Otherwise gives an error message.
 
  If the station ID does not exist in the database, or the url from hydroscope
  could not parsed, returns a dataframe with NA values.
@@ -62,8 +61,6 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
-\item Main Hydroscope's database,
-\url{http://main.hydroscope.gr}
 }
 }
 \author{

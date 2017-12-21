@@ -7,11 +7,10 @@
 #' @param subdomain One of the subdomains of hydroscope.gr
 #'
 #' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
-#' databases, merged), returns a tidy dataframe with stations' data
-#' from the corresponding database of hydroscope.gr. Otherwise gives an error
-#' message.
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food), or
+#' \code{"emy"} (National Meteorological Service), returns a tidy dataframe with
+#' stations' data from the corresponding database of hydroscope.gr. Otherwise
+#' gives an error message.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -90,15 +89,13 @@
 #' \url{http://ypaat.hydroscope.gr}
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
-#' \item Main Hydroscope's database,
-#' \url{http://main.hydroscope.gr}
 #'}
 #'
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import XML
 #' @export get_stations
-get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
+get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
 
   # match subdomain values
   subdomain <- match.arg(subdomain)
@@ -172,10 +169,9 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 #'
 #' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
 #' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
-#' databases, merged), and stationID is not NULL, returns a dataframe with
-#' station's coordinates and elevation from the corresponding database of
-#' hydroscope.gr. Otherwise gives an error message.
+#' \code{"emy"} (National Meteorological Service) and stationID is not NULL,
+#' returns a dataframe with station's coordinates and elevation from the
+#' corresponding database of hydroscope.gr. Otherwise gives an error message.
 #'
 #'  If the station ID does not exist in the database, or the url from hydroscope
 #'  could not parsed, returns a dataframe with NA values.
@@ -215,13 +211,11 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "main")) {
 #' \url{http://ypaat.hydroscope.gr}
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
-#' \item Main Hydroscope's database,
-#' \url{http://main.hydroscope.gr}
 #'}
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import XML
 #' @export get_coords
-get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
+get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"),
                        stationID) {
 
   # check that stationID is given
@@ -286,11 +280,10 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' @param stationID A station ID
 #'
 #' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-#' \code{"emy"} (National Meteorological Service) or \code{"main"} (all the
-#' databases, merged), and stationID is not NULL, returns a dataframe with
-#' time series data from the corresponding station and database of
-#' hydroscope.gr. Otherwise gives an error message.
+#' and Energy), \code{"ypaat"} (Ministry of Rural Development and Food) or
+#' \code{"emy"} (National Meteorological Service) and stationID is not NULL,
+#' returns a dataframe with time series data from the corresponding station and
+#' database of hydroscope.gr. Otherwise gives an error message.
 #'
 #'  If the station ID does not exist in the database, or the url from hydroscope
 #'  could not parsed, returns a dataframe with NA values.
@@ -355,13 +348,11 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' \url{http://ypaat.hydroscope.gr}
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
-#' \item Main Hydroscope's database,
-#' \url{http://main.hydroscope.gr}
 #'}
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import XML
 #' @export get_timeseries
-get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
+get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"),
                            stationID) {
 
   # check that stationID is given
@@ -478,8 +469,6 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "main"),
 #' \url{http://ypaat.hydroscope.gr}
 #' \item National Meteorological Service,
 #' \url{http://emy.hydroscope.gr}
-#' \item Main Hydroscope's database,
-#' \url{http://main.hydroscope.gr}
 #'}
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import readr

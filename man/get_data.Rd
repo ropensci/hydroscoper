@@ -55,8 +55,6 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
-\item Main Hydroscope's database,
-\url{http://main.hydroscope.gr}
 }
 }
 \author{
