@@ -28,7 +28,7 @@ translates various Greek terms to English.
   - National Meteorological Service, <http://emy.hydroscope.gr/>
 
 The front end for the data sources of Greek Public Power Corporation,
-<http://emy.hydroscope.gr/>, uses an old format and it is not currently
+<http://deh.hydroscope.gr/>, uses an old format and it is not currently
 supported.
 
 Note that only the two Ministries allow freely to download time series
