@@ -1,4 +1,5 @@
 ---
+title: hydroscoper
 output: github_document
 ---
 
@@ -16,9 +17,6 @@ knitr::opts_chunk$set(
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper) 
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
-
-
-# hydroscoper
 
 `hydroscoper` is an R interface to the  Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](<http://www.hydroscope.gr/>). It covers most of Hydroscope's sources and provides functions to transform these untidy data sets into tidy dataframes.
 
@@ -57,7 +55,7 @@ The available functions that are provided by `hydroscoper` are:
 
 This is a basic example which shows you how to get the stations list from the Ministry of Environment and Energy:
 
-```{r example stations}
+```{r get_stations}
 library(hydroscoper)
 stations <- get_stations(subdomain = "kyy")
 head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
@@ -65,26 +63,26 @@ head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 
 Using the above data you can get the coordinates and the elevation for a specific station, **200251**:
 
-```{r example coords}
+```{r get_coords}
 crds <-  get_coords(subdomain = "kyy", stationID = 200251)
 crds
 ```
 
 To get the time series from the same station run:
 
-```{r get time series}
+```{r get_time_series}
 
 ts_data <- get_timeseries(subdomain = "kyy", stationID = 200251)
 ts_data[c("TimeSeriesID", "Variable", "TimeStep", "Unit", "StartDate","EndDate")]
 ```
 
 You can get the time series **912** to a tidy dataframe with:
-```{r}
+```{r get_data}
 df <- get_data(subdomain = "kyy", timeID = 912)
 ```
 
 Let's create a plot for these data:
-```{r plot data}
+```{r plot_timeseries}
 suppressPackageStartupMessages(library(ggplot2))
 ggplot(data = df, aes(x = Date, y = Value))+
   geom_line()+

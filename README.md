@@ -1,3 +1,5 @@
+hydroscoper
+================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -7,8 +9,6 @@ Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://tr
 Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
-
-# hydroscoper
 
 `hydroscoper` is an R interface to the Greek National Databank for
 Hydrological and Meteorological Information,
@@ -120,7 +120,7 @@ ggplot(data = df, aes(x = Date, y = Value))+
   theme_classic()
 ```
 
-![](README-plot%20data-1.png)<!-- -->
+![](README-plot_timeseries-1.png)<!-- -->
 
 ## Meta
 
