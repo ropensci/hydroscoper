@@ -1,27 +1,40 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://travis-ci.org/kvantas/hydroscoper) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper) [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper) [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
-hydroscoper
-===========
+[![Travis-CI Build
+Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://travis-ci.org/kvantas/hydroscoper)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
+[![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
+[![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
-`hydroscoper` is an R interface to the Greek National Databank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). It covers most of Hydroscope's sources and provides functions to transform these untidy data sets into tidy dataframes.
+# hydroscoper
 
-The Hydroscope's data sets are in Greek, thus limiting their usefulness. `hydroscoper` transliterates the Greek Unicode text to Latin, and translates various Greek terms to English.
+`hydroscoper` is an R interface to the Greek National Databank for
+Hydrological and Meteorological Information,
+[Hydroscope](http://www.hydroscope.gr/). It covers most of Hydroscope’s
+sources and provides functions to transform these untidy data sets into
+tidy dataframes.
 
-Data sources in hydroscoper
----------------------------
+The Hydroscope’s data sets are in Greek, thus limiting their usefulness.
+`hydroscoper` transliterates the Greek Unicode text to Latin, and
+translates various Greek terms to English.
 
--   Ministry of Environment and Energy, <http://kyy.hydroscope.gr/>
--   Ministry of Rural Development and Food, <http://ypaat.hydroscope.gr/>
--   National Meteorological Service, <http://emy.hydroscope.gr/>
+## Data sources in hydroscoper
 
-The front end for the data sources of Greek Public Power Corporation, <http://emy.hydroscope.gr/>, uses an old format and it is not currently supported.
+  - Ministry of Environment and Energy, <http://kyy.hydroscope.gr/>
+  - Ministry of Rural Development and Food,
+    <http://ypaat.hydroscope.gr/>
+  - National Meteorological Service, <http://emy.hydroscope.gr/>
 
-Note that only the two Ministries allow freely to download time series values.
+The front end for the data sources of Greek Public Power Corporation,
+<http://emy.hydroscope.gr/>, uses an old format and it is not currently
+supported.
 
-Installation
-------------
+Note that only the two Ministries allow freely to download time series
+values.
+
+## Installation
 
 You can install the development version from GitHub with:
 
@@ -30,20 +43,22 @@ You can install the development version from GitHub with:
 devtools::install_github("kvantas/hydroscoper")
 ```
 
-Using hydroscoper
------------------
+## Using hydroscoper
 
 The available functions that are provided by `hydroscoper` are:
 
--   `get_stations` to retrieve a tidy dataframe with stations' data for a given data source.
--   `get_coords` to retrieve the coordinates and elevation for a given station.
--   `get_timeseries` to retriece a tidy dataframe with a station's time series.
--   `get_data` to retriece a tidy dataframe with a time series' values.
+  - `get_stations` to retrieve a tidy dataframe with stations’ data for
+    a given data source.
+  - `get_coords` to retrieve the coordinates and elevation for a given
+    station.
+  - `get_timeseries` to retriece a tidy dataframe with a station’s time
+    series.
+  - `get_data` to retriece a tidy dataframe with a time series’ values.
 
-Example
--------
+## Example
 
-This is a basic example which shows you how to get the stations list from the Ministry of Environment and Energy:
+This is a basic example which shows you how to get the stations list
+from the Ministry of Environment and Energy:
 
 ``` r
 library(hydroscoper)
@@ -58,7 +73,8 @@ head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 #> 6    200292            GR13  AG. GEORGIOS min_env meteo_station
 ```
 
-Using the above data you can get the coordinates and the elevation for a specific station, **200251**:
+Using the above data you can get the coordinates and the elevation for a
+specific station, **200251**:
 
 ``` r
 crds <-  get_coords(subdomain = "kyy", stationID = 200251)
@@ -93,7 +109,7 @@ You can get the time series **912** to a tidy dataframe with:
 df <- get_data(subdomain = "kyy", timeID = 912)
 ```
 
-Let's create a plot for these data:
+Let’s create a plot for these data:
 
 ``` r
 suppressPackageStartupMessages(library(ggplot2))
@@ -104,17 +120,17 @@ ggplot(data = df, aes(x = Date, y = Value))+
   theme_classic()
 ```
 
-![](README-plot%20data-1.png)
+![](README-plot%20data-1.png)<!-- -->
 
-Meta
-----
+## Meta
 
--   Please [report any issues or bugs](https://github.com/kvantas/hydroscoper/issues).
--   Licence:
-    -   All code is licenced MIT
-    -   All data are from the public data sources in <http://www.hydroscope.gr/>
+  - Please [report any issues or
+    bugs](https://github.com/kvantas/hydroscoper/issues).
+  - Licence:
+      - All code is licenced MIT
+      - All data are from the public data sources in
+        <http://www.hydroscope.gr/>
 
-References
-----------
+## References
 
 [Hydroscope](http://www.hydroscope.gr/)
