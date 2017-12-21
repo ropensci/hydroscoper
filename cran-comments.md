@@ -1,7 +1,7 @@
 ## Resubmission
 This is a resubmission. In this version I have:
-* omit the redundant "R" in `Title: R Interface to Hydroscope`
-* omit "[Hydroscope]" in Description:
+* omitted the redundant "R" in `Title: R Interface to Hydroscope`
+* omitted "[Hydroscope]" in Description:
 ```
 Description: R interface to the  Greek National Data Bank for Hydrological
    and  Meteorological Information,
