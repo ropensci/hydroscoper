@@ -21,7 +21,7 @@
 timeseries
 }
 \description{
-Time series' data from the Greek National Databank for Hydrological and
+Time series' data from the Greek National Data bank for Hydrological and
 Meteorological Information database \url{http://kyy.hydroscope.gr/}
 }
 \keyword{datasets}

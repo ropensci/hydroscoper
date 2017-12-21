@@ -1,6 +1,6 @@
 #' stations
 #'
-#' Stations' data from the Greek National Databank for Hydrological and
+#' Stations' data from the Greek National Data Bank for Hydrological and
 #' Meteorological Information database \url{http://kyy.hydroscope.gr/}
 #'
 #' @format A data frame:
@@ -22,7 +22,7 @@
 
 #' timeseries
 #'
-#' Time series' data from the Greek National Databank for Hydrological and
+#' Time series' data from the Greek National Data bank for Hydrological and
 #' Meteorological Information database \url{http://kyy.hydroscope.gr/}
 #'
 #' @format A data frame:

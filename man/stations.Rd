@@ -22,7 +22,7 @@
 stations
 }
 \description{
-Stations' data from the Greek National Databank for Hydrological and
+Stations' data from the Greek National Data Bank for Hydrological and
 Meteorological Information database \url{http://kyy.hydroscope.gr/}
 }
 \keyword{datasets}
