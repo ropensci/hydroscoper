@@ -12,7 +12,7 @@
 
 <meta name="author" content="Konstantinos Vantas" />
 
-<meta name="date" content="2017-12-21" />
+<meta name="date" content="2017-12-22" />
 
 <title>Using hydroscoper to get stations’ and time-series’ data</title>
 
@@ -280,45 +280,48 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Using hydroscoper to get stations’ and time-series’ data</h1>
 <h4 class="author"><em>Konstantinos Vantas</em></h4>
-<h4 class="date"><em>2017-12-21</em></h4>
+<h4 class="date"><em>2017-12-22</em></h4>
 
 
 
 <section id="introduction" class="level2">
 <h2>Introduction</h2>
-<p>This vignette shows how to create a tidy dataframe for the stations’ and time-series’ data from Hydroscope. The subdomain of Hydroscope that we will aplly the package’s functions is <a href="http:/kyy.hydroscope.gr" class="uri">http:/kyy.hydroscope.gr</a></p>
+<p>This vignette shows how to create a tidy dataframe for the stations’ and time-series’ data from Hydroscope. The subdomain of Hydroscope that we will aplly the package’s functions is **<a href="http:/kyy.hydroscope.gr**" class="uri">http:/kyy.hydroscope.gr**</a> (Ministry of Environment and Energy).</p>
 </section>
 <section id="get-stations-values" class="level2">
 <h2>Get stations values</h2>
-<p>The following code, with the use of ldply function from plyr package, shows how to create a tidy dataframe with all the values of the stations, including their coordinates and elevation, from a subdomain.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(plyr)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">subdomain &lt;-<span class="st"> &quot;kyy&quot;</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co"># get stations data</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">stations &lt;-<span class="st"> </span><span class="kw">get_stations</span>(subdomain)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"> </a>
-<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="co"># get coordinates and elevation</span></a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">coords &lt;-<span class="st"> </span><span class="kw">ldply</span>(stations<span class="op">$</span>StationID, <span class="cf">function</span>(id) {</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">   <span class="kw">get_coords</span>(subdomain, id)</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12">})</a>
-<a class="sourceLine" id="cb1-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="co"># merge data</span></a>
-<a class="sourceLine" id="cb1-15" data-line-number="15">stations &lt;-<span class="st"> </span><span class="kw">merge</span>(stations, coords, <span class="dt">by =</span> <span class="st">&quot;StationID&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="co"># show data</span></a>
-<a class="sourceLine" id="cb1-18" data-line-number="18"><span class="kw">head</span>(stations)</a></code></pre></div>
+<p>The following code shows how to create a tidy dataframe with stations’ data, including their coordinates and elevations.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(hydroscoper)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(plyr)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># set subdomain</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">subdomain &lt;-<span class="st"> &quot;kyy&quot;</span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># get stations data</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">stations &lt;-<span class="st"> </span><span class="kw">get_stations</span>(subdomain)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"> </a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="co"># get coordinates and elevation</span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">coords &lt;-<span class="st"> </span><span class="kw">ldply</span>(stations<span class="op">$</span>StationID, <span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">   <span class="kw">get_coords</span>(subdomain, id)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">})</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co"># merge data</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">stations &lt;-<span class="st"> </span><span class="kw">merge</span>(stations, coords, <span class="dt">by =</span> <span class="st">&quot;StationID&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb1-19" data-line-number="19"><span class="co"># show data</span></a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"><span class="kw">head</span>(stations)</a></code></pre></div>
 </section>
 <section id="get-time-series-values" class="level2">
 <h2>Get time-series values</h2>
-<p>The following code shows, with the use of ldply function from plyr package, how to create a tidy dataframe with all the time series from the subdomain.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># create timeseries dataframe</span></a>
+<p>The following code shows how to create a tidy dataframe with all the time series from the subdomain.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># create time series' dataframe</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">timeseries &lt;-<span class="st"> </span><span class="kw">ldply</span>(stations<span class="op">$</span>StationID, <span class="cf">function</span>(id) {</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="kw">get_timeseries</span>(subdomain, id)</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">})</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="kw">head</span>(timeseries)</a></code></pre></div>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co"># view time series</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw">head</span>(timeseries)</a></code></pre></div>
 </section>
 
 

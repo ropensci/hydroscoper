@@ -5,9 +5,11 @@ knitr::opts_chunk$set(
 )
 
 ## ----stations df creation, eval = FALSE----------------------------------
+#  # load libraries
 #  library(hydroscoper)
 #  library(plyr)
 #  
+#  # set subdomain
 #  subdomain <- "kyy"
 #  
 #  # get stations data
@@ -25,10 +27,11 @@ knitr::opts_chunk$set(
 #  head(stations)
 
 ## ----timeseries creation, eval = FALSE-----------------------------------
-#  # create timeseries dataframe
+#  # create time series' dataframe
 #  timeseries <- ldply(stations$StationID, function(id) {
 #    get_timeseries(subdomain, id)
 #  })
 #  
+#  # view time series
 #  head(timeseries)
 
