@@ -18,28 +18,43 @@ Hydrological and Meteorological Information,
 long-standing efforts by numerous scientists from the Department of
 Water Resources and Environment of the National Technical University of
 Athens in collaboration with various companies and associations. It was
-implemented in three phases, funded by the Ministry of Development, the
-Ministry of Environment and the European Union.
+implemented in three phases, funded by the Ministry of Development,
+Ministry of Environment and European Union.
+
+Hydroscope, provides several national data sources from various
+organisations via a web interface. Each participating organisation keeps
+its data on its own server. These organisations are:
+
+  - Ministry of Environment and Energy.
+  - Ministry of Rural Development and Food.
+  - National Meteorological Service.
+  - National Observatory of Athens.
+  - Greek Prefectures.
+  - Public Power Corporation.
+
+The Hydroscope’s data sets are in Greek, thus limiting their usefulness,
+and raw time series values are well structured as space seperated text
+files.
 
 `hydroscoper` covers most of Hydroscope’s sources and provides functions
-to transform these untidy data sets into tidy dataframes. The
-Hydroscope’s data sets are in Greek, thus limiting their usefulness.
-`hydroscoper` transliterates the Greek Unicode text to Latin, and
-translates various Greek terms to English.
+to:
 
-## Data sources in hydroscoper
+1.  Transform the available tables and data sets into tidy dataframes.
+2.  Transliterate the Greek Unicode names to Latin
+3.  Translate various Greek terms to English.
 
-  - Ministry of Environment and Energy, <http://kyy.hydroscope.gr/>
+## Data sources in hydroscoper are:
+
+  - Ministry of Environment and Energy, National Observatory of Athens
+    and Greek Prefectures, <http://kyy.hydroscope.gr/>
   - Ministry of Rural Development and Food,
     <http://ypaat.hydroscope.gr/>
   - National Meteorological Service, <http://emy.hydroscope.gr/>
 
 The front end for the data sources of Greek Public Power Corporation,
 <http://deh.hydroscope.gr/>, uses an old format and it is not currently
-supported.
-
-Note that only the two Ministries allow to download time series values
-freely.
+supported. Note that only the two Ministries allow to download time
+series values freely.
 
 ## Installation
 
