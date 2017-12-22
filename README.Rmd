@@ -36,7 +36,7 @@ The Hydroscope's data sets are in Greek, thus limiting their usefulness, and raw
 `hydroscoper` covers most of Hydroscope's sources and provides functions to:
 
 1. Transform the available tables and data sets into tidy dataframes.
-2. Transliterate the Greek Unicode names to Latin
+2. Transliterate the Greek Unicode names to Latin.
 3. Translate various Greek terms to English.
 
 ## Data sources in hydroscoper are:
@@ -111,8 +111,8 @@ ggplot(data = df, aes(x = Date, y = Value))+
 
 * Please [report any issues or bugs](https://github.com/kvantas/hydroscoper/issues).
 * Licence:
-    + All code is licenced MIT
-    + All data are from the public data sources in http://www.hydroscope.gr/
+    + All code is licenced MIT.
+    + All data are from the public data sources in http://www.hydroscope.gr/.
 * To cite `hydroscoper`, please use:
   ```
   Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope. R package version 0.1.0.
