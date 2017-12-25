@@ -2,7 +2,6 @@
 title: hydroscoper
 output: github_document
 ---
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, echo = FALSE}
@@ -16,6 +15,9 @@ knitr::opts_chunk$set(
 [![Travis-CI Build Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://travis-ci.org/kvantas/hydroscoper)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper) 
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.1.9000-orange.svg?style=flat-square)](commits/master)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/> 
@@ -48,6 +50,12 @@ The Hydroscope's data sets are in Greek, thus limiting their usefulness, and raw
 The front end for the data sources of Greek Public Power Corporation, http://deh.hydroscope.gr/, uses an old format and it is not currently supported. Note that only the two Ministries allow to download time series values freely.
  
 ## Installation
+
+Install the stable release from CRAN with:
+
+```{r cran_installation, eval = FALSE}
+install.packages("hydroscoper")
+```
 
 You can install the development version from GitHub with:
 

@@ -8,6 +8,10 @@ Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://tr
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
+[![minimal R
+version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.1.9000-orange.svg?style=flat-square)](commits/master)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
@@ -40,7 +44,7 @@ files.
 to:
 
 1.  Transform the available tables and data sets into tidy dataframes.
-2.  Transliterate the Greek Unicode names to Latin
+2.  Transliterate the Greek Unicode names to Latin.
 3.  Translate various Greek terms to English.
 
 ## Data sources in hydroscoper are:
@@ -57,6 +61,12 @@ supported. Note that only the two Ministries allow to download time
 series values freely.
 
 ## Installation
+
+Install the stable release from CRAN with:
+
+``` r
+install.packages("hydroscoper")
+```
 
 You can install the development version from GitHub with:
 
@@ -151,9 +161,9 @@ ggplot(data = df, aes(x = Date, y = Value))+
 
   - Licence:
     
-      - All code is licenced MIT
+      - All code is licenced MIT.
       - All data are from the public data sources in
-        <http://www.hydroscope.gr/>
+        <http://www.hydroscope.gr/>.
 
   - To cite `hydroscoper`, please
         use:
