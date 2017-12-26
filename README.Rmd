@@ -47,7 +47,7 @@ The Hydroscope's data sets are in Greek, thus limiting their usefulness, and raw
  * Ministry of Rural Development and Food, http://ypaat.hydroscope.gr/
  * National Meteorological Service, http://emy.hydroscope.gr/
 
-The front end for the data sources of Greek Public Power Corporation, http://deh.hydroscope.gr/, uses an old format and it is not currently supported. Note that only the two Ministries allow to download time series values freely.
+Note that only the two Ministries allow to download time series values freely.
  
 ## Installation
 
