@@ -101,62 +101,41 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
   subdomain <- match.arg(subdomain)
 
   # create url
-  url <- hydroscope_url(subdomain)
+  url_hy <- hydroscope_url(subdomain)
+  url_page <- url_hy
 
-  # Web scrapping --------------------------------------------------------------
-  tryCatch({
-    # parse url
-    doc <- XML::htmlParse(url, encoding = "UTF8")
+  # web front-end uses multiple pages
+  page <- 1
+  stations <- data.frame()
 
-    # get table nodes
-    html_table <- "/html/body/div[3]/div/div/div/div[2]/div/table"
-    table_nodes <- XML::getNodeSet(doc, html_table)
+  # repeat for all pages
+  repeat{
 
-    # check if table nodes is NULL
-    if (is.null(table_nodes))  stop("")
-
-    # read html file to table
-    stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
-
-    # check table's numbers of rows and cols
-    if (NROW(stations) == 0 | NCOL(stations) != 7) stop("")
-
-    # Make valid names
-    names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
-                           "PoliticalDivision", "Owner", "Type")
-
-    # Translations and transliterations ----------------------------------------
-
-    # replace greek characters with latin
-    for (cname in c(names(stations)[-1])) {
-      stations[cname] <- greek2latin(stations[cname])
-    }
-
-    # translate types
-    stations$Type <- stations_types(stations$Type)
-
-    # add water division id
-    stations$WaterDivisionID <- add_wd_id(stations$WaterDivision)
-
-    # use abr/sions for owners' names
-    stations$Owner <- owner_names(stations$Owner)
-
-    # remove area from water basin values
-    stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
-      gsub("\\([^()]*\\)", "", str)
+    # get new stations from page
+    new_stations <- tryCatch({
+      parseStations(url_page)
+    }, error = function(e) {
+      NULL
     })
 
-    # Return data --------------------------------------------------------------
-    cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
-                "PoliticalDivision", "Owner", "Type")
+    if (!is.null(new_stations)) {
+      # if page exists append new stations
+      stations<- rbind(stations, new_stations)
+      page <- page + 1
+      url_page <- paste0(url_hy, "/?page=", page)
+    } else {
+      # if new page does not exist and there are no stations allready return NAs
+      if(NROW(stations) == 0) {
+        warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
+        return(stationsNA())
+      } else {
+        return(stations)
+      }
+    }
+  }
 
-    stations[cnames]
-  },
-  error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
-    stationsNA()
-  })
 }
+
 
 
 #' Get station's coordinates

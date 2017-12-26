@@ -145,3 +145,61 @@ coordsNA <- function(stationID) {
              Lat = NA,
              Elevation = NA)
 }
+
+
+# web scrapping
+parseStations <- function(url, translit = TRUE) {
+
+  # parse url
+  doc <- XML::htmlParse(url, encoding = "UTF8")
+
+  # get table nodes
+  html_table <- "/html/body/div[3]/div/div/div/div[2]/div/table"
+  table_nodes <- XML::getNodeSet(doc, html_table)
+
+  # check if table nodes is NULL
+  if (is.null(table_nodes))  stop("")
+
+  # read html file to table
+  stations <- XML::readHTMLTable(table_nodes[[1]], stringsAsFactors = FALSE)
+
+  # check table's numbers of rows and cols
+  if (NROW(stations) == 0 | NCOL(stations) != 7) stop("Error reading table from html")
+
+  # Make valid names
+  names(stations) <- c("StationID", "Name", "WaterBasin", "WaterDivision",
+                       "PoliticalDivision", "Owner", "Type")
+
+  # Translations and transliterations ----------------------------------------
+  if(translit){
+    # replace greek characters with latin
+    for (cname in c(names(stations)[-1])) {
+      stations[cname] <- greek2latin(stations[cname])
+    }
+
+    # remove attributes
+    stations$Name <- as.vector(stations$Name)
+    stations$PoliticalDivision <- as.vector(stations$PoliticalDivision)
+
+    # translate types
+    stations$Type <- stations_types(stations$Type)
+
+    # add water division id
+    stations$WaterDivisionID <- add_wd_id(stations$WaterDivision)
+
+    # use abr/sions for owners' names
+    stations$Owner <- owner_names(stations$Owner)
+  }
+
+  # remove area from water basin values
+  stations$WaterBasin <- sapply(stations$WaterBasin, function(str){
+    gsub("\\([^()]*\\)", "", str)
+  })
+
+  # Return data --------------------------------------------------------------
+  cnames <- c("StationID", "Name", "WaterDivisionID", "WaterBasin",
+              "PoliticalDivision", "Owner", "Type")
+
+  stations[cnames]
+
+}

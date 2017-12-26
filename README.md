@@ -16,14 +16,13 @@ version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
 
-`hydroscoper` is an R interface to the Greek National Databank for
+`hydroscoper` is an R interface to the Greek National Data Bank for
 Hydrological and Meteorological Information,
 [Hydroscope](http://www.hydroscope.gr/). Hydroscope is the result of
-long-standing efforts by numerous scientists from the Department of
-Water Resources and Environment of the National Technical University of
-Athens in collaboration with various companies and associations. It was
-implemented in three phases, funded by the Ministry of Development,
-Ministry of Environment and European Union.
+long-standing efforts by numerous Greek scientists in collaboration with
+various companies and associations. It was implemented in three phases,
+funded by the Ministry of Development, the Ministry of Environment and
+Energy and the European Union.
 
 Hydroscope, provides several national data sources from various
 organisations via a web interface. Each participating organisation keeps
@@ -37,17 +36,17 @@ its data on its own server. These organisations are:
   - Public Power Corporation.
 
 The Hydroscope’s data sets are in Greek, thus limiting their usefulness,
-and raw time series values are well structured as space seperated text
+and raw time series values are well structured as space separated text
 files.
 
 `hydroscoper` covers most of Hydroscope’s sources and provides functions
 to:
 
-1.  Transform the available tables and data sets into tidy dataframes.
+1.  Transform the available tables and data sets into tidy data frames.
 2.  Transliterate the Greek Unicode names to Latin.
 3.  Translate various Greek terms to English.
 
-## Data sources in hydroscoper are:
+## Data sources
 
   - Ministry of Environment and Energy, National Observatory of Athens
     and Greek Prefectures, <http://kyy.hydroscope.gr/>
@@ -79,17 +78,17 @@ devtools::install_github("kvantas/hydroscoper")
 
 The available functions that are provided by `hydroscoper` are:
 
-  - `get_stations` to retrieve a tidy dataframe with stations’ data for
+  - `get_stations` to retrieve a tidy data frame with stations’ data for
     a given data source.
   - `get_coords` to retrieve the coordinates and elevation for a given
     station.
-  - `get_timeseries` to retriece a tidy dataframe with a station’s time
+  - `get_timeseries` to retrieve a tidy data frame with a station’s time
     series.
-  - `get_data` to retriece a tidy dataframe with a time series’ values.
+  - `get_data` to retrieve a tidy data frame with a time series’ values.
 
 ## Example
 
-This is a basic example which shows you how to get a dataframe with
+This is a basic example which shows you how to get a data frame with
 stations from the Ministry of Environment and Energy:
 
 ``` r
@@ -135,7 +134,7 @@ ts_data[c("TimeSeriesID", "Variable", "TimeStep", "Unit", "StartDate","EndDate")
 #> 5 2001-03-01 00:00:00
 ```
 
-You can get the time series **912** to a tidy dataframe with:
+You can get the time series **912** to a tidy data frame with:
 
 ``` r
 df <- get_data(subdomain = "kyy", timeID = 912)
