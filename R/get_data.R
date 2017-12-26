@@ -376,20 +376,6 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"),
     ts_table$Variable <- ts_variable(ts_table$Variable)
     ts_table$TimeStep <- ts_timestep(ts_table$TimeStep)
 
-    # convert start and end dates to posixct -----------------------------------
-    ts_table$StartDate <- ifelse(ts_table$StartDate == "",
-                                 NA, ts_table$StartDate)
-    ts_table$EndDate <- ifelse(ts_table$EndDate == "",
-                               NA, ts_table$EndDate)
-
-    # create dates
-    time_format <- "%Y/%m/%d %H:%M"
-    ts_table$StartDate <- as.POSIXct(ts_table$StartDate,
-                                     format = time_format,
-                                     tz = "")
-    ts_table$EndDate <- as.POSIXct(ts_table$EndDate,
-                                   format = time_format,
-                                   tz = "")
 
     # return dataframe
     ts_table
