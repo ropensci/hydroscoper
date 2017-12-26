@@ -8,3 +8,4 @@
 ^inst/paper$
 ^CONDUCT.md$
 ^\.bib$
+^data_create$

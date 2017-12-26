@@ -1,7 +1,8 @@
 #' stations
 #'
 #' Stations' data from the Greek National Data Bank for Hydrological and
-#' Meteorological Information database \url{http://kyy.hydroscope.gr/}
+#' Meteorological Information databases: \url{http://kyy.hydroscope.gr/},
+#' \url{http://emy.hydroscope.gr/} and \url{http://ypaat.hydroscope.gr/}
 #'
 #' @format A data frame:
 #' \describe{
@@ -13,6 +14,7 @@
 #'     \item{PoliticalDivision}{The station's Political Division}
 #'     \item{Owner}{The station's owner}
 #'     \item{Type}{The station's type}
+#'     \item{Domain}{The corresponding domain}
 #'     \item{Long}{The station's longitude in decimal degrees, ETRS89}
 #'     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
 #'     \item{Elevation}{The station's altitude, meters above sea level}
@@ -23,7 +25,8 @@
 #' timeseries
 #'
 #' Time series' data from the Greek National Data bank for Hydrological and
-#' Meteorological Information database \url{http://kyy.hydroscope.gr/}
+#' Meteorological Information databases: \url{http://kyy.hydroscope.gr/},
+#' \url{http://emy.hydroscope.gr/} and \url{http://ypaat.hydroscope.gr/}
 #'
 #' @format A data frame:
 #' \describe{

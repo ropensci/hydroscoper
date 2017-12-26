@@ -171,7 +171,7 @@ parseStations <- function(url, translit = TRUE) {
                        "PoliticalDivision", "Owner", "Type")
 
   # Translations and transliterations ----------------------------------------
-  if(translit){
+  if (translit){
     # replace greek characters with latin
     for (cname in c(names(stations)[-1])) {
       stations[cname] <- greek2latin(stations[cname])

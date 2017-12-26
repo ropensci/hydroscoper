@@ -114,18 +114,19 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
     # get new stations from page
     new_stations <- tryCatch({
       parseStations(url_page)
-    }, error = function(e) {
+    },
+    error = function(e) {
       NULL
     })
 
     if (!is.null(new_stations)) {
       # if page exists append new stations
-      stations<- rbind(stations, new_stations)
+      stations <- rbind(stations, new_stations)
       page <- page + 1
       url_page <- paste0(url_hy, "/?page=", page)
     } else {
       # if new page does not exist and there are no stations allready return NAs
-      if(NROW(stations) == 0) {
+      if (NROW(stations) == 0) {
         warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
         return(stationsNA())
       } else {
@@ -133,7 +134,6 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy")) {
       }
     }
   }
-
 }
 
 
@@ -242,7 +242,7 @@ get_coords <- function(subdomain =  c("kyy", "ypaat", "emy"),
                Elevation = Elevation)
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
+    warning(paste0("Failed to parse url: ", url), call. = FALSE)
     # return NA values
     coordsNA(stationID)
   })
@@ -396,7 +396,7 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy"),
 
   },
   error = function(e) {
-    warning(paste0("Failed to parse url: ", url, "\n"), call. = FALSE)
+    warning(paste0("Failed to parse url: ", url), call. = FALSE)
     timeserNA(stationID)
   })
 }
