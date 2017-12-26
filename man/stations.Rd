@@ -14,6 +14,7 @@
     \item{PoliticalDivision}{The station's Political Division}
     \item{Owner}{The station's owner}
     \item{Type}{The station's type}
+    \item{Domain}{The corresponding Hydroscope's domain}
     \item{Long}{The station's longitude in decimal degrees, ETRS89}
     \item{Lat}{The station's latitude in decimal degrees, ETRS89}
     \item{Elevation}{The station's altitude, meters above sea level}
@@ -23,6 +24,9 @@ stations
 }
 \description{
 Stations' data from the Greek National Data Bank for Hydrological and
-Meteorological Information database \url{http://kyy.hydroscope.gr/}
+Meteorological Information databases: \url{http://kyy.hydroscope.gr/},
+\url{http://emy.hydroscope.gr/} and \url{http://ypaat.hydroscope.gr/}
+The stations with IDs: have erroneous coordinates and their longitudes,
+latitudes have been replaced with NA values.
 }
 \keyword{datasets}

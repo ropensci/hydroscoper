@@ -14,14 +14,14 @@
     \item{StartDate}{The starting date of time series values}
     \item{EndDate}{The ending date of time series values}
     \item{StationID}{The corresponding station's ID}
-    \item{Name}{The time series name}
-    \item{Remarks}{Remarks for time series from Hydroscope}
+    \item{Domain}{The corresponding Hydroscope's domain}
 }}
 \usage{
 timeseries
 }
 \description{
 Time series' data from the Greek National Data bank for Hydrological and
-Meteorological Information database \url{http://kyy.hydroscope.gr/}
+Meteorological Information databases: \url{http://kyy.hydroscope.gr/},
+\url{http://emy.hydroscope.gr/} and \url{http://ypaat.hydroscope.gr/}
 }
 \keyword{datasets}
