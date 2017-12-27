@@ -17,7 +17,6 @@ test_that("get_ functions give errors", {
 test_that("get_ functions give warnings", {
   expect_warning(get_coords("kyy", "a"))
   expect_warning(get_timeseries("emy", "a"))
-  expect_warning(get_data("deh", "a"))
 })
 
 test_that("get_ functions return dataframes", {
@@ -25,9 +24,7 @@ test_that("get_ functions return dataframes", {
   # return data franes
   expect_is(get_stations("ypaat"), "data.frame")
   expect_is(get_coords("kyy", 10004), "data.frame")
-  expect_is(get_coords("deh", 30022), "data.frame")
   expect_is(get_timeseries("kyy", 200206), "data.frame")
-  expect_is(get_timeseries("deh", 30022), "data.frame")
 
   expect_is(get_timeseries("emy", 20100), "data.frame")
   expect_is(get_data("kyy", 789), "data.frame")
