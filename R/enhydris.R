@@ -1,5 +1,6 @@
 # Enhydris API -----------------------------------------------------------------
 
+# Examples
 # PoliticalDivision	"http://kyy.hydroscope.gr/api/PoliticalDivision/?format=json"
 # GentityAltCodeType	"http://kyy.hydroscope.gr/api/GentityAltCodeType/?format=json"
 # Timeseries	"http://kyy.hydroscope.gr/api/Timeseries/?format=json"
@@ -37,6 +38,7 @@
 enhy_get_df <- function(h_url, trans_lit = TRUE) {
 
   df <- jsonlite::fromJSON(h_url, flatten=TRUE)
+  df <- tibble::as.tibble(df)
 
   for (cname in c(names(df))) {
     df[cname] <- greek2latin(df[cname])
@@ -50,6 +52,7 @@ enhy_get_txt <- function(h_url = "http://kyy.hydroscope.gr/api/tsdata/259/") {
   # read timeseries data
   tmFormat <- "%Y-%m-%d %H:%M"
 
+  # use readr to get values
   ts <- readr::read_csv(url(h_url),
                   col_names = c("Date", "Value", "Comment"),
                   col_types = list(
