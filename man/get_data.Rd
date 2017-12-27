@@ -4,12 +4,12 @@
 \alias{get_data}
 \title{Get time series values in a tidy dataframe}
 \usage{
-get_data(subdomain = c("kyy", "ypaat"), timeID)
+get_data(subdomain = c("kyy", "ypaat"), time_id)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
 
-\item{timeID}{A time series ID}
+\item{time_id}{A time series ID}
 }
 \value{
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
@@ -39,7 +39,7 @@ freely available.
 
 The subdomain "main", which also is not used, is a data
 aggregator from several databases. It uses different IDs for stations and
-timeseries.
+time series.
 }
 \examples{
 # get time series 912 from the Greek Ministry of Environment and Energy
@@ -57,10 +57,6 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://kyy.hydroscope.gr}
 \item Ministry of Rural Development and Food,
 \url{http://ypaat.hydroscope.gr}
-\item National Meteorological Service,
-\url{http://emy.hydroscope.gr}
-\item{Greek Public Power Corporation},
-\url{http://deh.hydroscope.gr}
 }
 }
 \author{

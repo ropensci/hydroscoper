@@ -104,7 +104,8 @@ ts_timestep <- function(variable) {
   })
 }
 
-# Data creation functions ------------------------------------------------------
+
+# Data functions ---------------------------------------------------------------
 
 # create url
 hydroscope_url <- function(domain) {
@@ -142,9 +143,22 @@ dataNA <- function(){
 }
 
 # coords dataframe with NA values
-coordsNA <- function(stationID) {
-  data.frame(StationID = stationID,
-             Long = NA,
-             Lat = NA,
-             Elevation = NA)
+coordsNA <- function() {
+  data.frame(Long = NA,
+             Lat = NA)
+}
+
+# create lat. and lon. from points
+create_coords <- function(str) {
+  str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
+                     simplify = TRUE)
+
+  if(NCOL(str_split) == 5) {
+    data.frame(long = as.numeric(str_split[, 3]),
+               lat = as.numeric(str_split[, 4]))
+  } else {
+    data.frame(long = rep(NA, NROW(str)),
+               lat = rep(NA, NROW(str)))
+  }
+
 }

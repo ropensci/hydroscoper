@@ -35,30 +35,21 @@
 
 
 # use Enhydris API to get json data
-enhy_get_df <- function(h_url, trans_lit = TRUE) {
-
-  df <- jsonlite::fromJSON(h_url, flatten=TRUE)
-  df <- tibble::as.tibble(df)
-
-  for (cname in c(names(df))) {
-    df[cname] <- greek2latin(df[cname])
-  }
-
+enhy_get_df <- function(h_url) {
+  jsonlite::fromJSON(h_url, flatten=TRUE)
 }
 
 # use Enhydris API to get plain text data
-enhy_get_txt <- function(h_url = "http://kyy.hydroscope.gr/api/tsdata/259/") {
+enhy_get_txt <- function(h_url) {
 
   # read timeseries data
   tmFormat <- "%Y-%m-%d %H:%M"
 
   # use readr to get values
-  ts <- readr::read_csv(url(h_url),
+  readr::read_csv(url(h_url),
                   col_names = c("Date", "Value", "Comment"),
                   col_types = list(
                     readr::col_datetime(format = tmFormat),
                     readr::col_double(),
                     readr::col_character()))
-
-  return(ts)
 }

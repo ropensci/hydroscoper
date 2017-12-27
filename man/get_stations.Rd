@@ -4,29 +4,35 @@
 \alias{get_stations}
 \title{Get stations data}
 \usage{
-get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"))
+get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 }
 \arguments{
-\item{subdomain}{One of the subdomains of hydroscope.gr}
+\item{subdomain}{One of the subdomains of Hydroscope.}
+
+\item{translit}{Automatically transliterate Greek to Latin.}
 }
 \value{
-If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-\code{"deh"} (Greek Public Power Corporation) or
-\code{"emy"} (National Meteorological Service), returns a tidy dataframe with
-stations' data from the corresponding database of hydroscope.gr. Otherwise
-gives an error message.
+If \code{subdomain} is one of:
+\itemize{
+\item{\code{kyy}, Ministry of Environment and Energy}
+\item{\code{ypaat}, Ministry of Rural Development and Food}
+\item{\code{deh}, Greek Public Power Corporation}
+\item{\code{emy}, National Meteorological Service}
+}
+returns a tidy dataframe with stations' data from the corresponding database
+of Hydroscope. Otherwise gives an error message.
 
 The dataframe columns are:
 \describe{
-    \item{StationID}{The station's ID from the domain's database}
-    \item{Name}{The station's name}
-    \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
-    GR14}
-    \item{WaterBasin}{The station's Water Basin}
-    \item{PoliticalDivision}{The station's Political Division}
-    \item{Owner}{The station's owner}
+    \item{station_id}{The station's ID from the domain's database}
+    \item{last_modified}{The date that the station's data were last modified}
+    \item{name}{The station's name}
+    \item{water_basin}{The station's Water Basin}
+    \item{water_division}{The station's Water Division ID}
+    \item{political_division}{The station's Political Division}
+    \item{altitude}{The station's owner}
     \item{Type}{The station's type}
+
 }
 }
 \description{
@@ -36,61 +42,21 @@ exist in a database of Hydroscope.
 \note{
 Stations' IDs might not be unique at the different databases records from the
 different Hydroscope domains.
-
-The Greek Water Divisions ID are:
-\tabular{ll}{
-\strong{Code}  \tab \strong{Name} \cr
-GR01 \tab DYTIKE PELOPONNESOS \cr
-GR02 \tab BOREIA PELOPONNESOS \cr
-GR03 \tab ANATOLIKE PELOPONNESOS \cr
-GR04 \tab DYTIKE STEREA ELLADA \cr
-GR05 \tab EPEIROS  \cr
-GR06 \tab ATTIKE  \cr
-GR07 \tab ANATOLIKE STEREA ELLADA \cr
-GR08 \tab THESSALIA  \cr
-GR09 \tab DYTIKE MAKEDONIA  \cr
-GR10 \tab KENTRIKE MAKEDONIA  \cr
-GR11 \tab ANATOLIKE MAKEDONIA  \cr
-GR12 \tab THRAKE  \cr
-GR13 \tab KRETE  \cr
-GR14 \tab NESOI AIGAIOU  \cr
-}
-
-The codes used in Owner variable are:
-\tabular{ll}{
-\strong{Code}  \tab \strong{Name} \cr
-min_env \tab Ministry of Environment and Energy \cr
-noa \tab National Observatory of Athens \cr
-min_rur \tab  Ministry of Rural Development and Food\cr
-prefec \tab Prefectures of Greece  \cr
-emy \tab National Meteorological Service  \cr
-dei \tab Public Power Corporation  \cr
-}
-
-The types used at station's type are:
-\tabular{ll}{
-\strong{Code}  \tab \strong{Description} \cr
-meteo_station \tab Weather station \cr
-stream_gauge \tab Gauging station  \cr
-}
 }
 \examples{
 
-# get stations' data from the Greek National Meteorological Service
+# get stations' data from the Hydroscope's databases
+kyy_stations <- get_stations(subdomain = "kyy")
+ypaat_stations <- get_stations(subdomain = "ypaat")
 emy_stations <- get_stations(subdomain = "emy")
+deh_stations <- get_stations(subdomain = "deh")
 
 \dontrun{
-dei_stations <- get_stations(subdomain = "dei")
+stations <- get_stations(subdomain = "none")
 }
 
 }
 \references{
-European Terrestrial Reference System 1989 (ETRS),
-\url{http://bit.ly/2kJwFuf}
-
-Greek Water Divisions,
-\url{http://bit.ly/2kk0tOm}
-
 Stations' data are retrieved from the Hydroscope's databases:
 \itemize{
 \item Ministry of Environment, Energy and Climate Change,

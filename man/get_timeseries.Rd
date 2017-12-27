@@ -2,79 +2,57 @@
 % Please edit documentation in R/get_data.R
 \name{get_timeseries}
 \alias{get_timeseries}
-\title{Get time series corresponding to a station}
+\title{Get time series data}
 \usage{
-get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"), stationID)
+get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 }
 \arguments{
-\item{subdomain}{One of the subdomains of hydroscope.gr}
+\item{subdomain}{One of the subdomains of Hydroscope.}
 
-\item{stationID}{A station ID}
+\item{translit}{Automatically transliterate Greek to Latin.}
 }
 \value{
-If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
-\code{"deh"} (Greek Public Power Corporation) or \code{"emy"} (National
-Meteorological Service), and stationID is not NULL, returns a dataframe with
-time series data from the corresponding station and database of
-hydroscope.gr. Otherwise gives an error message.
-
- If the station ID does not exist in the database, or the url from hydroscope
- could not parsed, returns a dataframe with NA values.
+If \code{subdomain} is one of:
+\itemize{
+\item{\code{kyy}, Ministry of Environment and Energy}
+\item{\code{ypaat}, Ministry of Rural Development and Food}
+\item{\code{deh}, Greek Public Power Corporation}
+\item{\code{emy}, National Meteorological Service}
+}
+returns a tidy dataframe with stations' data from the corresponding database
+of Hydroscope. Otherwise gives an error message.
 
 The dataframe columns are:
 \describe{
-    \item{TimeSeriesID}{The time series ID from the database}
-    \item{Name}{The time series name}
-    \item{Variable}{The time series variable type}
-    \item{TimeStep}{The timestep of time series}
-    \item{Unit}{The units of the time series}
-    \item{Remarks}{Remarks from Hydroscope}
-    \item{Instrument}{The instrument ID}
-    \item{StartDate}{The starting date of time series values}
-    \item{EndDate}{The ending date of time series values}
-    \item{StationID}{The corresponding station's ID}
+    \item{station_id}{The station's ID from the domain's database}
+    \item{last_modified}{The date that the station's data were last modified}
+    \item{name}{The station's name}
+    \item{water_basin}{The station's Water Basin}
+    \item{water_division}{The station's Water Division ID}
+    \item{political_division}{The station's Political Division}
+    \item{altitude}{The station's owner}
+    \item{Type}{The station's type}
+
 }
 }
 \description{
-\code{get_timeseries} returns a dataframe with the available time series from
-a station in a database of Hydroscope.
+\code{get_stations} returns a dataframe with data from the stations that
+exist in a database of Hydroscope.
 }
 \note{
-Stations' and time series' IDs might not be unique at the different databases
-records from the different Hydroscope domains.
-
-The codes used in Variable are:
-\tabular{ll}{
-\strong{Code}  \tab \strong{Name} \cr
-wind_direc \tab Wind Direction \cr
-wind_speed \tab Wind Speed \cr
-wind_speed_av \tab  Average Wind Speed\cr
-calcium \tab Calcium Concentration  \cr
-rain_snow \tab Rain and Snow Height  \cr
-rainfall \tab Rain Height  \cr
-snow \tab Snow Height  \cr
-evap_estim \tab Estimated Evaporation   \cr
-evap_actual \tab Measured Evaporation \cr
-flow \tab Discharge  \cr
-pressure \tab Atmospheric Pressure  \cr
-water_level_flood \tab Flood Water Level   \cr
-air_temp \tab Air Temperature  \cr
-ground_temp \tab Ground Temperature  \cr
-ground_temp_min \tab Minimum Ground Temperature  \cr
-ground_temp_max \tab Maximum Ground Temperature  \cr
-temp_min \tab Minimum Air Temperature  \cr
-temp_max \tab Maximum Air Temperature  \cr
-humid_absol \tab Absolute Humidity  \cr
-humid_rel \tab Relative Humidity  \cr
-}
+Stations' IDs might not be unique at the different databases records from the
+different Hydroscope domains.
 }
 \examples{
-# get station's time series from the Greek Ministry of Environment and Energy
-get_timeseries("kyy", 200171)
+
+# get stations' data from the Hydroscope's databases
+kyy_stations <- get_stations(subdomain = "kyy")
+ypaat_stations <- get_stations(subdomain = "ypaat")
+emy_stations <- get_stations(subdomain = "emy")
+deh_stations <- get_stations(subdomain = "deh")
 
 \dontrun{
-get_timeseries("ypaat")
+stations <- get_stations(subdomain = "none")
 }
 
 }
