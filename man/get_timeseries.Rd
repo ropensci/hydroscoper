@@ -4,7 +4,7 @@
 \alias{get_timeseries}
 \title{Get time series corresponding to a station}
 \usage{
-get_timeseries(subdomain = c("kyy", "ypaat", "emy"), stationID)
+get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"), stationID)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
@@ -13,10 +13,11 @@ get_timeseries(subdomain = c("kyy", "ypaat", "emy"), stationID)
 }
 \value{
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy), \code{"ypaat"} (Ministry of Rural Development and Food) or
-\code{"emy"} (National Meteorological Service) and stationID is not NULL,
-returns a dataframe with time series data from the corresponding station and
-database of hydroscope.gr. Otherwise gives an error message.
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+\code{"deh"} (Greek Public Power Corporation) or \code{"emy"} (National
+Meteorological Service), and stationID is not NULL, returns a dataframe with
+time series data from the corresponding station and database of
+hydroscope.gr. Otherwise gives an error message.
 
  If the station ID does not exist in the database, or the url from hydroscope
  could not parsed, returns a dataframe with NA values.
@@ -86,6 +87,8 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
+\item{Greek Public Power Corporation},
+\url{http://deh.hydroscope.gr}
 }
 }
 \author{

@@ -4,7 +4,7 @@
 \alias{get_data}
 \title{Get time series values in a tidy dataframe}
 \usage{
-get_data(subdomain = c("kyy", "ypaat", "emy"), timeID)
+get_data(subdomain = c("kyy", "ypaat"), timeID)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
@@ -13,10 +13,10 @@ get_data(subdomain = c("kyy", "ypaat", "emy"), timeID)
 }
 \value{
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy), \code{"ypaat"} (Ministry of Rural Development and Food) or
-\code{"emy"} (National Meteorological Service), and timeID is not NULL,
-returns a tidy dataframe with the time series values from the corresponding
-time series and database of hydroscope.gr. Otherwise gives an error message.
+and Energy) or \code{"ypaat"} (Ministry of Rural Development and Food),
+and timeID is not NULL, returns a tidy dataframe with the time series values
+from the corresponding database of hydroscope.gr. Otherwise gives an error
+message.
 
 If the time series ID does not exist in the database, or the url from
 Hydroscope could not parsed, returns a dataframe with NA values.
@@ -25,7 +25,7 @@ The dataframe columns are:
 \describe{
     \item{Date}{The time series Dates (POSIXct)}
     \item{Value}{The time series values (numeric)}
-    \item{Comment}{Comments from Hydroscope (character)}
+    \item{Comment}{Comments about the values (character)}
 }
 }
 \description{
@@ -33,9 +33,13 @@ The dataframe columns are:
 a time series in a database of Hydroscope.
 }
 \note{
-The subdomain "main" from Hydroscope is not used, because it uses different
-ID values for time series from the other subdomains and also because it does
-not contain the raw data of the time series.
+The subdomains \code{"deh"} (Greek Public Power Corporation) and \code{"emy"}
+(National Meteorological Service) are not used, because the data are not
+freely available.
+
+The subdomain "main", which also is not used, is a data
+aggregator from several databases. It uses different IDs for stations and
+timeseries.
 }
 \examples{
 # get time series 912 from the Greek Ministry of Environment and Energy
@@ -55,6 +59,8 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
+\item{Greek Public Power Corporation},
+\url{http://deh.hydroscope.gr}
 }
 }
 \author{

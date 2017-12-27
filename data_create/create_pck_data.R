@@ -25,6 +25,8 @@ kyy_stations <- station_coords("kyy")
 emy_stations <- station_coords("emy")
 ypaat_stations <- station_coords("ypaat")
 
+dei_stations <- station_coords("deh")
+
 # combine data by rows
 stations <- rbind(kyy_stations, emy_stations, ypaat_stations)
 

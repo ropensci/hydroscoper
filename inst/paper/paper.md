@@ -23,29 +23,17 @@ affiliations:
 
 # Summary
 
-The  Greek National Databank for Hydrological and Meteorological Information, 
-Hydroscope, provides several national data sources via a web interface 
-[@hydroscope], with each participating organisation keeping its data on its own
-server. These organisations are: The Ministry of Environment and Energy, the 
-Ministry of Rural Development and Food, the National Meteorological Service,
-the National Observatory of Athens, Greek Prefectures and the Public Power 
-Corporation. The Hydroscope's data sets are in Greek, thus limiting their 
-usefulness, and raw time series values  are well structured as space seperated 
-text files.
-_hydroscoper_ provides functionality for a) automatic retrieval and parsing [@xml], 
-translation and transliteration [@sringi] of the stations' and time series' tables 
-b) automatic retrieval and parsing of the available time series' values, into 
-data frames for use in R[@R-base].
-The available functions that are provided by _hydroscoper_ are `get_stations`,
-`get_coords`, `get_timeseries` and `get_data` which can be utilized to easily
-download data from Hydroscope and create tidy data frames [@Wickham2014].
+The  Greek National Databank for Hydrological and Meteorological Information, Hydroscope, provides several national data sources in HTML and plain text files, via a web interface to multiple data bases [@hydroscope, @enidrys].
+The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Also, the ability to run querries in Hydroscope is problematic.
+_hydroscoper_ in an R package [@R] that provides  functionality for automatic retrieval and parsing of data and translation and transliteration of Greek terms and names from Hydroscope. 
+The available functions that can be utilized from _hydroscoper_ are `get_stations`, `get_coords`, `get_timeseries` and `get_data` to easily
+download data from Hydroscope and create a tidy dataframe [@tidy]. The internal databases of the package can be used to run querries on the stations and timeseries values, reducing the time needed to gather information, as these data are rarely modificated.
+
 These data support a) enigneers, manufacturers and consultants, for the 
 development of water resources and environmental studies and the implementation 
 of related projects, b)researchers and other scientists to promote their studies
-and c) Greek organisations to submit data, reports  and other deliverables to 
-the European Union and other domestic and international organizations.
+and c) Greek organisations to submit data, reports  and other deliverables to  the European Union and other domestic and international organizations.
 
-Examples: energy, environmental modelling, water resources studies.
 
 # References
 

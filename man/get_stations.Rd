@@ -4,14 +4,15 @@
 \alias{get_stations}
 \title{Get stations data}
 \usage{
-get_stations(subdomain = c("kyy", "ypaat", "emy"))
+get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"))
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
 }
 \value{
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy), \code{"ypaat"} (Ministry of Rural Development and Food), or
+and Energy), \code{"ypaat"} (Ministry of Rural Development and Food),
+\code{"deh"} (Greek Public Power Corporation) or
 \code{"emy"} (National Meteorological Service), returns a tidy dataframe with
 stations' data from the corresponding database of hydroscope.gr. Otherwise
 gives an error message.
@@ -98,6 +99,8 @@ Stations' data are retrieved from the Hydroscope's databases:
 \url{http://ypaat.hydroscope.gr}
 \item National Meteorological Service,
 \url{http://emy.hydroscope.gr}
+\item{Greek Public Power Corporation},
+\url{http://deh.hydroscope.gr}
 }
 }
 \author{

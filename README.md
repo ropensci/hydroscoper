@@ -26,7 +26,9 @@ Energy and the European Union.
 
 Hydroscope, provides several national data sources from various
 organisations via a web interface. Each participating organisation keeps
-its data on its own server. These organisations are:
+its data on its own server using the Enhydris database system for the
+storage and management of hydrological and meteorological data. These
+organisations are:
 
   - Ministry of Environment and Energy.
   - Ministry of Rural Development and Food.
@@ -35,12 +37,12 @@ its data on its own server. These organisations are:
   - Greek Prefectures.
   - Public Power Corporation.
 
-The Hydroscope’s data sets are in Greek, thus limiting their usefulness,
-and raw time series values are well structured as space separated text
-files.
+The data are structured as tables and space separated text files, but
+are in Greek, thus limiting their usefulness.
 
-`hydroscoper` covers most of Hydroscope’s sources and provides functions
-to:
+`hydroscoper` covers Hydroscope’s data sources using the [Enhydris
+API](http://enhydris.readthedocs.io/en/latest/index.html) and provides
+functions to:
 
 1.  Transform the available tables and data sets into tidy data frames.
 2.  Transliterate the Greek Unicode names to Latin.
@@ -50,14 +52,12 @@ to:
 
   - Ministry of Environment and Energy, National Observatory of Athens
     and Greek Prefectures, <http://kyy.hydroscope.gr/>
-  - Ministry of Rural Development and Food,
-    <http://ypaat.hydroscope.gr/>
-  - National Meteorological Service, <http://emy.hydroscope.gr/>
+  - Ministry of Rural Development and Food, <http://ypaat.hydroscope.gr>
+  - National Meteorological Service, <http://emy.hydroscope.gr>
+  - Greek Public Power Corporation, <http://deh.hydroscope.gr>
 
-The front end for the data sources of Greek Public Power Corporation,
-<http://deh.hydroscope.gr/>, uses an old format and it is not currently
-supported. Note that only the two Ministries allow to download time
-series values freely.
+Note that only the two Ministries allow to download time series values
+freely.
 
 ## Installation
 
