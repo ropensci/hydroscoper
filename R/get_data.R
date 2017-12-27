@@ -85,7 +85,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
   # create lat and long from points
   coords <- create_coords(result$point)
 
-  # columns to keep
+  # columns to keep TODO: test col_names %in% parsed names
   col_names <- c("id", "last_modified", "name", "water_basin",
                  "water_division", "political_division", "altitude")
   result <- result[col_names]
