@@ -20,7 +20,7 @@ If \code{subdomain} is one of:
 \item{\code{emy}, National Meteorological Service}
 }
 returns a tidy dataframe with stations' data from the corresponding database
-of Hydroscope. Otherwise gives an error message.
+of Hydroscope. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{

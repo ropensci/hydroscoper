@@ -71,8 +71,7 @@ devtools::install_github("kvantas/hydroscoper")
 The available functions that are provided by `hydroscoper` are:
 
 * `get_stations` to retrieve a tidy data frame with stations' data for a given data source.
-* `get_coords` to retrieve the coordinates and elevation for a given station.
-* `get_timeseries` to retrieve a tidy data frame with a station's time series. 
+* `get_timeseries` to retrieve a tidy data frame with a time series' data for a given data source. 
 * `get_data` to retrieve a tidy data frame with a time series' values.
 
 ## Example
@@ -82,25 +81,25 @@ This is a basic example which shows you how to get a data frame with stations fr
 ```{r get_stations}
 library(hydroscoper)
 stations <- get_stations(subdomain = "kyy")
-head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
+head(stations)
 ```
 
 To get the time series from the same station run:
 
 ```{r get_time_series}
 
-ts_data <- get_timeseries(subdomain = "kyy", stationID = 200251)
-ts_data[c("TimeSeriesID", "Variable", "TimeStep", "Unit", "StartDate","EndDate")]
+ts_data <- get_timeseries(subdomain = "kyy")
+head(ts_data)
 ```
 
 You can get the time series **912** to a tidy data frame with:
 ```{r get_data}
-df <- get_data(subdomain = "kyy", timeID = 912)
+df <- get_data(subdomain = "kyy", time_id = 912)
 ```
 
 Let's create a plot for these data:
 ```{r plot_timeseries}
-suppressPackageStartupMessages(library(ggplot2))
+library(ggplot2)
 ggplot(data = df, aes(x = Date, y = Value))+
   geom_line()+
   labs(title="Dailly rainfall data for station 200251",

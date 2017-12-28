@@ -20,7 +20,7 @@ If \code{subdomain} is one of:
 \item{\code{emy}, National Meteorological Service}
 }
 returns a tidy dataframe with stations' data from the corresponding database
-of Hydroscope. Otherwise gives an error message.
+of Hydroscope. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
@@ -45,14 +45,14 @@ different Hydroscope domains.
 }
 \examples{
 
-# get stations' data from the Hydroscope's databases
-kyy_stations <- get_stations(subdomain = "kyy")
-ypaat_stations <- get_stations(subdomain = "ypaat")
-emy_stations <- get_stations(subdomain = "emy")
-deh_stations <- get_stations(subdomain = "deh")
+# get time series' data from the Hydroscope's databases
+kyy_ts <- get_timeseries(subdomain = "kyy")
+ypaat_ts <- get_timeseries(subdomain = "ypaat")
+emy_ts <- get_timeseries(subdomain = "emy")
+deh_ts <- get_timeseries(subdomain = "deh")
 
 \dontrun{
-stations <- get_stations(subdomain = "none")
+ts <- get_timeseries(subdomain = "none")
 }
 
 }
