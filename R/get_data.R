@@ -15,7 +15,7 @@
 #' \item{\code{emy}, National Meteorological Service}
 #' }
 #' returns a tidy dataframe with stations' data from the corresponding database
-#' of Hydroscope. Otherwise gives an error message.
+#' of Hydroscope. Otherwise returns an error message.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -71,8 +71,8 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
   subdomain <- match.arg(subdomain)
 
   # create url
-  h_url <- hydroscope_url(subdomain)
-  h_url <- paste0(h_url, "/api/Gpoint/?format=json")
+  s_url <- hydroscope_url(subdomain)
+  h_url <- paste0(s_url, "/api/Gpoint/?format=json")
 
   # try to get data
   result <- tryCatch({
@@ -82,7 +82,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
     stop(paste0("Failed to parse url: ", h_url), call. = FALSE)
   })
 
-  # create lat and long from points
+  # create lat and long from points TODO: check coords rows
   coords <- create_coords(result$point)
 
   # columns to keep TODO: test col_names %in% parsed names
@@ -93,6 +93,17 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 
   # add coords
   result <- cbind(result, coords)
+
+  # get water_basin, water_division and political_division values
+  # TODO check that wb have name and id
+  wbas <- enhy_get_df(paste0(s_url, "/api/WaterBasin/?format=json"))
+  wdiv <- enhy_get_df(paste0(s_url, "/api/WaterDivision/?format=json"))
+  pdiv <-  enhy_get_df(paste0(s_url, "/api/PoliticalDivision/?format=json"))
+
+  # replace ids with actual names
+  tmp <- merge(result, wbas[c("id", "name")], by.x = "water_basin", all.x = TRUE, by.y = "id", suffixes = c("", "_wbas"))
+  tmp <- merge(tmp, wdiv[c("id", "name")], by.x = "water_division", all.x = TRUE, by.y = "id", suffixes = c("", "_wdiv"))
+  tmp <- merge(tmp, pdiv[c("id", "name")], by.x = "political_division", all.x = TRUE, by.y = "id", suffixes = c("", "_pdiv"))
 
   # transliterate names
   if(translit) {
@@ -117,7 +128,7 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 #' \item{\code{emy}, National Meteorological Service}
 #' }
 #' returns a tidy dataframe with stations' data from the corresponding database
-#' of Hydroscope. Otherwise gives an error message.
+#' of Hydroscope. Otherwise returns an error message.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -217,7 +228,8 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 #' message.
 #'
 #' If the time series ID does not exist in the database, or the url from
-#' Hydroscope could not parsed, returns a dataframe with NA values.
+#' Hydroscope could not parsed, displays a warning message and returns a
+#' dataframe with NA values.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -262,16 +274,16 @@ get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {
   # match subdomain values
   subdomain <- match.arg(subdomain)
   h_url <- hydroscope_url(subdomain)
-  h_url <- paste0(h_url, "/api/tsdata/", time_id, "/")
+  t_url <- paste0(h_url, "/api/tsdata/", time_id, "/")
 
   # get hydroscope file to dataframe
 
   tryCatch({
-    enhy_get_txt(h_url)
+    enhy_get_txt(t_url)
   },
   error = function(e) {
     # return NA values
-    warning(paste("Couldn't get time series' data from ", h_url), call. = FALSE)
+    warning(paste("Couldn't get time series' data from ", t_url), call. = FALSE)
     dataNA()
   })
 
