@@ -34,6 +34,11 @@
 # raw data "http://kyy.hydroscope.gr/api/tsdata/259/
 
 
+# create url
+hydroscope_url <- function(domain) {
+  return(paste0("http://", domain, ".hydroscope.gr"))
+}
+
 # use Enhydris API to get json data
 enhy_get_df <- function(h_url) {
   jsonlite::fromJSON(h_url, flatten=TRUE)
@@ -52,4 +57,43 @@ enhy_get_txt <- function(h_url) {
                     readr::col_datetime(format = tmFormat),
                     readr::col_double(),
                     readr::col_character()))
+}
+
+# create lat. and lon. from points
+create_coords <- function(str) {
+  str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
+                                  simplify = TRUE)
+
+  if(NCOL(str_split) == 5) {
+    data.frame(long = as.numeric(str_split[, 3]),
+               lat = as.numeric(str_split[, 4]))
+  } else {
+    data.frame(long = rep(NA, NROW(str)),
+               lat = rep(NA, NROW(str)))
+  }
+}
+
+# create water_basin, water_division and political_division values
+get_names <- function(s_url,
+                      variable = c("water_division",
+                                   "water_basin",
+                                   "political_division"),
+                      result){
+
+  # create url
+  h_url <- switch(
+    variable,
+    water_basin = paste0(s_url, "/api/WaterBasin/?format=json"),
+    water_division = paste0(s_url, "/api/WaterDivision/?format=json"),
+    political_division = paste0(s_url, "/api/PoliticalDivision/?format=json")
+  )
+
+  get_values <- enhy_get_df(h_url)
+
+  # merge values
+  res <-  merge(result[variable], get_values[c("id", "name")], by.x = variable,
+               by.y = "id", all.x = TRUE)
+  res$name
+
+
 }
