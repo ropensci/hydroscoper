@@ -85,13 +85,6 @@ stations <- get_stations(subdomain = "kyy")
 head(stations[c("StationID", "WaterDivisionID", "Name", "Owner", "Type")])
 ```
 
-Using the above data you can get the coordinates and the elevation for a specific station, **200251**:
-
-```{r get_coords}
-crds <-  get_coords(subdomain = "kyy", stationID = 200251)
-crds
-```
-
 To get the time series from the same station run:
 
 ```{r get_time_series}
