@@ -81,15 +81,16 @@ This is a basic example which shows you how to get a data frame with stations fr
 ```{r get_stations}
 library(hydroscoper)
 stations <- get_stations(subdomain = "kyy")
-head(stations)
+head(stations[c("station_id", "name", "water_division", "long", "lat", "altitude")], 10)
 ```
 
-To get the time series from the same station run:
+To get the time series for station **200251** run:
 
 ```{r get_time_series}
 
 ts_data <- get_timeseries(subdomain = "kyy")
-head(ts_data)
+ts <- subset(ts_data, station_id == 200251)
+ts[c("timeseries_id", "variable", "unit_of_measurement", "time_step")]
 ```
 
 You can get the time series **912** to a tidy data frame with:

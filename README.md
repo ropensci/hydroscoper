@@ -92,78 +92,44 @@ stations from the Ministry of Environment and Energy:
 ``` r
 library(hydroscoper)
 stations <- get_stations(subdomain = "kyy")
-tail(stations)
-#>     station_id                    last_modified           name water_basin
-#> 420     200241 2013-09-24T12:55:22.704612+03:00        CHRANOI        1011
-#> 421     200106 2013-09-24T12:55:22.710704+03:00    CHRYSOMELIA        1184
-#> 422     200247 2013-09-24T12:55:22.717817+03:00    CHRYSOUPOLE        1251
-#> 423     200146 2013-09-24T12:55:22.724113+03:00          PSARI        1037
-#> 424     501044 2013-11-28T11:06:51.578776+02:00 PSYCHRO PEGADI          NA
-#> 425     200353 2013-09-24T12:55:22.731119+03:00    ORAIOKASTRO        1222
-#>     water_division political_division altitude     long      lat
-#> 420            501                410    508.4 22.03255 37.32187
-#> 421            508                417    911.1 21.50098 39.60826
-#> 422            512                436     20.4 24.70687 40.98499
-#> 423            502                408    811.1 22.52671 37.86526
-#> 424            513                 NA    948.0 24.04400 35.39400
-#> 425            510                427     71.5 22.93811 40.68622
+head(stations[c("station_id", "name", "water_division", "long", "lat", "altitude")], 10)
+#>    station_id                  name       water_division     long      lat
+#> 1      501062               Peirama DYTIKE PELOPONNESOS  22.41211 39.07562
+#> 2      200251                  ABAS DYTIKE PELOPONNESOS  25.91659 40.93200
+#> 3      200280         AG. BASILEIOS DYTIKE PELOPONNESOS  24.45425 35.24414
+#> 4      501032         AG. BASILEIOS DYTIKE PELOPONNESOS        NA       NA
+#> 5      200171           AG. BLASIOS DYTIKE PELOPONNESOS  21.51309 38.81464
+#> 6      501054          AG. GEORGIOS DYTIKE PELOPONNESOS  24.13917 35.44500
+#> 7      200292          AG. GEORGIOS DYTIKE PELOPONNESOS  25.48357 35.16758
+#> 8      200348 AG. DEMETRIOS PIERIAS DYTIKE PELOPONNESOS  22.23164 40.15647
+#> 9      200065         AG. THEODOROI DYTIKE PELOPONNESOS  20.91568 39.36698
+#> 10     200018           AGIA TRIADA DYTIKE PELOPONNESOS  22.91608 38.34894
+#>    altitude
+#> 1        NA
+#> 2     114.0
+#> 3     298.6
+#> 4        NA
+#> 5     852.4
+#> 6     850.0
+#> 7     836.4
+#> 8     808.2
+#> 9     697.7
+#> 10    400.0
 ```
 
-To get the time series from the same station run:
+To get the time series for station **200251** run:
 
 ``` r
 
 ts_data <- get_timeseries(subdomain = "kyy")
-tail(ts_data)
-#>       id                    last_modified name name_alt hidden precision
-#> 1608 739                             <NA>                FALSE        NA
-#> 1609 464 2013-10-10T13:33:06.168457+03:00                FALSE        NA
-#> 1610 741                             <NA>                FALSE        NA
-#> 1611 742                             <NA>                FALSE        NA
-#> 1612 910                             <NA>                FALSE        NA
-#> 1613 911                             <NA>                FALSE        NA
-#>                                                                                                                                                                                                                                                                                                                                                                                                                           remarks
-#> 1608                                                                                                                                                                                                                                                                                                                                                                                                                             
-#> 1609 <U+03A4>a ded<U+03BF>µ<U+03AD><U+03BD>a ap<U+03CC> 2002-01-01 00:00 <U+03C9><U+03C2> 2009-12-31 00:00 <U+03C8><U+03B7>f<U+03B9><U+03BF>p<U+03BF><U+03B9><U+03AE><U+03B8><U+03B7><U+03BA>a<U+03BD> ap<U+03CC> ENVECO <U+03BA>a<U+03B9> e<U+03B9>s<U+03AE><U+03C7><U+03B8><U+03B7>sa<U+03BD> st<U+03B7> ß<U+03AC>s<U+03B7> ded<U+03BF>µ<U+03AD><U+03BD><U+03C9><U+03BD> t<U+03BF> Sept<U+03AD>µß<U+03C1><U+03B9><U+03BF> 2013.
-#> 1610                                                                                                                                                                                                                                                                                                                                                                                                                             
-#> 1611                                                                                                                                                                                                                                                                                                                                                                                                                             
-#> 1612                                                                                                                                                                                                                                                                                                                                                                                                                             
-#> 1613                                                                                                                                                                                                                                                                                                                                                                                                                             
-#>      remarks_alt timestamp_rounding_minutes timestamp_rounding_months
-#> 1608                                     NA                        NA
-#> 1609                                     NA                        NA
-#> 1610                                     NA                        NA
-#> 1611                                     NA                        NA
-#> 1612                                     NA                        NA
-#> 1613                                     NA                        NA
-#>      timestamp_offset_minutes timestamp_offset_months
-#> 1608                       NA                      NA
-#> 1609                        0                       0
-#> 1610                        0                       0
-#> 1611                        0                       0
-#> 1612                        0                       0
-#> 1613                       NA                      NA
-#>                                       datafile            start_date_utc
-#> 1608 http://kyy.hydroscope.gr/media/0000000739 1951-01-04T08:00:00+02:00
-#> 1609 http://kyy.hydroscope.gr/media/0000000464 1950-05-01T08:00:00+02:00
-#> 1610 http://kyy.hydroscope.gr/media/0000000741 1987-06-01T09:00:00+03:00
-#> 1611 http://kyy.hydroscope.gr/media/0000000742 1975-01-06T08:00:00+02:00
-#> 1612 http://kyy.hydroscope.gr/media/0000000910 1950-09-01T08:00:00+02:00
-#> 1613 http://kyy.hydroscope.gr/media/0000000911 1950-09-04T08:00:00+02:00
-#>                   end_date_utc gentity variable unit_of_measurement
-#> 1608 1998-05-29T09:00:00+03:00  200194        2                   1
-#> 1609 2009-12-31T00:00:00+02:00  200119       52                   3
-#> 1610 1995-07-31T09:00:00+03:00  200195       14                   3
-#> 1611 1997-06-30T09:00:00+03:00  200195       12                   3
-#> 1612 1997-08-31T09:00:00+03:00  200249       52                   3
-#> 1613 1974-08-31T08:00:00+02:00  200249        2                   1
-#>      time_zone instrument time_step interval_type
-#> 1608         1   20019403        NA            NA
-#> 1609         1   20011902         5            NA
-#> 1610         1   20019505         5            NA
-#> 1611         1   20019505         5            NA
-#> 1612         1   20024903         5            NA
-#> 1613         1   20024904        NA            NA
+ts <- subset(ts_data, station_id == 200251)
+ts[c("timeseries_id", "variable", "unit_of_measurement", "time_step")]
+#>     timeseries_id            variable unit_of_measurement time_step
+#> 1             913 ANEMOS (DIEUTHYNSE)                   °    5lepte
+#> 2             914 ANEMOS (DIEUTHYNSE)                   °    5lepte
+#> 40            912 ANEMOS (DIEUTHYNSE)                   °   30lepte
+#> 454          1451         BROCHOPTOSE                  mm  Emeresia
+#> 798          2173         BROCHOPTOSE                  mm  Emeresia
 ```
 
 You can get the time series **912** to a tidy data frame with:
