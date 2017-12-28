@@ -19,14 +19,15 @@
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{station_id}{The station's ID from the domain's database}
-#'     \item{last_modified}{The date that the station's data were last modified}
-#'     \item{name}{The station's name}
-#'     \item{water_basin}{The station's Water Basin}
-#'     \item{water_division}{The station's Water Division ID}
-#'     \item{political_division}{The station's Political Division}
-#'     \item{altitude}{The station's owner}
-#'     \item{Type}{The station's type}
+#'     \item{timeseries_id}{The time series ID from the domain's database}
+#'     \item{last_modified}{The date that the timeseries data were last
+#'     modified}
+#'     \item{instrument}{The instrument's ID}
+#'     \item{station_id}{The station's ID}
+#'     \item{remarks}{Remarks about the time series}
+#'     \item{variable}{The time series variable}
+#'     \item{unit_of_measurement}{The time series unit of measurement}
+#'     \item{time_step}{The time series time step}
 #'
 #' }
 #'
@@ -79,6 +80,31 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
   error = function(e) {
     stop(paste0("Failed to parse url: ", h_url), call. = FALSE)
   })
+
+  # get variable, unit_of_measurement, time_step values
+  variable <- get_names(h_url, "variable", result)
+  unit_of_measurement <- get_names(h_url, "unit_of_measurement", result)
+  time_step <- get_names(h_url, "time_step", result)
+
+  # create dataframe with time series data
+  keep_col <- c("id", "last_modified", "instrument", "gentity", "remarks")
+  result <- cbind(result[keep_col], variable, unit_of_measurement, time_step)
+
+  # change id names
+  names(result)[1] <- "timeseries_id"
+  names(result)[5] <- "station_id"
+
+  # transliterate names
+  trans_col <- c("remarks", "variable", "time_step")
+  if(translit) {
+    for (clm in trans_col) {
+      result[clm] <- greek2latin(result[clm])
+    }
+  }
+
+  # translate terms
+
+
 
   return(result)
 }

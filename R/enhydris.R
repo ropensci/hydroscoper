@@ -59,7 +59,7 @@ enhy_get_txt <- function(h_url) {
                     readr::col_character()))
 }
 
-# create lat. and lon. from points
+# create lat. and lon. from point sting
 create_coords <- function(str) {
   str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
                                   simplify = TRUE)
@@ -73,27 +73,50 @@ create_coords <- function(str) {
   }
 }
 
-# create water_basin, water_division and political_division values
-get_names <- function(s_url,
-                      variable = c("water_division",
+# create water_basin, water_division, political_division values, variable
+# unit_of_measurement and time_step strings
+get_names <- function(h_url,
+                      val = c("water_division",
                                    "water_basin",
-                                   "political_division"),
+                                   "political_division",
+                                   "variable",
+                                   "unit_of_measurement",
+                                   "time_step"),
                       result){
 
   # create url
-  h_url <- switch(
-    variable,
-    water_basin = paste0(s_url, "/api/WaterBasin/?format=json"),
-    water_division = paste0(s_url, "/api/WaterDivision/?format=json"),
-    political_division = paste0(s_url, "/api/PoliticalDivision/?format=json")
+  api <- switch(
+    val,
+    water_basin =         "WaterBasin",
+    water_division =      "WaterDivision",
+    political_division =  "PoliticalDivision",
+    variable =            "Variable",
+    unit_of_measurement = "UnitOfMeasurement",
+    time_step =           "TimeStep"
   )
 
-  get_values <- enhy_get_df(h_url)
+  s_url <- paste0(h_url, "/api/", api, "/?format=json")
+
+  get_values <- enhy_get_df(s_url)
 
   # merge values
-  res <-  merge(result[variable], get_values[c("id", "name")], by.x = variable,
-               by.y = "id", all.x = TRUE)
-  res$name
+
+  if (val == "variable" | val == "time_step") {
+    res <-  merge(result[val], get_values[c("id", "descr")], by.x = val,
+                  by.y = "id", all.x = TRUE)
+    res$descr
+  } else if (val == "unit_of_measurement") {
+    res <-  merge(result[val], get_values[c("id", "symbol")], by.x = val,
+                  by.y = "id", all.x = TRUE)
+    res$symbol
+
+  } else {
+    res <-  merge(result[val], get_values[c("id", "name")], by.x = val,
+                  by.y = "id", all.x = TRUE)
+    res$name
+
+  }
+
 
 
 }
