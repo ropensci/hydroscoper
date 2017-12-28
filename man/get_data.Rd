@@ -43,8 +43,7 @@ aggregator from several databases. It uses different IDs for stations and
 time series.
 }
 \examples{
-#' \dontrun{
-
+\dontrun{
 # get time series 912 from the Greek Ministry of Environment and Energy
 df <-get_data("kyy", 912)
 }

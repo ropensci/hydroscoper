@@ -27,14 +27,15 @@ database of Hydroscope. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
-    \item{station_id}{The station's ID from the domain's database}
-    \item{last_modified}{The date that the station's data were last modified}
-    \item{name}{The station's name}
-    \item{water_basin}{The station's Water Basin}
-    \item{water_division}{The station's Water Division ID}
-    \item{political_division}{The station's Political Division}
-    \item{altitude}{The station's owner}
-    \item{Type}{The station's type}
+    \item{timeseries_id}{The time series ID from the domain's database}
+    \item{last_modified}{The date that the timeseries data were last
+    modified}
+    \item{instrument}{The instrument's ID}
+    \item{station_id}{The station's ID}
+    \item{remarks}{Remarks about the time series}
+    \item{variable}{The time series variable}
+    \item{unit_of_measurement}{The time series unit of measurement}
+    \item{time_step}{The time series time step}
 
 }
 }

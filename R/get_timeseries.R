@@ -88,17 +88,18 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 
   # create dataframe with time series data
   keep_col <- c("id", "last_modified", "instrument", "gentity", "remarks")
-  result <- cbind(result[keep_col], variable, unit_of_measurement, time_step)
+  result <- cbind(result[keep_col], variable, unit_of_measurement, time_step,
+                  stringsAsFactors = FALSE)
 
   # change id names
   names(result)[1] <- "timeseries_id"
-  names(result)[5] <- "station_id"
+  names(result)[4] <- "station_id"
 
   # transliterate names
   trans_col <- c("remarks", "variable", "time_step")
   if(translit) {
     for (clm in trans_col) {
-      result[clm] <- greek2latin(result[clm])
+      result[clm] <- as.character(greek2latin(result[clm]))
     }
   }
 

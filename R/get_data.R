@@ -34,8 +34,7 @@
 #' time series.
 #'
 #' @examples
-#' #' \dontrun{
-#'
+#' \dontrun{
 #' # get time series 912 from the Greek Ministry of Environment and Energy
 #' df <-get_data("kyy", 912)
 #' }
@@ -69,7 +68,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {
   error = function(e) {
     # return NA values
     warning(paste("Couldn't get time series' data from ", t_url), call. = FALSE)
-    dataNA()
+    data.frame(Date = NA, Value = NA, Comment = NA)
   })
 
 }
