@@ -9,9 +9,9 @@ test_that("functions return errors", {
 test_that("functions returns dataframes", {
   skip("skip")
   expect_is(get_stations("emy"), "data.frame")
-  skip()
+  skip("skip")
   expect_is(get_timeseries("ypaat"), "data.frame")
-  skip()
+  skip("skip")
   expect_is(get_data("kyy", 912), "data.frame")
 })
 
