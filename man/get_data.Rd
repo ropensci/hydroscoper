@@ -15,12 +15,8 @@ get_data(subdomain = c("kyy", "ypaat"), time_id)
 If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
 and Energy) or \code{"ypaat"} (Ministry of Rural Development and Food),
 and timeID is not NULL, returns a tidy dataframe with the time series values
-from the corresponding database of hydroscope.gr. Otherwise gives an error
+from the corresponding database of hydroscope.gr. Otherwise returns an error
 message.
-
-If the time series ID does not exist in the database, or the url from
-Hydroscope could not parsed, displays a warning message and returns a
-dataframe with NA values.
 
 The dataframe columns are:
 \describe{
@@ -37,10 +33,6 @@ a time series in a database of Hydroscope.
 The subdomains \code{"deh"} (Greek Public Power Corporation) and \code{"emy"}
 (National Meteorological Service) are not used, because the data are not
 freely available.
-
-The subdomain "main", which also is not used, is a data
-aggregator from several databases. It uses different IDs for stations and
-time series.
 }
 \examples{
 \dontrun{

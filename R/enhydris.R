@@ -1,5 +1,14 @@
 # Enhydris API -----------------------------------------------------------------
 
+
+gep_api_json <- function(subdomain) {
+  h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json")
+  enhy_get_df(h_url)
+}
+
+# KYY
+# PoliticalDivision GentityAltCodeType Timeseries Person TimeStep WaterDivision Gpoint Overseer TimeZone GentityEvent Organization GentityAltCode IntervalType WaterBasin GentityFile StationType Gentity Gline FileType EventType Variable Instrument Lentity InstrumentType UnitOfMeasurement Garea Station
+
 # Examples
 # PoliticalDivision	"http://kyy.hydroscope.gr/api/PoliticalDivision/?format=json"
 # GentityAltCodeType	"http://kyy.hydroscope.gr/api/GentityAltCodeType/?format=json"
@@ -73,65 +82,17 @@ create_coords <- function(str) {
   }
 }
 
-# create water_basin, water_division, political_division values, variable
-# unit_of_measurement and time_step strings
-get_names <- function(h_url,
-                      val = c("water_division",
-                                   "water_basin",
-                                   "political_division",
-                                   "variable",
-                                   "unit_of_measurement",
-                                   "time_step"),
-                      result){
+# main get and tranlit function
+get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
+                             val,
+                             translit) {
 
-  # create url
+  # match subdomain values
+  subdomain <- match.arg(subdomain)
+
   api <- switch(
     val,
-    water_basin =         "WaterBasin",
-    water_division =      "WaterDivision",
-    political_division =  "PoliticalDivision",
-    variable =            "Variable",
-    unit_of_measurement = "UnitOfMeasurement",
-    time_step =           "TimeStep"
-  )
-
-  s_url <- paste0(h_url, "/api/", api, "/?format=json")
-
-  get_values <- enhy_get_df(s_url)
-
-  # merge values
-
-  if (val == "variable" | val == "time_step") {
-    res <-  merge(result[val], get_values[c("id", "descr")], by.x = val,
-                  by.y = "id", all.x = TRUE)
-    res$descr
-  } else if (val == "unit_of_measurement") {
-    res <-  merge(result[val], get_values[c("id", "symbol")], by.x = val,
-                  by.y = "id", all.x = TRUE)
-    res$symbol
-
-  } else {
-    res <-  merge(result[val], get_values[c("id", "name")], by.x = val,
-                  by.y = "id", all.x = TRUE)
-    res$name
-
-  }
-
-
-
-}
-
-
-# get dataframe from json using an api
-get_from_api <- function(subdomain, val) {
-
-   # create url's first part
-  h_url <- hydroscope_url(subdomain)
-
-  # create url's second part
-  api <- switch(
-    val,
-    stations            = "Gpoint",
+    stations            = "Station",
     timeseries          = "Timeseries",
     instruments         = "Instrument",
     water_basin         = "WaterBasin",
@@ -139,27 +100,20 @@ get_from_api <- function(subdomain, val) {
     political_division  = "PoliticalDivision",
     variable            = "Variable",
     unit_of_measurement = "UnitOfMeasurement",
-    time_step           = "TimeStep"
+    time_step           = "TimeStep",
+    owner               = "Organization",
+    intr_type           = "InstrumentType",
+    station_type        = "StationType"
+
   )
 
+  # create url
+  h_url <- hydroscope_url(subdomain)
   s_url <- paste0(h_url, "/api/", api, "/?format=json")
-
-  # get values
-  enhy_get_df(s_url)
-
-}
-
-# main get and tranlit function
-get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                             api,
-                             translit) {
-
-  # match subdomain values
-  subdomain <- match.arg(subdomain)
 
   # try to get data
   result <- tryCatch({
-    get_from_api(subdomain, api)
+    enhy_get_df(s_url)
   },
   error = function(e) {
     stop(paste0("Failed to parse url: ", h_url), call. = FALSE)

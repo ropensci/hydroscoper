@@ -81,3 +81,32 @@ get_time_steps <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
   api <- "TimeStep"
   get_and_translit(subdomain, api, translit)
 }
+
+
+#' @rdname get_functions
+#' @import jsonlite
+#' @export get_owners
+get_owners <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+                           translit = TRUE){
+  api <- "owner"
+  get_and_translit(subdomain, api, translit)
+}
+
+
+#' @rdname get_functions
+#' @import jsonlite
+#' @export get_owners
+get_instruments_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+                       translit = TRUE){
+  api <- "intr_type"
+  get_and_translit(subdomain, api, translit)
+}
+
+#' @rdname get_functions
+#' @import jsonlite
+#' @export get_station_type
+get_station_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+                                 translit = TRUE){
+  api <- "station_type"
+  get_and_translit(subdomain, api, translit)
+}

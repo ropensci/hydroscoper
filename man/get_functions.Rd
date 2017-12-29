@@ -11,6 +11,9 @@
 \alias{get_variables}
 \alias{get_units_of_measurement}
 \alias{get_time_steps}
+\alias{get_owners}
+\alias{get_instruments_type}
+\alias{get_station_type}
 \title{Get data frames from Hydroscope}
 \usage{
 get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
@@ -35,6 +38,14 @@ get_units_of_measurement(subdomain = c("kyy", "ypaat", "emy", "deh"),
   translit = TRUE)
 
 get_time_steps(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+
+get_owners(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+
+get_instruments_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE)
+
+get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of Hydroscope.}
@@ -53,9 +64,8 @@ returns a tidy dataframe with data from the corresponding database
 of Hydroscope. Otherwise returns an error message.
 }
 \description{
-\code{get_stations}, \code{get_timeseries}, \code{get_instruments},
-is a family of functions that return a data frame from tables that
-exist in a specific database of Hydroscope.
+A family of functions that return a data frame from a specific database
+of Hydroscope using the Enhydris API.
 }
 \note{
 Objects' IDs are not unique among the different Hydroscope databases. For
@@ -80,6 +90,9 @@ GR12 \tab THRAKE  \cr
 GR13 \tab KRETE  \cr
 GR14 \tab NESOI AIGAIOU  \cr
 }
+
+The coordinates of points in a stations data frame are based on the European
+Terrestrial Reference System 1989 (ETRS89)
 }
 \examples{
 
@@ -93,7 +106,7 @@ kyy_instr <- get_instruments("kyy")
 
 }
 \references{
-Stations' data are retrieved from the Hydroscope's databases:
+The data are retrieved from the Hydroscope's databases:
 \itemize{
 \item Ministry of Environment, Energy and Climate Change,
 \url{http://kyy.hydroscope.gr}
@@ -109,7 +122,10 @@ European Terrestrial Reference System 1989 (ETRS),
 \url{http://bit.ly/2kJwFuf}
 
 Greek Water Divisions,
-\url{http://bit.ly/2kk0tOm}
+\url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
+
+Greek Water Basin
+\url{http://bit.ly/2Dvzo1W}
 }
 \author{
 Konstantinos Vantas, \email{kon.vantas@gmail.com}

@@ -1,8 +1,7 @@
 #' Get data frames from Hydroscope
 #'
-#' \code{get_stations}, \code{get_timeseries}, \code{get_instruments},
-#' is a family of functions that return a data frame from tables that
-#' exist in a specific database of Hydroscope.
+#' A family of functions that return a data frame from a specific database
+#' of Hydroscope using the Enhydris API.
 #'
 #' @param subdomain One of the subdomains of Hydroscope.
 #' @param translit Automatically transliterate Greek to Latin.
@@ -41,6 +40,9 @@
 #' GR14 \tab NESOI AIGAIOU  \cr
 #' }
 #'
+#' The coordinates of points in a stations data frame are based on the European
+#' Terrestrial Reference System 1989 (ETRS89)
+#'
 #' @examples
 #'
 #' \dontrun{
@@ -53,7 +55,7 @@
 #'
 #' @references
 #'
-#' Stations' data are retrieved from the Hydroscope's databases:
+#' The data are retrieved from the Hydroscope's databases:
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change,
 #' \url{http://kyy.hydroscope.gr}
@@ -69,7 +71,10 @@
 #' \url{http://bit.ly/2kJwFuf}
 #'
 #' Greek Water Divisions,
-#' \url{http://bit.ly/2kk0tOm}
+#' \url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
+#'
+#' Greek Water Basin
+#' \url{http://bit.ly/2Dvzo1W}
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #'

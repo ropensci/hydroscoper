@@ -2,7 +2,9 @@
 
 export(get_data)
 export(get_instruments)
+export(get_owners)
 export(get_political_divisions)
+export(get_station_type)
 export(get_stations)
 export(get_time_steps)
 export(get_timeseries)
