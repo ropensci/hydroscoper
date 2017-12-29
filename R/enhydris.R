@@ -120,3 +120,55 @@ get_names <- function(h_url,
 
 
 }
+
+
+# get dataframe from json using an api
+get_from_api <- function(subdomain, val) {
+
+   # create url's first part
+  h_url <- hydroscope_url(subdomain)
+
+  # create url's second part
+  api <- switch(
+    val,
+    stations            = "Gpoint",
+    timeseries          = "Timeseries",
+    instruments         = "Instrument",
+    water_basin         = "WaterBasin",
+    water_division      = "WaterDivision",
+    political_division  = "PoliticalDivision",
+    variable            = "Variable",
+    unit_of_measurement = "UnitOfMeasurement",
+    time_step           = "TimeStep"
+  )
+
+  s_url <- paste0(h_url, "/api/", api, "/?format=json")
+
+  # get values
+  enhy_get_df(s_url)
+
+}
+
+# main get and tranlit function
+get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
+                             api,
+                             translit) {
+
+  # match subdomain values
+  subdomain <- match.arg(subdomain)
+
+  # try to get data
+  result <- tryCatch({
+    get_from_api(subdomain, api)
+  },
+  error = function(e) {
+    stop(paste0("Failed to parse url: ", h_url), call. = FALSE)
+  })
+
+  # transliterate names
+  if(translit) {
+    trasnlit_all(result)
+  } else {
+    result
+  }
+}
