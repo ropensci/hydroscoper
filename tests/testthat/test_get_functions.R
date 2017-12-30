@@ -1,18 +1,21 @@
 context("Get data from Hydroscope")
 
-test_that("functions return errors", {
-  expect_error(get_stations("none"))
-  expect_error(get_timeseries("none"))
-  expect_error(get_data("none"))
-})
+test_that("get functions returns dataframes", {
 
-test_that("functions returns dataframes", {
-  skip("skip")
-  expect_is(get_stations("emy"), "data.frame")
-  skip("skip")
-  expect_is(get_timeseries("ypaat"), "data.frame")
-  skip("skip")
-  expect_is(get_data("kyy", 912), "data.frame")
+  subdomains <- c("kyy", "ypaat", "emy", "deh")
+  get_fun <- c("get_stations", "get_timeseries", "get_instruments",
+               "get_water_basins", "get_water_divisions",
+               "get_political_divisions", "get_variables",
+               "get_units_of_measurement", "get_time_steps", "get_owners",
+               "get_instruments_type", "get_station_type")
+
+  for (sd in subdomains) {
+    for (fn in get_fun) {
+      f <- get(fn)
+      skip_on_cran()
+      expect_is(f(sd), "data.frame")
+    }
+  }
 })
 
 

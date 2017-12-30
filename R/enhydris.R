@@ -9,35 +9,6 @@ gep_api_json <- function(subdomain) {
 # KYY
 # PoliticalDivision GentityAltCodeType Timeseries Person TimeStep WaterDivision Gpoint Overseer TimeZone GentityEvent Organization GentityAltCode IntervalType WaterBasin GentityFile StationType Gentity Gline FileType EventType Variable Instrument Lentity InstrumentType UnitOfMeasurement Garea Station
 
-# Examples
-# PoliticalDivision	"http://kyy.hydroscope.gr/api/PoliticalDivision/?format=json"
-# GentityAltCodeType	"http://kyy.hydroscope.gr/api/GentityAltCodeType/?format=json"
-# Timeseries	"http://kyy.hydroscope.gr/api/Timeseries/?format=json"
-# Person	"http://kyy.hydroscope.gr/api/Person/?format=json"
-# TimeStep	"http://kyy.hydroscope.gr/api/TimeStep/?format=json"
-# WaterDivision	"http://kyy.hydroscope.gr/api/WaterDivision/?format=json"
-# Gpoint	"http://kyy.hydroscope.gr/api/Gpoint/?format=json"
-# Overseer	"http://kyy.hydroscope.gr/api/Overseer/?format=json"
-# TimeZone	"http://kyy.hydroscope.gr/api/TimeZone/?format=json"
-# GentityEvent	"http://kyy.hydroscope.gr/api/GentityEvent/?format=json"
-# Organization	"http://kyy.hydroscope.gr/api/Organization/?format=json"
-# GentityAltCode	"http://kyy.hydroscope.gr/api/GentityAltCode/?format=json"
-# IntervalType	"http://kyy.hydroscope.gr/api/IntervalType/?format=json"
-# WaterBasin	"http://kyy.hydroscope.gr/api/WaterBasin/?format=json"
-# GentityFile	"http://kyy.hydroscope.gr/api/GentityFile/?format=json"
-# StationType	"http://kyy.hydroscope.gr/api/StationType/?format=json"
-# Gentity	"http://kyy.hydroscope.gr/api/Gentity/?format=json"
-# Gline	"http://kyy.hydroscope.gr/api/Gline/?format=json"
-# FileType	"http://kyy.hydroscope.gr/api/FileType/?format=json"
-# EventType	"http://kyy.hydroscope.gr/api/EventType/?format=json"
-# Variable	"http://kyy.hydroscope.gr/api/Variable/?format=json"
-# Instrument	"http://kyy.hydroscope.gr/api/Instrument/?format=json"
-# Lentity	"http://kyy.hydroscope.gr/api/Lentity/?format=json"
-# InstrumentType	"http://kyy.hydroscope.gr/api/InstrumentType/?format=json"
-# UnitOfMeasurement	"http://kyy.hydroscope.gr/api/UnitOfMeasurement/?format=json"
-# Garea	"http://kyy.hydroscope.gr/api/Garea/?format=json"
-# Station	"http://kyy.hydroscope.gr/api/Station/?format=json"
-
 # Single Station "http://kyy.hydroscope.gr/api/Station/200171/?format=json"
 # Single timeseries "http://kyy.hydroscope.gr/api/Timeseries/259/?format=json"
 # raw data "http://kyy.hydroscope.gr/api/tsdata/259/
@@ -82,15 +53,10 @@ create_coords <- function(str) {
   }
 }
 
-# main get and tranlit function
-get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                             val,
-                             translit) {
+# get api name
+get_api <- function(val) {
 
-  # match subdomain values
-  subdomain <- match.arg(subdomain)
-
-  api <- switch(
+  switch(
     val,
     stations            = "Station",
     timeseries          = "Timeseries",
@@ -103,9 +69,21 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
     time_step           = "TimeStep",
     owner               = "Organization",
     intr_type           = "InstrumentType",
-    station_type        = "StationType"
+    station_type        = "StationType",
+    stop(paste0(val, " is not used as api value"))
 
   )
+}
+
+# get dataframes workhorse function
+get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
+                             val,
+                             translit) {
+
+  # match subdomain values
+  subdomain <- match.arg(subdomain)
+
+  api <-get_api(val)
 
   # create url
   h_url <- hydroscope_url(subdomain)
@@ -116,7 +94,7 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
     enhy_get_df(s_url)
   },
   error = function(e) {
-    stop(paste0("Failed to parse url: ", h_url), call. = FALSE)
+    stop(paste0("Failed to parse url: ", s_url), call. = FALSE)
   })
 
   # transliterate names

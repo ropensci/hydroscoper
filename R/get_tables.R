@@ -69,7 +69,7 @@ get_variables <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 #' @export get_units_of_measurement
 get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                          translit = TRUE){
-  api <- "UnitOfMeasurement"
+  api <- "unit_of_measurement"
   get_and_translit(subdomain, api, translit)
 }
 
@@ -78,7 +78,7 @@ get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"
 #' @export get_time_steps
 get_time_steps <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                                      translit = TRUE){
-  api <- "TimeStep"
+  api <- "time_step"
   get_and_translit(subdomain, api, translit)
 }
 
