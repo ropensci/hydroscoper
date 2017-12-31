@@ -1,6 +1,6 @@
 context("Get data from Hydroscope")
 
-test_that("get functions returns dataframes", {
+test_that("get functions return dataframes", {
 
   subdomains <- c("kyy", "ypaat", "emy", "deh")
   get_fun <- c("get_stations", "get_timeseries", "get_instruments",

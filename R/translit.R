@@ -16,3 +16,23 @@ trasnlit_all <- function(result) {
   }
   result
 }
+
+
+owners_map <- function(x) {
+
+switch (x,
+        "DEMOSIAEPICHEIRISEELEKTRISMOU" = "public_power_corp",
+        "ETHNIKEMETEOROLOGIKEYPERESIA"  = "natio_meteo_service",
+        "ETHNIKOASTEROSKOPEIOATHENAS"   = "natio_observ_athens",
+        "ETHNIKOIDRYMAAGROTIKESEREUNAS" = "natio_argic_resear",
+        "MOUSEIOPHYSIKESISTORIASKRETES" = "crete_natural_museum",
+        "NOMARCHIAKEAUTODIOIKESE"       = "greek_perfectures"  ,
+        "POLYTECHNEIOKRETES"            = "crete_eng_faculty",
+        "YPOURGEIOAGROTIKESANAPTYXESKAITROPHIMON" = "min_agricult",
+        "YPOURGEIOPERIBALLONTOS,ENERGEIASKAIKLIMATIKESALLAGES" = "min_envir",
+        x
+)
+
+
+}
+
