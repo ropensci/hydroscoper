@@ -6,8 +6,7 @@ cache: packages
 
 env:
   global:
-    - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings"
-    - _R_CHECK_TIMINGS_="0"
+    - R_CHECK_ARGS="R_CHECK_ARGS=--no-tests --no-vignettes"
 
 # integrate the project with Codecov.io
 r_packages:
