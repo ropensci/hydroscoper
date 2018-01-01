@@ -39,7 +39,7 @@ enhy_get_txt <- function(h_url) {
                     readr::col_character()))
 }
 
-# create lat. and lon. from point sting
+# create lat. and lon. from point stings
 create_coords <- function(str) {
   str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
                                   simplify = TRUE)
@@ -70,7 +70,7 @@ get_api <- function(val) {
     owner               = "Organization",
     intr_type           = "InstrumentType",
     station_type        = "StationType",
-    stop(paste0(val, " is not used as api value"))
+    stop(paste0(val, " is not used as an api value"))
 
   )
 }
