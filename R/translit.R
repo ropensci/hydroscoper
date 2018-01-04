@@ -9,7 +9,7 @@ greek2latin <- function(x) {
   })
 }
 
-# translitarate all the columns of a dataframe
+# translitarate all the columns of a dataframe from Greek to ASCII latin
 trasnlit_all <- function(result) {
   for (cnames in names(result)) {
     result[cnames] <- greek2latin(result[cnames])
@@ -34,107 +34,35 @@ x <- stringr::str_replace_all(" ", "", x)
 }
 
 # translate variables to english
-map_variables <- function(x){
-  "PH,
-  AGNOSTO,
-  AGOGIMOTETA,
-  AKTINOBOLIA,
-  AMMONIA,
-  ANEMOS (BEAUF),
-  ANEMOS (DIEUTHYNSE),
-  ANEMOS (PARELTHON),
-  ANEMOS (TACHYTETA),
-  ANEMOS (TACHYTETA MESE),
-  ANTHRAKAS,
-  ARGILIO,
-  ARGILOS,
-  ARSENIKO,
-  ASBESTIO,
-  BATHOS YGROU (CHIONOBROCHOMETRO),
-  BROCHOPTOSE,
-  BROCHOPTOSE (DIARKEIA),
-  DIOXEIDIO ANTHRAKA,
-  DIOXEIDIO PYRITIOU,
-  DOKIMASTIKE ANTLESE,
-  DYNAMIKO OXEIDOANAGOGES,
-  EXATMISE (DIAPHORA COLORADO),
-  EXATMISE (DIAPHORA PICHE),
-  EXATMISE (EKTIMEMENE),
-  EXATMISE (PARELTHOUSA),
-  EXATMISE (PAROUSA),
-  EXATMISODIAPNOE,
-  ELIOPHANEIA (DIARKEIA),
-  THEIIKA,
-  THERMOKRASIA (AERA),
-  THERMOKRASIA (BAROMETROU),
-  THERMOKRASIA (DIAPHORA YGROU-XEROU),
-  THERMOKRASIA (EDAPHOUS),
-  THERMOKRASIA (EDAPHOUS BATHOS1),
-  THERMOKRASIA (EDAPHOUS BATHOS2),
-  THERMOKRASIA (EDAPHOUS BATHOS3),
-  THERMOKRASIA (EDAPHOUS BATHOS4),
-  THERMOKRASIA (EDAPHOUS BATHOS5),
-  THERMOKRASIA (EDAPHOUS EL.),
-  THERMOKRASIA (EDAPHOUS KALYMENO),
-  THERMOKRASIA (EDAPHOUS KALYMENO EL.),
-  THERMOKRASIA (EDAPHOUS KALYMENO MEG.)
-  THERMOKRASIA (EDAPHOUS MEG.)
-  THERMOKRASIA (ELACHISTE)
-  THERMOKRASIA (MEGISTE)
-  THERMOKRASIA (NEROU)
-  THERMOKRASIA (XEROU)
-  THERMOKRASIA (YGROU)
-  ICHNE YETOU
-  KADMIO
-  KAIROS
-  KALIO
-  KATASTASE EDAPHOUS
-  KATASTASE THALASSAS
-  MANGANIO
-  MAGNESIO
-  MOLYBDOS
-  MONOXEIDIO ANTHRAKA
-  NATRIO
-  NEPHOKALYPSE
-  NEPHOSE
-  NEPHOSE (AXIOSEMEIOTA NEPHE)
-  NEPHOSE (NE NEPHE)
-  NIKELIO
-  NITRIKA
-  NITRODE
-  XERO YPOLOIPO
-  ORATOTETA (THALASSA)
-  ORATOTETA (STERIA)
-  PAROCHE
-  PIESE (ATMOSPHAIRIKE)
-  PIESE (BAROMETRO STATHERA)
-  PIESE (STATHERA BAROM.)
-  PIESE (STATHME THALASSES)
-  SEMEIAKE STATHME
-  SEMEIO DROSOU
-  SIDEROS
-  SKLEROTETA
-  STATHME
-  STATHME (PLEMMYRA)
-  STEREO PAROCHE
-  STEREO-YDROMETRESE
-  TASE YDRATMON
-  YGRASIA (APOLYTE)
-  YGRASIA (SCHETIKE)
-  YDRARGYROS
-  YDROTHEIO
-  YDROMETRESE
-  YPSOMETRO
-  PHTHORIO
-  PHOSPHORIKA
-  CHALKOS
-  CHIONI
-  CHIONI (ATHROISTIKO)
-  CHIONI - BROCHE (CHIONOBROCHOMETRO)
-  CHIONI (ISODYNAMO YPSOS)
-  CHLORIO
-  CHROMIO
-  PSEUDARGYROS
-  PSYCHROMETRO (XERO)
-  PSYCHROMETRO (YGRO)"
-}
+map_variables <- function(y){
+  y <- stringr::str_to_lower(y)
+  df <- data.frame(
+  from = c(" -","-", " ", "[()]","agnosto", "anemos", "dieuthynse", "parelthon",
+            "tachyteta", "mese", "brochoptose", "diarkeia", "exatmise",
+            "exatmisodiapnoe", "thermokrasia", "edaphous", "bathos",
+            "elachiste", "megiste","piese", "semeiake", "chioni",
+            "ypsometro", "stathme", "plemmyra", "paroche", "broche",
+           "katastase", "ektimemene", "athroistiko", "stereo","ygrasia",
+           "ygro", "apolyte", "schetike", "asbestio", "wetu",
+           "chionobrochometro", "xero", "ydrometrese", "thalasses",
+           "semeio_drosou", "oratoteta", "steria", "thalassa", "barometro",
+           "tase_ydratmon", "psychrometro", "isodynamo_ypsos", "agogimoteta",
+           "aktinobolia", "anthraka", "dioxeidio", "ypoloipo"),
+
+  to   = c("","_", "_", "", "unknown", "wind", "direc", "past", "speed",
+             "average", "precipitation", "duration", "evaporation",
+             "evapotranspiration","temperature", "ground", "depth",
+             "min", "max", "pressure", "point", "snow", "elevation",
+             "level", "flood", "flow", "precipitation", "condition", "estim",
+            "cumulative", "sediment", "humidity", "wet", "absol","relat", "calcium",
+            "precipitation", "snow_rain_gauge", "dry", "flow_gauge", "sea",
+            "dew_point", "visibility", "land", "sea", "barometer",
+            "vapour_pressure", "psychrometer", "water_equivalent",
+            "conductance", "radiation", "carbon", "dioxide", "residual"),
+  stringsAsFactors = FALSE)
+
+  for (i in 1:nrow(df)) {
+    y <- stringr::str_replace_all(y, df$from[i], df$to[i])
+  }
+  y
+  }
