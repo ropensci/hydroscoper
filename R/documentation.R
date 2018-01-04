@@ -1,7 +1,8 @@
 #' Get data frames from Hydroscope
 #'
 #' A family of functions that return a data frame from a specific database
-#' of Hydroscope using the Enhydris API.
+#' of Hydroscope using the Enhydris API. \code{get_database} returns a list
+#' of data frames using all the family functions.
 #'
 #' @param subdomain One of the subdomains of Hydroscope.
 #' @param translit Automatically transliterate Greek to Latin.
@@ -13,7 +14,7 @@
 #' \item{\code{deh}, Greek Public Power Corporation}
 #' \item{\code{emy}, National Meteorological Service}
 #' }
-#' returns a tidy data frame with data from the corresponding database
+#' returns a tidy data frame or with data from the corresponding database
 #' of Hydroscope. Otherwise returns an error message.
 #'
 #' @note
@@ -51,6 +52,8 @@
 #' kyy_stations <- get_stations("kyy")
 #' kyy_timser <- get_timeseries("kyy")
 #' kyy_instr <- get_instruments("kyy")
+#' kyy_db <- get_database("kyy")
+#'
 #' }
 #'
 #' @references

@@ -21,9 +21,9 @@ latitudes using as input the variable \code{point} from \code{get_stations}
 \examples{
 \dontrun{
 # get stations from the Greek Ministry of Environment and Energy
-df <-get_stations("kyy")
+kyy_stations <-get_stations("kyy")
 # create a dataframe with the coords of the stations
-coords <- get_coords(df$point)
+coords <- get_coords(kyy_stations$point)
 }
 }
 \author{

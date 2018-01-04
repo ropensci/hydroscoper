@@ -12,7 +12,6 @@ test_that("Missing arguments and unknown subdomains return errors", {
     f <- get(fn)
     expect_error(f(subdomain))
    }
-
   expect_error(get_data(subdomain, 34))
   expect_error(get_data("kyy"))
 })
@@ -30,15 +29,15 @@ test_that("get functions return dataframes", {
   for (sd in subdomains) {
     for (fn in get_fun) {
       f <- get(fn)
-      # skip("heavy web usage")
+      skip("heavy web usage")
       expect_is(f(sd), "data.frame")
     }
   }
 })
 test_that("Can download time series values from KYY and YPAAT", {
-  # skip("heavy web usage")
+  skip("heavy web usage")
   expect_is(get_data("kyy", 129), "data.frame")
-  # skip("heavy web usage")
+  skip("heavy web usage")
   expect_is(get_data("kyy", 435), "data.frame")
 })
 

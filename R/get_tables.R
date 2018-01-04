@@ -110,3 +110,23 @@ get_station_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
   api <- "station_type"
   get_and_translit(subdomain, api, translit)
 }
+
+#' @rdname get_functions
+#' @import jsonlite
+#' @export get_database
+get_database <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+                         translit = TRUE) {
+
+  list("stations" = get_stations(subdomain, translit),
+       "timeseries" = get_timeseries(subdomain, translit),
+       "instruments" = get_instruments(subdomain, translit),
+       "water_basins" = get_water_basins(subdomain, translit),
+       "water_divisions" = get_water_divisions(subdomain, translit),
+       "political_divisions" = get_political_divisions(subdomain, translit),
+       "variables" = get_variables(subdomain, translit),
+       "units" = get_units_of_measurement(subdomain, translit),
+       "time_steps" = get_time_steps(subdomain, translit),
+       "owners" = get_owners(subdomain, translit),
+       "instr_type" = get_instruments_type(subdomain, translit),
+       "stations_type" = get_station_type(subdomain, translit))
+}

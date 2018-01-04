@@ -14,6 +14,7 @@
 \alias{get_owners}
 \alias{get_instruments_type}
 \alias{get_station_type}
+\alias{get_database}
 \title{Get data frames from Hydroscope}
 \usage{
 get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
@@ -46,6 +47,8 @@ get_instruments_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
 
 get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
   translit = TRUE)
+
+get_database(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of Hydroscope.}
@@ -60,12 +63,13 @@ If \code{subdomain} is one of:
 \item{\code{deh}, Greek Public Power Corporation}
 \item{\code{emy}, National Meteorological Service}
 }
-returns a tidy data frame with data from the corresponding database
+returns a tidy data frame or with data from the corresponding database
 of Hydroscope. Otherwise returns an error message.
 }
 \description{
 A family of functions that return a data frame from a specific database
-of Hydroscope using the Enhydris API.
+of Hydroscope using the Enhydris API. \code{get_database} returns a list
+of data frames using all the family functions.
 }
 \note{
 Objects' IDs are not unique among the different Hydroscope databases. For
@@ -102,6 +106,8 @@ Terrestrial Reference System 1989 (ETRS89)
 kyy_stations <- get_stations("kyy")
 kyy_timser <- get_timeseries("kyy")
 kyy_instr <- get_instruments("kyy")
+kyy_db <- get_database("kyy")
+
 }
 
 }

@@ -20,7 +20,6 @@ Imports: stringi (>= 1.1.6),
     jsonlite (>= 1.5),
     stringr (>= 1.2), 
     readr (>= 1.1.1),
-    plyr (>= 1.8.4),
     utils (>= 3.4.0)
 Suggests: plyr (>= 1.8.4),
     ggplot2 (>= 2.2.1),

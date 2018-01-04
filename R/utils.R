@@ -14,18 +14,17 @@
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @import stringr
-#' @import plyr
 #' @export get_coords
 #'
 #' @examples
 #' \dontrun{
 #' # get stations from the Greek Ministry of Environment and Energy
-#' df <-get_stations("kyy")
+#' kyy_stations <-get_stations("kyy")
 #' # create a dataframe with the coords of the stations
-#' coords <- get_coords(df$point)
+#' coords <- get_coords(kyy_stations$point)
 #' }
 get_coords <- function(x) {
- plyr::ldply(x, create_coords)
+  do.call(rbind, lapply(x, create_coords))
 }
 
 
