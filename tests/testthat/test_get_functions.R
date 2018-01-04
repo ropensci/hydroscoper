@@ -12,7 +12,7 @@ test_that("get functions return dataframes", {
   for (sd in subdomains) {
     for (fn in get_fun) {
       f <- get(fn)
-      skip_on_cran()
+      skip("heavy web usage")
       expect_is(f(sd), "data.frame")
     }
   }
