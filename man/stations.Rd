@@ -6,27 +6,20 @@
 \title{stations}
 \format{A data frame:
 \describe{
-    \item{StationID}{The station's ID from the domain's database}
-    \item{Name}{The station's name}
-    \item{WaterDivisionID}{The station's Water Division ID, values: GR01 -
-    GR14}
-    \item{WaterBasin}{The station's Water Basin}
-    \item{PoliticalDivision}{The station's Political Division}
-    \item{Owner}{The station's owner}
-    \item{Type}{The station's type}
-    \item{Domain}{The corresponding Hydroscope's domain}
-    \item{Long}{The station's longitude in decimal degrees, ETRS89}
-    \item{Lat}{The station's latitude in decimal degrees, ETRS89}
-    \item{Elevation}{The station's altitude, meters above sea level}
+    \item{station_id}{The station's ID from the domain's database}
+    \item{name}{The station's name}
+    \item{water_basin}{The station's Water Basin}
+    \item{water_division}{The station's Water Division}
+    \item{owner}{The station's owner}
+    \item{longitude}{The station's longitude in decimal degrees, ETRS89}
+    \item{latitude}{The station's latitude in decimal degrees, ETRS89}
+    \item{altitude}{The station's altitude, meters above sea level}
 }}
 \usage{
 stations
 }
 \description{
 Stations' data from the Greek National Data Bank for Hydrological and
-Meteorological Information databases: \url{http://kyy.hydroscope.gr/},
-\url{http://emy.hydroscope.gr/} and \url{http://ypaat.hydroscope.gr/}
-The stations with IDs: have erroneous coordinates and their longitudes,
-latitudes have been replaced with NA values.
+Meteorological Information, Ministry of Environment and Energy.
 }
 \keyword{datasets}

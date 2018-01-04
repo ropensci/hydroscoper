@@ -51,7 +51,8 @@ get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
 get_database(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 }
 \arguments{
-\item{subdomain}{One of the subdomains of Hydroscope.}
+\item{subdomain}{One of the subdomains of Hydroscope in
+\code{c("kyy", "ypaat", "emy", "deh")}.}
 
 \item{translit}{Automatically transliterate Greek to Latin.}
 }

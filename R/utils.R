@@ -34,7 +34,8 @@ get_coords <- function(x) {
 #' \code{hydro_translate} Greeek to English transaltions of names and terms
 #'
 #' @param x a string vector
-#' @param value One of the predefined values
+#' @param value One of the predefined values in
+#' \code{c("owner", "variable", "timestep", "division")}
 #'
 #' @return If \code{value} is one of:
   #' \itemize{
@@ -54,7 +55,9 @@ get_coords <- function(x) {
 #' owners_names <- hydro_translate(kyy_owners$name, "owner")
 #' vars <- hydro_translate(kyy_vars$descr, "variable")
 #' }
-hydro_translate <- function(x, value = c("owner", "variable")) {
+hydro_translate <- function(x,
+                            value = c("owner", "variable", "timestep",
+                                      "division")) {
 
   # match translate values
   value <- match.arg(value)
@@ -62,6 +65,8 @@ hydro_translate <- function(x, value = c("owner", "variable")) {
   # select one of alternatives translations
   switch (value,
           owner = map_owners(x),
-          variable = map_variables(x))
+          variable = map_variables(x),
+          timestep = map_ts(x),
+          division = map_wd(x))
 
 }

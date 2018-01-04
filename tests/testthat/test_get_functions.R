@@ -6,7 +6,7 @@ test_that("Missing arguments and unknown subdomains return errors", {
                "get_water_basins", "get_water_divisions",
                "get_political_divisions", "get_variables",
                "get_units_of_measurement", "get_time_steps", "get_owners",
-               "get_instruments_type", "get_station_type")
+               "get_instruments_type", "get_station_type", "get_database")
 
    for (fn in get_fun) {
     f <- get(fn)
@@ -24,7 +24,7 @@ test_that("get functions return dataframes", {
                "get_water_basins", "get_water_divisions",
                "get_political_divisions", "get_variables",
                "get_units_of_measurement", "get_time_steps", "get_owners",
-               "get_instruments_type", "get_station_type")
+               "get_instruments_type", "get_station_type", "get_database")
 
   for (sd in subdomains) {
     for (fn in get_fun) {

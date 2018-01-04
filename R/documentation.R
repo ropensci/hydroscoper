@@ -4,7 +4,8 @@
 #' of Hydroscope using the Enhydris API. \code{get_database} returns a list
 #' of data frames using all the family functions.
 #'
-#' @param subdomain One of the subdomains of Hydroscope.
+#' @param subdomain One of the subdomains of Hydroscope in
+#' \code{c("kyy", "ypaat", "emy", "deh")}.
 #' @param translit Automatically transliterate Greek to Latin.
 #'
 #' @return If \code{subdomain} is one of:

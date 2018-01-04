@@ -4,12 +4,13 @@
 \alias{hydro_translate}
 \title{Translate Greek names and terms to English}
 \usage{
-hydro_translate(x, value = c("owner", "variable"))
+hydro_translate(x, value = c("owner", "variable", "timestep", "division"))
 }
 \arguments{
 \item{x}{a string vector}
 
-\item{value}{One of the predefined values}
+\item{value}{One of the predefined values in
+\code{c("owner", "variable", "timestep", "division")}}
 }
 \value{
 If \code{value} is one of:

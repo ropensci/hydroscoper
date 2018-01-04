@@ -4,12 +4,11 @@
 greek2latin <- function(x) {
   sapply(x, function(y) {
     y <- stringi::stri_trans_general(y, "Latin")
-    y <- stringi::stri_trans_general(y, "latin-ascii")
-    return(y)
+    stringi::stri_trans_general(y, "latin-ascii")
   })
 }
 
-# translitarate all the columns of a dataframe from Greek to ASCII latin
+# translitarate all the columns of a dataframe from Greek to latin-ascii
 trasnlit_all <- function(result) {
   for (cnames in names(result)) {
     result[cnames] <- greek2latin(result[cnames])
@@ -19,7 +18,7 @@ trasnlit_all <- function(result) {
 
 # Translations -----------------------------------------------------------------
 
-# tranlate owners to englisn
+# tranlate owners
 map_owners <- function(y) {
 
 y <- stringr::str_replace_all(y, " ", "")
@@ -41,7 +40,7 @@ for (i in 1:nrow(df)) {
 y
 }
 
-# translate variables to english
+# translate variables
 map_variables <- function(y){
   y <- stringr::str_to_lower(y)
   df <- data.frame(
@@ -56,7 +55,7 @@ map_variables <- function(y){
            "semeio_drosou", "oratoteta", "steria", "thalassa", "barometro",
            "tase_ydratmon", "psychrometro", "isodynamo_ypsos", "agogimoteta",
            "aktinobolia", "anthraka", "dioxeidio", "ypoloipo", "argilio",
-           "argilos", "arseniko", "pyritiou"),
+           "argilos", "arseniko", "pyritiou", "aera"),
 
   to   = c("","_", "_", "", "unknown", "wind", "direc", "past", "speed",
              "average", "precipitation", "duration", "evaporation",
@@ -68,7 +67,7 @@ map_variables <- function(y){
             "dew_point", "visibility", "land", "sea", "barometer",
             "vapour_pressure", "psychrometer", "water_equivalent",
             "conductance", "radiation", "carbon", "dioxide", "residual",
-           "aluminum", "clay", "arsenic", "silicon"),
+           "aluminum", "clay", "arsenic", "silicon", "air"),
   stringsAsFactors = FALSE)
 
   for (i in 1:nrow(df)) {
@@ -76,3 +75,62 @@ map_variables <- function(y){
   }
   y
   }
+
+# translate time steps
+map_ts <- function(y){
+  y <- stringr::str_to_lower(y)
+
+  df <- data.frame(
+    from = c("lepte", "emeresia","meniaia"),
+    to   = c("_minutes", "daily", "monthly"),
+    stringsAsFactors = FALSE)
+
+  for (i in 1:nrow(df)) {
+    y <- stringr::str_replace_all(y, df$from[i], df$to[i])
+  }
+  y
+
+}
+
+# translate water division
+map_wd <- function(y){
+  y <- stringr::str_replace_all(y, " ", "")
+
+  df <- data.frame(
+    from = c("DYTIKEPELOPONNESOS",
+             "BOREIAPELOPONNESOS",
+             "ANATOLIKEPELOPONNES",
+             "DYTIKESTEREAELLADA",
+             "EPEIROS",
+             "ATTIKE",
+             "ANATOLIKESTEREAELL",
+             "THESSALIA",
+             "DYTIKEMAKEDONIA",
+             "KENTRIKEMAKEDONIA",
+             "ANATOLIKEMAKEDONIA",
+             "THRAKE",
+             "KRETE",
+             "NESOIAIGAIOU"),
+
+    to   = c("GR01",
+             "GR02",
+             "GR03",
+             "GR04",
+             "GR05",
+             "GR06",
+             "GR07",
+             "GR08",
+             "GR09",
+             "GR10",
+             "GR11",
+             "GR12",
+             "GR13",
+             "GR14"),
+    stringsAsFactors = FALSE)
+
+  for (i in 1:nrow(df)) {
+    y <- stringr::str_replace_all(y, df$from[i], df$to[i])
+  }
+  y
+
+}
