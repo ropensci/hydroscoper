@@ -60,7 +60,7 @@ If \code{subdomain} is one of:
 \item{\code{deh}, Greek Public Power Corporation}
 \item{\code{emy}, National Meteorological Service}
 }
-returns a tidy dataframe with data from the corresponding database
+returns a tidy data frame with data from the corresponding database
 of Hydroscope. Otherwise returns an error message.
 }
 \description{

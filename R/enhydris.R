@@ -12,8 +12,8 @@ hydroscope_url <- function(domain) {
 }
 
 # use Enhydris API to get json data
-enhy_get_df <- function(h_url) {
-  jsonlite::fromJSON(h_url, flatten=TRUE)
+enhy_get_df <- function(s_url) {
+  jsonlite::fromJSON(s_url,flatten = TRUE)
 }
 
 # use Enhydris API to get plain text data
@@ -29,20 +29,6 @@ enhy_get_txt <- function(h_url) {
                     readr::col_datetime(format = tmFormat),
                     readr::col_double(),
                     readr::col_character()))
-}
-
-# create lat. and lon. from point stings
-create_coords <- function(str) {
-  str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
-                                  simplify = TRUE)
-
-  if(NCOL(str_split) == 5) {
-    data.frame(long = as.numeric(str_split[, 3]),
-               lat = as.numeric(str_split[, 4]))
-  } else {
-    data.frame(long = rep(NA, NROW(str)),
-               lat = rep(NA, NROW(str)))
-  }
 }
 
 # get api name
@@ -67,7 +53,7 @@ get_api <- function(val) {
   )
 }
 
-# get dataframes workhorse function
+# workhorse function
 get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
                              val,
                              translit) {
@@ -91,8 +77,22 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
 
   # transliterate names
   if(translit) {
-    trasnlit_all(result)
+    result <- trasnlit_all(result)
+  }
+
+  result
+}
+
+# create coords from points in Hydroscope
+create_coords <- function(str) {
+
+  str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
+                                  simplify = TRUE)
+  if(NCOL(str_split) == 5) {
+    data.frame(long = as.numeric(str_split[, 3]),
+               lat = as.numeric(str_split[, 4]))
   } else {
-    result
+    data.frame(long = rep(NA, NROW(str)),
+               lat = rep(NA, NROW(str)))
   }
 }

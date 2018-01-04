@@ -6,7 +6,7 @@ Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the  Greek National Data Bank for Hydrological and 
     Meteorological Information (http://www.hydroscope.gr/). It 
-    covers Hydroscope's data sources and provides functions to transliterate 
+    covers Hydroscope's data sources and provides functions to transliterate, 
     translate and get them into tidy dataframes.
 URL: https://github.com/kvantas/hydroscoper
 BugReports: https://github.com/kvantas/hydroscoper/issues             
@@ -20,10 +20,12 @@ Imports: stringi (>= 1.1.6),
     jsonlite (>= 1.5),
     stringr (>= 1.2), 
     readr (>= 1.1.1),
+    plyr (>= 1.8.4),
     utils (>= 3.4.0)
 Suggests: plyr (>= 1.8.4),
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
     rmarkdown (>= 1.8),
-    testthat (>= 1.0.2)
+    testthat (>= 1.0.2),
+    tibble(>= 1.4.1)
 VignetteBuilder: knitr
