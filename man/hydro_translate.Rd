@@ -19,10 +19,10 @@ If \code{value} is one of:
 \item{\code{variable}, translate hydrometeorological term}
 }
 returns a character vector with translations of various hydrometeorological
-terms or organisations' names
+terms or organizations' names
 }
 \description{
-\code{hydro_translate} Greeek to English transaltions of names and terms
+\code{hydro_translate} Greeek to English translations of names and terms
 }
 \examples{
 \dontrun{

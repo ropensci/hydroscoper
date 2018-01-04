@@ -34,11 +34,11 @@ test_that("get functions return dataframes", {
     }
   }
 })
+
+context("Download timeseries from Hydroscope")
 test_that("Can download time series values from KYY and YPAAT", {
   skip("heavy web usage")
   expect_is(get_data("kyy", 129), "data.frame")
   skip("heavy web usage")
   expect_is(get_data("kyy", 435), "data.frame")
 })
-
-

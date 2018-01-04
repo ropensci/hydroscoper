@@ -13,20 +13,20 @@ hydroscope_url <- function(domain) {
 
 # use Enhydris API to get json data
 enhy_get_df <- function(s_url) {
-  jsonlite::fromJSON(s_url,flatten = TRUE)
+  jsonlite::fromJSON(s_url, flatten = TRUE)
 }
 
 # use Enhydris API to get plain text data
 enhy_get_txt <- function(h_url) {
 
   # read timeseries data
-  tmFormat <- "%Y-%m-%d %H:%M"
+  tm_format <- "%Y-%m-%d %H:%M"
 
   # use readr to get values
   readr::read_csv(url(h_url),
                   col_names = c("Date", "Value", "Comment"),
                   col_types = list(
-                    readr::col_datetime(format = tmFormat),
+                    readr::col_datetime(format = tm_format),
                     readr::col_double(),
                     readr::col_character()))
 }
@@ -61,7 +61,7 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
   # match subdomain values
   subdomain <- match.arg(subdomain)
 
-  api <-get_api(val)
+  api <- get_api(val)
 
   # create url
   h_url <- hydroscope_url(subdomain)
@@ -76,7 +76,7 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
   })
 
   # transliterate names
-  if(translit) {
+  if (translit) {
     result <- trasnlit_all(result)
   }
 
@@ -88,7 +88,7 @@ create_coords <- function(str) {
 
   str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
                                   simplify = TRUE)
-  if(NCOL(str_split) == 5) {
+  if (NCOL(str_split) == 5) {
     data.frame(long = as.numeric(str_split[, 3]),
                lat = as.numeric(str_split[, 4]))
   } else {

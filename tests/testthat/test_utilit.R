@@ -18,7 +18,7 @@ test_that("get_coords returns a data frame with lat and long values", {
 })
 
 
-test_that("Organizations are tranlated", {
+test_that("Organizations translations", {
 
   orgs <- c(
     "DEMOSIA EPICHEIRISE ELEKTRISMOU          ",

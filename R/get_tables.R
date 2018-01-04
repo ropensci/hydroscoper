@@ -49,7 +49,8 @@ get_water_divisions <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 #' @rdname get_functions
 #' @import jsonlite
 #' @export get_political_divisions
-get_political_divisions <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+get_political_divisions <- function(subdomain =  c("kyy", "ypaat", "emy",
+                                                   "deh"),
                                translit = TRUE){
   api <- "political_division"
   get_and_translit(subdomain, api, translit)
@@ -67,7 +68,8 @@ get_variables <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 #' @rdname get_functions
 #' @import jsonlite
 #' @export get_units_of_measurement
-get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
+get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy",
+                                                    "deh"),
                          translit = TRUE){
   api <- "unit_of_measurement"
   get_and_translit(subdomain, api, translit)

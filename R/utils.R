@@ -1,5 +1,3 @@
-# create lat. and lon. from point stings
-
 
 #' Create coordinates from Hydroscope's points
 #'
@@ -31,7 +29,7 @@ get_coords <- function(x) {
 
 #' Translate Greek names and terms to English
 #'
-#' \code{hydro_translate} Greeek to English transaltions of names and terms
+#' \code{hydro_translate} Greeek to English translations of names and terms
 #'
 #' @param x a string vector
 #' @param value One of the predefined values in
@@ -43,7 +41,7 @@ get_coords <- function(x) {
   #' \item{\code{variable}, translate hydrometeorological term}
   #' }
   #' returns a character vector with translations of various hydrometeorological
-  #' terms or organisations' names
+  #' terms or organizations' names
 #' @export hydro_translate
 #'
 #' @examples
@@ -62,7 +60,7 @@ hydro_translate <- function(x,
   # match translate values
   value <- match.arg(value)
 
-  # select one of alternatives translations
+  # transalte x
   switch (value,
           owner = map_owners(x),
           variable = map_variables(x),
