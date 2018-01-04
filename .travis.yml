@@ -4,11 +4,11 @@ language: R
 sudo: false
 cache: packages
 
-env:
-  global:
-    - R_CHECK_ARGS="R_CHECK_ARGS=--no-tests --no-vignettes"
+r:
+- oldrel
+- release
+- devel
 
-# integrate the project with Codecov.io
 r_packages:
   - covr
 
