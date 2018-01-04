@@ -80,8 +80,6 @@ The functions that are provided by `hydroscoper` are:
 
   - `get_...` family functions to retrieve a tidy data frame with
     Hydroscope’s data for a given data source.
-  - `get_timeseries` to retrieve a tidy data frame with a time series’
-    data for a given data source.
   - `get_data` to retrieve a tidy data frame with a time series’ values.
 
 ## Example
