@@ -1,18 +1,10 @@
 # Enhydris API -----------------------------------------------------------------
 
-
+# get subdomains' tables
 gep_api_json <- function(subdomain) {
   h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json")
   enhy_get_df(h_url)
 }
-
-# KYY
-# PoliticalDivision GentityAltCodeType Timeseries Person TimeStep WaterDivision Gpoint Overseer TimeZone GentityEvent Organization GentityAltCode IntervalType WaterBasin GentityFile StationType Gentity Gline FileType EventType Variable Instrument Lentity InstrumentType UnitOfMeasurement Garea Station
-
-# Single Station "http://kyy.hydroscope.gr/api/Station/200171/?format=json"
-# Single timeseries "http://kyy.hydroscope.gr/api/Timeseries/259/?format=json"
-# raw data "http://kyy.hydroscope.gr/api/tsdata/259/
-
 
 # create url
 hydroscope_url <- function(domain) {
