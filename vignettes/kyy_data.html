@@ -12,7 +12,7 @@
 
 <meta name="author" content="Konstantinos Vantas" />
 
-<meta name="date" content="2018-01-04" />
+<meta name="date" content="2018-01-05" />
 
 <title>Using hydroscoper to get stations’ and time-series’ data</title>
 
@@ -280,13 +280,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Using hydroscoper to get stations’ and time-series’ data</h1>
 <h4 class="author"><em>Konstantinos Vantas</em></h4>
-<h4 class="date"><em>2018-01-04</em></h4>
+<h4 class="date"><em>2018-01-05</em></h4>
 
 
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This vignette shows how to create a tidy dataframe for the stations’ and time-series’ data from Hydroscope. The subdomain of Hydroscope that we will apply the package’s functions is <a href="http:/kyy.hydroscope.gr" class="uri">http:/kyy.hydroscope.gr</a> (Ministry of Environment and Energy).</p>
+<p>This vignette shows how to create a tidy dataframe for the stations’ and time series’ data from Hydroscope. The subdomain of Hydroscope that we will apply the package’s functions is <a href="http:/kyy.hydroscope.gr" class="uri">http:/kyy.hydroscope.gr</a> (Ministry of Environment and Energy).</p>
 <section id="get-database-values" class="level2">
 <h2>Get database values</h2>
 <p>The following code shows how to download the data from kyy to a list.</p>
@@ -342,21 +342,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb4-9" data-line-number="9">  <span class="st">&quot;latitude&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(coords<span class="op">$</span>lat),</a>
 <a class="sourceLine" id="cb4-10" data-line-number="10">  <span class="st">&quot;altitude&quot;</span> =<span class="st"> </span><span class="kw">as.numeric</span>(kyy_data<span class="op">$</span>stations<span class="op">$</span>altitude)</a>
 <a class="sourceLine" id="cb4-11" data-line-number="11">)</a>
-<a class="sourceLine" id="cb4-12" data-line-number="12">stations</a>
-<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; # A tibble: 425 x 8</span></a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;    station_id name                  water_~ water~ owner long~ lati~ alti~</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;         &lt;dbl&gt; &lt;chr&gt;                 &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  1     501062 Peirama               ALPHEI~ GR01   min_~  22.4  39.1    NA</span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  2     200251 ABAS                  ALPHEI~ GR01   min_~  25.9  40.9   114</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  3     200280 AG. BASILEIOS         ALPHEI~ GR01   min_~  24.5  35.2   299</span></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  4     501032 AG. BASILEIOS         ALPHEI~ GR01   min_~  NA    NA      NA</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;  5     200171 AG. BLASIOS           ALPHEI~ GR01   min_~  21.5  38.8   852</span></a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;  6     501054 AG. GEORGIOS          ALPHEI~ GR01   min_~  24.1  35.4   850</span></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;  7     200292 AG. GEORGIOS          ALPHEI~ GR01   min_~  25.5  35.2   836</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt;  8     200348 AG. DEMETRIOS PIERIAS ALPHEI~ GR01   min_~  22.2  40.2   808</span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt;  9     200065 AG. THEODOROI         ALPHEI~ GR01   min_~  20.9  39.4   698</span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 10     200018 AGIA TRIADA           ALPHEI~ GR01   min_~  22.9  38.3   400</span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; # ... with 415 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-12" data-line-number="12">stations</a></code></pre></div>
 </section>
 </section>
 <section id="timeseries" class="level1">
@@ -394,21 +380,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb6-7" data-line-number="7">  <span class="st">&quot;start_date&quot;</span> =<span class="st"> </span><span class="kw">as.character</span>(kyy_data<span class="op">$</span>timeseries<span class="op">$</span>start_date_utc),</a>
 <a class="sourceLine" id="cb6-8" data-line-number="8">  <span class="st">&quot;end_date&quot;</span> =<span class="st"> </span><span class="kw">as.character</span>(kyy_data<span class="op">$</span>timeseries<span class="op">$</span>end_date_utc)</a>
 <a class="sourceLine" id="cb6-9" data-line-number="9">)</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">timeseries</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; # A tibble: 1,613 x 7</span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;    timeser_id station_id variable   timestep   units start_date end_date  </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;         &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;     </span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;  1        913     200251 flow_gauge 5_minutes  °     1960-11-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt;  2        914     200251 flow_gauge 5_minutes  °     1967-01-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt;  3        916     200252 flow_gauge 5_minutes  °     1960-11-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt;  4        917     200252 flow_gauge 5_minutes  °     1967-01-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;  5        919     200253 flow_gauge 10_minutes °     1962-07-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;  6        920     200253 flow_gauge 10_minutes °     1967-01-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;  7        922     200254 flow_gauge 10_minutes °     1961-04-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  8        923     200254 flow_gauge 10_minutes °     1967-01-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  9        711     200188 flow_gauge 10_minutes °     1963-12-0~ 2013-12-3~</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 10        925     200255 flow_gauge 30_minutes °     1975-01-0~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; # ... with 1,603 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-10" data-line-number="10">timeseries</a></code></pre></div>
 </section>
 </section>
 
