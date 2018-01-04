@@ -76,80 +76,15 @@ devtools::install_github("kvantas/hydroscoper")
 
 ## Using hydroscoper
 
-The available functions that are provided by `hydroscoper` are:
+The functions that are provided by `hydroscoper` are:
 
-  - `get_stations` to retrieve a tidy data frame with stations’ data for
-    a given data source.
+  - `get_...` family functions to retrieve a tidy data frame with
+    Hydroscope’s data for a given data source.
   - `get_timeseries` to retrieve a tidy data frame with a time series’
     data for a given data source.
   - `get_data` to retrieve a tidy data frame with a time series’ values.
 
 ## Example
-
-This is a basic example which shows you how to get a data frame with
-stations from the Ministry of Environment and Energy:
-
-``` r
-library(hydroscoper)
-stations <- get_stations(subdomain = "kyy")
-head(stations[c("station_id", "name", "water_division", "long", "lat", "altitude")], 10)
-#>    station_id                  name       water_division     long      lat
-#> 1      501062               Peirama DYTIKE PELOPONNESOS  22.41211 39.07562
-#> 2      200251                  ABAS DYTIKE PELOPONNESOS  25.91659 40.93200
-#> 3      200280         AG. BASILEIOS DYTIKE PELOPONNESOS  24.45425 35.24414
-#> 4      501032         AG. BASILEIOS DYTIKE PELOPONNESOS        NA       NA
-#> 5      200171           AG. BLASIOS DYTIKE PELOPONNESOS  21.51309 38.81464
-#> 6      501054          AG. GEORGIOS DYTIKE PELOPONNESOS  24.13917 35.44500
-#> 7      200292          AG. GEORGIOS DYTIKE PELOPONNESOS  25.48357 35.16758
-#> 8      200348 AG. DEMETRIOS PIERIAS DYTIKE PELOPONNESOS  22.23164 40.15647
-#> 9      200065         AG. THEODOROI DYTIKE PELOPONNESOS  20.91568 39.36698
-#> 10     200018           AGIA TRIADA DYTIKE PELOPONNESOS  22.91608 38.34894
-#>    altitude
-#> 1        NA
-#> 2     114.0
-#> 3     298.6
-#> 4        NA
-#> 5     852.4
-#> 6     850.0
-#> 7     836.4
-#> 8     808.2
-#> 9     697.7
-#> 10    400.0
-```
-
-To get the time series for station **200251** run:
-
-``` r
-
-ts_data <- get_timeseries(subdomain = "kyy")
-ts <- subset(ts_data, station_id == 200251)
-ts[c("timeseries_id", "variable", "unit_of_measurement", "time_step")]
-#>     timeseries_id            variable unit_of_measurement time_step
-#> 1             913 ANEMOS (DIEUTHYNSE)                   °    5lepte
-#> 2             914 ANEMOS (DIEUTHYNSE)                   °    5lepte
-#> 40            912 ANEMOS (DIEUTHYNSE)                   °   30lepte
-#> 454          1451         BROCHOPTOSE                  mm  Emeresia
-#> 798          2173         BROCHOPTOSE                  mm  Emeresia
-```
-
-You can get the time series **912** to a tidy data frame with:
-
-``` r
-df <- get_data(subdomain = "kyy", time_id = 912)
-```
-
-Let’s create a plot for these data:
-
-``` r
-library(ggplot2)
-ggplot(data = df, aes(x = Date, y = Value))+
-  geom_line()+
-  labs(title="Dailly rainfall data for station 200251",
-       x="Date", y = "Rain (mm)")+
-  theme_classic()
-```
-
-![](man/figures/README-plot_timeseries-1.png)<!-- -->
 
 ## Meta
 

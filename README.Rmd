@@ -68,46 +68,12 @@ devtools::install_github("kvantas/hydroscoper")
 
 ## Using hydroscoper
 
-The available functions that are provided by `hydroscoper` are:
+The functions that are provided by `hydroscoper` are:
 
-* `get_stations` to retrieve a tidy data frame with stations' data for a given data source.
-* `get_timeseries` to retrieve a tidy data frame with a time series' data for a given data source. 
+* `get_...` family functions to retrieve a tidy data frame with Hydroscope's data for a given data source.
 * `get_data` to retrieve a tidy data frame with a time series' values.
 
 ## Example
-
-This is a basic example which shows you how to get a data frame with stations from the Ministry of Environment and Energy:
-
-```{r get_stations}
-library(hydroscoper)
-stations <- get_stations(subdomain = "kyy")
-head(stations[c("station_id", "name", "water_division", "long", "lat", "altitude")], 10)
-```
-
-To get the time series for station **200251** run:
-
-```{r get_time_series}
-
-ts_data <- get_timeseries(subdomain = "kyy")
-ts <- subset(ts_data, station_id == 200251)
-ts[c("timeseries_id", "variable", "unit_of_measurement", "time_step")]
-```
-
-You can get the time series **912** to a tidy data frame with:
-```{r get_data}
-df <- get_data(subdomain = "kyy", time_id = 912)
-```
-
-Let's create a plot for these data:
-```{r plot_timeseries}
-library(ggplot2)
-ggplot(data = df, aes(x = Date, y = Value))+
-  geom_line()+
-  labs(title="Dailly rainfall data for station 200251",
-       x="Date", y = "Rain (mm)")+
-  theme_classic()
-
-```
 
 ## Meta
 
