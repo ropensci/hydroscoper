@@ -2,10 +2,12 @@ Package: hydroscoper
 Type: Package
 Title: Interface to Hydroscope
 Version: 0.1.0.9000
-Authors@R: person("Konstantinos", "Vantas", email = "kon.vantas@gmail.com", role = c("aut", "cre"))
+Authors@R: person("Konstantinos", "Vantas", role = c("aut", "cre"),
+  email = "kon.vantas@gmail.com",
+  comment = c(ORCID = "0000-0001-6387-8791"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the  Greek National Data Bank for Hydrological and 
-    Meteorological Information (http://www.hydroscope.gr/). It 
+    Meteorological Information <http://www.hydroscope.gr/>. It 
     covers Hydroscope's data sources and provides functions to transliterate, 
     translate and get them into tidy dataframes.
 URL: https://github.com/kvantas/hydroscoper
@@ -19,8 +21,7 @@ RoxygenNote: 6.0.1
 Imports: stringi (>= 1.1.6),
     jsonlite (>= 1.5),
     stringr (>= 1.2), 
-    readr (>= 1.1.1),
-    utils (>= 3.4.0)
+    readr (>= 1.1.1)
 Suggests: plyr (>= 1.8.4),
     ggplot2 (>= 2.2.1),
     knitr (>= 1.17),
