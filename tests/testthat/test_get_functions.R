@@ -1,3 +1,5 @@
+skip("heavy web usage")
+
 context("Test API")
 test_that("API returns a list of tables", {
   expect_is( get_api_json("kyy"), "list")
@@ -25,7 +27,6 @@ test_that("Missing arguments and unknown subdomains return errors", {
 })
 
 context("Check if data from hydroscope are as expected")
-skip("heavy web usage")
 test_that("get functions return dataframes with a subset of variables", {
 
   # get data from subdomains ---------------------------------------------------
