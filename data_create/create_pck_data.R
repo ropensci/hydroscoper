@@ -6,11 +6,6 @@ subdomain <- c("kyy", "ypaat", "emy", "deh")
 hydro_data <- lapply(subdomain, function(x)get_database(x))
 names(hydro_data) <- subdomain
 
-# remove attributes helper function
-remove_atr <- function(df) {
-  for(cn in names(df)) attributes(df[, cn]) = NULL
-  df
-}
 
 # Stations' data ---------------------------------------------------------------
 
@@ -33,13 +28,6 @@ sapply(subdomain, function(id) {
 stations <- plyr::ldply(subdomain, function(id){
 
   tmp <-  hydro_data[[id]]
-
-  # remove attrs
-  tmp$stations <- remove_atr(tmp$stations)
-  tmp$water_basins <-remove_atr(tmp$water_basins)
-  tmp$water_divisions <-remove_atr(tmp$water_divisions)
-  tmp$owners <-remove_atr(tmp$owners)
-
 
   # extract dataframes to join
   wbas <- tmp$water_basins[c("id", "name")]
@@ -68,7 +56,7 @@ stations <- plyr::ldply(subdomain, function(id){
 
 
   tibble::tibble(station_id = as.integer(res$id),
-                 name = res$name,
+                 name = as.character(res$name),
                  water_basin = res$water_basin_name,
                  water_division = res$water_division_name,
                  owner = res$owner_name,
@@ -113,13 +101,6 @@ sapply(subdomain, function(id) {
 timeseries <- plyr::ldply(subdomain, function(id){
 
   tmp <-  hydro_data[[id]]
-
-  # remove attributes
-  tmp$timeseries <- remove_atr(tmp$timeseries)
-  tmp$variables <- remove_atr(tmp$variables)
-  tmp$time_steps <- remove_atr(tmp$time_steps)
-  tmp$units <- remove_atr(tmp$units)
-
 
   # create data frames to join
   var_names <- tmp$variables[c("id", "descr")]
