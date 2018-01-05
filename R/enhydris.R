@@ -1,7 +1,7 @@
 # Enhydris API -----------------------------------------------------------------
 
 # get subdomains' tables
-gep_api_json <- function(subdomain) {
+get_api_json <- function(subdomain) {
   h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json")
   enhy_get_df(h_url)
 }
