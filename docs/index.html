@@ -118,10 +118,77 @@
 <p>The functions that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>get_...</code> family functions to retrieve a tidy data frame with Hydroscope’s data for a given data source.</li>
+<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source.</li>
 <li>
-<code>get_data</code> to retrieve a tidy data frame with a time series’ values.</li>
+<code>get_data</code>, to retrieve a tidy data frame with values of a time series</li>
+<li>
+<code>get_coords</code>, to convert Hydroscope’s points raw format to a tidy data frame</li>
+<li>
+<code>hydro_translate</code> to translate various terms and names from Greek to English</li>
+</ul>
+<p>The data sets that are provided by <code>hydroscoper</code> are:</p>
+<ul>
+<li>
+<code>stations</code> a tidy data frame with stations’ data from all Hydroscope’s data sources</li>
+<li>
+<code>timeseries</code> a tidy data frame with time series’ data from all Hydroscope’s sources sources.</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
+<p>This is a basic example which shows you how to get the stations’ and timeseries data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
+<p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> subdomain with:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">kyy_stations &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, subdomain <span class="op">==</span><span class="st"> "kyy"</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">as_tibble</span>(kyy_stations)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; # A tibble: 425 x 9</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  *      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  </span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  4     200231 BYTINA     "ALPHEIO~ GR01    min_en~  22.2  37.7  1011 kyy  </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  5     200200 LYKOURIA   "ALPHEIO~ GR01    min_en~  22.2  37.9   758 kyy  </span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  6     200236 MEGALOPOLE "ALPHEIO~ GR01    min_en~  22.1  37.4   429 kyy  </span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  7     200244 ODOG. AG.~ "REMA CH~ GR01    min_en~  21.8  37.0   182 kyy  </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  8     200204 TRIPOTAMA  "ALPHEIO~ GR01    min_en~  21.9  37.9   570 kyy  </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  9     200198 KASTELLIO  "ALPHEIO~ GR01    min_en~  22.0  37.9   792 kyy  </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; 10     200239 PERDIKONE~ "ALPHEIO~ GR01    min_en~  22.0  37.7   837 kyy  </span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; # ... with 415 more rows</span></a></code></pre></div>
+<p>To get the time series’ data for the station <code>200200</code> (<a href="http://kyy.hydroscope.gr/stations/d/200200/" class="uri">http://kyy.hydroscope.gr/stations/d/200200/</a>) we can use:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">station_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, station_id <span class="op">==</span><span class="st"> </span><span class="dv">200200</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">as_tibble</span>(station_ts)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 8</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   timeser_id station_id variable      timestep   units start~ end_d~ subd~</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; *      &lt;int&gt;      &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1        761     200200 wind_direc    &lt;NA&gt;       °     1948-~ 1997-~ kyy  </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipitation 30_minutes mm    1985-~ 1997-~ kyy  </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow          daily      mm    1948-~ 1997-~ kyy  </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipitation daily      mm    1953-~ 2011-~ kyy</span></a></code></pre></div>
+<p>You can get the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/timeseries/d/56/" class="uri">http://kyy.hydroscope.gr/timeseries/d/56/</a>):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>,<span class="dt">time_id =</span> <span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">ts_raw</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;    Date                Value Comment</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  1 1985-05-06 08:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  2 1985-05-06 08:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  3 1985-05-06 09:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  4 1985-05-06 09:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  5 1985-05-06 10:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  6 1985-05-06 10:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  7 1985-05-06 11:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  8 1985-05-06 11:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  9 1985-05-06 12:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10 1985-05-06 12:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # ... with 147,509 more rows</span></a></code></pre></div>
+<p>Let’s create a plot:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts_raw, <span class="kw">aes</span>(<span class="dt">x =</span> Date, <span class="dt">y =</span> Value))<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"Daily rainfall for station 200200"</span>,</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain (mm)"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="reference/figures/README-plot_time_series-1.png" width="672"></p>
 </section><section id="meta" class="level2"><h2>Meta</h2>
 <ul>
 <li>Please <a href="https://github.com/kvantas/hydroscoper/issues">report any issues or bugs</a>.</li>

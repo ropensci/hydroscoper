@@ -35,8 +35,8 @@ knitr::opts_chunk$set(
 #                    by.y = "id")
 #  
 #  # transate names
-#  own_names$name <- hydro_translate(own_names$name, "owner")
-#  wd_names$name <- hydro_translate(wd_names$name, "division")
+#  # own_names$name <- hydro_translate(own_names$name, "owner")
+#  # wd_names$name <- hydro_translate(wd_names$name, "division")
 
 ## ----stations_dataframe--------------------------------------------------
 #  
