@@ -8,7 +8,14 @@ test_that("greek2latin returns strings", {
 })
 
 
-# test_that("", {})
+test_that("trasnlit_all returns a dataframe", {
+
+  df <- data.frame(x1 = c("te", "xc"),
+                   x2 = c("ddd", "asd"))
+  df2 <- data.frame()
+  expect_is(trasnlit_all(df), "data.frame")
+  expect_is(trasnlit_all(df2), "data.frame")
+})
 
 
 test_that("Organizations translations", {
