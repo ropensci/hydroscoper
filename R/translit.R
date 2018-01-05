@@ -2,10 +2,15 @@
 
 # convert greek to latin-ascii
 greek2latin <- function(x) {
-  sapply(x, function(y) {
+
+  if(is.null(x)) return("")
+
+  res <- sapply(x, function(y) {
     y <- stringi::stri_trans_general(y, "Latin")
     stringi::stri_trans_general(y, "latin-ascii")
   })
+
+  unname(res)
 }
 
 # translitarate all the columns of a dataframe from Greek to latin-ascii
