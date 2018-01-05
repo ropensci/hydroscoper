@@ -13,6 +13,7 @@
     \item{units}{The units of the time series}
     \item{start_date}{The starting date of time series values}
     \item{end_date}{The ending date of time series values}
+    \item{subdomain}{The corresponding Hydroscope's database}
 }}
 \usage{
 timeseries

@@ -22,7 +22,7 @@ returns a character vector with translations of various hydrometeorological
 terms or organizations' names
 }
 \description{
-\code{hydro_translate} Greeek to English translations of names and terms
+\code{hydro_translate} Greek to English translations of names and terms
 }
 \examples{
 \dontrun{

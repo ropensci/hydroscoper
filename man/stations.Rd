@@ -14,12 +14,13 @@
     \item{longitude}{The station's longitude in decimal degrees, ETRS89}
     \item{latitude}{The station's latitude in decimal degrees, ETRS89}
     \item{altitude}{The station's altitude, meters above sea level}
+    \item{subdomain}{The corresponding Hydroscope's database}
 }}
 \usage{
 stations
 }
 \description{
 Stations' data from the Greek National Data Bank for Hydrological and
-Meteorological Information, Ministry of Environment and Energy.
+Meteorological Information.
 }
 \keyword{datasets}

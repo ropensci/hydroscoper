@@ -13,6 +13,8 @@ hydroscope_url <- function(domain) {
 
 # use Enhydris API to get json data
 enhy_get_df <- function(s_url) {
+
+  # get data
   jsonlite::fromJSON(s_url, flatten = TRUE)
 }
 

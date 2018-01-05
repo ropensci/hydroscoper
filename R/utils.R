@@ -29,7 +29,7 @@ get_coords <- function(x) {
 
 #' Translate Greek names and terms to English
 #'
-#' \code{hydro_translate} Greeek to English translations of names and terms
+#' \code{hydro_translate} Greek to English translations of names and terms
 #'
 #' @param x a string vector
 #' @param value One of the predefined values in

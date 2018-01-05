@@ -1,7 +1,7 @@
 #' stations
 #'
 #' Stations' data from the Greek National Data Bank for Hydrological and
-#' Meteorological Information, Ministry of Environment and Energy.
+#' Meteorological Information.
 #'
 #' @format A data frame:
 #' \describe{
@@ -13,7 +13,7 @@
 #'     \item{longitude}{The station's longitude in decimal degrees, ETRS89}
 #'     \item{latitude}{The station's latitude in decimal degrees, ETRS89}
 #'     \item{altitude}{The station's altitude, meters above sea level}
-
+#'     \item{subdomain}{The corresponding Hydroscope's database}
 #' }
 "stations"
 
@@ -31,5 +31,6 @@
 #'     \item{units}{The units of the time series}
 #'     \item{start_date}{The starting date of time series values}
 #'     \item{end_date}{The ending date of time series values}
+#'     \item{subdomain}{The corresponding Hydroscope's database}
 #' }
 "timeseries"

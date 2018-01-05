@@ -95,8 +95,8 @@ map_ts <- function(y){
   y <- stringr::str_to_lower(y)
 
   df <- data.frame(
-    from = c("lepte", "emeresia", "meniaia"),
-    to   = c("_minutes", "daily", "monthly"),
+    from = c("lepte", "emeresia", "meniaia", "etesia", "oriaia"),
+    to   = c("_minutes", "daily", "monthly", "annual", "hourly"),
     stringsAsFactors = FALSE)
 
   translate_str(y, df)

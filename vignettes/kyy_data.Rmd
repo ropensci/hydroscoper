@@ -69,8 +69,8 @@ own_names <- merge(x = kyy_data$stations$owner,
                   by.y = "id")
 
 # transate names
-own_names$name <- hydro_translate(own_names$name, "owner")
-wd_names$name <- hydro_translate(wd_names$name, "division")
+# own_names$name <- hydro_translate(own_names$name, "owner")
+# wd_names$name <- hydro_translate(wd_names$name, "division")
 ```
 
 ## Stations' data frame

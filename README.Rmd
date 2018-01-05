@@ -1,6 +1,8 @@
 ---
 title: hydroscoper
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -70,10 +72,55 @@ devtools::install_github("kvantas/hydroscoper")
 
 The functions that are provided by `hydroscoper` are:
 
-* `get_...` family functions to retrieve a tidy data frame with Hydroscope's data for a given data source.
-* `get_data` to retrieve a tidy data frame with a time series' values.
+* `get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database ` family functions, to retrieve a data frame with Hydroscope's data for a given data source.
+* `get_data`, to retrieve a tidy data frame with values of a time series 
+* `get_coords`, to convert Hydroscope's points raw format to a tidy data frame
+* `hydro_translate` to translate various terms and names from Greek to English
+
+The data sets that are provided by `hydroscoper` are:
+
+* `stations` a tidy data frame with stations' data from all Hydroscope's data sources
+* `timeseries` a tidy data frame with time series' data from all Hydroscope's sources sources.
 
 ## Example
+
+This is a basic example which shows you how to get the stations' and timeseries data from the Hydroscope's Ministry of Environment and Energy database, http://kyy.hydroscope.gr/.
+
+We will use the the package's data `stations` and `timeseries`, to reduce the time needed with data munging. We can subset the station's data for the `kyy` subdomain with:
+
+```{r}
+library(hydroscoper)
+library(tibble)
+
+kyy_stations <- subset(stations, subdomain == "kyy")
+as_tibble(kyy_stations)
+```
+
+To get the time series' data for the station `200200` (http://kyy.hydroscope.gr/stations/d/200200/) we can use:
+```{r}
+station_ts <- subset(timeseries, station_id == 200200)
+as_tibble(station_ts)
+
+
+```
+
+You can get the station's  time series **56** (http://kyy.hydroscope.gr/timeseries/d/56/):
+
+``` {r get_ts}
+ts_raw <- get_data(subdomain = "kyy",time_id = 56)
+ts_raw
+```
+
+Let's create a plot:
+
+``` {r plot_time_series}
+library(ggplot2)
+ggplot(data = ts_raw, aes(x = Date, y = Value))+
+  geom_line()+
+  labs(title="Daily rainfall for station 200200",
+       x="Date", y = "Rain (mm)")+
+  theme_classic()
+```
 
 ## Meta
 
