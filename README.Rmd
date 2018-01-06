@@ -92,7 +92,7 @@ We will use the the package's data `stations` and `timeseries`, to reduce the ti
 ```{r}
 library(hydroscoper)
 library(tibble)
-
+data("stations")
 kyy_stations <- subset(stations, subdomain == "kyy")
 as_tibble(kyy_stations)
 ```

@@ -112,7 +112,7 @@ data for the `kyy` subdomain with:
 ``` r
 library(hydroscoper)
 library(tibble)
-
+data("stations")
 kyy_stations <- subset(stations, subdomain == "kyy")
 as_tibble(kyy_stations)
 #> # A tibble: 425 x 9
