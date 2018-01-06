@@ -1,13 +1,3 @@
-skip("heavy web usage")
-
-context("Test API")
-test_that("API returns a list of tables", {
-  expect_is( get_api_json("kyy"), "list")
-  expect_is( get_api_json("ypaat"), "list")
-  expect_is( get_api_json("emy"), "list")
-  expect_is( get_api_json("deh"), "list")
-})
-
 context("Create Errors")
 test_that("Missing arguments and unknown subdomains return errors", {
   subdomain <- "xxxx"
@@ -18,12 +8,22 @@ test_that("Missing arguments and unknown subdomains return errors", {
                "get_units_of_measurement", "get_time_steps", "get_owners",
                "get_instruments_type", "get_station_type", "get_database")
 
-   for (fn in get_fun) {
+  for (fn in get_fun) {
     f <- get(fn)
     expect_error(f(subdomain))
-   }
+  }
   expect_error(get_data(subdomain, 34))
   expect_error(get_data("kyy"))
+})
+
+skip("heavy web usage")
+
+context("Test API")
+test_that("API returns a list of tables", {
+  expect_is( get_api_json("kyy"), "list")
+  expect_is( get_api_json("ypaat"), "list")
+  expect_is( get_api_json("emy"), "list")
+  expect_is( get_api_json("deh"), "list")
 })
 
 context("Check if data from hydroscope are as expected")
