@@ -45,7 +45,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/kyy_data.html">Using hydroscoper to get stations' and time-series' data</a>
+      <a href="articles/hydroscope_data.html">Getting Hydroscope's data</a>
+    </li>
+    <li>
+      <a href="articles/stations_with_data.html">Hydroscope's stations with available data</a>
     </li>
   </ul>
 </li>
@@ -82,19 +85,19 @@
 <p><code>hydroscoper</code> is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, <a href="http://www.hydroscope.gr/">Hydroscope</a>. Hydroscope is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
 <p>Hydroscope, provides several national data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using the Enhydris database system for the storage and management of hydrological and meteorological data. These organisations are:</p>
 <ul>
-<li>Ministry of Environment and Energy.</li>
-<li>Ministry of Rural Development and Food.</li>
-<li>National Meteorological Service.</li>
-<li>National Observatory of Athens.</li>
-<li>Greek Prefectures.</li>
-<li>Public Power Corporation.</li>
+<li>Ministry of Environment and Energy</li>
+<li>Ministry of Rural Development and Food</li>
+<li>National Meteorological Service</li>
+<li>National Observatory of Athens</li>
+<li>Greek Prefectures</li>
+<li>Public Power Corporation</li>
 </ul>
 <p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.</p>
 <p><code>hydroscoper</code> covers Hydroscope’s data sources using the <a href="http://enhydris.readthedocs.io/en/latest/index.html">Enhydris API</a> and provides functions to:</p>
 <ol type="1">
-<li>Transform the available tables and data sets into tidy data frames.</li>
-<li>Transliterate the Greek Unicode names to Latin.</li>
-<li>Translate various Greek terms to English.</li>
+<li>Transform the available tables and data sets into tidy data frames</li>
+<li>Transliterate the Greek Unicode names to Latin</li>
+<li>Translate various Greek terms to English</li>
 </ol>
 <section id="data-sources" class="level2"><h2>Data sources</h2>
 <ul>
@@ -118,7 +121,7 @@
 <p>The functions that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source.</li>
+<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source</li>
 <li>
 <code>get_data</code>, to retrieve a tidy data frame with values of a time series</li>
 <li>
@@ -129,9 +132,9 @@
 <p>The data sets that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>stations</code> a tidy data frame with stations’ data from all Hydroscope’s data sources</li>
+<code>stations</code> a tidy data frame with stations’ data from Hydroscope</li>
 <li>
-<code>timeseries</code> a tidy data frame with time series’ data from all Hydroscope’s sources sources.</li>
+<code>timeseries</code> a tidy data frame with time series’ data from Hydroscope</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
 <p>This is a basic example which shows you how to get the stations’ and timeseries data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
 <p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> subdomain with:</p>

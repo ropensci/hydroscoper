@@ -1,0 +1,95 @@
+---
+title: "Hydroscope's stations with available data"
+author: "Konstantinos Vantas"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+This vignette shows how to get Hydroscope's stations with available time series for downloading.
+The sub-domains of Hydroscope with these data are:
+
+* Ministry of Environment and Energy http:/kyy.hydroscope.gr
+* Ministry of Rural Development and Food, http://ypaat.hydroscope.gr
+
+## Subset data
+
+The following code shows how to subset the data, using the package's data sets:
+
+```{r subset_data}
+library(hydroscoper)
+
+data("stations")
+data("timeseries")
+
+# subset data
+st_data <- subset(stations, subdomain == "kyy" |  subdomain =="ypaat")
+time_data <- subset(timeseries, subdomain == "kyy" |  subdomain =="ypaat")
+```
+
+From Hydroscope's `r nrow(stations)` stations there are `r nrow(st_data)` from the sub-domains `kyy` and `ypaat`. Out of these stations lets examine how many have time series:
+
+```{r stations_with_timeseries}
+st_data <- st_data[st_data$station_id %in% time_data$station_id,]
+```
+
+Only `r nrow(st_data)` seems to have time series.
+
+## Exploring data
+
+We can create a map with the stations with data, using the ggmap package, with:
+
+```{r create_map, message=F, warning=F}
+
+library(ggmap)
+
+# create map
+map <- get_map(
+    location = c(lon = mean(stations$longitude, na.rm = TRUE),
+                 lat = mean(stations$latitude, na.rm = TRUE)),
+    maptype = "toner-background",
+    color = 'bw',
+    zoom = 6)
+p <- ggmap(map)
+
+p +
+  geom_point(data = st_data,
+             aes(x = longitude, y = latitude),
+             fill = 'red',
+             shape = 21,
+             alpha = 0.8,
+             size = 2) +
+  scale_fill_brewer(palette = "Set1")+
+  xlim(19.5, 29) +
+  ylim(34, 41.5)
+```
+
+Although there is a large number of stations, there is a heterogeneity in the coverage of the country.
+
+These stations record a different set of variables. With the following code we can examine the number of the available time series per variable.
+
+```{r}
+head(sort(table(time_data$variable), decreasing = TRUE), n = 10)
+
+```
+
+The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.
+
+```{r}
+sort(table(time_data$timestep[time_data$variable == "precipitation"]), decreasing = TRUE)
+```
+
+
+

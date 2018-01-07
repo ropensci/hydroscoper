@@ -31,12 +31,12 @@ its data on its own server using the Enhydris database system for the
 storage and management of hydrological and meteorological data. These
 organisations are:
 
-  - Ministry of Environment and Energy.
-  - Ministry of Rural Development and Food.
-  - National Meteorological Service.
-  - National Observatory of Athens.
-  - Greek Prefectures.
-  - Public Power Corporation.
+  - Ministry of Environment and Energy
+  - Ministry of Rural Development and Food
+  - National Meteorological Service
+  - National Observatory of Athens
+  - Greek Prefectures
+  - Public Power Corporation
 
 The data are structured as tables and space separated text files, but
 are in Greek, thus limiting their usefulness.
@@ -45,9 +45,9 @@ are in Greek, thus limiting their usefulness.
 API](http://enhydris.readthedocs.io/en/latest/index.html) and provides
 functions to:
 
-1.  Transform the available tables and data sets into tidy data frames.
-2.  Transliterate the Greek Unicode names to Latin.
-3.  Translate various Greek terms to English.
+1.  Transform the available tables and data sets into tidy data frames
+2.  Transliterate the Greek Unicode names to Latin
+3.  Translate various Greek terms to English
 
 ## Data sources
 
@@ -84,7 +84,7 @@ The functions that are provided by `hydroscoper` are:
     get_units_of_measurement, get_time_steps, get_owners,
     get_instruments_type, get_station_type, get_database` family
     functions, to retrieve a data frame with Hydroscope’s data for a
-    given data source.
+    given data source
   - `get_data`, to retrieve a tidy data frame with values of a time
     series
   - `get_coords`, to convert Hydroscope’s points raw format to a tidy
@@ -94,10 +94,9 @@ The functions that are provided by `hydroscoper` are:
 
 The data sets that are provided by `hydroscoper` are:
 
-  - `stations` a tidy data frame with stations’ data from all
-    Hydroscope’s data sources
-  - `timeseries` a tidy data frame with time series’ data from all
-    Hydroscope’s sources sources.
+  - `stations` a tidy data frame with stations’ data from Hydroscope
+  - `timeseries` a tidy data frame with time series’ data from
+    Hydroscope
 
 ## Example
 
