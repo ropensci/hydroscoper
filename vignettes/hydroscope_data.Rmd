@@ -23,7 +23,7 @@ This vignette shows how to create a tidy data frame for the stations' and time s
 
 ## Download data
 
-With the following code we can download Hydroscope's sub domains' data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope's servers availability/traffic.
+With the following code we can download Hydroscope's sub-domains' data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope's servers availability/traffic.
 
 ```{r}
 library(hydroscoper)
@@ -39,7 +39,7 @@ names(hydro_data) <- subdomain
 
 ## Stations
 
-We must check if there are specific variables at each sub domain's stations' data, because we will merge these data to a new data frame.
+We must check if there are specific variables at each sub-domain's stations' data, because we will merge these data to a new data frame.
 
 ```{r}
 # check stations variables
@@ -107,7 +107,7 @@ stations <- ldply(subdomain, function(id){
 
 ## Time series
 
-Similarly, we will check if there are specific variables at each sub domain's time series' data. Note that `deh` sub domain uses a different API and does not have the variables `start_date_utc` and `end_date_utc` in the `timeseries` table.
+Similarly, we will check if there are specific variables at each sub-domain's time series' data. Note that `deh` sub-domain uses a different API and does not have the variables `start_date_utc` and `end_date_utc` in the `timeseries` table.
 
 ```{r}
 vart <- c("id", "gentity", "start_date_utc", "end_date_utc", "variable",

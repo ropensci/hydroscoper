@@ -12,7 +12,7 @@
 
 <meta name="author" content="Konstantinos Vantas" />
 
-<meta name="date" content="2018-01-07" />
+<meta name="date" content="2018-01-08" />
 
 <title>Getting Hydroscope’s data</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Getting Hydroscope’s data</h1>
 <h4 class="author"><em>Konstantinos Vantas</em></h4>
-<h4 class="date"><em>2018-01-07</em></h4>
+<h4 class="date"><em>2018-01-08</em></h4>
 
 
 
@@ -290,7 +290,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </section>
 <section id="download-data" class="level2">
 <h2>Download data</h2>
-<p>With the following code we can download Hydroscope’s sub domains’ data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope’s servers availability/traffic.</p>
+<p>With the following code we can download Hydroscope’s sub-domains’ data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope’s servers availability/traffic.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(plyr)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
@@ -302,7 +302,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </section>
 <section id="stations" class="level2">
 <h2>Stations</h2>
-<p>We must check if there are specific variables at each sub domain’s stations’ data, because we will merge these data to a new data frame.</p>
+<p>We must check if there are specific variables at each sub-domain’s stations’ data, because we will merge these data to a new data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># check stations variables</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">vars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;name&quot;</span>, <span class="st">&quot;owner&quot;</span>, <span class="st">&quot;point&quot;</span>, <span class="st">&quot;altitude&quot;</span>, <span class="st">&quot;water_basin&quot;</span>,</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">          <span class="st">&quot;water_division&quot;</span>)</a>
@@ -363,7 +363,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </section>
 <section id="time-series" class="level2">
 <h2>Time series</h2>
-<p>Similarly, we will check if there are specific variables at each sub domain’s time series’ data. Note that <code>deh</code> sub domain uses a different API and does not have the variables <code>start_date_utc</code> and <code>end_date_utc</code> in the <code>timeseries</code> table.</p>
+<p>Similarly, we will check if there are specific variables at each sub-domain’s time series’ data. Note that <code>deh</code> sub-domain uses a different API and does not have the variables <code>start_date_utc</code> and <code>end_date_utc</code> in the <code>timeseries</code> table.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">vart &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;gentity&quot;</span>, <span class="st">&quot;start_date_utc&quot;</span>, <span class="st">&quot;end_date_utc&quot;</span>, <span class="st">&quot;variable&quot;</span>,</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">          <span class="st">&quot;time_step&quot;</span>, <span class="st">&quot;unit_of_measurement&quot;</span>)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>

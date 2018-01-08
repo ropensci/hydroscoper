@@ -13,6 +13,7 @@ version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![packageversion](https://img.shields.io/badge/Package%20version-0.1.0.9000-orange.svg?style=flat-square)](commits/master)
 [![Rdoc](http://www.rdocumentation.org/badges/version/hydroscoper)](http://www.rdocumentation.org/packages/hydroscoper)
+[![](http://cranlogs.r-pkg.org/badges/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
@@ -101,12 +102,12 @@ The data sets that are provided by `hydroscoper` are:
 ## Example
 
 This is a basic example which shows you how to get the stations’ and
-timeseries data from the Hydroscope’s Ministry of Environment and Energy
-database, <http://kyy.hydroscope.gr/>.
+time series data from the Hydroscope’s Ministry of Environment and
+Energy database, <http://kyy.hydroscope.gr/>.
 
 We will use the the package’s data `stations` and `timeseries`, to
 reduce the time needed with data munging. We can subset the station’s
-data for the `kyy` subdomain with:
+data for the `kyy` sub-domain with:
 
 ``` r
 library(hydroscoper)
@@ -146,7 +147,7 @@ as_tibble(station_ts)
 ```
 
 You can get the station’s time series **56**
-(<http://kyy.hydroscope.gr/timeseries/d/56/>):
+(<http://kyy.hydroscope.gr/time> series/d/56/):
 
 ``` r
 ts_raw <- get_data(subdomain = "kyy",time_id = 56)
@@ -187,15 +188,14 @@ ggplot(data = ts_raw, aes(x = Date, y = Value))+
 
   - Licence:
     
-      - All code is licenced MIT.
+      - All code is licensed MIT.
       - All data are from the public data sources in
         <http://www.hydroscope.gr/>.
 
   - To cite `hydroscoper`, please
         use:
     
-        Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope. R package version 0.1.0.
-        https://github.com/kvantas/hydroscoper
+        Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope, R package version 0.1.0, URL http://CRAN.R-project.org/package=hydroscoper
     
     A BibTeX entry for LaTeX users is
     
@@ -205,7 +205,7 @@ ggplot(data = ts_raw, aes(x = Date, y = Value))+
       author = {Konstantinos Vantas},
       year = {2017},
       note = {R package version 0.1.0},
-      url = {https://github.com/kvantas/hydroscoper},
+      url = {http://CRAN.R-project.org/package=hydroscoper},
     }
     ```
 
