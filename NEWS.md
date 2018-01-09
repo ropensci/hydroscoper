@@ -27,10 +27,6 @@
   - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points` raw format to a tidy data frame.
   - `get_stations` and `get_timeseries` use the Enhydris API and are considerably faster, because the older versions used web scrapping.
 
-* Use Enhydris API
-* Add Greek Public Power Corporation sub-domain support
-* Create databases for all available stations and time series
-
 --------------------------------------------------------------------------------
 
 # hydroscoper 0.1.0 (Release date: 2017-12-22)
