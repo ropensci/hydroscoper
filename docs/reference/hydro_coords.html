@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • hydroscoper</title>
+<title>Convert coordinates from Hydroscope's points � hydro_coords • hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -96,88 +96,56 @@
       </header>
 
       <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;0.2.0</small>
-      </h1>
+    <h1>Convert coordinates from Hydroscope's points</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    
+    <p><code>hydro_coords</code> returns a data frame with the stations' longitudes and
+latitudes using as input the variable <code>point</code> from <code>get_stations</code>
+ function.</p>
+    
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <pre class="usage"><span class='fu'>hydro_coords</span>(<span class='no'>x</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a string vector with the points retrieved from Hydroscope</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_data.html">get_data</a></code> </p>
-          </td>
-          <td><p>Get time series values in a tidy dataframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_functions.html">get_stations</a></code> <code><a href="get_functions.html">get_timeseries</a></code> <code><a href="get_functions.html">get_instruments</a></code> <code><a href="get_functions.html">get_water_basins</a></code> <code><a href="get_functions.html">get_water_divisions</a></code> <code><a href="get_functions.html">get_political_divisions</a></code> <code><a href="get_functions.html">get_variables</a></code> <code><a href="get_functions.html">get_units_of_measurement</a></code> <code><a href="get_functions.html">get_time_steps</a></code> <code><a href="get_functions.html">get_owners</a></code> <code><a href="get_functions.html">get_instruments_type</a></code> <code><a href="get_functions.html">get_station_type</a></code> <code><a href="get_functions.html">get_database</a></code> </p>
-          </td>
-          <td><p>Get data frames from Hydroscope</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hydro_coords.html">hydro_coords</a></code> </p>
-          </td>
-          <td><p>Convert coordinates from Hydroscope's points</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hydro_translate.html">hydro_translate</a></code> </p>
-          </td>
-          <td><p>Translate Greek names and terms to English</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hydroscoper.html">hydroscoper</a></code> </p>
-          </td>
-          <td><p>hydroscoper: Interface to Hydroscope</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hydroscoper_defunct.html">get_coords</a></code> </p>
-          </td>
-          <td><p>Defunct functions in hydroscoper</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="stations.html">stations</a></code> </p>
-          </td>
-          <td><p>stations</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="timeseries.html">timeseries</a></code> </p>
-          </td>
-          <td><p>timeseries</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+    <p>a data frame with the longitude and latitude values. If the
+coordinates of</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'># get stations from the Greek Ministry of Environment and Energy</span>
+<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span><span class='fu'><a href='get_functions.html'>get_stations</a></span>(<span class='st'>"kyy"</span>)
+<span class='co'># create a dataframe with the coords of the stations</span>
+<span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hydroscoper_defunct.html'>get_coords</a></span>(<span class='no'>kyy_stations</span>$<span class='no'>point</span>)
+<span class='co'># }</span></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
+    <h2>Author</h2>
+    
+Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com</a>
+
   </div>
 </div>
 

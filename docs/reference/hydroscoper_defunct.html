@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create coordinates from Hydroscope's points — get_coords â€¢ hydroscoper</title>
+<title>Defunct functions in hydroscoper — hydroscoper_defunct â€¢ hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,53 +98,35 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create coordinates from Hydroscope's points</h1>
+    <h1>Defunct functions in hydroscoper</h1>
     </div>
 
     
-    <p><code>get_coords</code> returns a data frame with the stations' longitudes and
-latitudes using as input the variable <code>point</code> from <code>get_stations</code>
- function.</p>
+    <p>These functions are no longer available in <span class="pkg">hydroscoper</span>.</p>
     
 
-    <pre class="usage"><span class='fu'>get_coords</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>get_coords</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>a string vector with the points retrieved from Hydroscope</p></td>
+      <th>...</th>
+      <td><p>Defunct function's parameters</p><ul>
+<li><p><code>get_coords</code>: This function is defunct. Please use
+ <code><a href='hydro_coords.html'>hydro_coords</a></code> to convert Hydroscope's points raw format to a
+ tidy data frame.</p></li>
+</ul></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame with the longitude and latitude values. If the
-coordinates of</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># get stations from the Greek Ministry of Environment and Energy</span>
-<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span><span class='fu'><a href='get_functions.html'>get_stations</a></span>(<span class='st'>"kyy"</span>)
-<span class='co'># create a dataframe with the coords of the stations</span>
-<span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'>get_coords</span>(<span class='no'>kyy_stations</span>$<span class='no'>point</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    
-Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com</a>
+                </ul>
 
   </div>
 </div>

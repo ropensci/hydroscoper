@@ -85,30 +85,26 @@
 <p><code>hydroscoper</code> is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, <a href="http://www.hydroscope.gr/">Hydroscope</a>. Hydroscope is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
 <p>Hydroscope, provides several national data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using the Enhydris database system for the storage and management of hydrological and meteorological data. These organisations are:</p>
 <ul>
-<li>Ministry of Environment and Energy</li>
-<li>Ministry of Rural Development and Food</li>
-<li>National Meteorological Service</li>
-<li>National Observatory of Athens</li>
-<li>Greek Prefectures</li>
-<li>Public Power Corporation</li>
+<li>Ministry of Environment and Energy.</li>
+<li>Ministry of Rural Development and Food.</li>
+<li>National Meteorological Service.</li>
+<li>National Observatory of Athens.</li>
+<li>Greek Prefectures.</li>
+<li>Public Power Corporation.</li>
 </ul>
 <p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.</p>
 <p><code>hydroscoper</code> covers Hydroscope’s data sources using the <a href="http://enhydris.readthedocs.io/en/latest/index.html">Enhydris API</a> and provides functions to:</p>
 <ol type="1">
-<li>Transform the available tables and data sets into tidy data frames</li>
-<li>Transliterate the Greek Unicode names to Latin</li>
-<li>Translate various Greek terms to English</li>
+<li>Transform the available tables and data sets into tidy data frames.</li>
+<li>Transliterate the Greek Unicode names to Latin.</li>
+<li>Translate various Greek terms to English.</li>
 </ol>
 <section id="data-sources" class="level2"><h2>Data sources</h2>
 <ul>
-<li>Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>
-</li>
-<li>Ministry of Rural Development and Food, <a href="http://ypaat.hydroscope.gr" class="uri">http://ypaat.hydroscope.gr</a>
-</li>
-<li>National Meteorological Service, <a href="http://emy.hydroscope.gr" class="uri">http://emy.hydroscope.gr</a>
-</li>
-<li>Greek Public Power Corporation, <a href="http://deh.hydroscope.gr" class="uri">http://deh.hydroscope.gr</a>
-</li>
+<li>Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</li>
+<li>Ministry of Rural Development and Food, <a href="http://ypaat.hydroscope.gr" class="uri">http://ypaat.hydroscope.gr</a>.</li>
+<li>National Meteorological Service, <a href="http://emy.hydroscope.gr" class="uri">http://emy.hydroscope.gr</a>.</li>
+<li>Greek Public Power Corporation, <a href="http://deh.hydroscope.gr" class="uri">http://deh.hydroscope.gr</a>.</li>
 </ul>
 <p>Note that only the two Ministries allow to download time series values freely.</p>
 </section><section id="installation" class="level2"><h2>Installation</h2>
@@ -121,23 +117,24 @@
 <p>The functions that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source</li>
+<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source.</li>
 <li>
-<code>get_data</code>, to retrieve a tidy data frame with values of a time series</li>
+<code>get_data</code>, to retrieve a tidy data frame with time series’ values.<br>
+</li>
 <li>
-<code>get_coords</code>, to convert Hydroscope’s points raw format to a tidy data frame</li>
+<code>hydro_coords</code>, to convert Hydroscope’s points raw format to a tidy data frame.</li>
 <li>
-<code>hydro_translate</code> to translate various terms and names from Greek to English</li>
+<code>hydro_translate</code> to translate various terms and names from Greek to English.</li>
 </ul>
 <p>The data sets that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>stations</code> a tidy data frame with stations’ data from Hydroscope</li>
+<code>stations</code> a tidy data frame with stations’ data from Hydroscope.</li>
 <li>
-<code>timeseries</code> a tidy data frame with time series’ data from Hydroscope</li>
+<code>timeseries</code> a tidy data frame with time series’ data from Hydroscope.</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
-<p>This is a basic example which shows you how to get the stations’ and timeseries data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
-<p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> subdomain with:</p>
+<p>This is a basic example which shows you how to get the stations’ and time series data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
+<p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"stations"</span>)</a>
@@ -145,7 +142,7 @@
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">as_tibble</span>(kyy_stations)</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; # A tibble: 425 x 9</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  *      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  </span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  </span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  </span></a>
@@ -161,13 +158,13 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">station_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, station_id <span class="op">==</span><span class="st"> </span><span class="dv">200200</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">as_tibble</span>(station_ts)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 8</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   timeser_id station_id variable      timestep   units start~ end_d~ subd~</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; *      &lt;int&gt;      &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1        761     200200 wind_direc    &lt;NA&gt;       °     1948-~ 1997-~ kyy  </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipitation 30_minutes mm    1985-~ 1997-~ kyy  </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow          daily      mm    1948-~ 1997-~ kyy  </span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipitation daily      mm    1953-~ 2011-~ kyy</span></a></code></pre></div>
-<p>You can get the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/timeseries/d/56/" class="uri">http://kyy.hydroscope.gr/timeseries/d/56/</a>):</p>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   timeser_id station_id variable       timestep   units start~ end_~ subd~</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;        &lt;int&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1        761     200200 wind_direction &lt;NA&gt;       °     1948-~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipitation  30_minutes mm    1985-~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow           daily      mm    1948-~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy</span></a></code></pre></div>
+<p>You can get the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/time" class="uri">http://kyy.hydroscope.gr/time</a> series/d/56/):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>,<span class="dt">time_id =</span> <span class="dv">56</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">ts_raw</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
@@ -197,21 +194,20 @@
 <li>Please <a href="https://github.com/kvantas/hydroscoper/issues">report any issues or bugs</a>.</li>
 <li>Licence:
 <ul>
-<li>All code is licenced MIT.</li>
+<li>All code is licensed MIT.</li>
 <li>All data are from the public data sources in <a href="http://www.hydroscope.gr/" class="uri">http://www.hydroscope.gr/</a>.</li>
 </ul>
 </li>
 <li>
 <p>To cite <code>hydroscoper</code>, please use:</p>
-<pre><code>Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope. R package version 0.1.0.
-https://github.com/kvantas/hydroscoper</code></pre>
+<pre><code>Konstantinos Vantas (2017). hydroscoper: Interface to Hydroscope, R package version 0.1.0, URL http://CRAN.R-project.org/package=hydroscoper</code></pre>
 <p>A BibTeX entry for LaTeX users is</p>
 <pre><code> @Manual{,
   title = {hydroscoper: Interface to Hydroscope},
   author = {Konstantinos Vantas},
   year = {2017},
   note = {R package version 0.1.0},
-  url = {https://github.com/kvantas/hydroscoper},
+  url = {http://CRAN.R-project.org/package=hydroscoper},
 }</code></pre>
 </li>
 <li><p>Please note that this project is released with a <a href="/CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p></li>
@@ -246,8 +242,8 @@ https://github.com/kvantas/hydroscoper</code></pre>
 <li><a href="https://codecov.io/gh/kvantas/hydroscoper"><img src="https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg" alt="codecov"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://cran.r-project.org/package=hydroscoper"><img src="http://www.r-pkg.org/badges/version/hydroscoper" alt="CRAN_Status_Badge"></a></li>
-<li><a href="commits/master"><img src="https://img.shields.io/badge/Package%20version-0.1.0.9000-orange.svg?style=flat-square" alt="packageversion"></a></li>
-<li><a href="http://www.rdocumentation.org/packages/hydroscoper"><img src="http://www.rdocumentation.org/badges/version/hydroscoper" alt="Rdoc"></a></li>
+<li><a href="https://github.com/kvantas/hydroscoper"><img src="https://img.shields.io/badge/Package%20version-0.2.0-orange.svg?style=flat-square" alt="packageversion"></a></li>
+<li><a href="http://cran.rstudio.com/web/packages/hydroscoper/index.html"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/114094911"><img src="https://zenodo.org/badge/114094911.svg" alt="DOI"></a></li>
 </ul>
 </div>

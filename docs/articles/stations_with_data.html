@@ -78,7 +78,7 @@
       <h1>Hydroscope’s stations with available data</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-01-07</h4>
+            <h4 class="date">2018-01-09</h4>
           </div>
 
     
@@ -133,12 +133,14 @@
 <p>These stations record a different set of variables. With the following code we can examine the number of the available time series per variable.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>variable), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;     precipitation        wind_direc              snow             level </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;               712               269               265               101 </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;       level_flood   temperature_max   temperature_min        flow_gauge </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;                79                72                71                65 </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; evaporation_estim   temperature_air </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;                60                43</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;          precipitation         wind_direction                   snow </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;                    712                    269                    265 </span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;                  level            levminflood        temperature_max </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;                    101                     79                     72 </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;        temperature_min             flow_gauge evaporation_estimation </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;                     71                     65                     60 </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        temperature_air </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;                     43</span></a></code></pre></div>
 <p>The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>timestep[time_data<span class="op">$</span>variable <span class="op">==</span><span class="st"> "precipitation"</span>]), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; </span></a>

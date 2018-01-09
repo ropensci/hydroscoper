@@ -78,7 +78,7 @@
       <h1>Getting Hydroscope’s data</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-01-07</h4>
+            <h4 class="date">2018-01-09</h4>
           </div>
 
     
@@ -87,7 +87,7 @@
 <section id="introduction" class="level2"><h2>Introduction</h2>
 <p>This vignette shows how to create a tidy data frame for the stations’ and time series’ data from Hydroscope. We will use all the Hydroscope’s sub-domains.</p>
 </section><section id="download-data" class="level2"><h2>Download data</h2>
-<p>With the following code we can download Hydroscope’s sub domains’ data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope’s servers availability/traffic.</p>
+<p>With the following code we can download Hydroscope’s sub-domains’ data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope’s servers availability/traffic.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(plyr)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
@@ -97,7 +97,7 @@
 <a class="sourceLine" id="cb1-7" data-line-number="7">hydro_data &lt;-<span class="st"> </span><span class="kw">lapply</span>(subdomain, <span class="cf">function</span>(x)<span class="kw"><a href="../reference/get_functions.html">get_database</a></span>(x))</a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">names</span>(hydro_data) &lt;-<span class="st"> </span>subdomain</a></code></pre></div>
 </section><section id="stations" class="level2"><h2>Stations</h2>
-<p>We must check if there are specific variables at each sub domain’s stations’ data, because we will merge these data to a new data frame.</p>
+<p>We must check if there are specific variables at each sub-domain’s stations’ data, because we will merge these data to a new data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># check stations variables</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">vars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"name"</span>, <span class="st">"owner"</span>, <span class="st">"point"</span>, <span class="st">"altitude"</span>, <span class="st">"water_basin"</span>,</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">          <span class="st">"water_division"</span>)</a>
@@ -141,7 +141,7 @@
 <a class="sourceLine" id="cb3-25" data-line-number="25">  res &lt;-<span class="st"> </span><span class="kw">merge</span>(res, owners, <span class="dt">by =</span> <span class="st">"owner"</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb3-27" data-line-number="27">  <span class="co"># create coords</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28">  coords &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_coords.html">get_coords</a></span>(res<span class="op">$</span>point)</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">  coords &lt;-<span class="st"> </span><span class="kw"><a href="../reference/hydro_coords.html">hydro_coords</a></span>(res<span class="op">$</span>point)</a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"></a>
 <a class="sourceLine" id="cb3-30" data-line-number="30"></a>
 <a class="sourceLine" id="cb3-31" data-line-number="31">  <span class="kw">data.frame</span>(<span class="dt">station_id =</span> <span class="kw">as.integer</span>(res<span class="op">$</span>id),</a>
@@ -156,7 +156,7 @@
 <a class="sourceLine" id="cb3-40" data-line-number="40"></a>
 <a class="sourceLine" id="cb3-41" data-line-number="41">})</a></code></pre></div>
 </section><section id="time-series" class="level2"><h2>Time series</h2>
-<p>Similarly, we will check if there are specific variables at each sub domain’s time series’ data. Note that <code>deh</code> sub domain uses a different API and does not have the variables <code>start_date_utc</code> and <code>end_date_utc</code> in the <code>timeseries</code> table.</p>
+<p>Similarly, we will check if there are specific variables at each sub-domain’s time series’ data. Note that <code>deh</code> sub-domain uses a different API and does not have the variables <code>start_date_utc</code> and <code>end_date_utc</code> in the <code>timeseries</code> table.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">vart &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"gentity"</span>, <span class="st">"start_date_utc"</span>, <span class="st">"end_date_utc"</span>, <span class="st">"variable"</span>,</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">          <span class="st">"time_step"</span>, <span class="st">"unit_of_measurement"</span>)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>

@@ -124,10 +124,315 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>If <code>value</code> is one of:</p><ul>
-<li><p><code>owner</code>, translate organisations' names</p></li>
+<li><p><code>owner</code>, translate organizations' names</p></li>
 <li><p><code>variable</code>, translate hydrometeorological term</p></li>
+<li><p><code>timestep</code>, translate timestep term</p></li>
+<li><p><code>division</code>, translate Water Division term</p></li>
 </ul><p>returns a character vector with translations of various hydrometeorological
 terms or organizations' names</p>
+<p>The organizations' names in <code>owner</code> are:</p><table><tr><td>
+<strong>Code</strong>       </td>
+<td> <strong>Name</strong> </td>
+</tr><tr><td>
+min_envir_energy    </td>
+<td> Ministry of Environment and Energy </td>
+</tr><tr><td>
+min_agricult        </td>
+<td> Ministry of Rural Development and Food</td>
+</tr><tr><td>
+natio_meteo_service </td>
+<td> National Meteorological Service  </td>
+</tr><tr><td>
+natio_observ_athens </td>
+<td> National Observatory of Athens </td>
+</tr><tr><td>
+public_power_corp   </td>
+<td> Public Power Corporation </td>
+</tr><tr><td>
+natio_argic_resear  </td>
+<td> National Agricultural Research Foundation </td>
+</tr><tr><td>
+greek_perfectures   </td>
+<td> Greek Perfectures </td>
+</tr><tr><td>
+crete_eng_faculty   </td>
+<td> Technical University of Crete </td>
+</tr><tr><td>
+crete_natural_museum </td>
+<td> Natural History Museum of Crete </td>
+</tr></table>
+
+<p>The Greek Water Divisions codes in <code>division</code> are:</p><table><tr><td>
+<strong>Code</strong>  </td>
+<td> <strong>Name</strong> </td>
+</tr><tr><td>
+GR01 </td>
+<td> Dytike Peloponnesos </td>
+</tr><tr><td>
+GR02 </td>
+<td> Boreia Peloponnesos </td>
+</tr><tr><td>
+GR03 </td>
+<td> Anatolike Peloponnesos </td>
+</tr><tr><td>
+GR04 </td>
+<td> Dytike Sterea Ellada </td>
+</tr><tr><td>
+GR05 </td>
+<td> Epeiros  </td>
+</tr><tr><td>
+GR06 </td>
+<td> Attike  </td>
+</tr><tr><td>
+GR07 </td>
+<td> Anatolike Sterea Ellada </td>
+</tr><tr><td>
+GR08 </td>
+<td> Thessalia  </td>
+</tr><tr><td>
+GR09 </td>
+<td> Dytike Makedonia  </td>
+</tr><tr><td>
+GR10 </td>
+<td> Kentrike Makedonia  </td>
+</tr><tr><td>
+GR11 </td>
+<td> Anatolike Makedonia  </td>
+</tr><tr><td>
+GR12 </td>
+<td> Thrake  </td>
+</tr><tr><td>
+GR13 </td>
+<td> Krete  </td>
+</tr><tr><td>
+GR14 </td>
+<td> Nesoi Aigaiou  </td>
+</tr></table>
+
+<p>The tranlation to English from the trasnlitarated Greek terms uses
+the following table:</p><table><tr><td>
+ <strong>Transliterated term</strong> </td>
+<td> <strong>English term</strong> </td>
+</tr><tr><td>
+  agnosto               </td>
+<td> unknown           </td>
+</tr><tr><td>
+  anemos                </td>
+<td> wind              </td>
+</tr><tr><td>
+  dieuthynse            </td>
+<td> direction         </td>
+</tr><tr><td>
+  parelthon             </td>
+<td> past              </td>
+</tr><tr><td>
+  tachyteta             </td>
+<td> speed             </td>
+</tr><tr><td>
+  mese                  </td>
+<td> average           </td>
+</tr><tr><td>
+  brochoptose           </td>
+<td> precipitation     </td>
+</tr><tr><td>
+  diarkeia              </td>
+<td> duration          </td>
+</tr><tr><td>
+  exatmise              </td>
+<td> evaporation       </td>
+</tr><tr><td>
+  exatmisodiapnoe       </td>
+<td> evapotranspiration</td>
+</tr><tr><td>
+  thermokrasia          </td>
+<td> temperature       </td>
+</tr><tr><td>
+  edaphous              </td>
+<td> ground            </td>
+</tr><tr><td>
+  bathos                </td>
+<td> depth             </td>
+</tr><tr><td>
+  elachiste             </td>
+<td> min               </td>
+</tr><tr><td>
+  megiste               </td>
+<td> max               </td>
+</tr><tr><td>
+  piese                 </td>
+<td> pressure          </td>
+</tr><tr><td>
+  semeiake              </td>
+<td> point             </td>
+</tr><tr><td>
+  chioni                </td>
+<td> snow              </td>
+</tr><tr><td>
+  ypsometro             </td>
+<td> elevation         </td>
+</tr><tr><td>
+  stathme               </td>
+<td> level             </td>
+</tr><tr><td>
+  plemmyra              </td>
+<td> flood             </td>
+</tr><tr><td>
+  paroche               </td>
+<td> flow              </td>
+</tr><tr><td>
+  broche                </td>
+<td> precipitation     </td>
+</tr><tr><td>
+  katastase             </td>
+<td> condition         </td>
+</tr><tr><td>
+  ektimemene            </td>
+<td> estimation        </td>
+</tr><tr><td>
+  athroistiko           </td>
+<td> cumulative        </td>
+</tr><tr><td>
+  stereo                </td>
+<td> sediment          </td>
+</tr><tr><td>
+  ygrasia               </td>
+<td> humidity          </td>
+</tr><tr><td>
+  ygro                  </td>
+<td> wet               </td>
+</tr><tr><td>
+  apolyte               </td>
+<td> absolute          </td>
+</tr><tr><td>
+  schetike              </td>
+<td> relative          </td>
+</tr><tr><td>
+  asbestio              </td>
+<td> calcium           </td>
+</tr><tr><td>
+  wetu                  </td>
+<td> precipitation     </td>
+</tr><tr><td>
+  chionobrochometro     </td>
+<td> snow_rain_gauge   </td>
+</tr><tr><td>
+  xero                  </td>
+<td> dry               </td>
+</tr><tr><td>
+  ydrometrese           </td>
+<td> flow_gauge        </td>
+</tr><tr><td>
+  thalasses             </td>
+<td> sea               </td>
+</tr><tr><td>
+  semeio_drosou         </td>
+<td> dew_point         </td>
+</tr><tr><td>
+  oratoteta             </td>
+<td> visibility        </td>
+</tr><tr><td>
+  steria                </td>
+<td> land              </td>
+</tr><tr><td>
+  thalassa              </td>
+<td> sea               </td>
+</tr><tr><td>
+  barometro             </td>
+<td> barometer         </td>
+</tr><tr><td>
+  tase_ydratmon         </td>
+<td> vapour_pressure   </td>
+</tr><tr><td>
+  psychrometro          </td>
+<td> psychrometer      </td>
+</tr><tr><td>
+  isodynamo_ypsos       </td>
+<td> water_equivalent  </td>
+</tr><tr><td>
+  agogimoteta           </td>
+<td> conductance       </td>
+</tr><tr><td>
+  aktinobolia           </td>
+<td> radiation         </td>
+</tr><tr><td>
+  anthraka              </td>
+<td> carbon            </td>
+</tr><tr><td>
+  dioxeidio             </td>
+<td> dioxide           </td>
+</tr><tr><td>
+  ypoloipo              </td>
+<td> residual          </td>
+</tr><tr><td>
+  argilio               </td>
+<td> aluminum          </td>
+</tr><tr><td>
+  argilos               </td>
+<td> clay              </td>
+</tr><tr><td>
+  arseniko              </td>
+<td> arsenic           </td>
+</tr><tr><td>
+  pyritiou              </td>
+<td> silicon           </td>
+</tr><tr><td>
+  aera                  </td>
+<td> air               </td>
+</tr><tr><td>
+  nephokalypse          </td>
+<td> cloud_cover       </td>
+</tr><tr><td>
+  nephose               </td>
+<td> clouds            </td>
+</tr><tr><td>
+  axiosemeiota          </td>
+<td> remarkably        </td>
+</tr><tr><td>
+  nephe                 </td>
+<td> clouds            </td>
+</tr><tr><td>
+  kairos                </td>
+<td> weather           </td>
+</tr><tr><td>
+  diafora               </td>
+<td> difference        </td>
+</tr><tr><td>
+  atmosfairiki          </td>
+<td> atmospheric       </td>
+</tr><tr><td>
+  stathera              </td>
+<td> constant          </td>
+</tr><tr><td>
+  parousa               </td>
+<td> present           </td>
+</tr><tr><td>
+  parelthousa           </td>
+<td> past              </td>
+</tr><tr><td>
+  kalymeno              </td>
+<td> cover             </td>
+</tr><tr><td>
+  el.                   </td>
+<td> min               </td>
+</tr><tr><td>
+  meg.                  </td>
+<td> max               </td>
+</tr><tr><td>
+  skleroteta            </td>
+<td> hardness          </td>
+</tr><tr><td>
+  eliophaneia           </td>
+<td> sunshine          </td>
+</tr><tr><td>
+  eisroe_se_tamieuteres </td>
+<td> infow_reservoir   </td>
+</tr></table>
+
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Greek Water Divisions,
+<a href='http://bit.ly/2kk0tOm'>http://bit.ly/2kk0tOm</a>, <a href='http://bit.ly/2ltQC8O'>http://bit.ly/2ltQC8O</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -145,6 +450,8 @@ terms or organizations' names</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#references">References</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
