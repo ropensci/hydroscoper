@@ -23,4 +23,3 @@
 hydro_coords <- function(x) {
   do.call(rbind, lapply(x, create_coords))
 }
-
