@@ -24,7 +24,7 @@ test_that("Organizations translations", {
   )
 
   res <- c("public_power_corp", "natio_meteo_service", "natio_observ_athens",
-           "natio_argic_resear", "crete_natural_museum", "greek_perfectures",
+           "natio_argic_resear", "crete_natural_museum", "greek_prefectures",
            "crete_eng_faculty", "min_agricult", "min_envir_energy")
 
   expect_error(hydro_translate())

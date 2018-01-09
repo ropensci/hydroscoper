@@ -78,7 +78,7 @@
       <h1>Getting Hydroscope’s data</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-01-09</h4>
+            <h4 class="date">2018-01-10</h4>
           </div>
 
     
@@ -89,13 +89,14 @@
 </section><section id="download-data" class="level2"><h2>Download data</h2>
 <p>With the following code we can download Hydroscope’s sub-domains’ data to a named list. Note that it will take some time, depending on your internet connection and the Hydroscope’s servers availability/traffic.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(plyr)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">subdomain &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co"># download all databases</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">hydro_data &lt;-<span class="st"> </span><span class="kw">lapply</span>(subdomain, <span class="cf">function</span>(x)<span class="kw"><a href="../reference/get_functions.html">get_database</a></span>(x))</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">names</span>(hydro_data) &lt;-<span class="st"> </span>subdomain</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(plyr)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">subdomain &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># download all databases</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">hydro_data &lt;-<span class="st"> </span><span class="kw">lapply</span>(subdomain, <span class="cf">function</span>(x)<span class="kw"><a href="../reference/get_functions.html">get_database</a></span>(x))</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">names</span>(hydro_data) &lt;-<span class="st"> </span>subdomain</a></code></pre></div>
 </section><section id="stations" class="level2"><h2>Stations</h2>
 <p>We must check if there are specific variables at each sub-domain’s stations’ data, because we will merge these data to a new data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># check stations variables</span></a>
@@ -105,14 +106,25 @@
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6">  vars <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>stations)</a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">})</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co"># check water_basin, water_division and owner variables</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">vars2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"name"</span>)</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">  (vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>water_basin)) <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="st">  </span>(vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>water_division)) <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="st">  </span>(vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>owner))</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">})</a></code></pre></div>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;       kyy ypaat  emy  deh</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [2,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; [3,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; [4,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; [5,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; [6,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; [7,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co"># check water_basin, water_division and owner variables</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">vars2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"name"</span>)</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb2-20" data-line-number="20">  (vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>water_basin)) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="st">  </span>(vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>water_division)) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="st">  </span>(vars2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>owner))</a>
+<a class="sourceLine" id="cb2-23" data-line-number="23">})</a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt;       kyy ypaat  emy  deh</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; [1,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; [2,] TRUE  TRUE TRUE TRUE</span></a></code></pre></div>
 <p>With the following code we will create a tidy data frame with the stations data. Note that the Greek terms are translated to English.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">stations &lt;-<span class="st"> </span><span class="kw">ldply</span>(subdomain, <span class="cf">function</span>(id){</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
@@ -154,7 +166,23 @@
 <a class="sourceLine" id="cb3-38" data-line-number="38">                 <span class="dt">altitude =</span> <span class="kw">as.numeric</span>(res<span class="op">$</span>altitude),</a>
 <a class="sourceLine" id="cb3-39" data-line-number="39">                 <span class="dt">subdomain =</span> <span class="kw">rep</span>(id, <span class="kw">nrow</span>(res)))</a>
 <a class="sourceLine" id="cb3-40" data-line-number="40"></a>
-<a class="sourceLine" id="cb3-41" data-line-number="41">})</a></code></pre></div>
+<a class="sourceLine" id="cb3-41" data-line-number="41">})</a>
+<a class="sourceLine" id="cb3-42" data-line-number="42">stations &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(stations)</a>
+<a class="sourceLine" id="cb3-43" data-line-number="43">stations</a>
+<a class="sourceLine" id="cb3-44" data-line-number="44"><span class="co">#&gt; # A tibble: 2,322 x 9</span></a>
+<a class="sourceLine" id="cb3-45" data-line-number="45"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
+<a class="sourceLine" id="cb3-46" data-line-number="46"><span class="co">#&gt;         &lt;int&gt; &lt;fctr&gt;     &lt;fctr&gt;    &lt;fctr&gt;  &lt;fctr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;</span></a>
+<a class="sourceLine" id="cb3-47" data-line-number="47"><span class="co">#&gt;  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  </span></a>
+<a class="sourceLine" id="cb3-48" data-line-number="48"><span class="co">#&gt;  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  </span></a>
+<a class="sourceLine" id="cb3-49" data-line-number="49"><span class="co">#&gt;  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  </span></a>
+<a class="sourceLine" id="cb3-50" data-line-number="50"><span class="co">#&gt;  4     200231 BYTINA     "ALPHEIO~ GR01    min_en~  22.2  37.7  1011 kyy  </span></a>
+<a class="sourceLine" id="cb3-51" data-line-number="51"><span class="co">#&gt;  5     200200 LYKOURIA   "ALPHEIO~ GR01    min_en~  22.2  37.9   758 kyy  </span></a>
+<a class="sourceLine" id="cb3-52" data-line-number="52"><span class="co">#&gt;  6     200236 MEGALOPOLE "ALPHEIO~ GR01    min_en~  22.1  37.4   429 kyy  </span></a>
+<a class="sourceLine" id="cb3-53" data-line-number="53"><span class="co">#&gt;  7     200244 ODOG. AG.~ "REMA CH~ GR01    min_en~  21.8  37.0   182 kyy  </span></a>
+<a class="sourceLine" id="cb3-54" data-line-number="54"><span class="co">#&gt;  8     200204 TRIPOTAMA  "ALPHEIO~ GR01    min_en~  21.9  37.9   570 kyy  </span></a>
+<a class="sourceLine" id="cb3-55" data-line-number="55"><span class="co">#&gt;  9     200198 KASTELLIO  "ALPHEIO~ GR01    min_en~  22.0  37.9   792 kyy  </span></a>
+<a class="sourceLine" id="cb3-56" data-line-number="56"><span class="co">#&gt; 10     200239 PERDIKONE~ "ALPHEIO~ GR01    min_en~  22.0  37.7   837 kyy  </span></a>
+<a class="sourceLine" id="cb3-57" data-line-number="57"><span class="co">#&gt; # ... with 2,312 more rows</span></a></code></pre></div>
 </section><section id="time-series" class="level2"><h2>Time series</h2>
 <p>Similarly, we will check if there are specific variables at each sub-domain’s time series’ data. Note that <code>deh</code> sub-domain uses a different API and does not have the variables <code>start_date_utc</code> and <code>end_date_utc</code> in the <code>timeseries</code> table.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">vart &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"gentity"</span>, <span class="st">"start_date_utc"</span>, <span class="st">"end_date_utc"</span>, <span class="st">"variable"</span>,</a>
@@ -162,24 +190,39 @@
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  vart <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>timeseries)</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">})</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># use NA to fill missing values in deh$timeseries</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">vart[<span class="op">!</span>(vart <span class="op">%in%</span><span class="st">  </span><span class="kw">names</span>(hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries))]</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries<span class="op">$</span>start_date_utc &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries<span class="op">$</span>end_date_utc &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># check variables and timesteps</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">vart2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"descr"</span>)</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">  (vart2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>variables)) <span class="op">&amp;</span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="st">  </span>(vart2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>time_steps))</a>
-<a class="sourceLine" id="cb4-17" data-line-number="17">})</a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co"># check unit_of_measurement</span></a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">vart3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"symbol"</span>)</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
-<a class="sourceLine" id="cb4-22" data-line-number="22">  vart3 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>units)</a>
-<a class="sourceLine" id="cb4-23" data-line-number="23">})</a></code></pre></div>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;       kyy ypaat  emy   deh</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; [1,] TRUE  TRUE TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; [2,] TRUE  TRUE TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; [3,] TRUE  TRUE TRUE FALSE</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; [4,] TRUE  TRUE TRUE FALSE</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; [5,] TRUE  TRUE TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; [6,] TRUE  TRUE TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; [7,] TRUE  TRUE TRUE  TRUE</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co"># use NA to fill missing values in deh$timeseries</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">vart[<span class="op">!</span>(vart <span class="op">%in%</span><span class="st">  </span><span class="kw">names</span>(hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries))]</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; [1] "start_date_utc" "end_date_utc"</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries<span class="op">$</span>start_date_utc &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">hydro_data<span class="op">$</span>deh<span class="op">$</span>timeseries<span class="op">$</span>end_date_utc &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co"># check variables and timesteps</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">vart2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"descr"</span>)</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">  (vart2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>variables)) <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="st">  </span>(vart2 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>time_steps))</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26">})</a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;       kyy ypaat  emy  deh</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt; [1,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; [2,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co"># check unit_of_measurement</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">vart3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"id"</span>, <span class="st">"symbol"</span>)</a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="kw">sapply</span>(subdomain, <span class="cf">function</span>(id) {</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">  vart3 <span class="op">%in%</span><span class="st"> </span><span class="kw">names</span>(hydro_data[[id]]<span class="op">$</span>units)</a>
+<a class="sourceLine" id="cb4-35" data-line-number="35">})</a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;       kyy ypaat  emy  deh</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt; [1,] TRUE  TRUE TRUE TRUE</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; [2,] TRUE  TRUE TRUE TRUE</span></a></code></pre></div>
 <p>With the following code we will, also, create a tidy data frame with the time series data with translated terms.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># create stations' dataframe</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">timeseries &lt;-<span class="st"> </span><span class="kw">ldply</span>(subdomain, <span class="cf">function</span>(id){</a>
@@ -215,7 +258,23 @@
 <a class="sourceLine" id="cb5-32" data-line-number="32">    <span class="st">"end_date"</span> =<span class="st"> </span><span class="kw">as.character</span>(res<span class="op">$</span>end_date_utc),</a>
 <a class="sourceLine" id="cb5-33" data-line-number="33">    <span class="st">"subdomain"</span> =<span class="st"> </span><span class="kw">rep</span>(id, <span class="kw">nrow</span>(res))</a>
 <a class="sourceLine" id="cb5-34" data-line-number="34">  )</a>
-<a class="sourceLine" id="cb5-35" data-line-number="35">})</a></code></pre></div>
+<a class="sourceLine" id="cb5-35" data-line-number="35">})</a>
+<a class="sourceLine" id="cb5-36" data-line-number="36">timeseries &lt;-<span class="st"> </span><span class="kw">as.tibble</span>(timeseries)</a>
+<a class="sourceLine" id="cb5-37" data-line-number="37">timeseries</a>
+<a class="sourceLine" id="cb5-38" data-line-number="38"><span class="co">#&gt; # A tibble: 10,804 x 8</span></a>
+<a class="sourceLine" id="cb5-39" data-line-number="39"><span class="co">#&gt;    timeser_id station_id variable        timestep units  star~ end_~ subd~</span></a>
+<a class="sourceLine" id="cb5-40" data-line-number="40"><span class="co">#&gt;         &lt;int&gt;      &lt;int&gt; &lt;fctr&gt;          &lt;fctr&gt;   &lt;fctr&gt; &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;</span></a>
+<a class="sourceLine" id="cb5-41" data-line-number="41"><span class="co">#&gt;  1       2248     501049 temperature_max &lt;NA&gt;     °      2009~ 2010~ kyy  </span></a>
+<a class="sourceLine" id="cb5-42" data-line-number="42"><span class="co">#&gt;  2        430     200103 wind_direction  &lt;NA&gt;     °      1950~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-43" data-line-number="43"><span class="co">#&gt;  3        905     200247 wind_direction  &lt;NA&gt;     °      1967~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-44" data-line-number="44"><span class="co">#&gt;  4       2243     501058 temperature_max &lt;NA&gt;     °      1999~ 2010~ kyy  </span></a>
+<a class="sourceLine" id="cb5-45" data-line-number="45"><span class="co">#&gt;  5        438     200105 wind_direction  &lt;NA&gt;     °      1950~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-46" data-line-number="46"><span class="co">#&gt;  6        553     200135 wind_direction  &lt;NA&gt;     °      1964~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-47" data-line-number="47"><span class="co">#&gt;  7        966     200265 wind_direction  &lt;NA&gt;     °      1967~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-48" data-line-number="48"><span class="co">#&gt;  8        775     200203 wind_direction  &lt;NA&gt;     °      1964~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-49" data-line-number="49"><span class="co">#&gt;  9       2245     501046 temperature_max &lt;NA&gt;     °      2007~ 2010~ kyy  </span></a>
+<a class="sourceLine" id="cb5-50" data-line-number="50"><span class="co">#&gt; 10        247     200034 wind_direction  &lt;NA&gt;     °      1969~ 1997~ kyy  </span></a>
+<a class="sourceLine" id="cb5-51" data-line-number="51"><span class="co">#&gt; # ... with 10,794 more rows</span></a></code></pre></div>
 </section>
 </div>
   </div>

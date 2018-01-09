@@ -88,7 +88,8 @@ head(sort(table(time_data$variable), decreasing = TRUE), n = 10)
 The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.
 
 ```{r}
-sort(table(time_data$timestep[time_data$variable == "precipitation"]), decreasing = TRUE)
+sort(table(time_data$timestep[time_data$variable == "precipitation"]), 
+     decreasing = TRUE)
 ```
 
 

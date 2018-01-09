@@ -1,3 +1,10 @@
+# hydroscoper 0.2.1 (Release date: 2018-02-10)
+
+* General 
+
+  - This is a minor update. All the functions return now a tibble.
+
+
 # hydroscoper 0.2.0 (Release date: 2018-02-09)
 
 * General 
@@ -24,8 +31,12 @@
   - `hydro_translate()` translates various Greek terms to English.
 
 * Changes
-  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points` raw format to a tidy data frame.
+
   - `get_stations` and `get_timeseries` use the Enhydris API and are considerably faster, because the older versions used web scrapping.
+
+* Defuncs
+
+  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points` raw format to a tidy data frame.
 
 --------------------------------------------------------------------------------
 

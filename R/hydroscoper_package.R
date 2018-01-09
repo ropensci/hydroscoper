@@ -22,12 +22,4 @@
 #'
 #' @name hydroscoper
 #' @docType package
-#'
-#' @import stringi
-#' @import stringr
-#' @import jsonlite
-#' @import readr
-#' @import plyr
-
-
 "_PACKAGE"

@@ -95,7 +95,7 @@
 <p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.</p>
 <p><code>hydroscoper</code> covers Hydroscope’s data sources using the <a href="http://enhydris.readthedocs.io/en/latest/index.html">Enhydris API</a> and provides functions to:</p>
 <ol type="1">
-<li>Transform the available tables and data sets into tidy data frames.</li>
+<li>Transform the available tables and data sets into tidy data frames <a href="http://tibble.tidyverse.org/">(tibbles)</a>.</li>
 <li>Transliterate the Greek Unicode names to Latin.</li>
 <li>Translate various Greek terms to English.</li>
 </ol>
@@ -117,21 +117,21 @@
 <p>The functions that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a data frame with Hydroscope’s data for a given data source.</li>
+<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a tibble with Hydroscope’s data for a given data source.</li>
 <li>
-<code>get_data</code>, to retrieve a tidy data frame with time series’ values.<br>
+<code>get_data</code>, to retrieve a tibble with time series’ values.<br>
 </li>
 <li>
-<code>hydro_coords</code>, to convert Hydroscope’s points raw format to a tidy data frame.</li>
+<code>hydro_coords</code>, to convert Hydroscope’s points raw format to a tibble.</li>
 <li>
 <code>hydro_translate</code> to translate various terms and names from Greek to English.</li>
 </ul>
 <p>The data sets that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>stations</code> a tidy data frame with stations’ data from Hydroscope.</li>
+<code>stations</code> a tibble with stations’ data from Hydroscope.</li>
 <li>
-<code>timeseries</code> a tidy data frame with time series’ data from Hydroscope.</li>
+<code>timeseries</code> a tibble with time series’ data from Hydroscope.</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
 <p>This is a basic example which shows you how to get the stations’ and time series data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
 <p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
@@ -139,7 +139,7 @@
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"stations"</span>)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">kyy_stations &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, subdomain <span class="op">==</span><span class="st"> "kyy"</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">as_tibble</span>(kyy_stations)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">kyy_stations</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; # A tibble: 425 x 9</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
@@ -156,7 +156,7 @@
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; # ... with 415 more rows</span></a></code></pre></div>
 <p>To get the time series’ data for the station <code>200200</code> (<a href="http://kyy.hydroscope.gr/stations/d/200200/" class="uri">http://kyy.hydroscope.gr/stations/d/200200/</a>) we can use:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">station_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, station_id <span class="op">==</span><span class="st"> </span><span class="dv">200200</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">as_tibble</span>(station_ts)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">station_ts</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 8</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   timeser_id station_id variable       timestep   units start~ end_~ subd~</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;        &lt;int&gt;      &lt;int&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></a>

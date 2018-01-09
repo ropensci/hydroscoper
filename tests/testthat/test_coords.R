@@ -1,6 +1,10 @@
-context("Utility functions")
+context("coords functions")
 
-test_that("get_coords returns a data frame with lat and long values", {
+test_that("get_coords returns error", {
+  expect_error(get_coords("as"))
+})
+
+test_that("hydro_coords returns a tibble with lat and long values", {
 
   pnt <- c("SRID=4326;POINT (22.41211 39.07562)",
            "POINT (25.91659 40.93200)",
@@ -10,9 +14,9 @@ test_that("get_coords returns a data frame with lat and long values", {
            "38.81464027659262",
            "POINT ()")
 
-  res <- data.frame(long = c(22.41211, 25.91659, NA, NA, NA, NA, NA),
+  res <- tibble::tibble(long = c(22.41211, 25.91659, NA, NA, NA, NA, NA),
                     lat =  c(39.07562, 40.93200, NA, NA, NA, NA, NA))
-  expect_is(hydro_coords(pnt), "data.frame")
+  expect_is(hydro_coords(pnt), "tbl_df")
   expect_equal(hydro_coords(pnt), res)
 
 })

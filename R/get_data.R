@@ -1,7 +1,7 @@
 
-#' Get time series values in a tidy dataframe
+#' Get time series values in a tibble
 #'
-#' \code{get_data} returns a tidy dataframe with the available data from
+#' \code{get_data} returns a tibble with the available data from
 #' a time series in a database of Hydroscope.
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
@@ -39,6 +39,9 @@
 #' \item Ministry of Rural Development and Food,
 #' \url{http://ypaat.hydroscope.gr}
 #'}
+#'
+#' Tibble, \url{http://tibble.tidyverse.org/}
+
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @export get_data
 get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {

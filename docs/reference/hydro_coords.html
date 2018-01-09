@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert coordinates from Hydroscope's points — hydro_coords â€¢ hydroscoper</title>
+<title>Convert coordinates from Hydroscope's points to a tibble — hydro_coords â€¢ hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,11 +98,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert coordinates from Hydroscope's points</h1>
+    <h1>Convert coordinates from Hydroscope's points to a tibble</h1>
     </div>
 
     
-    <p><code>hydro_coords</code> returns a data frame with the stations' longitudes and
+    <p><code>hydro_coords</code> returns a tibble with the stations' longitudes and
 latitudes using as input the variable <code>point</code> from <code>get_stations</code>
  function.</p>
     
@@ -120,16 +120,16 @@ latitudes using as input the variable <code>point</code> from <code>get_stations
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame with the longitude and latitude values. If the
-coordinates of</p>
+    <p>a tibble with the longitude and latitude values.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># get stations from the Greek Ministry of Environment and Energy</span>
 <span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span><span class='fu'><a href='get_functions.html'>get_stations</a></span>(<span class='st'>"kyy"</span>)
+
 <span class='co'># create a dataframe with the coords of the stations</span>
-<span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='hydroscoper_defunct.html'>get_coords</a></span>(<span class='no'>kyy_stations</span>$<span class='no'>point</span>)
+<span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_coords</span>(<span class='no'>kyy_stations</span>$<span class='no'>point</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

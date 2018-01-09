@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get data frames from Hydroscope — get_functions â€¢ hydroscoper</title>
+<title>Get tibbles from Hydroscope — get_functions â€¢ hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,13 +98,13 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get data frames from Hydroscope</h1>
+    <h1>Get tibbles from Hydroscope</h1>
     </div>
 
     
-    <p>A family of functions that return a data frame from a specific database
-of Hydroscope using the Enhydris API. <code>get_database</code> returns a list
-of data frames using all the family functions.</p>
+    <p>A family of functions that return a tibble from a specific database
+of Hydroscope using the Enhydris API. <code>get_database</code> returns a named
+list of tibbles using all the family functions.</p>
     
 
     <pre class="usage"><span class='fu'>get_stations</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -145,7 +145,7 @@ of data frames using all the family functions.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>subdomain</th>
-      <td><p>One of the subdomains of Hydroscope in
+      <td><p>One of the subdomains of Hydroscope in the vector
 <code>c("kyy", "ypaat", "emy", "deh")</code>.</p></td>
     </tr>
     <tr>
@@ -157,11 +157,11 @@ of data frames using all the family functions.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>If <code>subdomain</code> is one of:</p><ul>
-<li><p><code>kyy</code>, Ministry of Environment and Energy</p></li>
-<li><p><code>ypaat</code>, Ministry of Rural Development and Food</p></li>
-<li><p><code>deh</code>, Greek Public Power Corporation</p></li>
-<li><p><code>emy</code>, National Meteorological Service</p></li>
-</ul><p>returns a tidy data frame or with data from the corresponding database
+<li><p><code>kyy</code>, Ministry of Environment and Energy.</p></li>
+<li><p><code>ypaat</code>, Ministry of Rural Development and Food.</p></li>
+<li><p><code>deh</code>, Greek Public Power Corporation.</p></li>
+<li><p><code>emy</code>, National Meteorological Service.</p></li>
+</ul><p>returns a tibble or a named list with tibbles from the corresponding database
 of Hydroscope. Otherwise returns an error message.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
@@ -169,8 +169,8 @@ of Hydroscope. Otherwise returns an error message.</p>
     <p>Objects' IDs are not unique among the different Hydroscope databases. For
 example, time series' IDs from http://kyy.hydroscope.gr have same values
 with time series' from http://ypaat.hydroscope.gr.</p>
-<p>The coordinates of points in a stations data frame are based on the European
-Terrestrial Reference System 1989 (ETRS89)</p>
+<p>The coordinates of points are based on the European Terrestrial Reference
+System 1989 (ETRS89).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -188,18 +188,19 @@ Terrestrial Reference System 1989 (ETRS89)</p>
 <a href='http://bit.ly/2kJwFuf'>http://bit.ly/2kJwFuf</a></p>
 <p>Greek Water Divisions,
 <a href='http://bit.ly/2kk0tOm'>http://bit.ly/2kk0tOm</a>, <a href='http://bit.ly/2ltQC8O'>http://bit.ly/2ltQC8O</a></p>
-<p>Greek Water Basin
+<p>Greek Water Basins,
 <a href='http://bit.ly/2Dvzo1W'>http://bit.ly/2Dvzo1W</a></p>
+<p>Tibble, <a href='http://tibble.tidyverse.org/'>http://tibble.tidyverse.org/</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 </div><span class='co'># NOT RUN {</span>
-<span class='co'># get data from the Ministry of Environment and Energy</span>
-<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span> <span class='fu'>get_stations</span>(<span class='st'>"kyy"</span>)
-<span class='no'>kyy_timser</span> <span class='kw'>&lt;-</span> <span class='fu'>get_timeseries</span>(<span class='st'>"kyy"</span>)
-<span class='no'>kyy_instr</span> <span class='kw'>&lt;-</span> <span class='fu'>get_instruments</span>(<span class='st'>"kyy"</span>)
+<span class='co'># get data from all the Hydroscope's subdomains</span>
 <span class='no'>kyy_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"kyy"</span>)
+<span class='no'>ypaat_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"ypaat"</span>)
+<span class='no'>emy_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"emy"</span>)
+<span class='no'>deh_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"deh"</span>)
 
 <span class='co'># }</span><div class='input'>
 </div></pre>

@@ -12,7 +12,6 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-   eval = FALSE,
   comment = "#>"
 )
 ```
@@ -27,6 +26,7 @@ With the following code we can download Hydroscope's sub-domains' data to a name
 
 ```{r}
 library(hydroscoper)
+library(tibble)
 library(plyr)
 
 subdomain <- c("kyy", "ypaat", "emy", "deh")
@@ -102,7 +102,8 @@ stations <- ldply(subdomain, function(id){
                  subdomain = rep(id, nrow(res)))
 
 })
-
+stations <- as_tibble(stations)
+stations
 ```
 
 ## Time series
@@ -173,6 +174,7 @@ timeseries <- ldply(subdomain, function(id){
     "subdomain" = rep(id, nrow(res))
   )
 })
-
+timeseries <- as.tibble(timeseries)
+timeseries
 ```
 

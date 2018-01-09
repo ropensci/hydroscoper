@@ -9,13 +9,13 @@
 #'
 #' @return If \code{value} is one of:
 #' \itemize{
-#' \item{\code{owner}, translate organizations' names}
-#' \item{\code{variable}, translate hydrometeorological term}
-#' \item{\code{timestep}, translate timestep term}
-#' \item{\code{division}, translate Water Division term}
+#' \item{\code{owner}, translate organizations' names.}
+#' \item{\code{variable}, translate hydrometeorological term.}
+#' \item{\code{timestep}, translate timestep term.}
+#' \item{\code{division}, translate Water Division.}
 #' }
 #' returns a character vector with translations of various hydrometeorological
-#' terms or organizations' names
+#' terms or organizations' names from Greek (with latin characters) to English.
 #'
 #' The organizations' names in \code{owner} are:
 #'
@@ -27,7 +27,7 @@
 #' natio_observ_athens \tab National Observatory of Athens \cr
 #' public_power_corp   \tab Public Power Corporation \cr
 #' natio_argic_resear  \tab National Agricultural Research Foundation \cr
-#' greek_perfectures   \tab Greek Perfectures \cr
+#' greek_perfectures   \tab Greek Prefectures \cr
 #' crete_eng_faculty   \tab Technical University of Crete \cr
 #' crete_natural_museum \tab Natural History Museum of Crete \cr
 #' }
@@ -127,7 +127,7 @@
 #'   meg.                  \tab max               \cr
 #'   skleroteta            \tab hardness          \cr
 #'   eliophaneia           \tab sunshine          \cr
-#'   eisroe_se_tamieuteres \tab infow_reservoir   \cr
+#'   eisroe_se_tamieuteres \tab inflow_reservoir   \cr
 #' }
 #'
 #'

@@ -82,7 +82,7 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
     result <- trasnlit_all(result)
   }
 
-  result
+  tibble::as.tibble(result)
 }
 
 # create coords from points in Hydroscope
@@ -91,10 +91,10 @@ create_coords <- function(str) {
   str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
                                   simplify = TRUE)
   if (NCOL(str_split) == 5) {
-    data.frame(long = as.numeric(str_split[, 3]),
+    tibble::tibble(long = as.numeric(str_split[, 3]),
                lat = as.numeric(str_split[, 4]))
   } else {
-    data.frame(long = rep(NA, NROW(str)),
+    tibble::tibble(long = rep(NA, NROW(str)),
                lat = rep(NA, NROW(str)))
   }
 }

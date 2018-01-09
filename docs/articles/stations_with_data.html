@@ -78,7 +78,7 @@
       <h1>Hydroscope’s stations with available data</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-01-09</h4>
+            <h4 class="date">2018-01-10</h4>
           </div>
 
     
@@ -142,10 +142,11 @@
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        temperature_air </span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;                     43</span></a></code></pre></div>
 <p>The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>timestep[time_data<span class="op">$</span>variable <span class="op">==</span><span class="st"> "precipitation"</span>]), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;      daily    monthly 30_minutes  5_minutes 10_minutes     hourly </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;        385        207         85         24          1          1</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>timestep[time_data<span class="op">$</span>variable <span class="op">==</span><span class="st"> "precipitation"</span>]), </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">     <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;      daily    monthly 30_minutes  5_minutes 10_minutes     hourly </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;        385        207         85         24          1          1</span></a></code></pre></div>
 </section>
 </div>
   </div>

@@ -1,6 +1,5 @@
 # Transliterations -------------------------------------------------------------
 
-
 # translitarate all the columns of a dataframe from Greek to latin-ascii
 trasnlit_all <- function(df) {
 
@@ -15,7 +14,7 @@ trasnlit_all <- function(df) {
 
 # translate vector y using dataframe map df
 translate_str <- function(y, df){
-  for (i in 1:nrow(df)) {
+  for (i in seq(1, nrow(df))) {
     y <- stringr::str_replace_all(y, df$from[i], df$to[i])
   }
   y
@@ -37,7 +36,7 @@ df <- data.frame(
 
   to = c(
     "public_power_corp", "natio_meteo_service", "natio_observ_athens",
-    "natio_argic_resear", "crete_natural_museum", "greek_perfectures",
+    "natio_argic_resear", "crete_natural_museum", "greek_prefectures",
     "crete_eng_faculty", "min_agricult", "min_envir_energy"
   ),
   stringsAsFactors = FALSE)
@@ -83,7 +82,7 @@ map_variables <- function(y){
       "aluminum", "clay", "arsenic", "silicon", "air", "cloud_cover", "clouds",
       "remarkably", "clouds", "weather", "difference", "atmospheric",
       "constant", "present", "past", "cover", "min", "max", "hardness",
-      "sunshine", "infow_reservoir"
+      "sunshine", "inflow_reservoir"
     ),
   stringsAsFactors = FALSE)
 

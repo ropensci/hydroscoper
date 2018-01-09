@@ -45,7 +45,8 @@ are in Greek, thus limiting their usefulness.
 API](http://enhydris.readthedocs.io/en/latest/index.html) and provides
 functions to:
 
-1.  Transform the available tables and data sets into tidy data frames.
+1.  Transform the available tables and data sets into tidy data frames
+    [(tibbles)](http://tibble.tidyverse.org/).
 2.  Transliterate the Greek Unicode names to Latin.
 3.  Translate various Greek terms to English.
 
@@ -84,20 +85,18 @@ The functions that are provided by `hydroscoper` are:
     get_water_divisions, get_political_divisions, get_variables,
     get_units_of_measurement, get_time_steps, get_owners,
     get_instruments_type, get_station_type, get_database` family
-    functions, to retrieve a data frame with Hydroscope’s data for a
-    given data source.
-  - `get_data`, to retrieve a tidy data frame with time series’
-    values.  
-  - `hydro_coords`, to convert Hydroscope’s points raw format to a tidy
-    data frame.
+    functions, to retrieve a tibble with Hydroscope’s data for a given
+    data source.
+  - `get_data`, to retrieve a tibble with time series’ values.  
+  - `hydro_coords`, to convert Hydroscope’s points raw format to a
+    tibble.
   - `hydro_translate` to translate various terms and names from Greek to
     English.
 
 The data sets that are provided by `hydroscoper` are:
 
-  - `stations` a tidy data frame with stations’ data from Hydroscope.
-  - `timeseries` a tidy data frame with time series’ data from
-    Hydroscope.
+  - `stations` a tibble with stations’ data from Hydroscope.
+  - `timeseries` a tibble with time series’ data from Hydroscope.
 
 ## Example
 
@@ -114,7 +113,7 @@ library(hydroscoper)
 library(tibble)
 data("stations")
 kyy_stations <- subset(stations, subdomain == "kyy")
-as_tibble(kyy_stations)
+kyy_stations
 #> # A tibble: 425 x 9
 #>    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~
 #>         <int> <chr>      <chr>     <chr>   <chr>   <dbl> <dbl> <dbl> <chr>
@@ -136,7 +135,7 @@ To get the time series’ data for the station `200200`
 
 ``` r
 station_ts <- subset(timeseries, station_id == 200200)
-as_tibble(station_ts)
+station_ts
 #> # A tibble: 4 x 8
 #>   timeser_id station_id variable       timestep   units start~ end_~ subd~
 #>        <int>      <int> <chr>          <chr>      <chr> <chr>  <chr> <chr>

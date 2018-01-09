@@ -2,7 +2,7 @@
 % Please edit documentation in R/hydro_coords.R
 \name{hydro_coords}
 \alias{hydro_coords}
-\title{Convert coordinates from Hydroscope's points}
+\title{Convert coordinates from Hydroscope's points to a tibble}
 \usage{
 hydro_coords(x)
 }
@@ -10,11 +10,10 @@ hydro_coords(x)
 \item{x}{a string vector with the points retrieved from Hydroscope}
 }
 \value{
-a data frame with the longitude and latitude values. If the
-coordinates of
+a tibble with the longitude and latitude values.
 }
 \description{
-\code{hydro_coords} returns a data frame with the stations' longitudes and
+\code{hydro_coords} returns a tibble with the stations' longitudes and
 latitudes using as input the variable \code{point} from \code{get_stations}
  function.
 }
@@ -22,8 +21,9 @@ latitudes using as input the variable \code{point} from \code{get_stations}
 \dontrun{
 # get stations from the Greek Ministry of Environment and Energy
 kyy_stations <-get_stations("kyy")
+
 # create a dataframe with the coords of the stations
-coords <- get_coords(kyy_stations$point)
+coords <- hydro_coords(kyy_stations$point)
 }
 }
 \author{

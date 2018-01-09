@@ -1,22 +1,22 @@
 
-#' Get data frames from Hydroscope
+#' Get tibbles from Hydroscope
 #'
-#' A family of functions that return a data frame from a specific database
-#' of Hydroscope using the Enhydris API. \code{get_database} returns a list
-#' of data frames using all the family functions.
+#' A family of functions that return a tibble from a specific database
+#' of Hydroscope using the Enhydris API. \code{get_database} returns a named
+#' list of tibbles using all the family functions.
 #'
-#' @param subdomain One of the subdomains of Hydroscope in
+#' @param subdomain One of the subdomains of Hydroscope in the vector
 #' \code{c("kyy", "ypaat", "emy", "deh")}.
 #' @param translit Automatically transliterate Greek to Latin.
 #'
 #' @return If \code{subdomain} is one of:
 #' \itemize{
-#' \item{\code{kyy}, Ministry of Environment and Energy}
-#' \item{\code{ypaat}, Ministry of Rural Development and Food}
-#' \item{\code{deh}, Greek Public Power Corporation}
-#' \item{\code{emy}, National Meteorological Service}
+#' \item{\code{kyy}, Ministry of Environment and Energy.}
+#' \item{\code{ypaat}, Ministry of Rural Development and Food.}
+#' \item{\code{deh}, Greek Public Power Corporation.}
+#' \item{\code{emy}, National Meteorological Service.}
 #' }
-#' returns a tidy data frame or with data from the corresponding database
+#' returns a tibble or a named list with tibbles from the corresponding database
 #' of Hydroscope. Otherwise returns an error message.
 #'
 #' @note
@@ -24,18 +24,18 @@
 #' example, time series' IDs from http://kyy.hydroscope.gr have same values
 #' with time series' from http://ypaat.hydroscope.gr.
 #'
-#' The coordinates of points in a stations data frame are based on the European
-#' Terrestrial Reference System 1989 (ETRS89)
+#' The coordinates of points are based on the European Terrestrial Reference
+#' System 1989 (ETRS89).
 #'
 #' @examples
 #'
 #' \dontrun{
 #'
-#' # get data from the Ministry of Environment and Energy
-#' kyy_stations <- get_stations("kyy")
-#' kyy_timser <- get_timeseries("kyy")
-#' kyy_instr <- get_instruments("kyy")
+#' # get data from all the Hydroscope's subdomains
 #' kyy_db <- get_database("kyy")
+#' ypaat_db <- get_database("ypaat")
+#' emy_db <- get_database("emy")
+#' deh_db <- get_database("deh")
 #'
 #' }
 #'
@@ -59,8 +59,10 @@
 #' Greek Water Divisions,
 #' \url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
 #'
-#' Greek Water Basin
+#' Greek Water Basins,
 #' \url{http://bit.ly/2Dvzo1W}
+#'
+#' Tibble, \url{http://tibble.tidyverse.org/}
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #'

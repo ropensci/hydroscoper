@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_data.R
 \name{get_data}
 \alias{get_data}
-\title{Get time series values in a tidy dataframe}
+\title{Get time series values in a tibble}
 \usage{
 get_data(subdomain = c("kyy", "ypaat"), time_id)
 }
@@ -26,7 +26,7 @@ The dataframe columns are:
 }
 }
 \description{
-\code{get_data} returns a tidy dataframe with the available data from
+\code{get_data} returns a tibble with the available data from
 a time series in a database of Hydroscope.
 }
 \note{
@@ -49,6 +49,8 @@ Stations' data are retrieved from the Hydroscope's databases:
 \item Ministry of Rural Development and Food,
 \url{http://ypaat.hydroscope.gr}
 }
+
+Tibble, \url{http://tibble.tidyverse.org/}
 }
 \author{
 Konstantinos Vantas, \email{kon.vantas@gmail.com}

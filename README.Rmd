@@ -40,7 +40,7 @@ The data are structured as tables and space separated text files, but are in Gre
 
 `hydroscoper` covers Hydroscope's data sources using the [Enhydris API](http://enhydris.readthedocs.io/en/latest/index.html) and provides functions to:
 
-1. Transform the available tables and data sets into tidy data frames.
+1. Transform the available tables and data sets into tidy data frames [(tibbles)](http://tibble.tidyverse.org/).
 2. Transliterate the Greek Unicode names to Latin.
 3. Translate various Greek terms to English.
 
@@ -73,15 +73,15 @@ devtools::install_github("kvantas/hydroscoper")
 
 The functions that are provided by `hydroscoper` are:
 
-* `get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database ` family functions, to retrieve a data frame with Hydroscope's data for a given data source.
-* `get_data`, to retrieve a tidy data frame with time series' values.  
-* `hydro_coords`, to convert Hydroscope's points raw format to a tidy data frame.
+* `get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database ` family functions, to retrieve a tibble with Hydroscope's data for a given data source.
+* `get_data`, to retrieve a tibble with time series' values.  
+* `hydro_coords`, to convert Hydroscope's points raw format to a tibble.
 * `hydro_translate` to translate various terms and names from Greek to English.
 
 The data sets that are provided by `hydroscoper` are:
 
-* `stations` a tidy data frame with stations' data from Hydroscope.
-* `timeseries` a tidy data frame with  time series' data from Hydroscope.
+* `stations` a tibble with stations' data from Hydroscope.
+* `timeseries` a tibble with  time series' data from Hydroscope.
 
 ## Example
 
@@ -94,13 +94,14 @@ library(hydroscoper)
 library(tibble)
 data("stations")
 kyy_stations <- subset(stations, subdomain == "kyy")
-as_tibble(kyy_stations)
+kyy_stations
 ```
 
 To get the time series' data for the station `200200` (http://kyy.hydroscope.gr/stations/d/200200/) we can use:
+
 ```{r}
 station_ts <- subset(timeseries, station_id == 200200)
-as_tibble(station_ts)
+station_ts
 ```
 
 You can get the station's  time series **56** (http://kyy.hydroscope.gr/time series/d/56/):
