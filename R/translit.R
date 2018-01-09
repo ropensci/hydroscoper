@@ -3,7 +3,7 @@
 # convert greek to latin-ascii
 greek2latin <- function(x) {
 
-  if(is.null(x)) return("")
+  if (is.null(x)) return("")
 
   res <- sapply(x, function(y) {
     y <- stringi::stri_trans_general(y, "Latin")
@@ -23,7 +23,7 @@ trasnlit_all <- function(result) {
 
 # Translations -----------------------------------------------------------------
 
-# transalte vector y using dataframe map df
+# translate vector y using dataframe map df
 translate_str <- function(y, df){
   for (i in 1:nrow(df)) {
     y <- stringr::str_replace_all(y, df$from[i], df$to[i])
@@ -73,22 +73,27 @@ map_variables <- function(y){
       "semeio_drosou", "oratoteta", "steria", "thalassa", "barometro",
       "tase_ydratmon", "psychrometro", "isodynamo_ypsos", "agogimoteta",
       "aktinobolia", "anthraka", "dioxeidio", "ypoloipo", "argilio",
-      "argilos", "arseniko", "pyritiou", "aera"
+      "argilos", "arseniko", "pyritiou", "aera", "nephokalypse", "nephose",
+      "axiosemeiota", "nephe", "kairos", "diafora", "atmosfairiki", "stathera",
+      "parousa", "parelthousa", "kalymeno", "el.", "meg.", "skleroteta",
+      "eliophaneia", "eisroe_se_tamieuteres"
     ),
 
     to   = c(
-      "", "_", "_", "", "unknown", "wind", "direc", "past", "speed",
+      "", "_", "_", "", "unknown", "wind", "direction", "past", "speed",
       "average", "precipitation", "duration", "evaporation",
       "evapotranspiration", "temperature", "ground", "depth",
       "min", "max", "pressure", "point", "snow", "elevation",
-      "level", "flood", "flow", "precipitation", "condition", "estim",
-      "cumulative", "sediment", "humidity", "wet", "absol", "relat",
-      "calcium",
-      "precipitation", "snow_rain_gauge", "dry", "flow_gauge", "sea",
+      "level", "flood", "flow", "precipitation", "condition", "estimation",
+      "cumulative", "sediment", "humidity", "wet", "absolute", "relative",
+      "calcium", "precipitation", "snow_rain_gauge", "dry", "flow_gauge", "sea",
       "dew_point", "visibility", "land", "sea", "barometer",
       "vapour_pressure", "psychrometer", "water_equivalent",
       "conductance", "radiation", "carbon", "dioxide", "residual",
-      "aluminum", "clay", "arsenic", "silicon", "air"
+      "aluminum", "clay", "arsenic", "silicon", "air", "cloud_cover", "clouds",
+      "remarkably", "clouds", "weather", "difference", "atmospheric",
+      "constant", "present", "past", "cover", "min", "max", "hardness",
+      "sunshine", "infow_reservoir"
     ),
   stringsAsFactors = FALSE)
 
@@ -126,4 +131,3 @@ map_wd <- function(y){
   translate_str(y, df)
 
 }
-
