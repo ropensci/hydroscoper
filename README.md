@@ -11,9 +11,8 @@ Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?b
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.1.0.9000-orange.svg?style=flat-square)](commits/master)
-[![Rdoc](http://www.rdocumentation.org/badges/version/hydroscoper)](http://www.rdocumentation.org/packages/hydroscoper)
-[![](http://cranlogs.r-pkg.org/badges/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.2.0-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
@@ -32,12 +31,12 @@ its data on its own server using the Enhydris database system for the
 storage and management of hydrological and meteorological data. These
 organisations are:
 
-  - Ministry of Environment and Energy
-  - Ministry of Rural Development and Food
-  - National Meteorological Service
-  - National Observatory of Athens
-  - Greek Prefectures
-  - Public Power Corporation
+  - Ministry of Environment and Energy.
+  - Ministry of Rural Development and Food.
+  - National Meteorological Service.
+  - National Observatory of Athens.
+  - Greek Prefectures.
+  - Public Power Corporation.
 
 The data are structured as tables and space separated text files, but
 are in Greek, thus limiting their usefulness.
@@ -46,17 +45,18 @@ are in Greek, thus limiting their usefulness.
 API](http://enhydris.readthedocs.io/en/latest/index.html) and provides
 functions to:
 
-1.  Transform the available tables and data sets into tidy data frames
-2.  Transliterate the Greek Unicode names to Latin
-3.  Translate various Greek terms to English
+1.  Transform the available tables and data sets into tidy data frames.
+2.  Transliterate the Greek Unicode names to Latin.
+3.  Translate various Greek terms to English.
 
 ## Data sources
 
   - Ministry of Environment and Energy, National Observatory of Athens
-    and Greek Prefectures, <http://kyy.hydroscope.gr/>
-  - Ministry of Rural Development and Food, <http://ypaat.hydroscope.gr>
-  - National Meteorological Service, <http://emy.hydroscope.gr>
-  - Greek Public Power Corporation, <http://deh.hydroscope.gr>
+    and Greek Prefectures, <http://kyy.hydroscope.gr/>.
+  - Ministry of Rural Development and Food,
+    <http://ypaat.hydroscope.gr>.
+  - National Meteorological Service, <http://emy.hydroscope.gr>.
+  - Greek Public Power Corporation, <http://deh.hydroscope.gr>.
 
 Note that only the two Ministries allow to download time series values
 freely.
@@ -85,19 +85,19 @@ The functions that are provided by `hydroscoper` are:
     get_units_of_measurement, get_time_steps, get_owners,
     get_instruments_type, get_station_type, get_database` family
     functions, to retrieve a data frame with Hydroscope’s data for a
-    given data source
-  - `get_data`, to retrieve a tidy data frame with values of a time
-    series
-  - `get_coords`, to convert Hydroscope’s points raw format to a tidy
-    data frame
+    given data source.
+  - `get_data`, to retrieve a tidy data frame with time series’
+    values.  
+  - `hydro_coords`, to convert Hydroscope’s points raw format to a tidy
+    data frame.
   - `hydro_translate` to translate various terms and names from Greek to
-    English
+    English.
 
 The data sets that are provided by `hydroscoper` are:
 
-  - `stations` a tidy data frame with stations’ data from Hydroscope
+  - `stations` a tidy data frame with stations’ data from Hydroscope.
   - `timeseries` a tidy data frame with time series’ data from
-    Hydroscope
+    Hydroscope.
 
 ## Example
 
@@ -117,7 +117,7 @@ kyy_stations <- subset(stations, subdomain == "kyy")
 as_tibble(kyy_stations)
 #> # A tibble: 425 x 9
 #>    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~
-#>  *      <int> <chr>      <chr>     <chr>   <chr>   <dbl> <dbl> <dbl> <chr>
+#>         <int> <chr>      <chr>     <chr>   <chr>   <dbl> <dbl> <dbl> <chr>
 #>  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  
 #>  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  
 #>  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  
@@ -138,12 +138,12 @@ To get the time series’ data for the station `200200`
 station_ts <- subset(timeseries, station_id == 200200)
 as_tibble(station_ts)
 #> # A tibble: 4 x 8
-#>   timeser_id station_id variable      timestep   units start~ end_d~ subd~
-#> *      <int>      <int> <chr>         <chr>      <chr> <chr>  <chr>  <chr>
-#> 1        761     200200 wind_direc    <NA>       °     1948-~ 1997-~ kyy  
-#> 2         56     200200 precipitation 30_minutes mm    1985-~ 1997-~ kyy  
-#> 3        760     200200 snow          daily      mm    1948-~ 1997-~ kyy  
-#> 4        759     200200 precipitation daily      mm    1953-~ 2011-~ kyy
+#>   timeser_id station_id variable       timestep   units start~ end_~ subd~
+#>        <int>      <int> <chr>          <chr>      <chr> <chr>  <chr> <chr>
+#> 1        761     200200 wind_direction <NA>       °     1948-~ 1997~ kyy  
+#> 2         56     200200 precipitation  30_minutes mm    1985-~ 1997~ kyy  
+#> 3        760     200200 snow           daily      mm    1948-~ 1997~ kyy  
+#> 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy
 ```
 
 You can get the station’s time series **56**
