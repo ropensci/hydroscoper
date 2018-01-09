@@ -16,6 +16,7 @@ test_that("Missing arguments and unknown subdomains return errors", {
   expect_error(get_data("kyy"))
 })
 
+# comment the following line for local testing
 skip("heavy web usage")
 
 context("Test API")
@@ -73,8 +74,8 @@ test_that("get functions return dataframes with a subset of variables", {
                   unit_vars, tstep_vars)
   expect_database(emy,  st_vars, ts_vars, wb_vars, wd_vars, var_vars, own_vars,
                   unit_vars, tstep_vars)
-  expect_database(ypaat,  st_vars, ts_vars, wb_vars, wd_vars, var_vars, own_vars,
-                  unit_vars, tstep_vars)
+  expect_database(ypaat,  st_vars, ts_vars, wb_vars, wd_vars, var_vars,
+                  own_vars, unit_vars, tstep_vars)
 
   # deh subdomain use different timeseries variables ---------------------------
   ts_deh_vars <- c("id", "gentity", "variable", "time_step",

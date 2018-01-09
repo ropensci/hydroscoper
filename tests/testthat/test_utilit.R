@@ -12,8 +12,7 @@ test_that("get_coords returns a data frame with lat and long values", {
 
   res <- data.frame(long = c(22.41211, 25.91659, NA, NA, NA, NA, NA),
                     lat =  c(39.07562, 40.93200, NA, NA, NA, NA, NA))
-  expect_is(get_coords(pnt), "data.frame")
-  expect_equal(get_coords(pnt), res)
+  expect_is(hydro_coords(pnt), "data.frame")
+  expect_equal(hydro_coords(pnt), res)
 
 })
-
