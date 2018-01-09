@@ -40,7 +40,6 @@
 #' \url{http://ypaat.hydroscope.gr}
 #'}
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
-#' @import readr
 #' @export get_data
 get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {
 
