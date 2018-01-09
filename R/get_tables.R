@@ -1,5 +1,73 @@
+
+#' Get data frames from Hydroscope
+#'
+#' A family of functions that return a data frame from a specific database
+#' of Hydroscope using the Enhydris API. \code{get_database} returns a list
+#' of data frames using all the family functions.
+#'
+#' @param subdomain One of the subdomains of Hydroscope in
+#' \code{c("kyy", "ypaat", "emy", "deh")}.
+#' @param translit Automatically transliterate Greek to Latin.
+#'
+#' @return If \code{subdomain} is one of:
+#' \itemize{
+#' \item{\code{kyy}, Ministry of Environment and Energy}
+#' \item{\code{ypaat}, Ministry of Rural Development and Food}
+#' \item{\code{deh}, Greek Public Power Corporation}
+#' \item{\code{emy}, National Meteorological Service}
+#' }
+#' returns a tidy data frame or with data from the corresponding database
+#' of Hydroscope. Otherwise returns an error message.
+#'
+#' @note
+#' Objects' IDs are not unique among the different Hydroscope databases. For
+#' example, time series' IDs from http://kyy.hydroscope.gr have same values
+#' with time series' from http://ypaat.hydroscope.gr.
+#'
+#' The coordinates of points in a stations data frame are based on the European
+#' Terrestrial Reference System 1989 (ETRS89)
+#'
+#' @examples
+#'
+#' \dontrun{
+#'
+#' # get data from the Ministry of Environment and Energy
+#' kyy_stations <- get_stations("kyy")
+#' kyy_timser <- get_timeseries("kyy")
+#' kyy_instr <- get_instruments("kyy")
+#' kyy_db <- get_database("kyy")
+#'
+#' }
+#'
+#' @references
+#'
+#' The data are retrieved from the Hydroscope's databases:
+#' \itemize{
+#' \item Ministry of Environment, Energy and Climate Change,
+#' \url{http://kyy.hydroscope.gr}
+#' \item Ministry of Rural Development and Food,
+#' \url{http://ypaat.hydroscope.gr}
+#' \item National Meteorological Service,
+#' \url{http://emy.hydroscope.gr}
+#' \item{Greek Public Power Corporation},
+#' \url{http://deh.hydroscope.gr}
+#'}
+#'
+#' European Terrestrial Reference System 1989 (ETRS),
+#' \url{http://bit.ly/2kJwFuf}
+#'
+#' Greek Water Divisions,
+#' \url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
+#'
+#' Greek Water Basin
+#' \url{http://bit.ly/2Dvzo1W}
+#'
+#' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
+#'
+#' @name get_functions
+NULL
+
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_stations
 get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                          translit = TRUE) {
@@ -10,7 +78,6 @@ get_stations <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_timeseries
 get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                            translit = TRUE){
@@ -20,7 +87,6 @@ get_timeseries <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_instruments
 get_instruments <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                             translit = TRUE){
@@ -29,7 +95,6 @@ get_instruments <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_water_basins
 get_water_basins <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                             translit = TRUE){
@@ -38,7 +103,6 @@ get_water_basins <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_water_divisions
 get_water_divisions <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                             translit = TRUE){
@@ -47,7 +111,6 @@ get_water_divisions <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_political_divisions
 get_political_divisions <- function(subdomain =  c("kyy", "ypaat", "emy",
                                                    "deh"),
@@ -57,7 +120,6 @@ get_political_divisions <- function(subdomain =  c("kyy", "ypaat", "emy",
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_variables
 get_variables <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                                    translit = TRUE){
@@ -66,7 +128,6 @@ get_variables <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_units_of_measurement
 get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy",
                                                     "deh"),
@@ -76,7 +137,6 @@ get_units_of_measurement <- function(subdomain =  c("kyy", "ypaat", "emy",
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_time_steps
 get_time_steps <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                                      translit = TRUE){
@@ -86,7 +146,6 @@ get_time_steps <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_owners
 get_owners <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                            translit = TRUE){
@@ -96,7 +155,6 @@ get_owners <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_owners
 get_instruments_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                        translit = TRUE){
@@ -105,7 +163,6 @@ get_instruments_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_station_type
 get_station_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                                  translit = TRUE){
@@ -114,7 +171,6 @@ get_station_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 }
 
 #' @rdname get_functions
-#' @import jsonlite
 #' @export get_database
 get_database <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                          translit = TRUE) {
