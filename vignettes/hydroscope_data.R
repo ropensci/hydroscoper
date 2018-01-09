@@ -61,7 +61,7 @@ knitr::opts_chunk$set(
 #    res <- merge(res, owners, by = "owner", all.x = TRUE)
 #  
 #    # create coords
-#    coords <- get_coords(res$point)
+#    coords <- hydro_coords(res$point)
 #  
 #  
 #    data.frame(station_id = as.integer(res$id),

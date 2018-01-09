@@ -12,7 +12,7 @@
 
 <meta name="author" content="Konstantinos Vantas" />
 
-<meta name="date" content="2018-01-08" />
+<meta name="date" content="2018-01-09" />
 
 <title>Getting Hydroscope’s data</title>
 
@@ -280,7 +280,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Getting Hydroscope’s data</h1>
 <h4 class="author"><em>Konstantinos Vantas</em></h4>
-<h4 class="date"><em>2018-01-08</em></h4>
+<h4 class="date"><em>2018-01-09</em></h4>
 
 
 
@@ -346,7 +346,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-25" data-line-number="25">  res &lt;-<span class="st"> </span><span class="kw">merge</span>(res, owners, <span class="dt">by =</span> <span class="st">&quot;owner&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb3-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb3-27" data-line-number="27">  <span class="co"># create coords</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28">  coords &lt;-<span class="st"> </span><span class="kw">get_coords</span>(res<span class="op">$</span>point)</a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">  coords &lt;-<span class="st"> </span><span class="kw">hydro_coords</span>(res<span class="op">$</span>point)</a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"></a>
 <a class="sourceLine" id="cb3-30" data-line-number="30"></a>
 <a class="sourceLine" id="cb3-31" data-line-number="31">  <span class="kw">data.frame</span>(<span class="dt">station_id =</span> <span class="kw">as.integer</span>(res<span class="op">$</span>id),</a>
