@@ -1,24 +1,14 @@
 # Transliterations -------------------------------------------------------------
 
-# convert greek to latin-ascii
-greek2latin <- function(x) {
-
-  if (is.null(x)) return("")
-
-  res <- sapply(x, function(y) {
-    y <- stringi::stri_trans_general(y, "Latin")
-    stringi::stri_trans_general(y, "latin-ascii")
-  })
-
-  unname(res)
-}
 
 # translitarate all the columns of a dataframe from Greek to latin-ascii
-trasnlit_all <- function(result) {
-  for (cnames in names(result)) {
-    result[cnames] <- greek2latin(result[cnames])
-  }
-  result
+trasnlit_all <- function(df) {
+
+  df[] <- lapply(df, function(x){
+    y <- stringi::stri_trans_general(x, "Latin")
+    stringi::stri_trans_general(y, "latin-ascii")
+  })
+  return(df)
 }
 
 # Translations -----------------------------------------------------------------

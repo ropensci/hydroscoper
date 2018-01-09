@@ -21,5 +21,5 @@
 #' coords <- get_coords(kyy_stations$point)
 #' }
 hydro_coords <- function(x) {
-  do.call(rbind, lapply(x, create_coords))
+  plyr::ldply(x, create_coords)
 }

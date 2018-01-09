@@ -1,12 +1,5 @@
 context("Translitetation and translation functions")
 
-test_that("greek2latin returns strings", {
-
-  expect_is(greek2latin("hello"), "character")
-  expect_is(greek2latin(NA), "character")
-  expect_is(greek2latin(NULL), "character")
-})
-
 test_that("trasnlit_all returns a dataframe", {
 
   df <- data.frame(x1 = c("te", "xc"),
