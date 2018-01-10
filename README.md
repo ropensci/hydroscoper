@@ -41,13 +41,16 @@ organisations are:
 The data are structured as tables and space separated text files, but
 are in Greek, thus limiting their usefulness.
 
-`hydroscoper` covers Hydroscope’s data sources using the [Enhydris
-API](http://enhydris.readthedocs.io/en/latest/index.html) and provides
-functions to:
+`hydroscoper` covers Hydroscope’s data sources using the Enhydris API.
+The Enhydris database is implemented in PostgreSQL and details about the
+database can be found [here](http://bit.ly/2D0cZgA) and about the
+Webservice API [here](http://bit.ly/2FlRtBB).
+
+`hydroscoper` provides functions to:
 
 1.  Transform the available tables and data sets into tidy data frames
     [(tibbles)](http://tibble.tidyverse.org/).
-2.  Transliterate the Greek Unicode names to Latin.
+2.  Transliterate the Greek Unicode text to Latin.
 3.  Translate various Greek terms to English.
 
 ## Data sources
@@ -109,10 +112,17 @@ reduce the time needed with data munging. We can subset the station’s
 data for the `kyy` sub-domain with:
 
 ``` r
+# load libraries
 library(hydroscoper)
 library(tibble)
+
+# load data
 data("stations")
+
+# subset stations data
 kyy_stations <- subset(stations, subdomain == "kyy")
+
+# view kyy stations
 kyy_stations
 #> # A tibble: 425 x 9
 #>    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~
@@ -145,8 +155,8 @@ station_ts
 #> 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy
 ```
 
-You can get the station’s time series **56**
-(<http://kyy.hydroscope.gr/time> series/d/56/):
+You can download the station’s time series **56**
+(<http://kyy.hydroscope.gr/time> series/d/56/) to a tibble with:
 
 ``` r
 ts_raw <- get_data(subdomain = "kyy",time_id = 56)

@@ -8,24 +8,37 @@
 \title{hydroscoper: Interface to Hydroscope}
 \description{
 R interface to the  Greek National Data Bank for Hydrological and
-Meteorological Information http://www.hydroscope.gr/. It
-covers Hydroscope's data sources and provides functions: a) to transliterate
-and translate Greek terms to English and b) download time series' data into
-tidy dataframes.
+Meteorological Information http://www.hydroscope.gr/.
 }
+\details{
+\code{hydroscoper} covers Hydroscope's data sources using the
+\href{http://bit.ly/2CLlAAA}{Enhydris API} and provides functions to:
+\enumerate{
+  \item {Transform the available tables and data sets into
+       \href{http://bit.ly/2Dg1sHY}{tibbles}.}
+  \item{Transliterate the Greek Unicode names to Latin.}
+  \item{Translate various Greek terms to English.}
+}
+}
+\section{Enydris API}{
+
+
+The Enhydris database is implemented in PostgreSQL. Details about the
+database can be found \href{http://bit.ly/2D0cZgA}{here}  and about the
+Webservice API \href{http://bit.ly/2FlRtBB}{here}.
+}
+
 \section{Data Sources}{
 
 
 The data are retrieved from the Hydroscope's databases:
 \itemize{
-\item Ministry of Environment, Energy and Climate Change,
-\url{http://kyy.hydroscope.gr}.
-\item Ministry of Rural Development and Food,
-\url{http://ypaat.hydroscope.gr}.
-\item National Meteorological Service,
-\url{http://emy.hydroscope.gr}.
-\item{Greek Public Power Corporation},
-\url{http://deh.hydroscope.gr}.
+  \item \href{http://kyy.hydroscope.gr}{Ministry of Environment, Energy and
+  Climate Change}.
+  \item \href{http://ypaat.hydroscope.gr}{Ministry of Rural Development
+  and Food}.
+  \item \href{http://emy.hydroscope.gr}{National Meteorological Service}.
+  \item  \href{http://deh.hydroscope.gr}{Greek Public Power Corporation}.
 }
 }
 
