@@ -60,7 +60,7 @@ GR14 \tab Nesoi Aigaiou  \cr
 }
 
 
-The tranlation to English from the trasnlitarated Greek terms uses
+The translation to English from the translitarated Greek terms uses
 the following table:
 
 \tabular{ll}{

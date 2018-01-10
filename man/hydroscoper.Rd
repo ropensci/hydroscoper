@@ -25,7 +25,7 @@ Meteorological Information http://www.hydroscope.gr/.
 
 The Enhydris database is implemented in PostgreSQL. Details about the
 database can be found \href{http://bit.ly/2D0cZgA}{here}  and about the
-Webservice API \href{http://bit.ly/2FlRtBB}{here}.
+Web-service API \href{http://bit.ly/2FlRtBB}{here}.
 }
 
 \section{Data Sources}{

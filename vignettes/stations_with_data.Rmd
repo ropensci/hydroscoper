@@ -1,5 +1,5 @@
 ---
-title: "Hydroscope's stations with available data"
+title: "Hydroscope's stations with available time series"
 author: "Konstantinos Vantas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
