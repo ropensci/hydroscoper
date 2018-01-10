@@ -103,25 +103,37 @@
 
     
     <p>R interface to the  Greek National Data Bank for Hydrological and
-Meteorological Information http://www.hydroscope.gr/. It
-covers Hydroscope's data sources and provides functions: a) to transliterate
-and translate Greek terms to English and b) download time series' data into
-tidy dataframes.</p>
+Meteorological Information http://www.hydroscope.gr/.</p>
     
 
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>hydroscoper</code> covers Hydroscope's data sources using the
+<a href='http://bit.ly/2CLlAAA'>Enhydris API</a> and provides functions to:</p><ol>
+<li><p>Transform the available tables and data sets into
+       <a href='http://bit.ly/2Dg1sHY'>tibbles</a>.</p></li>
+<li><p>Transliterate the Greek Unicode names to Latin.</p></li>
+<li><p>Translate various Greek terms to English.</p></li>
+</ol>
+    
+    <h2 class="hasAnchor" id="enydris-api"><a class="anchor" href="#enydris-api"></a>Enydris API</h2>
+
+    
+    <p>The Enhydris database is implemented in PostgreSQL. Details about the
+database can be found <a href='http://bit.ly/2D0cZgA'>here</a>  and about the
+Webservice API <a href='http://bit.ly/2FlRtBB'>here</a>.</p>
+    
     <h2 class="hasAnchor" id="data-sources"><a class="anchor" href="#data-sources"></a>Data Sources</h2>
 
     
     <p>The data are retrieved from the Hydroscope's databases:</p><ul>
-<li><p>Ministry of Environment, Energy and Climate Change,
-<a href='http://kyy.hydroscope.gr'>http://kyy.hydroscope.gr</a>.</p></li>
-<li><p>Ministry of Rural Development and Food,
-<a href='http://ypaat.hydroscope.gr'>http://ypaat.hydroscope.gr</a>.</p></li>
-<li><p>National Meteorological Service,
-<a href='http://emy.hydroscope.gr'>http://emy.hydroscope.gr</a>.</p></li>
-<li><p>Greek Public Power Corporation,
-<a href='http://deh.hydroscope.gr'>http://deh.hydroscope.gr</a>.</p></li>
+<li><p><a href='http://kyy.hydroscope.gr'>Ministry of Environment, Energy and
+  Climate Change</a>.</p></li>
+<li><p><a href='http://ypaat.hydroscope.gr'>Ministry of Rural Development
+  and Food</a>.</p></li>
+<li><p><a href='http://emy.hydroscope.gr'>National Meteorological Service</a>.</p></li>
+<li><p><a href='http://deh.hydroscope.gr'>Greek Public Power Corporation</a>.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -137,6 +149,10 @@ tidy dataframes.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#enydris-api">Enydris API</a></li>
+
       <li><a href="#data-sources">Data Sources</a></li>
 
       <li><a href="#see-also">See also</a></li>

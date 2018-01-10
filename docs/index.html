@@ -93,10 +93,11 @@
 <li>Public Power Corporation.</li>
 </ul>
 <p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.</p>
-<p><code>hydroscoper</code> covers Hydroscope’s data sources using the <a href="http://enhydris.readthedocs.io/en/latest/index.html">Enhydris API</a> and provides functions to:</p>
+<p><code>hydroscoper</code> covers Hydroscope’s data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found <a href="http://bit.ly/2D0cZgA">here</a> and about the Webservice API <a href="http://bit.ly/2FlRtBB">here</a>.</p>
+<p><code>hydroscoper</code> provides functions to:</p>
 <ol type="1">
 <li>Transform the available tables and data sets into tidy data frames <a href="http://tibble.tidyverse.org/">(tibbles)</a>.</li>
-<li>Transliterate the Greek Unicode names to Latin.</li>
+<li>Transliterate the Greek Unicode text to Latin.</li>
 <li>Translate various Greek terms to English.</li>
 </ol>
 <section id="data-sources" class="level2"><h2>Data sources</h2>
@@ -135,25 +136,32 @@
 </ul></section><section id="example" class="level2"><h2>Example</h2>
 <p>This is a basic example which shows you how to get the stations’ and time series data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
 <p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"stations"</span>)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">kyy_stations &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, subdomain <span class="op">==</span><span class="st"> "kyy"</span>)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">kyy_stations</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; # A tibble: 425 x 9</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  </span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  </span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  4     200231 BYTINA     "ALPHEIO~ GR01    min_en~  22.2  37.7  1011 kyy  </span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  5     200200 LYKOURIA   "ALPHEIO~ GR01    min_en~  22.2  37.9   758 kyy  </span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  6     200236 MEGALOPOLE "ALPHEIO~ GR01    min_en~  22.1  37.4   429 kyy  </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  7     200244 ODOG. AG.~ "REMA CH~ GR01    min_en~  21.8  37.0   182 kyy  </span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  8     200204 TRIPOTAMA  "ALPHEIO~ GR01    min_en~  21.9  37.9   570 kyy  </span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  9     200198 KASTELLIO  "ALPHEIO~ GR01    min_en~  22.0  37.9   792 kyy  </span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt; 10     200239 PERDIKONE~ "ALPHEIO~ GR01    min_en~  22.0  37.7   837 kyy  </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; # ... with 415 more rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># load libraries</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(hydroscoper)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># load data</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw">data</span>(<span class="st">"stations"</span>)</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># subset stations data</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">kyy_stations &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, subdomain <span class="op">==</span><span class="st"> "kyy"</span>)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co"># view kyy stations</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">kyy_stations</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; # A tibble: 425 x 9</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  </span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt;  4     200231 BYTINA     "ALPHEIO~ GR01    min_en~  22.2  37.7  1011 kyy  </span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt;  5     200200 LYKOURIA   "ALPHEIO~ GR01    min_en~  22.2  37.9   758 kyy  </span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="co">#&gt;  6     200236 MEGALOPOLE "ALPHEIO~ GR01    min_en~  22.1  37.4   429 kyy  </span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt;  7     200244 ODOG. AG.~ "REMA CH~ GR01    min_en~  21.8  37.0   182 kyy  </span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co">#&gt;  8     200204 TRIPOTAMA  "ALPHEIO~ GR01    min_en~  21.9  37.9   570 kyy  </span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="co">#&gt;  9     200198 KASTELLIO  "ALPHEIO~ GR01    min_en~  22.0  37.9   792 kyy  </span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; 10     200239 PERDIKONE~ "ALPHEIO~ GR01    min_en~  22.0  37.7   837 kyy  </span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt; # ... with 415 more rows</span></a></code></pre></div>
 <p>To get the time series’ data for the station <code>200200</code> (<a href="http://kyy.hydroscope.gr/stations/d/200200/" class="uri">http://kyy.hydroscope.gr/stations/d/200200/</a>) we can use:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">station_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, station_id <span class="op">==</span><span class="st"> </span><span class="dv">200200</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">station_ts</a>
@@ -164,7 +172,7 @@
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipitation  30_minutes mm    1985-~ 1997~ kyy  </span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow           daily      mm    1948-~ 1997~ kyy  </span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy</span></a></code></pre></div>
-<p>You can get the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/time" class="uri">http://kyy.hydroscope.gr/time</a> series/d/56/):</p>
+<p>You can download the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/time" class="uri">http://kyy.hydroscope.gr/time</a> series/d/56/) to a tibble with:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>,<span class="dt">time_id =</span> <span class="dv">56</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">ts_raw</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
@@ -242,7 +250,7 @@
 <li><a href="https://codecov.io/gh/kvantas/hydroscoper"><img src="https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg" alt="codecov"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://cran.r-project.org/package=hydroscoper"><img src="http://www.r-pkg.org/badges/version/hydroscoper" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/kvantas/hydroscoper"><img src="https://img.shields.io/badge/Package%20version-0.2.0-orange.svg?style=flat-square" alt="packageversion"></a></li>
+<li><a href="https://github.com/kvantas/hydroscoper"><img src="https://img.shields.io/badge/Package%20version-0.2.1-orange.svg?style=flat-square" alt="packageversion"></a></li>
 <li><a href="http://cran.rstudio.com/web/packages/hydroscoper/index.html"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/114094911"><img src="https://zenodo.org/badge/114094911.svg" alt="DOI"></a></li>
 </ul>
