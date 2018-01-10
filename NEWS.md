@@ -1,11 +1,11 @@
-# hydroscoper 0.2.1 (Release date: 2018-02-10)
+# hydroscoper 0.2.1 (Release date: 2018-01-10)
 
 * General 
 
   - This is a minor update. All the functions return now a tibble.
 
 
-# hydroscoper 0.2.0 (Release date: 2018-02-09)
+# hydroscoper 0.2.0 (Release date: 2018-01-09)
 
 * General 
 
