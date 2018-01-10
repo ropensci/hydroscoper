@@ -15,10 +15,10 @@ hydro_translate(x, value = c("owner", "variable", "timestep", "division"))
 \value{
 If \code{value} is one of:
 \itemize{
-\item{\code{owner}, translate organizations' names.}
-\item{\code{variable}, translate hydrometeorological term.}
-\item{\code{timestep}, translate timestep term.}
-\item{\code{division}, translate Water Division.}
+\item{\code{owner}, organizations' names.}
+\item{\code{variable}, hydrometeorological term.}
+\item{\code{timestep}, timestep term.}
+\item{\code{division}, Water Division.}
 }
 returns a character vector with translations of various hydrometeorological
 terms or organizations' names from Greek (with latin characters) to English.
@@ -37,6 +37,7 @@ greek_perfectures   \tab Greek Prefectures \cr
 crete_eng_faculty   \tab Technical University of Crete \cr
 crete_natural_museum \tab Natural History Museum of Crete \cr
 }
+
 
 The Greek Water Divisions codes in \code{division} are:
 
@@ -57,6 +58,7 @@ GR12 \tab Thrake  \cr
 GR13 \tab Krete  \cr
 GR14 \tab Nesoi Aigaiou  \cr
 }
+
 
 The tranlation to English from the trasnlitarated Greek terms uses
 the following table:

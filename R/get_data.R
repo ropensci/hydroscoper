@@ -22,7 +22,7 @@
 #'
 #' @note
 #' The subdomains \code{"deh"} (Greek Public Power Corporation) and \code{"emy"}
-#' (National Meteorological Service) are not used, because the data are not
+#' (National Meteorological Service) are not used, because their data are not
 #' freely available.
 #'
 #' @examples
