@@ -92,14 +92,15 @@ stations <- ldply(subdomain, function(id){
 
 
   data.frame(station_id = as.integer(res$id),
-                 name = as.character(res$name),
-                 water_basin = res$water_basin_name,
-                 water_division = res$water_division_name,
-                 owner = res$owner_name,
-                 longitude = as.numeric(coords$long),
-                 latitude = as.numeric(coords$lat),
-                 altitude = as.numeric(res$altitude),
-                 subdomain = rep(id, nrow(res)))
+             name = as.character(res$name),
+             water_basin = res$water_basin_name,
+             water_division = res$water_division_name,
+             owner = res$owner_name,
+             longitude = as.numeric(coords$long),
+             latitude = as.numeric(coords$lat),
+             altitude = as.numeric(res$altitude),
+             subdomain = rep(id, nrow(res)),
+             stringsAsFactors = FALSE)
 
 })
 stations <- as_tibble(stations)
@@ -171,8 +172,8 @@ timeseries <- ldply(subdomain, function(id){
     "units" = as.character(res$unit_of_measurement_name),
     "start_date" = as.character(res$start_date_utc),
     "end_date" = as.character(res$end_date_utc),
-    "subdomain" = rep(id, nrow(res))
-  )
+    "subdomain" = rep(id, nrow(res)), 
+    stringsAsFactors = FALSE)
 })
 timeseries <- as.tibble(timeseries)
 timeseries

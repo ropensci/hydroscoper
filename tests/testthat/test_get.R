@@ -17,7 +17,7 @@ test_that("Missing arguments and unknown subdomains return errors", {
 })
 
 # comment the following line for local testing
-# skip("heavy web usage")
+skip("heavy web usage")
 
 context("Test API")
 test_that("API returns a list of tables", {
