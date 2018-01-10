@@ -46,13 +46,13 @@ We must check if there are specific variables at each sub-domain's stations' dat
 vars <- c("id", "name", "owner", "point", "altitude", "water_basin",
           "water_division")
 
-sapply(subdomain, function(id) {
+ldply(subdomain, function(id) {
   vars %in% names(hydro_data[[id]]$stations)
 })
 
 # check water_basin, water_division and owner variables
 vars2 <- c("id", "name")
-sapply(subdomain, function(id) {
+ldply(subdomain, function(id) {
   (vars2 %in% names(hydro_data[[id]]$water_basin)) &
   (vars2 %in% names(hydro_data[[id]]$water_division)) &
   (vars2 %in% names(hydro_data[[id]]$owner))
@@ -71,7 +71,7 @@ stations <- ldply(subdomain, function(id){
   owners <- tmp$owners[c("id", "name")]
 
   # remove area from water_basin
-  wbas$name <- sapply(wbas$name, function(y) gsub("\\([^()]*\\)", "", y))
+  wbas$name <- laply(wbas$name, function(y) gsub("\\([^()]*\\)", "", y))
 
   # translate names
   wdiv$name <- hydro_translate(wdiv$name, "division")
@@ -114,7 +114,7 @@ Similarly, we will check if there are specific variables at each sub-domain's ti
 ```{r}
 vart <- c("id", "gentity", "start_date_utc", "end_date_utc", "variable",
           "time_step", "unit_of_measurement")
-sapply(subdomain, function(id) {
+ldply(subdomain, function(id) {
   vart %in% names(hydro_data[[id]]$timeseries)
 })
 
@@ -125,14 +125,14 @@ hydro_data$deh$timeseries$end_date_utc <- NA
 
 # check variables and timesteps
 vart2 <- c("id", "descr")
-sapply(subdomain, function(id) {
+ldply(subdomain, function(id) {
   (vart2 %in% names(hydro_data[[id]]$variables)) &
   (vart2 %in% names(hydro_data[[id]]$time_steps))
 })
 
 # check unit_of_measurement
 vart3 <- c("id", "symbol")
-sapply(subdomain, function(id) {
+ldply(subdomain, function(id) {
   vart3 %in% names(hydro_data[[id]]$units)
 })
 ```
