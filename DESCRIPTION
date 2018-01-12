@@ -1,7 +1,7 @@
 Package: hydroscoper
 Type: Package
 Title: Interface to Hydroscope
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: person("Konstantinos", "Vantas", role = c("aut", "cre"),
   email = "kon.vantas@gmail.com",
   comment = c(ORCID = "0000-0001-6387-8791"))
