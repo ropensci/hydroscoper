@@ -17,91 +17,67 @@ test_that("Missing arguments and unknown subdomains return errors", {
 })
 
 # To test local using devtools::test() comment the following line
-skip("Heavy web usage")
+# skip("Heavy web usage")
+
+skip_if_not_online <- function(subdomain) {
+  h_url <- paste0(subdomain, ".hydroscope.gr")
+
+  if(is.na(pingr::ping(h_url, count = 1))) {
+    skip(paste(h_url, "is not online"))
+  }
+}
+
+expect_names_in_api <- function(subdomain) {
+  exp_names <- c("Station", "Timeseries", "Instrument", "WaterBasin",
+                 "WaterDivision", "PoliticalDivision", "Variable",
+                 "UnitOfMeasurement", "TimeStep", "Organization",
+                 "InstrumentType", "StationType")
+
+  expect_true(all(exp_names %in% names(get_api_json(subdomain))))
+}
 
 context("Test API")
-test_that("APIs return lists of expected tables", {
-
-  # create booleans if servers are online
-  online <- function(h_url){
-    !is.na(pingr::ping(h_url, count = 1))
-  }
-
-  kyy   <- online("kyy.hydroscope.gr")
-  emy   <- online("emy.hydroscope.gr")
-  ypaat <- online("ypaat.hydroscope.gr")
-  deh   <- online("deh.hydroscope.gr")
-
-
-  exp_names <- c("Station", "Timeseries", "Instrument", "WaterBasin",
-                "WaterDivision", "PoliticalDivision", "Variable",
-                "UnitOfMeasurement", "TimeStep", "Organization",
-                "InstrumentType", "StationType")
-
-
-  expect_tables_in_api <- function(subomain) {
-    expect_true(all(exp_names %in% names(get_api_json(subomain))))
-  }
-
-  skip_if_not(kyy, "kyy is not online, skip expect_list_api test")
-  expect_tables_in_api("kyy")
-
-  skip_if_not(emy, "emy is not online, skip expect_list_api test")
-  expect_tables_in_api("emy")
-
-  skip_if_not(ypaat, "ypaat is not online, skip expect_list_api test")
-  expect_tables_in_api("ypaat")
-
-  skip_if_not(deh, "deh is not online, skip expect_list_api test")
-  expect_tables_in_api("deh")
-
+test_that("kyy returns expected tables", {
+  skip_if_not_online("kyy")
+  expect_names_in_api("kyy")
+})
+test_that("emy returns expected tables", {
+  skip_if_not_online("emy")
+  expect_names_in_api("emy")
+})
+test_that("deh returns expected tables", {
+  skip_if_not_online("deh")
+  expect_names_in_api("deh")
+})
+test_that("ypaat returns expected tables", {
+  skip_if_not_online("ypaat")
+  expect_names_in_api("ypaat")
 })
 
-context("Check data from hydroscope ")
-test_that("Check if all get_ family functions return data", {
-
-  # create booleans if servers are online
-  online <- function(h_url){
-    !is.na(pingr::ping(h_url, count = 1))
-  }
-
-  kyy   <- online("kyy.hydroscope.gr")
-  emy   <- online("emy.hydroscope.gr")
-  ypaat <- online("ypaat.hydroscope.gr")
-  deh   <- online("deh.hydroscope.gr")
-
-
-  # check and download lists of tibbles
-  skip_if_not(kyy, "kyy is not online, skip get_database test")
-  expect_is((get_database("kyy")), "list")
-
-  skip_if_not(emy, "emy is not online, skip get_database test")
+context("Test get_ functions")
+test_that("get_ functions work on kyy", {
+  skip_if_not_online("kyy")
+  expect_is(get_database("kyy"), "list")
+})
+test_that("get_ functions work on emy", {
+  skip_if_not_online("emy")
   expect_is((get_database("emy")), "list")
-
-  skip_if_not(ypaat, "ypaat is not online, skip get_database test")
-  expect_is((get_database("ypaat")), "list")
-
-  skip_if_not(deh, "deh is not online, skip get_database test")
+})
+test_that("get_ functions work on deh", {
+  skip_if_not_online("deh")
   expect_is((get_database("deh")), "list")
-
+})
+test_that("get_ functions work on ypaat", {
+  skip_if_not_online("ypaat")
+  expect_is((get_database("ypaat")), "list")
 })
 
 context("Download timeseries values from Hydroscope")
-test_that("Can download values from KYY and YPAAT", {
-
-  # create booleans if servers are online
-  online <- function(h_url){
-    !is.na(pingr::ping(h_url, count = 1))
-  }
-
-  kyy   <- online("kyy.hydroscope.gr")
-  ypaat <- online("ypaat.hydroscope.gr")
-
-  # download time series values from kyy
-  skip_if_not(kyy, "kyy is not online, skip get_data test")
+test_that("Can download time series values from kyy", {
+  skip_if_not_online("kyy")
   expect_is(get_data("kyy", 129), "data.frame")
-
-  # download time series values from ypaat
-  skip_if_not(ypaat, "ypaat is not online, skip get_data test")
+})
+test_that("Can download time series values from ypaat", {
+  skip_if_not_online("ypaat")
   expect_is(get_data("ypaat", 160), "data.frame")
 })
