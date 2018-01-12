@@ -65,9 +65,9 @@ Webservice API [here](http://bit.ly/2FlRtBB).
 Note that:
 
 1.  Only the two Ministries allow to download time series values freely.
-2.  `ypaat`, `emy` and `kyy` subdomains are maintened by the National
+2.  `ypaat`, `emy` and `kyy` subdomains are maintained by the National
     Technical University Of Athens and these servers work seamlessly.
-3.  `deh` subdomain is maintened by the Greek Public Power Corporation,
+3.  `deh` subdomain is maintained by the Greek Public Power Corporation,
     uses an older version of the Enhydris API and occasionally the
     server is down.
 
