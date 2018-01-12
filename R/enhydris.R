@@ -2,7 +2,7 @@
 
 # get subdomains' tables
 get_api_json <- function(subdomain) {
-  h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json")
+  h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json") # nolint
   enhy_get_df(h_url)
 }
 
@@ -67,14 +67,14 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
 
   # create url
   h_url <- hydroscope_url(subdomain)
-  s_url <- paste0(h_url, "/api/", api, "/?format=json")
+  s_url <- paste0(h_url, "/api/", api, "/?format=json") # nolint
 
   # try to get data
   result <- tryCatch({
     enhy_get_df(s_url)
   },
   error = function(e) {
-    stop(paste0("Failed to parse url: ", s_url), call. = FALSE)
+    stop(paste0("No data found at url: ", s_url), call. = FALSE)
   })
 
   # transliterate names

@@ -52,7 +52,7 @@ get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {
   # match subdomain values
   subdomain <- match.arg(subdomain)
   h_url <- hydroscope_url(subdomain)
-  t_url <- paste0(h_url, "/api/tsdata/", time_id, "/")
+  t_url <- paste0(h_url, "/api/tsdata/", time_id, "/") # nolint
 
   # get hydroscope file to dataframe
 
