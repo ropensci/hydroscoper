@@ -20,6 +20,7 @@ RoxygenNote: 6.0.1
 Imports: stringi (>= 1.1.6),
     stringr (>= 1.2), 
     tibble(>= 1.4.1),
+    pingr (>= 1.1.2),
     readr (>= 1.1.1),
     jsonlite (>= 1.5),
 Suggests: plyr (>= 1.8.4),
@@ -27,6 +28,5 @@ Suggests: plyr (>= 1.8.4),
     knitr (>= 1.17),
     rmarkdown (>= 1.8),
     testthat (>= 1.0.2),
-    pingr (>= 1.1.2),
     ggmap (>= 2.6.1)
 VignetteBuilder: knitr

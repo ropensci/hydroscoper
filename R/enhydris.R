@@ -1,5 +1,17 @@
 # Enhydris API -----------------------------------------------------------------
 
+# use ping to check if a subdomain is alive
+down_server <- function(subdomain) {
+  h_url <- paste0(subdomain, ".hydroscope.gr")
+
+  if (is.na(pingr::ping(h_url, count = 1))) {
+    stop(paste0("The server for that data source is probably down, get more info
+                at hydroscope@hydroscope.gr or try again later"),
+         call. = FALSE)
+  }
+}
+
+
 # get subdomains' tables
 get_api_json <- function(subdomain) {
   h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json") # nolint
@@ -7,8 +19,8 @@ get_api_json <- function(subdomain) {
 }
 
 # create url
-hydroscope_url <- function(domain) {
-  return(paste0("http://", domain, ".hydroscope.gr"))
+hydroscope_url <- function(subdomain) {
+  return(paste0("http://", subdomain, ".hydroscope.gr"))
 }
 
 # use Enhydris API to get json data
@@ -67,6 +79,10 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
 
   # create url
   h_url <- hydroscope_url(subdomain)
+
+  # check if a sudomain is down
+  down_server(subdomain)
+
   s_url <- paste0(h_url, "/api/", api, "/?format=json") # nolint
 
   # try to get data

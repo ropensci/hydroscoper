@@ -3,6 +3,7 @@
 * General 
 
   - This is a minor update. Added conditionaly evaluation in vignette "Getting Hydroscope's data".
+  - Use ping function to check if a sub-domain is alives.
   
 # hydroscoper 0.2.1 (Release date: 2018-01-10)
 

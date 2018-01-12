@@ -17,12 +17,12 @@ test_that("Missing arguments and unknown subdomains return errors", {
 })
 
 # To test local using devtools::test() comment the following line
-skip("Heavy web usage")
+# skip("Heavy web usage")
 
 skip_if_not_online <- function(subdomain) {
   h_url <- paste0(subdomain, ".hydroscope.gr")
 
-  if(is.na(pingr::ping(h_url, count = 1))) {
+  if (is.na(pingr::ping(h_url, count = 1))) {
     skip(paste(h_url, "is not online"))
   }
 }
