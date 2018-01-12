@@ -16,76 +16,68 @@ test_that("Missing arguments and unknown subdomains return errors", {
   expect_error(get_data("kyy"))
 })
 
-# comment the following line for local testing
-skip("heavy web usage")
+# To test local using devtools::test() comment the following line
+skip("Heavy web usage")
+
+skip_if_not_online <- function(subdomain) {
+  h_url <- paste0(subdomain, ".hydroscope.gr")
+
+  if(is.na(pingr::ping(h_url, count = 1))) {
+    skip(paste(h_url, "is not online"))
+  }
+}
+
+expect_names_in_api <- function(subdomain) {
+  exp_names <- c("Station", "Timeseries", "Instrument", "WaterBasin",
+                 "WaterDivision", "PoliticalDivision", "Variable",
+                 "UnitOfMeasurement", "TimeStep", "Organization",
+                 "InstrumentType", "StationType")
+
+  expect_true(all(exp_names %in% names(get_api_json(subdomain))))
+}
 
 context("Test API")
-test_that("API returns a list of tables", {
-  expect_is( get_api_json("kyy"), "list")
-  expect_is( get_api_json("ypaat"), "list")
-  expect_is( get_api_json("emy"), "list")
-  expect_is( get_api_json("deh"), "list")
+test_that("kyy returns expected tables", {
+  skip_if_not_online("kyy")
+  expect_names_in_api("kyy")
+})
+test_that("emy returns expected tables", {
+  skip_if_not_online("emy")
+  expect_names_in_api("emy")
+})
+test_that("deh returns expected tables", {
+  skip_if_not_online("deh")
+  expect_names_in_api("deh")
+})
+test_that("ypaat returns expected tables", {
+  skip_if_not_online("ypaat")
+  expect_names_in_api("ypaat")
 })
 
-context("Check if data from hydroscope are as expected")
-test_that("get functions return dataframes with a subset of variables", {
-
-  # get data from subdomains ---------------------------------------------------
-  expect_is(kyy <- get_database("kyy"), "list")
-  expect_is(emy <- get_database("emy"), "list")
-  expect_is(ypaat <- get_database("ypaat"), "list")
-  expect_is(deh <- get_database("deh"), "list")
-
-  # dataframes have expected variables -----------------------------------------
-  expect_have_vars <- function(df, vars) {
-    eval(bquote(expect_true(all(.(vars) %in% names(.(df))))))
-  }
-
-  expect_database <- function(subdomain, st_vars, ts_vars, wb_vars,
-                              wd_vars, var_vars, own_vars, unit_vars,
-                              tstep_vars) {
-    # stations
-    eval(bquote(expect_have_vars(.(subdomain)$stations, st_vars)))
-    # timeseries
-    eval(bquote(expect_have_vars(.(subdomain)$timeseries, ts_vars)))
-    # water_basins
-    eval(bquote(expect_have_vars(.(subdomain)$water_basins, wb_vars)))
-    # water_divisions
-    eval(bquote(expect_have_vars(.(subdomain)$water_divisions, wd_vars)))
-    # variables
-    eval(bquote(expect_have_vars(.(subdomain)$variables, var_vars)))
-    # owners
-    eval(bquote(expect_have_vars(.(subdomain)$owners, own_vars)))
-    # units
-    eval(bquote(expect_have_vars(.(subdomain)$units, unit_vars)))
-    # time_steps
-    eval(bquote(expect_have_vars(.(subdomain)$time_steps, tstep_vars)))
-  }
-
-  st_vars <- c("id", "name", "owner", "point", "altitude", "water_basin",
-                     "water_division")
-  wd_vars <- wb_vars <- own_vars <- c("id", "name")
-  ts_vars <- c("id", "gentity", "start_date_utc", "end_date_utc", "variable",
-                "time_step", "unit_of_measurement")
-  var_vars <- tstep_vars <- c("id", "descr")
-  unit_vars <- c("id", "symbol")
-
-  expect_database(kyy,  st_vars, ts_vars, wb_vars, wd_vars, var_vars, own_vars,
-                  unit_vars, tstep_vars)
-  expect_database(emy,  st_vars, ts_vars, wb_vars, wd_vars, var_vars, own_vars,
-                  unit_vars, tstep_vars)
-  expect_database(ypaat,  st_vars, ts_vars, wb_vars, wd_vars, var_vars,
-                  own_vars, unit_vars, tstep_vars)
-
-  # deh subdomain use different timeseries variables ---------------------------
-  ts_deh_vars <- c("id", "gentity", "variable", "time_step",
-                   "unit_of_measurement")
-  expect_database(deh,  st_vars, ts_deh_vars, wb_vars, wd_vars, var_vars,
-                  own_vars, unit_vars, tstep_vars)
+context("Test get_ functions")
+test_that("get_ functions work on kyy", {
+  skip_if_not_online("kyy")
+  expect_is(get_database("kyy"), "list")
+})
+test_that("get_ functions work on emy", {
+  skip_if_not_online("emy")
+  expect_is((get_database("emy")), "list")
+})
+test_that("get_ functions work on deh", {
+  skip_if_not_online("deh")
+  expect_is((get_database("deh")), "list")
+})
+test_that("get_ functions work on ypaat", {
+  skip_if_not_online("ypaat")
+  expect_is((get_database("ypaat")), "list")
 })
 
-context("Download timeseries from Hydroscope")
-test_that("Can download time series values from KYY and YPAAT", {
+context("Download timeseries values from Hydroscope")
+test_that("Can download time series values from kyy", {
+  skip_if_not_online("kyy")
   expect_is(get_data("kyy", 129), "data.frame")
-  expect_is(get_data("kyy", 435), "data.frame")
+})
+test_that("Can download time series values from ypaat", {
+  skip_if_not_online("ypaat")
+  expect_is(get_data("ypaat", 160), "data.frame")
 })

@@ -62,8 +62,14 @@ Webservice API [here](http://bit.ly/2FlRtBB).
   - National Meteorological Service, <http://emy.hydroscope.gr>.
   - Greek Public Power Corporation, <http://deh.hydroscope.gr>.
 
-Note that only the two Ministries allow to download time series values
-freely.
+Note that:
+
+1.  Only the two Ministries allow to download time series values freely.
+2.  `ypaat`, `emy` and `kyy` subdomains are maintained by the National
+    Technical University Of Athens and these servers work seamlessly.
+3.  `deh` subdomain is maintained by the Greek Public Power Corporation,
+    uses an older version of the Enhydris API and occasionally the
+    server is down.
 
 ## Installation
 
@@ -88,7 +94,7 @@ The functions that are provided by `hydroscoper` are:
     get_water_divisions, get_political_divisions, get_variables,
     get_units_of_measurement, get_time_steps, get_owners,
     get_instruments_type, get_station_type, get_database` family
-    functions, to retrieve a tibble with Hydroscope’s data for a given
+    functions, to retrieve tibbles with Hydroscope’s data for a given
     data source.
   - `get_data`, to retrieve a tibble with time series’ values.  
   - `hydro_coords`, to convert Hydroscope’s points raw format to a
@@ -103,13 +109,13 @@ The data sets that are provided by `hydroscoper` are:
 
 ## Example
 
-This is a basic example which shows you how to get the stations’ and
-time series data from the Hydroscope’s Ministry of Environment and
-Energy database, <http://kyy.hydroscope.gr/>.
+This is a basic example which shows how to get the stations’ and time
+series data from the Hydroscope’s Ministry of Environment and Energy
+database, <http://kyy.hydroscope.gr/>.
 
-We will use the the package’s data `stations` and `timeseries`, to
-reduce the time needed with data munging. We can subset the station’s
-data for the `kyy` sub-domain with:
+We will use the package’s data `stations` and `timeseries`, to reduce
+the time needed with data munging. We can subset the station’s data for
+the `kyy` sub-domain with:
 
 ``` r
 # load libraries
@@ -155,7 +161,7 @@ station_ts
 #> 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy
 ```
 
-You can download the station’s time series **56**
+We can download the station’s time series **56**
 (<http://kyy.hydroscope.gr/time> series/d/56/) to a tibble with:
 
 ``` r
