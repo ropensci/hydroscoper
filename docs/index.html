@@ -107,8 +107,14 @@
 <li>National Meteorological Service, <a href="http://emy.hydroscope.gr" class="uri">http://emy.hydroscope.gr</a>.</li>
 <li>Greek Public Power Corporation, <a href="http://deh.hydroscope.gr" class="uri">http://deh.hydroscope.gr</a>.</li>
 </ul>
-<p>Note that only the two Ministries allow to download time series values freely.</p>
-</section><section id="installation" class="level2"><h2>Installation</h2>
+<p>Note that:</p>
+<ol type="1">
+<li>Only the two Ministries allow to download time series values freely.</li>
+<li>
+<code>ypaat</code>, <code>emy</code> and <code>kyy</code> subdomains are maintened by the National Technical University Of Athens and these servers work seamlessly.</li>
+<li>
+<code>deh</code> subdomain is maintened by the Greek Public Power Corporation, uses an older version of the Enhydris API and occasionally the server is down.</li>
+</ol></section><section id="installation" class="level2"><h2>Installation</h2>
 <p>Install the stable release from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"hydroscoper"</span>)</a></code></pre></div>
 <p>You can install the development version from GitHub with:</p>
@@ -118,7 +124,7 @@
 <p>The functions that are provided by <code>hydroscoper</code> are:</p>
 <ul>
 <li>
-<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve a tibble with Hydroscope’s data for a given data source.</li>
+<code>get_stations, get_timeseries, get_instruments, get_water_basins, get_water_divisions, get_political_divisions, get_variables, get_units_of_measurement, get_time_steps, get_owners, get_instruments_type, get_station_type, get_database</code> family functions, to retrieve tibbles with Hydroscope’s data for a given data source.</li>
 <li>
 <code>get_data</code>, to retrieve a tibble with time series’ values.<br>
 </li>
@@ -134,8 +140,8 @@
 <li>
 <code>timeseries</code> a tibble with time series’ data from Hydroscope.</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
-<p>This is a basic example which shows you how to get the stations’ and time series data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
-<p>We will use the the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
+<p>This is a basic example which shows how to get the stations’ and time series data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
+<p>We will use the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># load libraries</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(hydroscoper)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">library</span>(tibble)</a>
@@ -172,7 +178,7 @@
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipitation  30_minutes mm    1985-~ 1997~ kyy  </span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow           daily      mm    1948-~ 1997~ kyy  </span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy</span></a></code></pre></div>
-<p>You can download the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/time" class="uri">http://kyy.hydroscope.gr/time</a> series/d/56/) to a tibble with:</p>
+<p>We can download the station’s time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/time" class="uri">http://kyy.hydroscope.gr/time</a> series/d/56/) to a tibble with:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>,<span class="dt">time_id =</span> <span class="dv">56</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">ts_raw</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
