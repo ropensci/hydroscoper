@@ -3,6 +3,7 @@
 \docType{package}
 \name{hydroscoper}
 \alias{hydroscoper}
+\alias{_PACKAGE}
 \alias{hydroscoper-package}
 \alias{hydroscoper-package}
 \title{hydroscoper: Interface to Hydroscope}
@@ -20,7 +21,7 @@ Meteorological Information http://www.hydroscope.gr/.
   \item{Translate various Greek terms to English.}
 }
 }
-\section{Enydris API}{
+\section{Enhydris API}{
 
 
 The Enhydris database is implemented in PostgreSQL. Details about the

@@ -32,7 +32,7 @@ We can check if the sub-domains are online using the `pingr` package:
 ```{r}
 library(pingr)
 
-# helper function to print if a sub-domain is online
+# helper function to check if a sub-domain is online
 online <- function(h_url){
   !is.na(pingr::ping(h_url, count = 1))
 }
