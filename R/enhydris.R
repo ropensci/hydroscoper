@@ -1,6 +1,7 @@
 # Enhydris API -----------------------------------------------------------------
 
 # use ping to check if a subdomain is alive
+#' @noRd
 down_server <- function(subdomain) {
   h_url <- paste0(subdomain, ".hydroscope.gr")
 
@@ -13,17 +14,20 @@ down_server <- function(subdomain) {
 
 
 # get subdomains' tables
+#' @noRd
 get_api_json <- function(subdomain) {
   h_url <- paste0(hydroscope_url(subdomain), "/api/?format=json") # nolint
   enhy_get_df(h_url)
 }
 
 # create url
+#' @noRd
 hydroscope_url <- function(subdomain) {
   return(paste0("http://", subdomain, ".hydroscope.gr"))
 }
 
 # use Enhydris API to get json data
+#' @noRd
 enhy_get_df <- function(s_url) {
 
   # get data
@@ -31,6 +35,7 @@ enhy_get_df <- function(s_url) {
 }
 
 # use Enhydris API to get plain text data
+#' @noRd
 enhy_get_txt <- function(h_url) {
 
   # read timeseries data
@@ -46,6 +51,7 @@ enhy_get_txt <- function(h_url) {
 }
 
 # get api name
+#' @noRd
 get_api <- function(val) {
 
   switch(
@@ -68,6 +74,7 @@ get_api <- function(val) {
 }
 
 # workhorse function
+#' @noRd
 get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
                              val,
                              translit) {
@@ -102,6 +109,7 @@ get_and_translit <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
 }
 
 # create coords from points in Hydroscope
+#' @noRd
 create_coords <- function(str) {
 
   str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
