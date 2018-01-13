@@ -12,7 +12,7 @@
 #'   \item{Translate various Greek terms to English.}
 #' }
 #'
-#' @section Enydris API:
+#' @section Enhydris API:
 #'
 #' The Enhydris database is implemented in PostgreSQL. Details about the
 #' database can be found \href{http://bit.ly/2D0cZgA}{here}  and about the
@@ -31,5 +31,6 @@
 #'}
 #'
 #' @name hydroscoper
+#' @aliases hydroscoper-package
 #' @docType package
 "_PACKAGE"
