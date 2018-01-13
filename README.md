@@ -11,8 +11,9 @@ Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?b
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.2.2-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.2.2.9000-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
+<!-- [![](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185) -->
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
