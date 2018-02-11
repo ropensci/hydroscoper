@@ -1,5 +1,5 @@
 ---
-title: "Hydroscope's stations with available time series"
+title: "Hydroscoper's data-sets"
 author: "Konstantinos Vantas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,81 +16,70 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Introduction
+This vignette shows hot to use the package's internal data-sets.
 
-This vignette shows how to get Hydroscope's stations with available time series for downloading.
-The sub-domains of Hydroscope with these data are:
+## Load libraries
 
-* Ministry of Environment and Energy http:/kyy.hydroscope.gr
-* Ministry of Rural Development and Food, http://ypaat.hydroscope.gr
-
-## Subset data
-
-The following code shows how to subset the data, using the package's data sets:
-
-```{r subset_data}
+```{r load_library}
 library(hydroscoper)
-
-data("stations")
-data("timeseries")
-
-# subset data
-st_data <- subset(stations, subdomain == "kyy" |  subdomain =="ypaat")
-time_data <- subset(timeseries, subdomain == "kyy" |  subdomain =="ypaat")
+library(tibble)
+library(ggplot2)
 ```
 
-From Hydroscope's `r nrow(stations)` stations there are `r nrow(st_data)` from the sub-domains `kyy` and `ypaat`. Out of these stations lets examine how many have time series:
+## Data-sets
+
+There are two data-sets stored in the package. `stations` is comprised of the stations' id, name, longitude,  latitude, etc.
+
+```{r stations_data}
+stations
+```
+
+`timeseries` of the time series' id, the corresponding station, variable type, time step etc.
+
+```{r timeseries_data}
+timeseries
+```
+
+`greece_borders` is a data-frame for use with the function `geom_polygon` from the `ggplot2` package.
+
+## Stations location
+
+`stations` and `greece_borders`  can be used to create a map with all Hydroscope's stations. Unfortunately, there is a number of them that have erroneous coordinates (over the sea and far from Greece). Also,
+there are 120 stations with missing coordinates.
+
+```{r all_stations}
+ggplot() + 
+  geom_polygon(data = greece_borders,
+               aes(long, lat, group = group),
+               fill = "grey",
+               color = NA) +
+  geom_point(data = stations,
+             aes(x = longitude, y = latitude, color = subdomain)) +
+  scale_color_manual(values=c("#E64B35FF", "#4DBBD5FF", "#00A087FF", 
+                              "#3C5488FF"))+
+  coord_fixed(ratio=1) +
+  theme_bw()
+```
+
+## Stations with available time series location
+
+The location of the stations with time series available to download are presented at the following map.
 
 ```{r stations_with_timeseries}
-st_data <- st_data[st_data$station_id %in% time_data$station_id,]
+stations_ts <- subset(stations, station_id %in% timeseries$station_id &
+                        subdomain %in% c("kyy", "ypaat"))
+
+
+ggplot() + 
+  geom_polygon(data = greece_borders,
+               aes(long, lat, group = group),
+               fill = "grey",
+               color = NA) +
+  geom_point(data = stations_ts,
+             aes(x = longitude, y = latitude, color = subdomain)) +
+  scale_color_manual(values=c("#00A087FF", "#3C5488FF"))+
+  coord_fixed(ratio=1) +
+  theme_bw()
 ```
 
-Only `r nrow(st_data)` seems to have time series.
-
-## Exploring data
-
-We can create a map with the stations with data, using the ggmap package, with:
-
-```{r create_map, message=F, warning=F}
-
-library(ggmap)
-
-# create map
-map <- get_map(
-    location = c(lon = mean(stations$longitude, na.rm = TRUE),
-                 lat = mean(stations$latitude, na.rm = TRUE)),
-    maptype = "toner-background",
-    color = 'bw',
-    zoom = 6)
-p <- ggmap(map)
-
-p +
-  geom_point(data = st_data,
-             aes(x = longitude, y = latitude),
-             fill = 'red',
-             shape = 21,
-             alpha = 0.8,
-             size = 2) +
-  scale_fill_brewer(palette = "Set1")+
-  xlim(19.5, 29) +
-  ylim(34, 41.5)
-```
-
-Although there is a large number of stations, there is a heterogeneity in the coverage of the country.
-
-These stations record a different set of variables. With the following code we can examine the number of the available time series per variable.
-
-```{r}
-head(sort(table(time_data$variable), decreasing = TRUE), n = 10)
-
-```
-
-The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.
-
-```{r}
-sort(table(time_data$timestep[time_data$variable == "precipitation"]), 
-     decreasing = TRUE)
-```
-
-
-
+Although there is a large number of stations with available data, there is heterogeneity in the coverage of the country.

@@ -19,7 +19,7 @@
 timeseries
 }
 \description{
-Time series' data from the Greek National Data Bank for Hydrological and
-Meteorological Information, Ministry of Environment and Energy.
+Time series' data from the Greek National Data Bank for
+Hydrological and Meteorological Information.
 }
 \keyword{datasets}

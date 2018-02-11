@@ -4,7 +4,7 @@
 \alias{get_data}
 \title{Get time series values in a tibble}
 \usage{
-get_data(subdomain = c("kyy", "ypaat"), time_id)
+get_data(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
@@ -20,24 +20,24 @@ message.
 
 The dataframe columns are:
 \describe{
-    \item{Date}{The time series Dates (POSIXct)}
-    \item{Value}{The time series values (numeric)}
-    \item{Comment}{Comments about the values (character)}
+    \item{dates}{The time series Dates (POSIXct)}
+    \item{values}{The time series values (numeric)}
+    \item{comments}{Comments about the values (character)}
 }
 }
 \description{
-\code{get_data} returns a tibble with the available data from
-a time series in a database of Hydroscope.
+\code{get_data} returns a tibble from  a Hydroscope's
+time-series text file.
 }
 \note{
-The subdomains \code{"deh"} (Greek Public Power Corporation) and \code{"emy"}
-(National Meteorological Service) are not used, because their data are not
-freely available.
+Data are not available freely in the sub-domains:  \code{"deh"}
+(Greek Public Power Corporation) and
+\code{"emy"} (National Meteorological Service).
 }
 \examples{
 \dontrun{
 # get time series 912 from the Greek Ministry of Environment and Energy
-df <-get_data("kyy", 912)
+time_series <- get_data("kyy", 912)
 }
 
 }

@@ -1,8 +1,10 @@
-#' Defunct functions in hydroscoper
+#' @title  Defunct functions in hydroscoper
 #'
-#' These functions are no longer available in \pkg{hydroscoper}.
+#' @description  These functions are no longer available in \pkg{hydroscoper}.
 #'
 #' @param ... Defunct function's parameters
+#'
+#' @details  Defunct functions:
 #'
 #' \itemize{
 #'  \item \code{\link{get_coords}}: This function is defunct. Please use

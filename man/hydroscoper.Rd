@@ -8,10 +8,10 @@
 \alias{hydroscoper-package}
 \title{hydroscoper: Interface to Hydroscope}
 \description{
-R interface to the  Greek National Data Bank for Hydrological and
-Meteorological Information http://www.hydroscope.gr/.
-}
-\details{
+\code{hydroscoper} provides an R interface to the  Greek
+National Data Bank for Hydrological and Meteorological Information
+http://www.hydroscope.gr/.
+
 \code{hydroscoper} covers Hydroscope's data sources using the
 \href{http://bit.ly/2CLlAAA}{Enhydris API} and provides functions to:
 \enumerate{

@@ -1,8 +1,4 @@
-context("coords functions")
-
-test_that("get_coords returns error", {
-  expect_error(get_coords("as"))
-})
+context("hydro_coords tests")
 
 test_that("hydro_coords returns a tibble with lat and long values", {
 

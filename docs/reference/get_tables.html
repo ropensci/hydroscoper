@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tibbles from Hydroscope — get_functions â€¢ hydroscoper</title>
+<title>Get tibbles from Hydroscope — get_tables â€¢ hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -68,10 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/hydroscope_data.html">Getting Hydroscope's data</a>
-    </li>
-    <li>
-      <a href="../articles/stations_with_data.html">Hydroscope's stations with available time series</a>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
     </li>
   </ul>
 </li>
@@ -102,9 +99,9 @@
     </div>
 
     
-    <p>A family of functions that return a tibble from a specific database
-of Hydroscope using the Enhydris API. <code>get_database</code> returns a named
-list of tibbles using all the family functions.</p>
+    <p>A family of functions that return a tibble from a specific
+ database from Hydroscope using the Enhydris API. <code>get_database</code> returns
+ a named list of tibbles using all the family's functions.</p>
     
 
     <pre class="usage"><span class='fu'>get_stations</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -161,16 +158,16 @@ list of tibbles using all the family functions.</p>
 <li><p><code>ypaat</code>, Ministry of Rural Development and Food.</p></li>
 <li><p><code>deh</code>, Greek Public Power Corporation.</p></li>
 <li><p><code>emy</code>, National Meteorological Service.</p></li>
-</ul><p>returns a tibble or a named list with tibbles from the corresponding database
-of Hydroscope. Otherwise returns an error message.</p>
+</ul><p>returns a tibble or a named list with tibbles from the corresponding
+database. Otherwise returns an error message.</p>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Objects' IDs are not unique among the different Hydroscope databases. For
-example, time series' IDs from http://kyy.hydroscope.gr have same values
+    <p>Objects' IDs are not unique among the different Hydroscope databases.
+For example, time series' IDs from http://kyy.hydroscope.gr have same values
 with time series' from http://ypaat.hydroscope.gr.</p>
-<p>The coordinates of points are based on the European Terrestrial Reference
-System 1989 (ETRS89).</p>
+<p>The coordinates of the stations are based on the European Terrestrial
+Reference System 1989 (ETRS89).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -196,11 +193,47 @@ System 1989 (ETRS89).</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 </div><span class='co'># NOT RUN {</span>
-<span class='co'># get data from all the Hydroscope's subdomains</span>
-<span class='no'>kyy_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"kyy"</span>)
-<span class='no'>ypaat_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"ypaat"</span>)
-<span class='no'>emy_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"emy"</span>)
-<span class='no'>deh_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='st'>"deh"</span>)
+<span class='co'># data will be downloaded from Ministry of Environment and Energy (kyy):</span>
+<span class='no'>subdomain</span> <span class='kw'>&lt;-</span> <span class='st'>"kyy"</span>
+
+<span class='co'># stations</span>
+<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span> <span class='fu'>get_stations</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># time series</span>
+<span class='no'>kyy_ts</span> <span class='kw'>&lt;-</span> <span class='fu'>get_timeseries</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># instruments</span>
+<span class='no'>kyy_inst</span> <span class='kw'>&lt;-</span> <span class='fu'>get_instruments</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># water basins</span>
+<span class='no'>kyy_wbas</span> <span class='kw'>&lt;-</span> <span class='fu'>get_water_basins</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># water divisions</span>
+<span class='no'>kyy_wdiv</span> <span class='kw'>&lt;-</span> <span class='fu'>get_water_divisions</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># political divisions</span>
+<span class='no'>kyy_pol</span> <span class='kw'>&lt;-</span> <span class='fu'>get_political_divisions</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># variables</span>
+<span class='no'>kyy_vars</span> <span class='kw'>&lt;-</span> <span class='fu'>get_variables</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># units of measurement</span>
+<span class='no'>kyy_units</span> <span class='kw'>&lt;-</span> <span class='fu'>get_units_of_measurement</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># time steps</span>
+<span class='no'>kyy_time_steps</span> <span class='kw'>&lt;-</span> <span class='fu'>get_time_steps</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># owners</span>
+<span class='no'>kyy_owners</span> <span class='kw'>&lt;-</span> <span class='fu'>get_owners</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># instruments type</span>
+<span class='no'>kyy_instr_type</span> <span class='kw'>&lt;-</span> <span class='fu'>get_instruments_type</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># stations' type</span>
+<span class='no'>kyy_st_type</span> <span class='kw'>&lt;-</span> <span class='fu'>get_station_type</span>(<span class='no'>subdomain</span>)
+
+<span class='co'># use all the get_ functions above to create a named list with tibbles</span>
+<span class='no'>kyy_db</span> <span class='kw'>&lt;-</span> <span class='fu'>get_database</span>(<span class='no'>subdomain</span>)
 
 <span class='co'># }</span><div class='input'>
 </div></pre>
@@ -232,7 +265,7 @@ Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

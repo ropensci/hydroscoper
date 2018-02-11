@@ -20,7 +20,7 @@
 stations
 }
 \description{
-Stations' data from the Greek National Data Bank for Hydrological and
-Meteorological Information.
+Stations' data from the Greek National Data Bank for
+Hydrological and Meteorological Information.
 }
 \keyword{datasets}

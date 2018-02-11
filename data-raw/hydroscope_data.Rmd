@@ -26,8 +26,7 @@ chk_ts <- FALSE
 
 This vignette shows how to create a tidy data frame for the stations' and time series' data from Hydroscope. We will use the Hydroscope's sub-domains `kyy`, `ypaat` and `emy`, because their servers are maintened by the National Technical University Of Athens and work seamlessly.
 
-This vignette requires an internet connection to run and that the Hydroscope's subdomains to be online.
-We can check if the sub-domains are online using the `pingr` package:
+This vignette requires an internet connection to run and that the Hydroscope's subdomains to be online. We can check if the sub-domains are online using the `pingr` package:
 
 ```{r}
 library(pingr)

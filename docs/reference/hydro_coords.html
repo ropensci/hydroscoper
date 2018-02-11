@@ -68,10 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/hydroscope_data.html">Getting Hydroscope's data</a>
-    </li>
-    <li>
-      <a href="../articles/stations_with_data.html">Hydroscope's stations with available time series</a>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
     </li>
   </ul>
 </li>
@@ -102,9 +99,9 @@
     </div>
 
     
-    <p><code>hydro_coords</code> returns a tibble with the stations' longitudes and
-latitudes using as input the variable <code>point</code> from <code>get_stations</code>
- function.</p>
+    <p><code>hydro_coords</code> returns a tibble with the stations'
+longitude and latitude using as input the variable <code>point</code>
+from <code>get_stations</code> function.</p>
     
 
     <pre class="usage"><span class='fu'>hydro_coords</span>(<span class='no'>x</span>)</pre>
@@ -126,9 +123,9 @@ latitudes using as input the variable <code>point</code> from <code>get_stations
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># get stations from the Greek Ministry of Environment and Energy</span>
-<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span><span class='fu'><a href='get_functions.html'>get_stations</a></span>(<span class='st'>"kyy"</span>)
+<span class='no'>kyy_stations</span> <span class='kw'>&lt;-</span><span class='fu'><a href='get_tables.html'>get_stations</a></span>(<span class='st'>"kyy"</span>)
 
-<span class='co'># create a dataframe with the coords of the stations</span>
+<span class='co'># create a tibble with stations' coords</span>
 <span class='no'>coords</span> <span class='kw'>&lt;-</span> <span class='fu'>hydro_coords</span>(<span class='no'>kyy_stations</span>$<span class='no'>point</span>)
 <span class='co'># }</span></pre>
   </div>
@@ -155,7 +152,7 @@ Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

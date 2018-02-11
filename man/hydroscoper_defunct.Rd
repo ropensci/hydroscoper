@@ -8,14 +8,17 @@
 get_coords(...)
 }
 \arguments{
-\item{...}{Defunct function's parameters
+\item{...}{Defunct function's parameters}
+}
+\description{
+These functions are no longer available in \pkg{hydroscoper}.
+}
+\details{
+Defunct functions:
 
 \itemize{
  \item \code{\link{get_coords}}: This function is defunct. Please use
  \code{\link{hydro_coords}} to convert Hydroscope's points raw format to a
  tidy data frame.
-}}
 }
-\description{
-These functions are no longer available in \pkg{hydroscoper}.
 }

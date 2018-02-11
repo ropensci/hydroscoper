@@ -5,8 +5,11 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^cran-comments\.md$
-^inst/paper$
+paper.bib
+paper.md
 ^CONDUCT.md$
+^CONTRIBUTING.md$
 ^\.bib$
-^data_create$
 ^docs$
+^data-raw$
+^LICENSE\.md$

@@ -1,8 +1,8 @@
 
-#' Get time series values in a tibble
+#' @title Get time series values in a tibble
 #'
-#' \code{get_data} returns a tibble with the available data from
-#' a time series in a database of Hydroscope.
+#' @description  \code{get_data} returns a tibble from  a Hydroscope's
+#' time-series text file.
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
 #' @param time_id A time series ID
@@ -15,20 +15,20 @@
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{Date}{The time series Dates (POSIXct)}
-#'     \item{Value}{The time series values (numeric)}
-#'     \item{Comment}{Comments about the values (character)}
+#'     \item{dates}{The time series Dates (POSIXct)}
+#'     \item{values}{The time series values (numeric)}
+#'     \item{comments}{Comments about the values (character)}
 #' }
 #'
-#' @note
-#' The subdomains \code{"deh"} (Greek Public Power Corporation) and \code{"emy"}
-#' (National Meteorological Service) are not used, because their data are not
-#' freely available.
+#' @note Data are not available freely in the sub-domains:  \code{"deh"}
+#' (Greek Public Power Corporation) and
+#' \code{"emy"} (National Meteorological Service).
+#'
 #'
 #' @examples
 #' \dontrun{
 #' # get time series 912 from the Greek Ministry of Environment and Energy
-#' df <-get_data("kyy", 912)
+#' time_series <- get_data("kyy", 912)
 #' }
 #'
 #' @references
@@ -44,27 +44,11 @@
 
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @export get_data
-get_data <- function(subdomain =  c("kyy", "ypaat"), time_id) {
+get_data <- function(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id) {
 
-  # check that stationID is given
-  if (is.null(time_id)) stop("argument \"time_id\" is missing")
+  # check that stationID is not NULL
+  if (is.null(time_id)) stop("Argument 'time_id' is missing.")
 
-  # check if a sudomain is down
-  down_server(subdomain)
-
-  # match subdomain values
-  subdomain <- match.arg(subdomain)
-  h_url <- hydroscope_url(subdomain)
-  t_url <- paste0(h_url, "/api/tsdata/", time_id, "/") # nolint
-
-
-  # get hydroscope file to dataframe
-  tryCatch({
-    enhy_get_txt(t_url)
-  },
-  error = function(e) {
-    # return NA values
-    stop(paste0("Couldn't get time series' data from ", t_url), call. = FALSE)
-  })
-
+  enhydris_get(subdomain = subdomain, api_value = "time_data",
+               time_id = time_id)
 }

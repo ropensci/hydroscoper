@@ -1,7 +1,8 @@
 
-#' Translate Greek names and terms to English
+#' @title Translate Greek names and terms to English
 #'
-#' \code{hydro_translate} Greek to English translations of names and terms
+#' @description \code{hydro_translate} translates various Hydroscope's names and
+#' terms to English.
 #'
 #' @param x a string vector
 #' @param value One of the predefined values in
@@ -53,9 +54,8 @@
 #' GR14 \tab Nesoi Aigaiou  \cr
 #' }
 #'
-#'
-#' The translation to English from the translitarated Greek terms uses
-#' the following table:
+#' @note
+#' The dictionary used for the Greek to English translation is:
 #'
 #' \tabular{ll}{
 #'  \strong{Transliterated term} \tab \strong{English term} \cr

@@ -1,25 +1,14 @@
-# hydroscoper 0.2.2 (Release date: 2018-01-12)
+# hydroscoper 0.2.3 (Release date: 2018-02-11)
 
-* General 
-
-  - This is a minor update. Added conditionaly evaluation in vignette "Getting Hydroscope's data".
-  - Use ping function to check if a sub-domain is alive.
-  
-# hydroscoper 0.2.1 (Release date: 2018-01-10)
-
-* General 
-
-  - This is a minor update. All the functions return now a tibble.
-
-
-# hydroscoper 0.2.0 (Release date: 2018-01-09)
-
-* General 
+* General
 
   - This is a major update. All the functions were rewritten utilizing the Enhydris API.
   - The included data in the package cover all Hydroscope's databases.
-  - Added vignettes  "Getting Hydroscope's data" and "Hydroscope's stations with available data". Removed the vignette "Using hydroscoper to get stations' and time-series' data".
+  - Added vignettes  "Hydroscoper's data-sets".
   - Added package documentation page.
+  - Use pingr package to check if a sub-domain is alive.
+  - All the functions return a tibble.
+  - Added `greece_borders` dataset.
 
 * New functionality:
 
@@ -39,7 +28,8 @@
 
 * Changes
 
-  - `get_stations` and `get_timeseries` use the Enhydris API and are considerably faster, because the older versions used web scrapping.
+  - `get_stations` and `get_timeseries` use the Enhydris API and are considerably faster.
+  - `get_data` uses lower case variable naming: `dates, values, comments`
 
 * Defuncs
 

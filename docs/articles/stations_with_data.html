@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hydroscope’s stations with available time series • hydroscoper</title>
+<title>Hydroscoper’s data-sets • hydroscoper</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -45,10 +45,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/hydroscope_data.html">Getting Hydroscope's data</a>
-    </li>
-    <li>
-      <a href="../articles/stations_with_data.html">Hydroscope's stations with available time series</a>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
     </li>
   </ul>
 </li>
@@ -75,78 +72,89 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Hydroscope’s stations with available time series</h1>
+      <h1>Hydroscoper’s data-sets</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-01-12</h4>
+            <h4 class="date">2018-02-11</h4>
           </div>
 
     
     
 <div class="contents">
-<section id="introduction" class="level2"><h2>Introduction</h2>
-<p>This vignette shows how to get Hydroscope’s stations with available time series for downloading. The sub-domains of Hydroscope with these data are:</p>
-<ul>
-<li>Ministry of Environment and Energy <a href="http:/kyy.hydroscope.gr" class="uri">http:/kyy.hydroscope.gr</a>
-</li>
-<li>Ministry of Rural Development and Food, <a href="http://ypaat.hydroscope.gr" class="uri">http://ypaat.hydroscope.gr</a>
-</li>
-</ul></section><section id="subset-data" class="level2"><h2>Subset data</h2>
-<p>The following code shows how to subset the data, using the package’s data sets:</p>
+<p>This vignette shows hot to use the package’s internal data-sets.</p>
+<section id="load-libraries" class="level2"><h2>Load libraries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">data</span>(<span class="st">"stations"</span>)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">data</span>(<span class="st">"timeseries"</span>)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co"># subset data</span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">st_data &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, subdomain <span class="op">==</span><span class="st"> "kyy"</span> <span class="op">|</span><span class="st">  </span>subdomain <span class="op">==</span><span class="st">"ypaat"</span>)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">time_data &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, subdomain <span class="op">==</span><span class="st"> "kyy"</span> <span class="op">|</span><span class="st">  </span>subdomain <span class="op">==</span><span class="st">"ypaat"</span>)</a></code></pre></div>
-<p>From Hydroscope’s 2322 stations there are 1453 from the sub-domains <code>kyy</code> and <code>ypaat</code>. Out of these stations lets examine how many have time series:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">st_data &lt;-<span class="st"> </span>st_data[st_data<span class="op">$</span>station_id <span class="op">%in%</span><span class="st"> </span>time_data<span class="op">$</span>station_id,]</a></code></pre></div>
-<p>Only 552 seems to have time series.</p>
-</section><section id="exploring-data" class="level2"><h2>Exploring data</h2>
-<p>We can create a map with the stations with data, using the ggmap package, with:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(ggmap)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># create map</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">map &lt;-<span class="st"> </span><span class="kw">get_map</span>(</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">    <span class="dt">location =</span> <span class="kw">c</span>(<span class="dt">lon =</span> <span class="kw">mean</span>(stations<span class="op">$</span>longitude, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">                 <span class="dt">lat =</span> <span class="kw">mean</span>(stations<span class="op">$</span>latitude, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">maptype =</span> <span class="st">"toner-background"</span>,</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="dt">color =</span> <span class="st">'bw'</span>,</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="dt">zoom =</span> <span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">p &lt;-<span class="st"> </span><span class="kw">ggmap</span>(map)</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">p <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> st_data,</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">             <span class="kw">aes</span>(<span class="dt">x =</span> longitude, <span class="dt">y =</span> latitude),</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">             <span class="dt">fill =</span> <span class="st">'red'</span>,</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">             <span class="dt">shape =</span> <span class="dv">21</span>,</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">             <span class="dt">alpha =</span> <span class="fl">0.8</span>,</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">             <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">"Set1"</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="st">  </span><span class="kw">xlim</span>(<span class="fl">19.5</span>, <span class="dv">29</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="st">  </span><span class="kw">ylim</span>(<span class="dv">34</span>, <span class="fl">41.5</span>)</a></code></pre></div>
-<p><img src="stations_with_data_files/figure-html/create_map-1.png" width="672"></p>
-<p>Although there is a large number of stations, there is a heterogeneity in the coverage of the country.</p>
-<p>These stations record a different set of variables. With the following code we can examine the number of the available time series per variable.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>variable), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;          precipitation         wind_direction                   snow </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;                    712                    269                    265 </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;                  level            levminflood        temperature_max </span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;                    101                     79                     72 </span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;        temperature_min             flow_gauge evaporation_estimation </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;                     71                     65                     60 </span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;        temperature_air </span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;                     43</span></a></code></pre></div>
-<p>The variable of precipitation is recorded with various time steps per station. There are pluviograph records mostly with a time step of 30 minutes and rain gauge 24-hour measurements.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sort</span>(<span class="kw">table</span>(time_data<span class="op">$</span>timestep[time_data<span class="op">$</span>variable <span class="op">==</span><span class="st"> "precipitation"</span>]), </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">     <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;      daily    monthly 30_minutes  5_minutes 10_minutes     hourly </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;        385        207         85         24          1          1</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+</section><section id="data-sets" class="level2"><h2>Data-sets</h2>
+<p>There are two data-sets stored in the package. <code>stations</code> is comprised of the stations’ id, name, longitude, latitude, etc.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">stations</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2,322 x 9</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    station_id name    water_basin  water_division owner longitude latitude</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;         &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt;  1     501032 AG. BA~ "KOURTALIOT~ GR13           min_~      NA       NA  </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  2     200246 GEPH. ~ "ALPHEIOS P~ GR01           min_~      22.0     37.5</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;  3     200237 TROPAIA "ALPHEIOS P~ GR01           min_~      22.0     37.7</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt;  4     200231 BYTINA  "ALPHEIOS P~ GR01           min_~      22.2     37.7</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;  5     200200 LYKOUR~ "ALPHEIOS P~ GR01           min_~      22.2     37.9</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;  6     200236 MEGALO~ "ALPHEIOS P~ GR01           min_~      22.1     37.4</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt;  7     200244 ODOG. ~ "REMA CHORA~ GR01           min_~      21.8     37.0</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt;  8     200204 TRIPOT~ "ALPHEIOS P~ GR01           min_~      21.9     37.9</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt;  9     200198 KASTEL~ "ALPHEIOS P~ GR01           min_~      22.0     37.9</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 10     200239 PERDIK~ "ALPHEIOS P~ GR01           min_~      22.0     37.7</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; # ... with 2,312 more rows, and 2 more variables: altitude &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt; #   subdomain &lt;chr&gt;</span></a></code></pre></div>
+<p><code>timeseries</code> of the time series’ id, the corresponding station, variable type, time step etc.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">timeseries</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10,804 x 8</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;    timeser_id station_id variable   timestep units start_date   end_date  </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;         &lt;int&gt;      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  1       2248     501049 temperatu~ &lt;NA&gt;     °     2009-02-01T~ 2010-08-3~</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  2        430     200103 wind_dire~ &lt;NA&gt;     °     1950-10-26T~ 1997-07-1~</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  3        905     200247 wind_dire~ &lt;NA&gt;     °     1967-01-01T~ 1997-12-3~</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  4       2243     501058 temperatu~ &lt;NA&gt;     °     1999-01-01T~ 2010-08-3~</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  5        438     200105 wind_dire~ &lt;NA&gt;     °     1950-06-05T~ 1997-07-3~</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  6        553     200135 wind_dire~ &lt;NA&gt;     °     1964-11-21T~ 1997-08-3~</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  7        966     200265 wind_dire~ &lt;NA&gt;     °     1967-01-01T~ 1997-03-3~</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  8        775     200203 wind_dire~ &lt;NA&gt;     °     1964-05-20T~ 1997-06-3~</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  9       2245     501046 temperatu~ &lt;NA&gt;     °     2007-07-01T~ 2010-07-0~</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 10        247     200034 wind_dire~ &lt;NA&gt;     °     1969-11-25T~ 1997-09-1~</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; # ... with 10,794 more rows, and 1 more variable: subdomain &lt;chr&gt;</span></a></code></pre></div>
+<p><code>greece_borders</code> is a data-frame for use with the function <code>geom_polygon</code> from the <code>ggplot2</code> package.</p>
+</section><section id="stations-location" class="level2"><h2>Stations location</h2>
+<p><code>stations</code> and <code>greece_borders</code> can be used to create a map with all Hydroscope’s stations. Unfortunately, there is a number of them that have erroneous coordinates (over the sea and far from Greece). Also, there are 120 stations with missing coordinates.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> greece_borders,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">               <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group),</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">               <span class="dt">fill =</span> <span class="st">"grey"</span>,</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">               <span class="dt">color =</span> <span class="ot">NA</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> stations,</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">             <span class="kw">aes</span>(<span class="dt">x =</span> longitude, <span class="dt">y =</span> latitude, <span class="dt">color =</span> subdomain)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">"#E64B35FF"</span>, <span class="st">"#4DBBD5FF"</span>, <span class="st">"#00A087FF"</span>, </a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">                              <span class="st">"#3C5488FF"</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw">coord_fixed</span>(<span class="dt">ratio=</span><span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; Warning: Removed 120 rows containing missing values (geom_point).</span></a></code></pre></div>
+<p><img src="stations_with_data_files/figure-html/all_stations-1.png" width="672"></p>
+</section><section id="stations-with-available-time-series-location" class="level2"><h2>Stations with available time series location</h2>
+<p>The location of the stations with time series available to download are presented at the following map.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">stations_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(stations, station_id <span class="op">%in%</span><span class="st"> </span>timeseries<span class="op">$</span>station_id <span class="op">&amp;</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">                        </span>subdomain <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"kyy"</span>, <span class="st">"ypaat"</span>))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">data =</span> greece_borders,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">               <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group),</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">               <span class="dt">fill =</span> <span class="st">"grey"</span>,</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">               <span class="dt">color =</span> <span class="ot">NA</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> stations_ts,</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">             <span class="kw">aes</span>(<span class="dt">x =</span> longitude, <span class="dt">y =</span> latitude, <span class="dt">color =</span> subdomain)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">"#00A087FF"</span>, <span class="st">"#3C5488FF"</span>))<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="st">  </span><span class="kw">coord_fixed</span>(<span class="dt">ratio=</span><span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; Warning: Removed 10 rows containing missing values (geom_point).</span></a></code></pre></div>
+<p><img src="stations_with_data_files/figure-html/stations_with_timeseries-1.png" width="672"></p>
+<p>Although there is a large number of stations with available data, there is heterogeneity in the coverage of the country.</p>
 </section>
 </div>
   </div>
@@ -156,9 +164,10 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#introduction">Introduction</a></li>
-      <li><a href="#subset-data">Subset data</a></li>
-      <li><a href="#exploring-data">Exploring data</a></li>
+<li><a href="#load-libraries">Load libraries</a></li>
+      <li><a href="#data-sets">Data-sets</a></li>
+      <li><a href="#stations-location">Stations location</a></li>
+      <li><a href="#stations-with-available-time-series-location">Stations with available time series location</a></li>
       </ul>
 </div>
       </div>
@@ -171,7 +180,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

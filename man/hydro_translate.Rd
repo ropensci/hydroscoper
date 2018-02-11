@@ -58,10 +58,13 @@ GR12 \tab Thrake  \cr
 GR13 \tab Krete  \cr
 GR14 \tab Nesoi Aigaiou  \cr
 }
-
-
-The translation to English from the translitarated Greek terms uses
-the following table:
+}
+\description{
+\code{hydro_translate} translates various Hydroscope's names and
+terms to English.
+}
+\note{
+The dictionary used for the Greek to English translation is:
 
 \tabular{ll}{
  \strong{Transliterated term} \tab \strong{English term} \cr
@@ -137,9 +140,6 @@ the following table:
   eliophaneia           \tab sunshine          \cr
   eisroe_se_tamieuteres \tab inflow_reservoir   \cr
 }
-}
-\description{
-\code{hydro_translate} Greek to English translations of names and terms
 }
 \examples{
 \dontrun{

@@ -11,7 +11,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?b
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.2.2.9000-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.2.3-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
@@ -44,8 +44,8 @@ are in Greek, thus limiting their usefulness.
 
 `hydroscoper` covers Hydroscope’s data sources using the Enhydris API.
 The Enhydris database is implemented in PostgreSQL and details about the
-database can be found [here](http://bit.ly/2D0cZgA) and about the
-Webservice API [here](http://bit.ly/2FlRtBB).
+database can be found [here](http://bit.ly/2D0cZgA), and about the
+Web-service API [here](http://bit.ly/2FlRtBB).
 
 `hydroscoper` provides functions to:
 
@@ -66,11 +66,11 @@ Webservice API [here](http://bit.ly/2FlRtBB).
 Note that:
 
 1.  Only the two Ministries allow to download time series values freely.
-2.  `ypaat`, `emy` and `kyy` subdomains are maintained by the National
+2.  `ypaat`, `emy` and `kyy` sub domains are maintained by the National
     Technical University Of Athens and these servers work seamlessly.
-3.  `deh` subdomain is maintained by the Greek Public Power Corporation,
-    uses an older version of the Enhydris API and occasionally the
-    server is down.
+3.  `deh` sub domain is maintained by the Greek Public Power
+    Corporation, uses an older version of the Enhydris API and
+    occasionally the server is down.
 
 ## Installation
 
@@ -98,7 +98,7 @@ The functions that are provided by `hydroscoper` are:
     functions, to retrieve tibbles with Hydroscope’s data for a given
     data source.
   - `get_data`, to retrieve a tibble with time series’ values.  
-  - `hydro_coords`, to convert Hydroscope’s points raw format to a
+  - `hydro_coords`, to convert Hydroscope’s points’ raw format to a
     tibble.
   - `hydro_translate` to translate various terms and names from Greek to
     English.
@@ -107,21 +107,26 @@ The data sets that are provided by `hydroscoper` are:
 
   - `stations` a tibble with stations’ data from Hydroscope.
   - `timeseries` a tibble with time series’ data from Hydroscope.
+  - `greece_borders` a data frame with the borders of Greece.
 
 ## Example
 
 This is a basic example which shows how to get the stations’ and time
-series data from the Hydroscope’s Ministry of Environment and Energy
+series’ data from the Hydroscope’s Ministry of Environment and Energy
 database, <http://kyy.hydroscope.gr/>.
+
+Load libraries:
+
+``` r
+library(hydroscoper)
+library(tibble)
+```
 
 We will use the package’s data `stations` and `timeseries`, to reduce
 the time needed with data munging. We can subset the station’s data for
 the `kyy` sub-domain with:
 
 ``` r
-# load libraries
-library(hydroscoper)
-library(tibble)
 
 # load data
 data("stations")
@@ -132,19 +137,20 @@ kyy_stations <- subset(stations, subdomain == "kyy")
 # view kyy stations
 kyy_stations
 #> # A tibble: 425 x 9
-#>    station_id name       water_ba~ water_~ owner   long~ lati~ alti~ subd~
-#>         <int> <chr>      <chr>     <chr>   <chr>   <dbl> <dbl> <dbl> <chr>
-#>  1     501032 AG. BASIL~ "KOURTAL~ GR13    min_ag~  NA    NA      NA kyy  
-#>  2     200246 GEPH. KOK~ "ALPHEIO~ GR01    min_en~  22.0  37.5   318 kyy  
-#>  3     200237 TROPAIA    "ALPHEIO~ GR01    min_en~  22.0  37.7   728 kyy  
-#>  4     200231 BYTINA     "ALPHEIO~ GR01    min_en~  22.2  37.7  1011 kyy  
-#>  5     200200 LYKOURIA   "ALPHEIO~ GR01    min_en~  22.2  37.9   758 kyy  
-#>  6     200236 MEGALOPOLE "ALPHEIO~ GR01    min_en~  22.1  37.4   429 kyy  
-#>  7     200244 ODOG. AG.~ "REMA CH~ GR01    min_en~  21.8  37.0   182 kyy  
-#>  8     200204 TRIPOTAMA  "ALPHEIO~ GR01    min_en~  21.9  37.9   570 kyy  
-#>  9     200198 KASTELLIO  "ALPHEIO~ GR01    min_en~  22.0  37.9   792 kyy  
-#> 10     200239 PERDIKONE~ "ALPHEIO~ GR01    min_en~  22.0  37.7   837 kyy  
-#> # ... with 415 more rows
+#>    station_id name    water_basin  water_division owner longitude latitude
+#>         <int> <chr>   <chr>        <chr>          <chr>     <dbl>    <dbl>
+#>  1     501032 AG. BA~ "KOURTALIOT~ GR13           min_~      NA       NA  
+#>  2     200246 GEPH. ~ "ALPHEIOS P~ GR01           min_~      22.0     37.5
+#>  3     200237 TROPAIA "ALPHEIOS P~ GR01           min_~      22.0     37.7
+#>  4     200231 BYTINA  "ALPHEIOS P~ GR01           min_~      22.2     37.7
+#>  5     200200 LYKOUR~ "ALPHEIOS P~ GR01           min_~      22.2     37.9
+#>  6     200236 MEGALO~ "ALPHEIOS P~ GR01           min_~      22.1     37.4
+#>  7     200244 ODOG. ~ "REMA CHORA~ GR01           min_~      21.8     37.0
+#>  8     200204 TRIPOT~ "ALPHEIOS P~ GR01           min_~      21.9     37.9
+#>  9     200198 KASTEL~ "ALPHEIOS P~ GR01           min_~      22.0     37.9
+#> 10     200239 PERDIK~ "ALPHEIOS P~ GR01           min_~      22.0     37.7
+#> # ... with 415 more rows, and 2 more variables: altitude <dbl>,
+#> #   subdomain <chr>
 ```
 
 To get the time series’ data for the station `200200`
@@ -154,33 +160,34 @@ To get the time series’ data for the station `200200`
 station_ts <- subset(timeseries, station_id == 200200)
 station_ts
 #> # A tibble: 4 x 8
-#>   timeser_id station_id variable       timestep   units start~ end_~ subd~
-#>        <int>      <int> <chr>          <chr>      <chr> <chr>  <chr> <chr>
-#> 1        761     200200 wind_direction <NA>       °     1948-~ 1997~ kyy  
-#> 2         56     200200 precipitation  30_minutes mm    1985-~ 1997~ kyy  
-#> 3        760     200200 snow           daily      mm    1948-~ 1997~ kyy  
-#> 4        759     200200 precipitation  daily      mm    1953-~ 2011~ kyy
+#>   timeser_id station_id variable   timestep  units start_date   end_date  
+#>        <int>      <int> <chr>      <chr>     <chr> <chr>        <chr>     
+#> 1        761     200200 wind_dire~ <NA>      °     1948-01-01T~ 1997-07-3~
+#> 2         56     200200 precipita~ 30_minut~ mm    1985-05-06T~ 1997-01-0~
+#> 3        760     200200 snow       daily     mm    1948-01-01T~ 1997-07-3~
+#> 4        759     200200 precipita~ daily     mm    1953-03-01T~ 2011-06-3~
+#> # ... with 1 more variable: subdomain <chr>
 ```
 
-We can download the station’s time series **56**
-(<http://kyy.hydroscope.gr/time> series/d/56/) to a tibble with:
+We can download the station’s precipitation time series **56**
+(<http://kyy.hydroscope.gr/timeseries/d/56/>):
 
 ``` r
 ts_raw <- get_data(subdomain = "kyy",time_id = 56)
 ts_raw
 #> # A tibble: 147,519 x 3
-#>    Date                Value Comment
-#>    <dttm>              <dbl> <chr>  
-#>  1 1985-05-06 08:00:00     0 1      
-#>  2 1985-05-06 08:30:00     0 1      
-#>  3 1985-05-06 09:00:00     0 1      
-#>  4 1985-05-06 09:30:00     0 1      
-#>  5 1985-05-06 10:00:00     0 1      
-#>  6 1985-05-06 10:30:00     0 1      
-#>  7 1985-05-06 11:00:00     0 1      
-#>  8 1985-05-06 11:30:00     0 1      
-#>  9 1985-05-06 12:00:00     0 1      
-#> 10 1985-05-06 12:30:00     0 1      
+#>    dates               values comments
+#>    <dttm>               <dbl> <chr>   
+#>  1 1985-05-06 08:00:00      0 1       
+#>  2 1985-05-06 08:30:00      0 1       
+#>  3 1985-05-06 09:00:00      0 1       
+#>  4 1985-05-06 09:30:00      0 1       
+#>  5 1985-05-06 10:00:00      0 1       
+#>  6 1985-05-06 10:30:00      0 1       
+#>  7 1985-05-06 11:00:00      0 1       
+#>  8 1985-05-06 11:30:00      0 1       
+#>  9 1985-05-06 12:00:00      0 1       
+#> 10 1985-05-06 12:30:00      0 1       
 #> # ... with 147,509 more rows
 ```
 
@@ -188,7 +195,7 @@ Let’s create a plot:
 
 ``` r
 library(ggplot2)
-ggplot(data = ts_raw, aes(x = Date, y = Value))+
+ggplot(data = ts_raw, aes(x = dates, y = values))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
        x="Date", y = "Rain height (mm)")+
@@ -199,8 +206,10 @@ ggplot(data = ts_raw, aes(x = Date, y = Value))+
 
 ## Meta
 
-  - Please [report any issues or
-    bugs](https://github.com/kvantas/hydroscoper/issues).
+  - Bug reports, suggestions, and code are welcome. Please see
+    [Contributing](/CONTRIBUTING.md). By participating in this project
+    you agree to abide by the terms in [Contributor Code of
+    Conduct](/CONDUCT.md).
 
   - Licence:
     
@@ -224,10 +233,6 @@ ggplot(data = ts_raw, aes(x = Date, y = Value))+
       url = {http://CRAN.R-project.org/package=hydroscoper},
     }
     ```
-
-  - Please note that this project is released with a [Contributor Code
-    of Conduct](/CONDUCT.md). By participating in this project you agree
-    to abide by its terms.
 
 ## References
 

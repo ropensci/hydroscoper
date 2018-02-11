@@ -68,10 +68,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/hydroscope_data.html">Getting Hydroscope's data</a>
-    </li>
-    <li>
-      <a href="../articles/stations_with_data.html">Hydroscope's stations with available time series</a>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
     </li>
   </ul>
 </li>
@@ -102,11 +99,11 @@
     </div>
 
     
-    <p><code>get_data</code> returns a tibble with the available data from
-a time series in a database of Hydroscope.</p>
+    <p><code>get_data</code> returns a tibble from  a Hydroscope's
+time-series text file.</p>
     
 
-    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>), <span class='no'>time_id</span>)</pre>
+    <pre class="usage"><span class='fu'>get_data</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='no'>time_id</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -129,17 +126,17 @@ and timeID is not NULL, returns a tidy dataframe with the time series values
 from the corresponding database of hydroscope.gr. Otherwise returns an error
 message.</p>
 <p>The dataframe columns are:</p><dl class='dl-horizontal'>
-    <dt>Date</dt><dd><p>The time series Dates (POSIXct)</p></dd>
-    <dt>Value</dt><dd><p>The time series values (numeric)</p></dd>
-    <dt>Comment</dt><dd><p>Comments about the values (character)</p></dd>
+    <dt>dates</dt><dd><p>The time series Dates (POSIXct)</p></dd>
+    <dt>values</dt><dd><p>The time series values (numeric)</p></dd>
+    <dt>comments</dt><dd><p>Comments about the values (character)</p></dd>
 </dl>
 
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>The subdomains <code>"deh"</code> (Greek Public Power Corporation) and <code>"emy"</code>
-(National Meteorological Service) are not used, because their data are not
-freely available.</p>
+    <p>Data are not available freely in the sub-domains:  <code>"deh"</code>
+(Greek Public Power Corporation) and
+<code>"emy"</code> (National Meteorological Service).</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -155,7 +152,7 @@ freely available.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># get time series 912 from the Greek Ministry of Environment and Energy</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span><span class='fu'>get_data</span>(<span class='st'>"kyy"</span>, <span class='fl'>912</span>)
+<span class='no'>time_series</span> <span class='kw'>&lt;-</span> <span class='fu'>get_data</span>(<span class='st'>"kyy"</span>, <span class='fl'>912</span>)
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
@@ -186,7 +183,7 @@ Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

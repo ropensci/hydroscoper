@@ -1,6 +1,5 @@
-# Transliterations -------------------------------------------------------------
 
-# translitarate all the columns of a dataframe from Greek to latin-ascii
+#' translitarate all the columns of a dataframe from Greek to latin-ASCII
 #' @noRd
 trasnlit_all <- function(df) {
 
@@ -11,9 +10,7 @@ trasnlit_all <- function(df) {
   return(df)
 }
 
-# Translations -----------------------------------------------------------------
-
-# translate vector y using dataframe map df
+#' translate vector y using dataframe map df
 #' @noRd
 translate_str <- function(y, df){
   for (i in seq(1, nrow(df))) {
@@ -22,7 +19,7 @@ translate_str <- function(y, df){
   y
 }
 
-# tranlate owners
+#' tranlate owners
 #' @noRd
 map_owners <- function(y) {
 
@@ -48,7 +45,7 @@ translate_str(y, df)
 
 }
 
-# translate variables
+#' translate variables
 #' @noRd
 map_variables <- function(y){
   y <- stringr::str_to_lower(y)
@@ -93,7 +90,7 @@ map_variables <- function(y){
   translate_str(y, df)
 }
 
-# translate time steps
+#' translate time steps
 #' @noRd
 map_ts <- function(y){
   y <- stringr::str_to_lower(y)
@@ -107,7 +104,7 @@ map_ts <- function(y){
 
 }
 
-# translate water division
+#' translate water division
 #' @noRd
 map_wd <- function(y){
   y <- stringr::str_replace_all(y, " ", "")

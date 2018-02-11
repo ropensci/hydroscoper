@@ -1,11 +1,12 @@
+library(plyr)
+
 # download databases -----------------------------------------------------------
 
 subdomain <- c("kyy", "ypaat", "emy", "deh")
 
 # download all databases
-hydro_data <- lapply(subdomain, function(x)get_database(x))
+hydro_data <- lapply(subdomain, function(x) get_database(x))
 names(hydro_data) <- subdomain
-
 
 # Stations' data ---------------------------------------------------------------
 
