@@ -8,7 +8,7 @@ Please help us develop `hydroscoper`. It really helps us manage the exciting but
 
 # Best ways to help
 
-Multiple [issues](https://github.com/ropensci/kvantas/hydroscoper) are labeled ["help wanted"](https://github.com/kvantas/hydroscoper/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22). We would particularly appreciate your input there.
+Multiple [issues](https://github.com/kvantas/hydroscoper) are labeled ["help wanted"](https://github.com/kvantas/hydroscoper/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22). We would particularly appreciate your input there.
 
 # Contributing
 
