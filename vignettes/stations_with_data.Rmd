@@ -1,5 +1,5 @@
 ---
-title: "Hydroscoper's data-sets"
+title: "Hydroscoper's data sets"
 author: "Konstantinos Vantas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette shows hot to use the package's internal data-sets.
+This vignette shows how to use the package's internal data sets.
 
 ## Load libraries
 
@@ -26,9 +26,9 @@ library(tibble)
 library(ggplot2)
 ```
 
-## Data-sets
+## Data sets
 
-There are two data-sets stored in the package. `stations` is comprised of the stations' id, name, longitude,  latitude, etc.
+There are three data sets stored in the package. `stations` is comprised of the stations' id, name, longitude, latitude, etc.
 
 ```{r stations_data}
 stations
@@ -44,8 +44,7 @@ timeseries
 
 ## Stations location
 
-`stations` and `greece_borders`  can be used to create a map with all Hydroscope's stations. Unfortunately, there is a number of them that have erroneous coordinates (over the sea and far from Greece). Also,
-there are 120 stations with missing coordinates.
+`stations` and `greece_borders` can be used to create a map with all Hydroscope's stations. Unfortunately, there is a number of them that have erroneous coordinates (over the sea and far from Greece). Also, there are 120 stations with missing coordinates.
 
 ```{r all_stations}
 ggplot() + 
