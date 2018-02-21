@@ -192,7 +192,7 @@ get_owners <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
 
 
 #' @rdname get_tables
-#' @export get_owners
+#' @export get_instruments_type
 get_instruments_type <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
                        translit = TRUE){
   api <- "instrument_type"
