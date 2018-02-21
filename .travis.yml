@@ -9,8 +9,8 @@ sudo: false
 cache: packages
 
 env:
-  global:
-    - R_CHECK_ARGS="--no-build-vignettes --no-manual --as-cran rpack"
+  not_cran: false
+  r_check_args: "--no-vignettes"
 
 r_packages:
   - covr
