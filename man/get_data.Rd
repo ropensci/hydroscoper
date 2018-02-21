@@ -14,18 +14,18 @@ get_data(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id)
 \value{
 If \code{subdomain} is one of:
 \itemize{
-\item{\code{kyy}, Ministry of Environment and Energy.}
-\item{\code{ypaat}, Ministry of Rural Development and Food.}
-\item{\code{deh}, Greek Public Power Corporation.}
-\item{\code{emy}, National Meteorological Service.}
+\item{\code{kyy}, Ministry of Environment and Energy}
+\item{\code{ypaat}, Ministry of Rural Development and Food}
+\item{\code{deh}, Greek Public Power Corporation}
+\item{\code{emy}, National Meteorological Service}
 }
-and \code{time_id} exists in that \code{subdomain} returns a tibble with the time series values. Otherwise returns an error message.
+and \code{time_id} exists in that \code{subdomain}, returns a tibble with the time series values. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
-    \item{dates}{The time series Dates (POSIXct)}
-    \item{values}{The time series values (numeric)}
-    \item{comments}{Comments about the values (character)}
+    \item{date}{The time series Dates (POSIXct)}
+    \item{value}{The time series values (numeric)}
+    \item{comment}{Comments about the values (character)}
 }
 }
 \description{

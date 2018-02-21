@@ -24,7 +24,7 @@ enhydris_txt <- function(hydro_url) {
   suppressWarnings(
     # use readr to get values
     readr::read_csv(url(hydro_url),
-                    col_names = c("dates", "values", "comments"),
+                    col_names = c("date", "value", "comment"),
                     col_types = list(
                       readr::col_datetime(format = tm_format),
                       readr::col_double(),

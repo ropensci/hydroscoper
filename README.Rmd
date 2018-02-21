@@ -37,7 +37,7 @@ Hydroscope provides several national data sources from various organisations via
 * Greek Prefectures.
 * Public Power Corporation.
 
-The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.
+The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Another issue with Hydroscope is the lack of comprehensive look-up tables about the available data, which are spread into many different databases. 
 
 `hydroscoper` covers Hydroscope's data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found [here](http://bit.ly/2D0cZgA),  and about the Web-service API [here](http://bit.ly/2FlRtBB).
 
@@ -90,7 +90,7 @@ The data sets that are provided by `hydroscoper` are:
 
 * `stations` a tibble with stations' data from Hydroscope.
 * `timeseries` a tibble with  time series' data from Hydroscope.
-* `greece_borders` a data frame with the borders of Greece.
+* `greece_borders` a tibble with the borders of Greece.
 
 ## Example
 
@@ -120,14 +120,14 @@ kyy_stations
 
 To get the time series' data for the station `200200` (http://kyy.hydroscope.gr/stations/d/200200/) we can use:
 
-```{r}
+```{r subset_timeseries}
 station_ts <- subset(timeseries, station_id == 200200)
 station_ts
 ```
 
 We can download the station's  precipitation time series **56** (http://kyy.hydroscope.gr/timeseries/d/56/):
 
-``` {r get_ts}
+``` {r get_timeseries}
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
 ```
@@ -136,7 +136,7 @@ Let's create a plot:
 
 ``` {r plot_time_series}
 library(ggplot2)
-ggplot(data = ts_raw, aes(x = dates, y = values))+
+ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
        x="Date", y = "Rain height (mm)")+

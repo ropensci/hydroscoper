@@ -26,7 +26,7 @@ various companies and associations. It was implemented in three phases,
 funded by the Ministry of Development, the Ministry of Environment and
 Energy and the European Union.
 
-Hydroscope, provides several national data sources from various
+Hydroscope provides several national data sources from various
 organisations via a web interface. Each participating organisation keeps
 its data on its own server using the Enhydris database system for the
 storage and management of hydrological and meteorological data. These
@@ -40,7 +40,9 @@ organisations are:
   - Public Power Corporation.
 
 The data are structured as tables and space separated text files, but
-are in Greek, thus limiting their usefulness.
+are in Greek, thus limiting their usefulness. Another issue with
+Hydroscope is the lack of comprehensive look-up tables about the
+available data, which are spread into many different databases.
 
 `hydroscoper` covers Hydroscope’s data sources using the Enhydris API.
 The Enhydris database is implemented in PostgreSQL and details about the
@@ -107,7 +109,7 @@ The data sets that are provided by `hydroscoper` are:
 
   - `stations` a tibble with stations’ data from Hydroscope.
   - `timeseries` a tibble with time series’ data from Hydroscope.
-  - `greece_borders` a data frame with the borders of Greece.
+  - `greece_borders` a tibble with the borders of Greece.
 
 ## Example
 
@@ -173,21 +175,21 @@ We can download the station’s precipitation time series **56**
 (<http://kyy.hydroscope.gr/timeseries/d/56/>):
 
 ``` r
-ts_raw <- get_data(subdomain = "kyy",time_id = 56)
+ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
 #> # A tibble: 147,519 x 3
-#>    dates               values comments
-#>    <dttm>               <dbl> <chr>   
-#>  1 1985-05-06 08:00:00      0 1       
-#>  2 1985-05-06 08:30:00      0 1       
-#>  3 1985-05-06 09:00:00      0 1       
-#>  4 1985-05-06 09:30:00      0 1       
-#>  5 1985-05-06 10:00:00      0 1       
-#>  6 1985-05-06 10:30:00      0 1       
-#>  7 1985-05-06 11:00:00      0 1       
-#>  8 1985-05-06 11:30:00      0 1       
-#>  9 1985-05-06 12:00:00      0 1       
-#> 10 1985-05-06 12:30:00      0 1       
+#>    date                value comment
+#>    <dttm>              <dbl> <chr>  
+#>  1 1985-05-06 08:00:00     0 1      
+#>  2 1985-05-06 08:30:00     0 1      
+#>  3 1985-05-06 09:00:00     0 1      
+#>  4 1985-05-06 09:30:00     0 1      
+#>  5 1985-05-06 10:00:00     0 1      
+#>  6 1985-05-06 10:30:00     0 1      
+#>  7 1985-05-06 11:00:00     0 1      
+#>  8 1985-05-06 11:30:00     0 1      
+#>  9 1985-05-06 12:00:00     0 1      
+#> 10 1985-05-06 12:30:00     0 1      
 #> # ... with 147,509 more rows
 ```
 
@@ -195,7 +197,7 @@ Let’s create a plot:
 
 ``` r
 library(ggplot2)
-ggplot(data = ts_raw, aes(x = dates, y = values))+
+ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
        x="Date", y = "Rain height (mm)")+

@@ -18,9 +18,9 @@
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{dates}{The time series Dates (POSIXct)}
-#'     \item{values}{The time series values (numeric)}
-#'     \item{comments}{Comments about the values (character)}
+#'     \item{date}{The time series Dates (POSIXct)}
+#'     \item{value}{The time series values (numeric)}
+#'     \item{comment}{Comments about the values (character)}
 #' }
 #'
 #' @note Data are not available freely in the sub-domains:  \code{"deh"}
