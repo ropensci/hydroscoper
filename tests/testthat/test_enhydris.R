@@ -44,21 +44,29 @@ expect_names_in_api <- function(subdomain) {
 context("Test that expected tables exist in sub-domains' databases")
 test_that("kyy returns expected tables", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_names_in_api("kyy")
 })
 test_that("ypaat returns expected tables", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("ypaat")
   expect_names_in_api("ypaat")
 })
 test_that("emy returns expected tables", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("emy")
   expect_names_in_api("emy")
 })
 test_that("deh returns expected tables", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("deh")
   expect_names_in_api("deh")
 })
@@ -68,17 +76,23 @@ test_that("deh returns expected tables", {
 context("Test enhydris_get and enhydris_list functions")
 test_that("Test that enhydris_get returns a JSON file as a tibble", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_is(enhydris_get("kyy", api_value = "owner"), "tbl_df")
 })
 test_that("Test that returns a JSON file as a tibble, no translit", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_is(enhydris_get("kyy", api_value = "owner", translit = FALSE),
             "tbl_df")
 })
 test_that("Test that returns a TXT file as a tibble", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
             "tbl_df")
@@ -86,6 +100,8 @@ test_that("Test that returns a TXT file as a tibble", {
 })
 test_that("Test that returns an error if time-series doesn't exist", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_error(enhydris_get("kyy", api_value = "time_data", time_id = 0))
 })
@@ -93,6 +109,8 @@ test_that("Test that returns an error if time-series doesn't exist", {
 context("Test enhydris_list function")
 test_that("Test that enhydris_list function returns a list", {
   skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
   skip_if_not_online("kyy")
   expect_is(enhydris_list("kyy"), "list")
 })
