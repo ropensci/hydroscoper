@@ -17,5 +17,8 @@ greece_borders <- broom::tidy(greece_borders)
 # remove id variable (no values in there)
 greece_borders$id <- NULL
 
+# convert to a tibble
+greece_borders <- tibble::as.tibble(greece_borders)
+
 # save data
 devtools::use_data(greece_borders, overwrite = TRUE)
