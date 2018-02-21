@@ -13,13 +13,13 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-"
 )
 ```
-
+ 
 [![Travis-CI Build Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://travis-ci.org/kvantas/hydroscoper)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
 [![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper) 
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.2.3-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-0.2.4-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
@@ -37,7 +37,7 @@ Hydroscope provides several national data sources from various organisations via
 * Greek Prefectures.
 * Public Power Corporation.
 
-The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Another issue with Hydroscope is the lack of comprehensive look-up tables about the available data, which are spread into many different databases. 
+The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Another issue with Hydroscope is the lack of comprehensive look-up tables about the available data, which are spread across many different databases. 
 
 `hydroscoper` covers Hydroscope's data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found [here](http://bit.ly/2D0cZgA),  and about the Web-service API [here](http://bit.ly/2FlRtBB).
 
@@ -46,6 +46,36 @@ The data are structured as tables and space separated text files, but are in Gre
 1. Transform the available tables and data sets into tidy data frames [(tibbles)](http://tibble.tidyverse.org/).
 2. Transliterate the Greek Unicode text to Latin.
 3. Translate various Greek terms to English.
+
+The internal datasets of the package can be used to run queries on the available Hydroscope's stations and time series data, reducing the time needed for downloading and [data wrangling](http://bit.ly/1KslZb7), as these data are rarely modified.  These datasets are:
+
+### `stations`
+
+It is a comprehensive look-up table with geographical and ownership information of the available stations in all Hydroscope's databases. The variables are: 
+
+  1. `station_id` The station's ID.
+  2. `name` The station's name.
+  3. `water_basin` The station's Water Basin.
+  4. `water_division` The station's Water Division.
+  5. `owner` The station's owner.
+  6. `longitude` The station's longitude in decimal degrees, [ETRS89](http://bit.ly/2kJwFuf).
+  7. `latitude` The station's latitude in decimal degrees, [ETRS89](http://bit.ly/2kJwFuf).
+  8. `altitude` The station's altitude, meters above sea level.
+  9. `subdomain` The corresponding Hydroscope's database.
+
+
+### `timeseries`
+
+It is also a look-up table with all the available measurements for a given station in a  given Hydroscope's  database, with units of measurement and times of those measurements. The variables are:
+
+  1. `time_id` The time series ID.
+  2. `station_id` The corresponding station's ID.
+  3. `variable` The time series variable type.
+  4. `timestep` The timestep of time series.
+  5. `units` The units of the time series.
+  6. `start_date` The starting date of time series values.
+  7. `end_date` The ending date of time series values.
+  8. `subdomain` The corresponding Hydroscope's database.
 
 ## Data sources
 

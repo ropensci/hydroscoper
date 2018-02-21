@@ -21,6 +21,8 @@ stations
 }
 \description{
 Stations' data from the Greek National Data Bank for
-Hydrological and Meteorological Information.
+Hydrological and Meteorological Information. This dataset is a comprehensive
+look-up table with geographical and ownership information of the available
+stations in all Hydroscope's databases.
 }
 \keyword{datasets}

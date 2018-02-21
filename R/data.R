@@ -1,7 +1,9 @@
 #' @title stations
 #'
 #' @description  Stations' data from the Greek National Data Bank for
-#' Hydrological and Meteorological Information.
+#' Hydrological and Meteorological Information. This dataset is a comprehensive
+#' look-up table with geographical and ownership information of the available
+#' stations in all Hydroscope's databases.
 #'
 #' @format A tibble with 2,322 rows and 9 variables:
 #' \describe{
@@ -20,11 +22,14 @@
 #' @title timeseries
 #'
 #' @description Time series' data from the Greek National Data Bank for
-#' Hydrological and Meteorological Information.
+#' Hydrological and Meteorological Information.  This dataset is a comprehensive
+#' look-up table of all of the available measurements for a given station in a
+#' given Hydroscope's  database, with units of measurement and times  of
+#' those measurements.
 #'
 #' @format A tibble with 10,804 rows and 9 variables:
 #' \describe{
-#'     \item{time_id}{The time series ID from the database}
+#'     \item{time_id}{The time series ID}
 #'     \item{station_id}{The corresponding station's ID}
 #'     \item{variable}{The time series variable type}
 #'     \item{timestep}{The timestep of time series}
@@ -41,7 +46,7 @@
 #' variables are created using the function tidy from the broom package. This
 #' data frame was created for use with the geom_polygon from ggplot2 package.
 #'
-#' @format A tibble with 18474 rows and 8 variables:
+#' @format A tibble with 18,474 rows and 8 variables:
 #' \describe{
 #'   \item{long}{Longitude in decimal degrees, ETRS89}
 #'   \item{lat}{Latitude in decimal degrees, ETRS89}

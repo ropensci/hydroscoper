@@ -6,7 +6,7 @@
 \title{timeseries}
 \format{A tibble with 10,804 rows and 9 variables:
 \describe{
-    \item{time_id}{The time series ID from the database}
+    \item{time_id}{The time series ID}
     \item{station_id}{The corresponding station's ID}
     \item{variable}{The time series variable type}
     \item{timestep}{The timestep of time series}
@@ -20,6 +20,9 @@ timeseries
 }
 \description{
 Time series' data from the Greek National Data Bank for
-Hydrological and Meteorological Information.
+Hydrological and Meteorological Information.  This dataset is a comprehensive
+look-up table of all of the available measurements for a given station in a
+given Hydroscope's  database, with units of measurement and times  of
+those measurements.
 }
 \keyword{datasets}
