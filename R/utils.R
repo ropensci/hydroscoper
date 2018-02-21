@@ -7,7 +7,9 @@ server_address <- function(subdomain) {
 #' Ping a remote server to see if its alive
 #' @noRd
 server_alive <- function(subdomain) {
-  if (all(is.na(pingr::ping(server_address(subdomain), count = 3)))) {
+  if (all(is.na(pingr::ping_port(server_address(subdomain),
+                                 port = 80L,
+                                 count = 3)))) {
     err_msg <- paste("The server for that data source is probably down,",
                      "get more info at hydroscope@hydroscope.gr or try",
                      "again later.")
