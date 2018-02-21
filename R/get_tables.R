@@ -222,6 +222,6 @@ get_database <- function(subdomain =  c("kyy", "ypaat", "emy", "deh"),
        "units_of_measurement" = get_units_of_measurement(subdomain, translit),
        "time_steps" = get_time_steps(subdomain, translit),
        "owners" = get_owners(subdomain, translit),
-       "instr_type" = get_instruments_type(subdomain, translit),
+       "instruments_type" = get_instruments_type(subdomain, translit),
        "stations_type" = get_station_type(subdomain, translit))
 }
