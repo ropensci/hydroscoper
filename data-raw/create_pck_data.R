@@ -123,7 +123,7 @@ timeseries <- plyr::ldply(subdomain, function(id){
   res <- merge(res, ts_units, by = "unit_of_measurement", all.x = TRUE)
 
   tibble::tibble(
-    "timeser_id" = as.integer(res$id),
+    "time_id" = as.integer(res$id),
     "station_id" = as.integer(res$gentity),
     "variable" = as.character(res$variable_name),
     "timestep" = as.character(res$time_step_name),
