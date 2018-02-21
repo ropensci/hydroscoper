@@ -1,13 +1,13 @@
-# hydroscoper 0.2.3 (Release date: 2018-02-11)
+# hydroscoper 0.2.3 (Release date: 2018-02-21)
 
 * General
 
   - This is a major update. All the functions were rewritten utilizing the Enhydris API.
   - The included data in the package cover all Hydroscope's databases.
-  - Added vignettes  "Hydroscoper's data-sets".
+  - Added vignettes "An introduction to `hydroscoper`" and  "Hydroscoper's data-sets".
   - Added package documentation page.
   - Use pingr package to check if a sub-domain is alive.
-  - All the functions return a tibble.
+  - All the functions return tibbles.
   - Added `greece_borders` dataset.
 
 * New functionality:
@@ -29,7 +29,7 @@
 * Changes
 
   - `get_stations` and `get_timeseries` use the Enhydris API and are considerably faster.
-  - `get_data` uses lower case variable naming: `dates, values, comments`
+  - `get_data` uses lower case variable naming: `date, value, comment`
 
 * Defuncs
 

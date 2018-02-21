@@ -4,7 +4,7 @@
 \name{greece_borders}
 \alias{greece_borders}
 \title{Greek borders}
-\format{A tibble with 18474 rows and 8 variables:
+\format{A tibble with 18,474 rows and 8 variables:
 \describe{
   \item{long}{Longitude in decimal degrees, ETRS89}
   \item{lat}{Latitude in decimal degrees, ETRS89}

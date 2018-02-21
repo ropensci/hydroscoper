@@ -1,10 +1,11 @@
 Package: hydroscoper
 Type: Package
 Title: Interface to Hydroscope
-Version: 0.2.3
-Authors@R: person("Konstantinos", "Vantas", role = c("aut", "cre"),
+Version: 0.2.4
+Authors@R: c(person("Konstantinos", "Vantas", role = c("aut", "cre"),
   email = "kon.vantas@gmail.com",
-  comment = c(ORCID = "0000-0001-6387-8791"))
+  comment = c(ORCID = "0000-0001-6387-8791")),
+  person("Sharla", "Gelfand", email = "sharla.gelfand@gmail.com", role = c("ctb")))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the  Greek National Data Bank for Hydrological and 
     Meteorological Information <http://www.hydroscope.gr/>. It covers 

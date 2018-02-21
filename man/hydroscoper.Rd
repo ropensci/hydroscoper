@@ -54,4 +54,9 @@ Useful links:
 \author{
 \strong{Maintainer}: Konstantinos Vantas \email{kon.vantas@gmail.com} (0000-0001-6387-8791)
 
+Other contributors:
+\itemize{
+  \item Sharla Gelfand \email{sharla.gelfand@gmail.com} [contributor]
+}
+
 }
