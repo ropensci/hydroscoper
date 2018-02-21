@@ -202,7 +202,7 @@ station_ts
 #> # A tibble: 4 x 8
 #>   time_id station_id variable timestep units start_date end_date subdomain
 #>     <int>      <int> <chr>    <chr>    <chr> <chr>      <chr>    <chr>    
-#> 1     761     200200 wind_di~ <NA>     B0     1948-01-0~ 1997-07~ kyy      
+#> 1     761     200200 wind_di~ <NA>     °     1948-01-0~ 1997-07~ kyy      
 #> 2      56     200200 precipi~ 30_minu~ mm    1985-05-0~ 1997-01~ kyy      
 #> 3     760     200200 snow     daily    mm    1948-01-0~ 1997-07~ kyy      
 #> 4     759     200200 precipi~ daily    mm    1953-03-0~ 2011-06~ kyy

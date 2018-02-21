@@ -1,4 +1,4 @@
-# hydroscoper 0.2.3 (Release date: 2018-02-21)
+# hydroscoper 0.2.4 (Release date: 2018-02-21)
 
 * General
 

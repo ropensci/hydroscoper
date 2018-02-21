@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hydroscoper’s data-sets • hydroscoper</title>
+<title>Hydroscoper’s data sets • hydroscoper</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -45,7 +45,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
+      <a href="../articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
+    </li>
+    <li>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data sets</a>
     </li>
   </ul>
 </li>
@@ -72,22 +75,22 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Hydroscoper’s data-sets</h1>
+      <h1>Hydroscoper’s data sets</h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2018-02-11</h4>
+            <h4 class="date">2018-02-22</h4>
           </div>
 
     
     
 <div class="contents">
-<p>This vignette shows hot to use the package’s internal data-sets.</p>
+<p>This vignette shows how to use the package’s internal data sets.</p>
 <section id="load-libraries" class="level2"><h2>Load libraries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
-</section><section id="data-sets" class="level2"><h2>Data-sets</h2>
-<p>There are two data-sets stored in the package. <code>stations</code> is comprised of the stations’ id, name, longitude, latitude, etc.</p>
+</section><section id="data-sets" class="level2"><h2>Data sets</h2>
+<p>There are three data sets stored in the package. <code>stations</code> is comprised of the stations’ id, name, longitude, latitude, etc.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">stations</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2,322 x 9</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt;    station_id name    water_basin  water_division owner longitude latitude</span></a>
@@ -107,18 +110,18 @@
 <p><code>timeseries</code> of the time series’ id, the corresponding station, variable type, time step etc.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">timeseries</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 10,804 x 8</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;    timeser_id station_id variable   timestep units start_date   end_date  </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;         &lt;int&gt;      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  1       2248     501049 temperatu~ &lt;NA&gt;     °     2009-02-01T~ 2010-08-3~</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  2        430     200103 wind_dire~ &lt;NA&gt;     °     1950-10-26T~ 1997-07-1~</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  3        905     200247 wind_dire~ &lt;NA&gt;     °     1967-01-01T~ 1997-12-3~</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  4       2243     501058 temperatu~ &lt;NA&gt;     °     1999-01-01T~ 2010-08-3~</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  5        438     200105 wind_dire~ &lt;NA&gt;     °     1950-06-05T~ 1997-07-3~</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  6        553     200135 wind_dire~ &lt;NA&gt;     °     1964-11-21T~ 1997-08-3~</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  7        966     200265 wind_dire~ &lt;NA&gt;     °     1967-01-01T~ 1997-03-3~</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  8        775     200203 wind_dire~ &lt;NA&gt;     °     1964-05-20T~ 1997-06-3~</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  9       2245     501046 temperatu~ &lt;NA&gt;     °     2007-07-01T~ 2010-07-0~</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 10        247     200034 wind_dire~ &lt;NA&gt;     °     1969-11-25T~ 1997-09-1~</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;    time_id station_id variable   timestep units start_date     end_date   </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;      &lt;int&gt;      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;  1    2248     501049 temperatu~ &lt;NA&gt;     °     2009-02-01T00~ 2010-08-31~</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;  2     430     200103 wind_dire~ &lt;NA&gt;     °     1950-10-26T08~ 1997-07-19~</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;  3     905     200247 wind_dire~ &lt;NA&gt;     °     1967-01-01T08~ 1997-12-31~</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;  4    2243     501058 temperatu~ &lt;NA&gt;     °     1999-01-01T00~ 2010-08-31~</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;  5     438     200105 wind_dire~ &lt;NA&gt;     °     1950-06-05T08~ 1997-07-31~</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  6     553     200135 wind_dire~ &lt;NA&gt;     °     1964-11-21T08~ 1997-08-31~</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  7     966     200265 wind_dire~ &lt;NA&gt;     °     1967-01-01T08~ 1997-03-31~</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  8     775     200203 wind_dire~ &lt;NA&gt;     °     1964-05-20T08~ 1997-06-30~</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  9    2245     501046 temperatu~ &lt;NA&gt;     °     2007-07-01T01~ 2010-07-07~</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; 10     247     200034 wind_dire~ &lt;NA&gt;     °     1969-11-25T08~ 1997-09-18~</span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; # ... with 10,794 more rows, and 1 more variable: subdomain &lt;chr&gt;</span></a></code></pre></div>
 <p><code>greece_borders</code> is a data-frame for use with the function <code>geom_polygon</code> from the <code>ggplot2</code> package.</p>
 </section><section id="stations-location" class="level2"><h2>Stations location</h2>
@@ -165,7 +168,7 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#load-libraries">Load libraries</a></li>
-      <li><a href="#data-sets">Data-sets</a></li>
+      <li><a href="#data-sets">Data sets</a></li>
       <li><a href="#stations-location">Stations location</a></li>
       <li><a href="#stations-with-available-time-series-location">Stations with available time series location</a></li>
       </ul>

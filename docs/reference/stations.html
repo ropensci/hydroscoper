@@ -68,7 +68,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
+      <a href="../articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
+    </li>
+    <li>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data sets</a>
     </li>
   </ul>
 </li>
@@ -100,14 +103,16 @@
 
     
     <p>Stations' data from the Greek National Data Bank for
-Hydrological and Meteorological Information.</p>
+Hydrological and Meteorological Information. This dataset is a comprehensive
+look-up table with geographical and ownership information of the available
+stations in all Hydroscope's databases.</p>
     
 
     <pre class="usage"><span class='no'>stations</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame:</p><dl class='dl-horizontal'>
+    <p>A tibble with 2,322 rows and 9 variables:</p><dl class='dl-horizontal'>
     <dt>station_id</dt><dd><p>The station's ID from the domain's database</p></dd>
     <dt>name</dt><dd><p>The station's name</p></dd>
     <dt>water_basin</dt><dd><p>The station's Water Basin</p></dd>

@@ -45,7 +45,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/stations_with_data.html">Hydroscoper's data-sets</a>
+      <a href="articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
+    </li>
+    <li>
+      <a href="articles/stations_with_data.html">Hydroscoper's data sets</a>
     </li>
   </ul>
 </li>
@@ -80,7 +83,7 @@
 
 <p><img src="reference/figures/hydroscoper_hex.png" align="right" height="220"></p>
 <p><code>hydroscoper</code> is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, <a href="http://www.hydroscope.gr/">Hydroscope</a>. Hydroscope is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
-<p>Hydroscope, provides several national data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using the Enhydris database system for the storage and management of hydrological and meteorological data. These organisations are:</p>
+<p>Hydroscope provides several national data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using the Enhydris database system for the storage and management of hydrological and meteorological data. These organisations are:</p>
 <ul>
 <li>Ministry of Environment and Energy.</li>
 <li>Ministry of Rural Development and Food.</li>
@@ -89,7 +92,7 @@
 <li>Greek Prefectures.</li>
 <li>Public Power Corporation.</li>
 </ul>
-<p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness.</p>
+<p>The data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Another issue with Hydroscope is the lack of comprehensive look-up tables about the available data, which are spread across many different databases.</p>
 <p><code>hydroscoper</code> covers Hydroscope’s data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found <a href="http://bit.ly/2D0cZgA">here</a>, and about the Web-service API <a href="http://bit.ly/2FlRtBB">here</a>.</p>
 <p><code>hydroscoper</code> provides functions to:</p>
 <ol type="1">
@@ -97,7 +100,48 @@
 <li>Transliterate the Greek Unicode text to Latin.</li>
 <li>Translate various Greek terms to English.</li>
 </ol>
-<section id="data-sources" class="level2"><h2>Data sources</h2>
+<p>The internal datasets of the package can be used to run queries on the available Hydroscope’s stations and time series data, reducing the time needed for downloading and <a href="http://bit.ly/1KslZb7">data wrangling</a>, as these data are rarely modified. These datasets are:</p>
+<section id="stations" class="level3"><h3><code>stations</code></h3>
+<p>It is a comprehensive look-up table with geographical and ownership information of the available stations in all Hydroscope’s databases. The variables are:</p>
+<ol type="1">
+<li>
+<code>station_id</code> The station’s ID.</li>
+<li>
+<code>name</code> The station’s name.</li>
+<li>
+<code>water_basin</code> The station’s Water Basin.</li>
+<li>
+<code>water_division</code> The station’s Water Division.</li>
+<li>
+<code>owner</code> The station’s owner.</li>
+<li>
+<code>longitude</code> The station’s longitude in decimal degrees, <a href="http://bit.ly/2kJwFuf">ETRS89</a>.</li>
+<li>
+<code>latitude</code> The station’s latitude in decimal degrees, <a href="http://bit.ly/2kJwFuf">ETRS89</a>.</li>
+<li>
+<code>altitude</code> The station’s altitude, meters above sea level.</li>
+<li>
+<code>subdomain</code> The corresponding Hydroscope’s database.</li>
+</ol></section><section id="timeseries" class="level3"><h3><code>timeseries</code></h3>
+<p>It is also a look-up table with all the available measurements for a given station in a given Hydroscope’s database, with units of measurement and times of those measurements. The variables are:</p>
+<ol type="1">
+<li>
+<code>time_id</code> The time series ID.</li>
+<li>
+<code>station_id</code> The corresponding station’s ID.</li>
+<li>
+<code>variable</code> The time series variable type.</li>
+<li>
+<code>timestep</code> The timestep of time series.</li>
+<li>
+<code>units</code> The units of the time series.</li>
+<li>
+<code>start_date</code> The starting date of time series values.</li>
+<li>
+<code>end_date</code> The ending date of time series values.</li>
+<li>
+<code>subdomain</code> The corresponding Hydroscope’s database.</li>
+</ol></section><section id="data-sources" class="level2"><h2>Data sources</h2>
 <ul>
 <li>Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</li>
 <li>Ministry of Rural Development and Food, <a href="http://ypaat.hydroscope.gr" class="uri">http://ypaat.hydroscope.gr</a>.</li>
@@ -137,7 +181,7 @@
 <li>
 <code>timeseries</code> a tibble with time series’ data from Hydroscope.</li>
 <li>
-<code>greece_borders</code> a data frame with the borders of Greece.</li>
+<code>greece_borders</code> a tibble with the borders of Greece.</li>
 </ul></section><section id="example" class="level2"><h2>Example</h2>
 <p>This is a basic example which shows how to get the stations’ and time series’ data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
 <p>Load libraries:</p>
@@ -172,33 +216,32 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">station_ts &lt;-<span class="st"> </span><span class="kw">subset</span>(timeseries, station_id <span class="op">==</span><span class="st"> </span><span class="dv">200200</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">station_ts</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 4 x 8</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   timeser_id station_id variable   timestep  units start_date   end_date  </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;        &lt;int&gt;      &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;     </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 1        761     200200 wind_dire~ &lt;NA&gt;      °     1948-01-01T~ 1997-07-3~</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 2         56     200200 precipita~ 30_minut~ mm    1985-05-06T~ 1997-01-0~</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 3        760     200200 snow       daily     mm    1948-01-01T~ 1997-07-3~</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 4        759     200200 precipita~ daily     mm    1953-03-01T~ 2011-06-3~</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; # ... with 1 more variable: subdomain &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   time_id station_id variable timestep units start_date end_date subdomain</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;    </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 1     761     200200 wind_di~ &lt;NA&gt;     °     1948-01-0~ 1997-07~ kyy      </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 2      56     200200 precipi~ 30_minu~ mm    1985-05-0~ 1997-01~ kyy      </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 3     760     200200 snow     daily    mm    1948-01-0~ 1997-07~ kyy      </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 4     759     200200 precipi~ daily    mm    1953-03-0~ 2011-06~ kyy</span></a></code></pre></div>
 <p>We can download the station’s precipitation time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/timeseries/d/56/" class="uri">http://kyy.hydroscope.gr/timeseries/d/56/</a>):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>,<span class="dt">time_id =</span> <span class="dv">56</span>)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">ts_raw</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    dates               values comments</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    &lt;dttm&gt;               &lt;dbl&gt; &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  1 1985-05-06 08:00:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  2 1985-05-06 08:30:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  3 1985-05-06 09:00:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  4 1985-05-06 09:30:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  5 1985-05-06 10:00:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  6 1985-05-06 10:30:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  7 1985-05-06 11:00:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  8 1985-05-06 11:30:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;  9 1985-05-06 12:00:00      0 1       </span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10 1985-05-06 12:30:00      0 1       </span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;    date                value comment</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;  1 1985-05-06 08:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;  2 1985-05-06 08:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;  3 1985-05-06 09:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt;  4 1985-05-06 09:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt;  5 1985-05-06 10:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;  6 1985-05-06 10:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  7 1985-05-06 11:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt;  8 1985-05-06 11:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt;  9 1985-05-06 12:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; 10 1985-05-06 12:30:00     0 1      </span></a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; # ... with 147,509 more rows</span></a></code></pre></div>
 <p>Let’s create a plot:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts_raw, <span class="kw">aes</span>(<span class="dt">x =</span> dates, <span class="dt">y =</span> values))<span class="op">+</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts_raw, <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value))<span class="op">+</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span> <span class="st">"30 min precipitation for station 200200"</span>,</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain height (mm)"</span>)<span class="op">+</span></a>
@@ -248,6 +291,7 @@
 <ul class="list-unstyled">
 <li>Konstantinos Vantas <br><small class="roles"> Author, maintainer </small> <br><small>(0000-0001-6387-8791)</small>
 </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
@@ -256,7 +300,7 @@
 <li><a href="https://codecov.io/gh/kvantas/hydroscoper"><img src="https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg" alt="codecov"></a></li>
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://cran.r-project.org/package=hydroscoper"><img src="http://www.r-pkg.org/badges/version/hydroscoper" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/kvantas/hydroscoper"><img src="https://img.shields.io/badge/Package%20version-0.2.3-orange.svg?style=flat-square" alt="packageversion"></a></li>
+<li><a href="https://github.com/kvantas/hydroscoper"><img src="https://img.shields.io/badge/Package%20version-0.2.4-orange.svg?style=flat-square" alt="packageversion"></a></li>
 <li><a href="http://cran.rstudio.com/web/packages/hydroscoper/index.html"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper"></a></li>
 <li><a href="https://github.com/ropensci/onboarding/issues/185"><img src="https://badges.ropensci.org/185_status.svg" alt="ropensci"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/114094911"><img src="https://zenodo.org/badge/114094911.svg" alt="DOI"></a></li>

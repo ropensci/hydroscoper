@@ -68,7 +68,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
+      <a href="../articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
+    </li>
+    <li>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data sets</a>
     </li>
   </ul>
 </li>
@@ -120,15 +123,16 @@ time-series text file.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>subdomain</code> is one of <code>"kyy"</code> (Ministry of Environment
-and Energy) or <code>"ypaat"</code> (Ministry of Rural Development and Food),
-and timeID is not NULL, returns a tidy dataframe with the time series values
-from the corresponding database of hydroscope.gr. Otherwise returns an error
-message.</p>
+    <p>If <code>subdomain</code> is one of:</p><ul>
+<li><p><code>kyy</code>, Ministry of Environment and Energy</p></li>
+<li><p><code>ypaat</code>, Ministry of Rural Development and Food</p></li>
+<li><p><code>deh</code>, Greek Public Power Corporation</p></li>
+<li><p><code>emy</code>, National Meteorological Service</p></li>
+</ul><p>and <code>time_id</code> exists in that <code>subdomain</code>, returns a tibble with the time series values. Otherwise returns an error message.</p>
 <p>The dataframe columns are:</p><dl class='dl-horizontal'>
-    <dt>dates</dt><dd><p>The time series Dates (POSIXct)</p></dd>
-    <dt>values</dt><dd><p>The time series values (numeric)</p></dd>
-    <dt>comments</dt><dd><p>Comments about the values (character)</p></dd>
+    <dt>date</dt><dd><p>The time series Dates (POSIXct)</p></dd>
+    <dt>value</dt><dd><p>The time series values (numeric)</p></dd>
+    <dt>comment</dt><dd><p>Comments about the values (character)</p></dd>
 </dl>
 
     

@@ -68,7 +68,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/stations_with_data.html">Hydroscoper's data-sets</a>
+      <a href="../articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
+    </li>
+    <li>
+      <a href="../articles/stations_with_data.html">Hydroscoper's data sets</a>
     </li>
   </ul>
 </li>
@@ -100,15 +103,18 @@
 
     
     <p>Time series' data from the Greek National Data Bank for
-Hydrological and Meteorological Information.</p>
+Hydrological and Meteorological Information.  This dataset is a comprehensive
+look-up table of all of the available measurements for a given station in a
+given Hydroscope's  database, with units of measurement and times  of
+those measurements.</p>
     
 
     <pre class="usage"><span class='no'>timeseries</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame:</p><dl class='dl-horizontal'>
-    <dt>timeser_id</dt><dd><p>The time series ID from the database</p></dd>
+    <p>A tibble with 10,804 rows and 9 variables:</p><dl class='dl-horizontal'>
+    <dt>time_id</dt><dd><p>The time series ID</p></dd>
     <dt>station_id</dt><dd><p>The corresponding station's ID</p></dd>
     <dt>variable</dt><dd><p>The time series variable type</p></dd>
     <dt>timestep</dt><dd><p>The timestep of time series</p></dd>
