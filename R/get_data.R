@@ -7,11 +7,14 @@
 #' @param subdomain One of the subdomains of hydroscope.gr
 #' @param time_id A time series ID
 #'
-#' @return If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-#' and Energy) or \code{"ypaat"} (Ministry of Rural Development and Food),
-#' and timeID is not NULL, returns a tidy dataframe with the time series values
-#' from the corresponding database of hydroscope.gr. Otherwise returns an error
-#' message.
+#' @return If \code{subdomain} is one of:
+#' \itemize{
+#' \item{\code{kyy}, Ministry of Environment and Energy}
+#' \item{\code{ypaat}, Ministry of Rural Development and Food}
+#' \item{\code{deh}, Greek Public Power Corporation}
+#' \item{\code{emy}, National Meteorological Service}
+#' }
+#' and \code{time_id} exists in that \code{subdomain}, returns a tibble with the time series values. Otherwise returns an error message.
 #'
 #' The dataframe columns are:
 #' \describe{
@@ -46,7 +49,7 @@
 #' @export get_data
 get_data <- function(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id) {
 
-  # check that stationID is not NULL
+  # check that time_id is not NULL
   if (is.null(time_id)) stop("Argument 'time_id' is missing.")
 
   enhydris_get(subdomain = subdomain, api_value = "time_data",

@@ -104,7 +104,7 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
         result
       }
     } else {
-      # data are a TXT file
+      # data are a TXT file, use of readr in enhydris_txt returns a tibble
       enhydris_txt(hydro_url)
     }
   },

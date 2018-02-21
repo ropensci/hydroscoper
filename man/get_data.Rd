@@ -12,11 +12,14 @@ get_data(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id)
 \item{time_id}{A time series ID}
 }
 \value{
-If \code{subdomain} is one of \code{"kyy"} (Ministry of Environment
-and Energy) or \code{"ypaat"} (Ministry of Rural Development and Food),
-and timeID is not NULL, returns a tidy dataframe with the time series values
-from the corresponding database of hydroscope.gr. Otherwise returns an error
-message.
+If \code{subdomain} is one of:
+\itemize{
+\item{\code{kyy}, Ministry of Environment and Energy.}
+\item{\code{ypaat}, Ministry of Rural Development and Food.}
+\item{\code{deh}, Greek Public Power Corporation.}
+\item{\code{emy}, National Meteorological Service.}
+}
+and \code{time_id} exists in that \code{subdomain} returns a tibble with the time series values. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
