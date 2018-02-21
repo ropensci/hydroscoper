@@ -4,7 +4,7 @@
 \name{stations}
 \alias{stations}
 \title{stations}
-\format{A data frame:
+\format{A tibble with 2,322 rows and 9 variables:
 \describe{
     \item{station_id}{The station's ID from the domain's database}
     \item{name}{The station's name}

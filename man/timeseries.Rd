@@ -4,9 +4,9 @@
 \name{timeseries}
 \alias{timeseries}
 \title{timeseries}
-\format{A data frame:
+\format{A tibble with 10,804 rows and 9 variables:
 \describe{
-    \item{timeser_id}{The time series ID from the database}
+    \item{time_id}{The time series ID from the database}
     \item{station_id}{The corresponding station's ID}
     \item{variable}{The time series variable type}
     \item{timestep}{The timestep of time series}
