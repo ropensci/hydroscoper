@@ -1,11 +1,17 @@
 Package: hydroscoper
 Type: Package
-Title: Interface to Hydroscope
+Title: Interface to to the Greek National Data Bank for Hydrometeorological Information
 Version: 0.2.4
-Authors@R: c(person("Konstantinos", "Vantas", role = c("aut", "cre"),
-  email = "kon.vantas@gmail.com",
-  comment = c(ORCID = "0000-0001-6387-8791")),
-  person("Sharla", "Gelfand", email = "sharla.gelfand@gmail.com", role = c("ctb")))
+Authors@R: c(person("Konstantinos", "Vantas",
+                    role = c("aut", "cre"),
+                    email = "kon.vantas@gmail.com",
+                    comment = c(ORCID = "0000-0001-6387-8791")),
+             person("Sharla", "Gelfand",
+                     role = c("ctb", "rev"),
+                     comment = "Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185"),
+             person("Tim", "Trice",
+                    role = "rev",
+                    comment = "Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the  Greek National Data Bank for Hydrological and 
     Meteorological Information <http://www.hydroscope.gr/>. It covers 
