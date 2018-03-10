@@ -47,6 +47,7 @@ The data are retrieved from the Hydroscope's databases:
 Useful links:
 \itemize{
   \item \url{https://github.com/kvantas/hydroscoper}
+  \item \url{https://kvantas.github.io/hydroscoper/}
   \item Report bugs at \url{https://github.com/kvantas/hydroscoper/issues}
 }
 
@@ -56,7 +57,8 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Sharla Gelfand \email{sharla.gelfand@gmail.com} [contributor]
+  \item Sharla Gelfand (Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [contributor, NA]
+  \item Tim Trice (Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [NA]
 }
 
 }

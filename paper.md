@@ -22,7 +22,7 @@ affiliations:
 
 # Summary
 
-The Greek National Data bank for Hydrological and Meteorological Information, Hydroscope [@hydroscope2018], is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. Its main purpose is the formation of the basic infrastructure for the implementation of the European Community Directives 2000/60/EC, about the establishing of a framework for Community action in the field of water policy and 2007/60/EC, about the assessment and management of flood risks.
+The Greek National Data bank for Hydrological and Meteorological Information, Hydroscope [@hydroscope2018], is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. Its main purpose is the formation of the basic infrastructure for the implementation of the European Community Directives 2000/60/EC (i.e. establishment of a framework for Community action in the field of water policy) and 2007/60/EC, (i.e. assessment and management of flood risks).
 
 Hydroscope offers several national data sources in HTML and plain text files via a web interface, using the Enhydris database system [@christofides2011enhydris]. These data are well structured but are in Greek, thus limiting their usefulness. Fully reproducible research [@peng2011reproducible] can be tedious and error-prone using Hydroscope's web interface. On the contrary, using the Enhydris API for reproducibility requires external programs and scripting to import the data.
 

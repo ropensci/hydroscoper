@@ -71,7 +71,7 @@
       <a href="../articles/intro_hydroscoper.html">An introduction to `hydroscoper`</a>
     </li>
     <li>
-      <a href="../articles/stations_with_data.html">Hydroscoper's data sets</a>
+      <a href="../articles/stations_with_data.html">Using `hydroscoper`'s data</a>
     </li>
   </ul>
 </li>
@@ -115,8 +115,22 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
+            <h2 id="section-download-tables" class="hasAnchor"><a href="#section-download-tables" class="anchor"></a>Download tables</h2>
+            <p class="section-desc"><p>Funtions that retrieve tibbles with Hydroscope’s data for a given data source</p></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="get_tables.html">get_stations</a></code> <code><a href="get_tables.html">get_timeseries</a></code> <code><a href="get_tables.html">get_instruments</a></code> <code><a href="get_tables.html">get_water_basins</a></code> <code><a href="get_tables.html">get_water_divisions</a></code> <code><a href="get_tables.html">get_political_divisions</a></code> <code><a href="get_tables.html">get_variables</a></code> <code><a href="get_tables.html">get_units_of_measurement</a></code> <code><a href="get_tables.html">get_time_steps</a></code> <code><a href="get_tables.html">get_owners</a></code> <code><a href="get_tables.html">get_instruments_type</a></code> <code><a href="get_tables.html">get_station_type</a></code> <code><a href="get_tables.html">get_database</a></code> </p>
+          </td>
+          <td><p>Get tibbles from Hydroscope</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-download-time-series" class="hasAnchor"><a href="#section-download-time-series" class="anchor"></a>Download time series</h2>
+            <p class="section-desc"><p>Retrieve a tibble with time series’ values from Hydroscope</p></p>
           </th>
         </tr>
         <tr>
@@ -125,19 +139,15 @@
             <p><code><a href="get_data.html">get_data</a></code> </p>
           </td>
           <td><p>Get time series values in a tibble</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="get_tables.html">get_stations</a></code> <code><a href="get_tables.html">get_timeseries</a></code> <code><a href="get_tables.html">get_instruments</a></code> <code><a href="get_tables.html">get_water_basins</a></code> <code><a href="get_tables.html">get_water_divisions</a></code> <code><a href="get_tables.html">get_political_divisions</a></code> <code><a href="get_tables.html">get_variables</a></code> <code><a href="get_tables.html">get_units_of_measurement</a></code> <code><a href="get_tables.html">get_time_steps</a></code> <code><a href="get_tables.html">get_owners</a></code> <code><a href="get_tables.html">get_instruments_type</a></code> <code><a href="get_tables.html">get_station_type</a></code> <code><a href="get_tables.html">get_database</a></code> </p>
-          </td>
-          <td><p>Get tibbles from Hydroscope</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="greece_borders.html">greece_borders</a></code> </p>
-          </td>
-          <td><p>Greek borders</p></td>
-        </tr><tr>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-miscellaneous-functions" class="hasAnchor"><a href="#section-miscellaneous-functions" class="anchor"></a>Miscellaneous functions</h2>
+            <p class="section-desc"><p>Internal functions and helpers</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
             <p><code><a href="hydro_coords.html">hydro_coords</a></code> </p>
@@ -149,18 +159,20 @@
             <p><code><a href="hydro_translate.html">hydro_translate</a></code> </p>
           </td>
           <td><p>Translate Greek names and terms to English</p></td>
-        </tr><tr>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+            <p class="section-desc"><p>The internal datasets of the package</p></p>
+          </th>
+        </tr>
+        <tr>
           <!--  -->
           <td>
-            <p><code><a href="hydroscoper.html">hydroscoper</a></code> </p>
+            <p><code><a href="greece_borders.html">greece_borders</a></code> </p>
           </td>
-          <td><p>hydroscoper: Interface to Hydroscope</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="hydroscoper_defunct.html">get_coords</a></code> </p>
-          </td>
-          <td><p>Defunct functions in hydroscoper</p></td>
+          <td><p>Greek borders</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -182,7 +194,10 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-download-tables">Download tables</a></li>
+      <li><a href="#section-download-time-series">Download time series</a></li>
+      <li><a href="#section-miscellaneous-functions">Miscellaneous functions</a></li>
+      <li><a href="#section-datasets">Datasets</a></li>
     </ul>
   </div>
 </div>
