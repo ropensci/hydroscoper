@@ -1,5 +1,5 @@
 ---
-title: "Hydroscoper's data sets"
+title: "Using `hydroscoper`'s data"
 author: "Konstantinos Vantas"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
+ 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -60,7 +60,7 @@ ggplot() +
   theme_bw()
 ```
 
-## Stations with available time series location
+## Stations with available time series 
 
 The location of the stations with time series available to download are presented at the following map.
 
