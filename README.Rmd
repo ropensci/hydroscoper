@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 vignettes:
 
  * [An introduction to `hydroscoper`](https://kvantas.github.io/hydroscoper/articles/intro_hydroscoper.html) with details about the Hydroscope project and the package.
- * [Using `hydroscoper's` data sets](https://kvantas.github.io/hydroscoper/articles/stations_with_data.html) with a simple example of how to use the package's internal data sets.
+ * [Using `hydroscoper`'s data sets](https://kvantas.github.io/hydroscoper/articles/stations_with_data.html) with a simple example of how to use the package's internal data sets.
  
 ## Installation
 

@@ -87,16 +87,16 @@
 <li>
 <a href="https://kvantas.github.io/hydroscoper/articles/intro_hydroscoper.html">An introduction to <code>hydroscoper</code></a> with details about the Hydroscope project and the package.</li>
 <li>
-<a href="https://kvantas.github.io/hydroscoper/articles/stations_with_data.html">Using <code>hydroscoper's</code> data sets</a> with a simple example of how to use the package’s internal data sets.</li>
+<a href="https://kvantas.github.io/hydroscoper/articles/stations_with_data.html">Using <code>hydroscoper</code>’s data sets</a> with a simple example of how to use the package’s internal data sets.</li>
 </ul>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the stable release from CRAN with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"hydroscoper"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"hydroscoper"</span>)</a></code></pre></div>
 <p>You can install the development version from GitHub with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"kvantas/hydroscoper"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"kvantas/hydroscoper"</span>)</a></code></pre></div>
 </div>
 <div id="using-hydroscoper" class="section level2">
 <h2 class="hasAnchor">
@@ -128,32 +128,32 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a minimal example which shows how to get the station’s <a href="(http://kyy.hydroscope.gr/stations/d/200200/)">200200</a> precipitation time series <a href="http://kyy.hydroscope.gr/timeseries/d/56/">56</a> from the <a href="http://kyy.hydroscope.gr">kyy</a> sub-domain.</p>
 <p>Load libraries:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hydroscoper)
-<span class="kw">library</span>(tibble)
-<span class="kw">library</span>(ggplot2)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
 <p>We will use the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)
-ts_raw
-<span class="co">#&gt; # A tibble: 147,519 x 3</span>
-<span class="co">#&gt;    date                value comment</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span>
-<span class="co">#&gt;  1 1985-05-06 08:00:00    0. 1      </span>
-<span class="co">#&gt;  2 1985-05-06 08:30:00    0. 1      </span>
-<span class="co">#&gt;  3 1985-05-06 09:00:00    0. 1      </span>
-<span class="co">#&gt;  4 1985-05-06 09:30:00    0. 1      </span>
-<span class="co">#&gt;  5 1985-05-06 10:00:00    0. 1      </span>
-<span class="co">#&gt;  6 1985-05-06 10:30:00    0. 1      </span>
-<span class="co">#&gt;  7 1985-05-06 11:00:00    0. 1      </span>
-<span class="co">#&gt;  8 1985-05-06 11:30:00    0. 1      </span>
-<span class="co">#&gt;  9 1985-05-06 12:00:00    0. 1      </span>
-<span class="co">#&gt; 10 1985-05-06 12:30:00    0. 1      </span>
-<span class="co">#&gt; # ... with 147,509 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">ts_raw</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;    date                value comment</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  1 1985-05-06 08:00:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  2 1985-05-06 08:30:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;  3 1985-05-06 09:00:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  4 1985-05-06 09:30:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  5 1985-05-06 10:00:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  6 1985-05-06 10:30:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  7 1985-05-06 11:00:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  8 1985-05-06 11:30:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  9 1985-05-06 12:00:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 10 1985-05-06 12:30:00    0. 1      </span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; # ... with 147,509 more rows</span></a></code></pre></div>
 <p>Let’s create a plot:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> ts_raw, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value))<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">title=</span> <span class="st">"30 min precipitation for station 200200"</span>,
-       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain height (mm)"</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_classic</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts_raw, <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value))<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span> <span class="st">"30 min precipitation for station 200200"</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain height (mm)"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
 <p><img src="reference/figures/README-plot_time_series-1.png" width="672"></p>
 </div>
 <div id="meta" class="section level2">
@@ -167,11 +167,9 @@ ts_raw
 <li>All data are from the public data sources in <a href="http://www.hydroscope.gr/" class="uri">http://www.hydroscope.gr/</a>.</li>
 </ul>
 </li>
-<li>
-<p>Get citation information for <code>hydroscoper</code> in R by running:</p>
-<pre><code>citation("hydroscoper")</code></pre>
-</li>
+<li>Get citation information for <code>hydroscoper</code> in R by running:</li>
 </ul>
+<pre><code>citation("hydroscoper")</code></pre>
 </div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
