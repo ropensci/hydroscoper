@@ -14,3 +14,4 @@
 ^data-raw$
 ^LICENSE\.md$
 ^_pkgdown\.yml$
+^codemeta\.json$

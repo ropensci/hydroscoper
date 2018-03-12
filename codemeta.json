@@ -1,0 +1,184 @@
+{
+  "@context": ["http://purl.org/codemeta/2.0", "http://schema.org"],
+  "@type": "SoftwareSourceCode",
+  "identifier": "hydroscoper",
+  "description": "R interface to the  Greek National Data Bank for Hydrological and \n    Meteorological Information <http://www.hydroscope.gr/>. It covers \n    Hydroscope's data sources and provides functions to transliterate, \n    translate and download them into tidy dataframes (tibbles).",
+  "name": "hydroscoper: Interface to to the Greek National Data Bank for Hydrometeorological Information",
+  "codeRepository": "https://github.com/kvantas/hydroscoper",
+  "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "1.0.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.4.3",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.4.3 (2017-11-30)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Central R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Konstantinos",
+      "familyName": "Vantas",
+      "email": "kon.vantas@gmail.com",
+      "@id": "https://orcid.org/0000-0001-6387-8791"
+    }
+  ],
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Sharla",
+      "familyName": "Gelfand"
+    }
+  ],
+  "maintainer": {
+    "@type": "Person",
+    "givenName": "Konstantinos",
+    "familyName": "Vantas",
+    "email": "kon.vantas@gmail.com",
+    "@id": "https://orcid.org/0000-0001-6387-8791"
+  },
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "version": "2.2.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": "1.0.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "stringi",
+      "name": "stringi",
+      "version": "1.1.6",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "stringr",
+      "name": "stringr",
+      "version": "1.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble(>=1.4.1)",
+      "name": "tibble(>=1.4.1)"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "pingr",
+      "name": "pingr",
+      "version": "1.1.2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "readr",
+      "name": "readr",
+      "version": "1.1.1",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
+      "version": "1.5",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "plyr",
+      "name": "plyr",
+      "version": "1.8.4",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Central R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": "3.4.0"
+    }
+  ],
+  "contIntegration": "https://travis-ci.org/ropensci/hydroscoper",
+  "releaseNotes": "https://github.com/kvantas/hydroscoper/blob/master/NEWS.md",
+  "readme": "https://github.com/kvantas/hydroscoper/blob/master/README.md",
+  "fileSize": "461.19KB"
+}
