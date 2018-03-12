@@ -1,14 +1,16 @@
-# hydroscoper 0.2.4 (Release date: 2018-02-21)
+# hydroscoper 1.0.0 (Release date: 2018-03-12)
+
+* `hydroscoper` was transfered to rOpenSci: https://github.com/ropensci/hydroscoper
 
 * General
 
-  - This is a major update. All the functions were rewritten utilizing the Enhydris API.
+  - This is a major update. All the functions are rewritten utilizing the Enhydris API.
   - The included data in the package cover all Hydroscope's databases.
-  - Added vignettes "An introduction to `hydroscoper`" and  "Hydroscoper's data-sets".
-  - Added package documentation page.
+  - Add vignettes "An introduction to `hydroscoper`" and  "Using `hydroscoper`'s data".
+  - Add package documentation site.
   - Use pingr package to check if a sub-domain is alive.
   - All the functions return tibbles.
-  - Added `greece_borders` dataset.
+  - Add `greece_borders` dataset.
 
 * New functionality:
 
@@ -33,7 +35,7 @@
 
 * Defuncs
 
-  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points` raw format to a tidy data frame.
+  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points' raw format to a tidy data frame.
 
 --------------------------------------------------------------------------------
 

@@ -4,14 +4,14 @@ hydroscoper
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![Travis-CI Build
-Status](https://travis-ci.org/kvantas/hydroscoper.svg?branch=master)](https://travis-ci.org/kvantas/hydroscoper)
+Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://travis-ci.org/ropensci/hydroscoper)
 [![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/kvantas/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/kvantas/hydroscoper)
-[![codecov](https://codecov.io/github/kvantas/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/kvantas/hydroscoper)
+Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper)
+[![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-0.2.4-orange.svg?style=flat-square)](https://github.com/kvantas/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.0.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
@@ -21,14 +21,14 @@ version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-
 `hydroscoper` is an R interface to the Greek National Data Bank for
 Hydrological and Meteorological Information,
 [Hydroscope](http://www.hydroscope.gr/). For more details checkout the
-package’s [website](https://kvantas.github.io/hydroscoper/) and the
+package’s [website](https://ropensci.github.io/hydroscoper/) and the
 vignettes:
 
   - [An introduction to
-    `hydroscoper`](https://kvantas.github.io/hydroscoper/articles/intro_hydroscoper.html)
+    `hydroscoper`](https://ropensci.github.io/hydroscoper/articles/intro_hydroscoper.html)
     with details about the Hydroscope project and the package.
   - [Using `hydroscoper`’s data
-    sets](https://kvantas.github.io/hydroscoper/articles/stations_with_data.html)
+    sets](https://ropensci.github.io/hydroscoper/articles/stations_with_data.html)
     with a simple example of how to use the package’s internal data
     sets.
 

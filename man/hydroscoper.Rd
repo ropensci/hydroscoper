@@ -46,9 +46,9 @@ The data are retrieved from the Hydroscope's databases:
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/kvantas/hydroscoper}
-  \item \url{https://kvantas.github.io/hydroscoper/}
-  \item Report bugs at \url{https://github.com/kvantas/hydroscoper/issues}
+  \item \url{https://github.com/ropensci/hydroscoper}
+  \item \url{https://ropensci.github.io/hydroscoper/}
+  \item Report bugs at \url{https://github.com/ropensci/hydroscoper/issues}
 }
 
 }
