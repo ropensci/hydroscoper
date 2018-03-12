@@ -48,17 +48,13 @@ Example
 
 This is a minimal example which shows how to get the station's [200200]((http://kyy.hydroscope.gr/stations/d/200200/)) precipitation time series [56](http://kyy.hydroscope.gr/timeseries/d/56/) from the [kyy](http://kyy.hydroscope.gr) sub-domain.
 
-Load libraries:
+Load libraries and get data:
 
 ``` r
 library(hydroscoper)
 library(tibble)
 library(ggplot2)
-```
 
-We will use the package's data `stations` and `timeseries`, to reduce the time needed with data munging. We can subset the station's data for the `kyy` sub-domain with:
-
-``` r
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
 #> # A tibble: 147,519 x 3

@@ -127,12 +127,12 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a minimal example which shows how to get the station’s <a href="(http://kyy.hydroscope.gr/stations/d/200200/)">200200</a> precipitation time series <a href="http://kyy.hydroscope.gr/timeseries/d/56/">56</a> from the <a href="http://kyy.hydroscope.gr">kyy</a> sub-domain.</p>
-<p>Load libraries:</p>
+<p>Load libraries and get data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hydroscoper)
 <span class="kw">library</span>(tibble)
-<span class="kw">library</span>(ggplot2)</code></pre></div>
-<p>We will use the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)
+<span class="kw">library</span>(ggplot2)
+
+ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)
 ts_raw
 <span class="co">#&gt; # A tibble: 147,519 x 3</span>
 <span class="co">#&gt;    date                value comment</span>
