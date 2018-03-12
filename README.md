@@ -2,17 +2,37 @@ hydroscoper
 ================
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis-CI Build Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://travis-ci.org/ropensci/hydroscoper) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper) [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper) [![packageversion](https://img.shields.io/badge/Package%20version-1.0.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper) [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html) [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185) [![DOI](https://zenodo.org/badge/114094911.svg)](https://zenodo.org/badge/latestdoi/114094911)
+
+[![Travis-CI Build
+Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://travis-ci.org/ropensci/hydroscoper)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper)
+[![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
+[![minimal R
+version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.0.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
+[![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/>
 
-`hydroscoper` is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). For more details checkout the package's [website](https://ropensci.github.io/hydroscoper/) and the vignettes:
+`hydroscoper` is an R interface to the Greek National Data Bank for
+Hydrological and Meteorological Information,
+[Hydroscope](http://www.hydroscope.gr/). For more details checkout the
+package’s [website](https://ropensci.github.io/hydroscoper/) and the
+vignettes:
 
--   [An introduction to `hydroscoper`](https://ropensci.github.io/hydroscoper/articles/intro_hydroscoper.html) with details about the Hydroscope project and the package.
--   [Using `hydroscoper`'s data sets](https://ropensci.github.io/hydroscoper/articles/stations_with_data.html) with a simple example of how to use the package's internal data sets.
+  - [An introduction to
+    `hydroscoper`](https://ropensci.github.io/hydroscoper/articles/intro_hydroscoper.html)
+    with details about the Hydroscope project and the package.
+  - [Using `hydroscoper`’s data
+    sets](https://ropensci.github.io/hydroscoper/articles/stations_with_data.html)
+    with a simple example of how to use the package’s internal data
+    sets.
 
-Installation
-------------
+## Installation
 
 Install the stable release from CRAN with:
 
@@ -27,26 +47,30 @@ You can install the development version from GitHub with:
 devtools::install_github("ropensci/hydroscoper")
 ```
 
-Using hydroscoper
------------------
+## Using hydroscoper
 
 The functions that are provided by `hydroscoper` are:
 
--   `get_stations, get_timeseries, ..., etc.` family functions, to retrieve tibbles with Hydroscope's data for a given data source.
--   `get_data`, to retrieve a tibble with time series' values.
--   `hydro_coords`, to convert Hydroscope's points' raw format to a tibble.
--   `hydro_translate` to translate various terms and names from Greek to English.
+  - `get_stations, get_timeseries, ..., etc.` family functions, to
+    retrieve tibbles with Hydroscope’s data for a given data source.
+  - `get_data`, to retrieve a tibble with time series’ values.  
+  - `hydro_coords`, to convert Hydroscope’s points’ raw format to a
+    tibble.
+  - `hydro_translate` to translate various terms and names from Greek to
+    English.
 
 The data sets that are provided by `hydroscoper` are:
 
--   `stations` a tibble with stations' data from Hydroscope.
--   `timeseries` a tibble with time series' data from Hydroscope.
--   `greece_borders` a tibble with the borders of Greece.
+  - `stations` a tibble with stations’ data from Hydroscope.
+  - `timeseries` a tibble with time series’ data from Hydroscope.
+  - `greece_borders` a tibble with the borders of Greece.
 
-Example
--------
+## Example
 
-This is a minimal example which shows how to get the station's [200200]((http://kyy.hydroscope.gr/stations/d/200200/)) precipitation time series [56](http://kyy.hydroscope.gr/timeseries/d/56/) from the [kyy](http://kyy.hydroscope.gr) sub-domain.
+This is a minimal example which shows how to get the station’s
+[200200](\(http://kyy.hydroscope.gr/stations/d/200200/\)) precipitation
+time series [56](http://kyy.hydroscope.gr/timeseries/d/56/) from the
+[kyy](http://kyy.hydroscope.gr) sub-domain.
 
 Load libraries and get data:
 
@@ -73,7 +97,7 @@ ts_raw
 #> # ... with 147,509 more rows
 ```
 
-Let's create a plot:
+Let’s create a plot:
 
 ``` r
 ggplot(data = ts_raw, aes(x = date, y = value))+
@@ -83,21 +107,24 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
   theme_classic()
 ```
 
-![](man/figures/README-plot_time_series-1.png)
+![](man/figures/README-plot_time_series-1.png)<!-- -->
 
-Meta
-----
+## Meta
 
--   Bug reports, suggestions, and code are welcome. Please see [Contributing](/CONTRIBUTING.md).
--   Licence:
-    -   All code is licensed MIT.
-    -   All data are from the public data sources in <http://www.hydroscope.gr/>.
--   Get citation information for `hydroscoper` in R by running:
+  - Bug reports, suggestions, and code are welcome. Please see
+    [Contributing](/CONTRIBUTING.md).
+  - Licence:
+      - All code is licensed MIT.
+      - All data are from the public data sources in
+        <http://www.hydroscope.gr/>.
+  - Get citation information for `hydroscoper` in R by
+running:
 
-        citation("hydroscoper")
+<!-- end list -->
 
-References
-----------
+    citation("hydroscoper")
+
+## References
 
 [Hydroscope](http://www.hydroscope.gr/)
 
