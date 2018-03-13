@@ -3,7 +3,7 @@
   "@type": "SoftwareSourceCode",
   "identifier": "hydroscoper",
   "description": "R interface to the  Greek National Data Bank for Hydrological and \n    Meteorological Information <http://www.hydroscope.gr/>. It covers \n    Hydroscope's data sources and provides functions to transliterate, \n    translate and download them into tidy dataframes (tibbles).",
-  "name": "hydroscoper: Interface to to the Greek National Data Bank for Hydrometeorological Information",
+  "name": "hydroscoper: Interface to the Greek National Data Bank for Hydrometeorological Information",
   "codeRepository": "https://github.com/kvantas/hydroscoper",
   "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
   "license": "https://spdx.org/licenses/MIT",
