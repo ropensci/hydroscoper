@@ -1,0 +1,19 @@
+citHeader("To cite hydroscoper in publications, please use:")
+
+citEntry(
+  entry = "Article",
+  author = as.person("Konstantinos Vantas"),
+  title = "{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information",
+  doi = "10.21105/joss.00625",
+  year = 2018,
+  month = "mar",
+  publisher = "The Open Journal",
+  volume = 2,
+  number = 23,
+  journal = "The Journal of Open Source Software",
+
+  textVersion = paste("Vantas, (2018).",
+  "hydroscoper: R interface to the Greek National Data Bank for Hydrological and Meteorological Information.",
+  "Journal of Open Source Software, 3(23), 625",
+  "DOI:10.21105/joss.00625"),
+)

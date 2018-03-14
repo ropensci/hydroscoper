@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
-
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.00625/status.svg)](https://doi.org/10.21105/joss.00625)
 
 <img src="man/figures/hydroscoper_hex.png" align="right" height="220"/> 
 
@@ -95,10 +95,9 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
     + All code is licensed MIT.
     + All data are from the public data sources in http://www.hydroscope.gr/.
 * Get citation information for `hydroscoper` in R by running:
-```
+```{r citation}
 citation("hydroscoper")
 ```
-
 
 ## References
 [Hydroscope](http://www.hydroscope.gr/)
