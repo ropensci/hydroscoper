@@ -35,12 +35,11 @@
 #' }
 #'
 #' @references
-#' Stations' data are retrieved from the Hydroscope's databases:
+#' Stations' data are retrieved from the Hydroscope's
+#' \url{http://www.hydroscope.gr/} databases:
 #' \itemize{
-#' \item Ministry of Environment, Energy and Climate Change,
-#' \url{http://kyy.hydroscope.gr}
-#' \item Ministry of Rural Development and Food,
-#' \url{http://ypaat.hydroscope.gr}
+#' \item Ministry of Environment, Energy and Climate Change.
+#' \item Ministry of Rural Development and Food.
 #'}
 #'
 #' Tibble, \url{http://tibble.tidyverse.org/}

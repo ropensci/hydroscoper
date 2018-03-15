@@ -2,7 +2,7 @@
 #'
 #' @description \code{hydroscoper} provides an R interface to the  Greek
 #' National Data Bank for Hydrological and Meteorological Information
-#' http://www.hydroscope.gr/.
+#' \url{http://www.hydroscope.gr/}.
 #'
 #' \code{hydroscoper} covers Hydroscope's data sources using the
 #' \href{http://bit.ly/2CLlAAA}{Enhydris API} and provides functions to:
@@ -23,12 +23,10 @@
 #'
 #' The data are retrieved from the Hydroscope's databases:
 #' \itemize{
-#'   \item \href{http://kyy.hydroscope.gr}{Ministry of Environment, Energy and
-#'   Climate Change}.
-#'   \item \href{http://ypaat.hydroscope.gr}{Ministry of Rural Development
-#'   and Food}.
-#'   \item \href{http://emy.hydroscope.gr}{National Meteorological Service}.
-#'   \item  \href{http://deh.hydroscope.gr}{Greek Public Power Corporation}.
+#'   \item Ministry of Environment, Energy and Climate Change.
+#'   \item Ministry of Rural Development and Food.
+#'   \item  National Meteorological Service.
+#'   \item  Greek Public Power Corporation.
 #'}
 #'
 #' @name hydroscoper

@@ -130,16 +130,13 @@ kyy_db <- get_database(subdomain)
 
 }
 \references{
-The data are retrieved from the Hydroscope's databases:
+The data are retrieved from the Hydroscope's \url{http://www.hydroscope.gr/}
+databases:
 \itemize{
-\item Ministry of Environment, Energy and Climate Change,
-\url{http://kyy.hydroscope.gr}
-\item Ministry of Rural Development and Food,
-\url{http://ypaat.hydroscope.gr}
-\item National Meteorological Service,
-\url{http://emy.hydroscope.gr}
-\item{Greek Public Power Corporation},
-\url{http://deh.hydroscope.gr}
+\item Ministry of Environment, Energy and Climate Change.
+\item Ministry of Rural Development and Food.
+\item National Meteorological Service.
+\item Greek Public Power Corporation.
 }
 
 European Terrestrial Reference System 1989 (ETRS),
