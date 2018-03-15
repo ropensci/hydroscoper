@@ -118,34 +118,12 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
       - All code is licensed MIT.
       - All data are from the public data sources in
         <http://www.hydroscope.gr/>.
-  - Get citation information for `hydroscoper` in R by running:
+  - Get citation information for `hydroscoper` in R by
+running:
 
 <!-- end list -->
 
-``` r
-citation("hydroscoper")
-#> 
-#> To cite hydroscoper in publications, please use:
-#> 
-#>   Vantas, (2018). hydroscoper: R interface to the Greek National
-#>   Data Bank for Hydrological and Meteorological Information.
-#>   Journal of Open Source Software, 3(23), 625
-#>   DOI:10.21105/joss.00625
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Article{,
-#>     author = {Konstantinos Vantas},
-#>     title = {{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information},
-#>     doi = {10.21105/joss.00625},
-#>     year = {2018},
-#>     month = {mar},
-#>     publisher = {The Open Journal},
-#>     volume = {2},
-#>     number = {23},
-#>     journal = {The Journal of Open Source Software},
-#>   }
-```
+    citation("hydroscoper")
 
 ## References
 

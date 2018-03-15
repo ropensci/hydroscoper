@@ -95,7 +95,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
     + All code is licensed MIT.
     + All data are from the public data sources in http://www.hydroscope.gr/.
 * Get citation information for `hydroscoper` in R by running:
-```{r citation}
+```
 citation("hydroscoper")
 ```
 
