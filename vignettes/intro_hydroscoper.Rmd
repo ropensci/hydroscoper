@@ -72,10 +72,10 @@ It is also a look-up table with all the available measurements for a given stati
 
 ## Data sources
 
- * Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, http://kyy.hydroscope.gr/.
- * Ministry of Rural Development and Food, http://ypaat.hydroscope.gr.
- * National Meteorological Service, http://emy.hydroscope.gr.
- * Greek Public Power Corporation, http://deh.hydroscope.gr.
+ * Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, `http://kyy.hydroscope.gr/`.
+ * Ministry of Rural Development and Food, `http://ypaat.hydroscope.gr`.
+ * National Meteorological Service, `http://emy.hydroscope.gr`.
+ * Greek Public Power Corporation, `http://deh.hydroscope.gr`.
 
 Note that:
 
