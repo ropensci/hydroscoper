@@ -1,4 +1,4 @@
-# hydroscoper 1.0.0 (Release date: 2018-03-12)
+# hydroscoper 1.0.0 (Release date: 2018-03-16)
 
 * `hydroscoper` was transfered to rOpenSci: https://github.com/ropensci/hydroscoper
 

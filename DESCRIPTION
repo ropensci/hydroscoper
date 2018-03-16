@@ -8,16 +8,19 @@ Authors@R: c(person("Konstantinos", "Vantas",
                     comment = c(ORCID = "0000-0001-6387-8791")),
              person("Sharla", "Gelfand",
                      role = c("ctb", "rev"),
-                     comment = "Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185"),
+                     comment = "Sharla Gelfand reviewed the package for rOpenSci,
+                     see https://github.com/ropensci/onboarding/issues/185"),
              person("Tim", "Trice",
                     role = "rev",
-                    comment = "Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185"))
+                    comment = "Tim Trice reviewed the package for rOpenSci,
+                    see https://github.com/ropensci/onboarding/issues/185"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
-Description: R interface to the  Greek National Data Bank for Hydrological and 
+Description: R interface to the Greek National Data Bank for Hydrological and 
     Meteorological Information <http://www.hydroscope.gr/>. It covers 
     Hydroscope's data sources and provides functions to transliterate, 
     translate and download them into tidy dataframes (tibbles).
-URL: https://github.com/ropensci/hydroscoper, https://ropensci.github.io/hydroscoper/
+URL: https://github.com/ropensci/hydroscoper,
+    https://ropensci.github.io/hydroscoper/
 BugReports: https://github.com/ropensci/hydroscoper/issues             
 Depends: R (>= 3.4.0)
 License: MIT + file LICENSE
