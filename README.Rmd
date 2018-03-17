@@ -25,8 +25,7 @@ knitr::opts_chunk$set(
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00625/status.svg)](https://doi.org/10.21105/joss.00625)
 
-<img src="man/figures/hydroscoper_hex.png" align="right" height="220"/> 
-
+<img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align = "right" width = 120/>
 `hydroscoper` is an R interface to the  Greek National Data Bank for Hydrological and Meteorological Information, [Hydroscope](http://www.hydroscope.gr/). For more details checkout the package's [ website](https://ropensci.github.io/hydroscoper/) and the
 vignettes:
 
