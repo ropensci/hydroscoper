@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Citation and Authors • hydroscoper</title>
+<title>Summary • hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 <link href="pkgdown.css" rel="stylesheet">
 <script src="jquery.sticky-kit.min.js"></script>
 <script src="pkgdown.js"></script>
-<meta property="og:title" content="Citation and Authors" />
+<meta property="og:title" content="Summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -38,7 +38,7 @@
   </head>
 
   <body>
-    <div class="container template-citation-authors">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -98,45 +98,34 @@
 
       <div class="row">
   <div class="contents col-md-9">
-
     <div class="page-header">
-      <h1>Citation</h1>
+      <h1>Summary</h1>
     </div>
 
-    <p>Vantas K (2018).
-&ldquo;hydroscoper: R interface to the Greek National Data Bank for Hydrological and Meteorological Information.&rdquo;
-<em>The Journal of Open Source Software</em>, <b>2</b>(23).
-doi: <a href="http://doi.org/10.21105/joss.00625">10.21105/joss.00625</a>. 
-</p>
-    <pre>@Article{,
-  author = {Konstantinos Vantas},
-  title = {{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information},
-  doi = {10.21105/joss.00625},
-  year = {2018},
-  month = {mar},
-  publisher = {The Open Journal},
-  volume = {2},
-  number = {23},
-  journal = {The Journal of Open Source Software},
-}</pre>
-    <div class="page-header">
-      <h1>Authors</h1>
-    </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Konstantinos Vantas</strong>. Author, maintainer. <a href='https://orcid.org/0000-0001-6387-8791' target='orcid.widget'><img src='https://members.orcid.org/sites/default/files/vector_iD_icon.svg' class='orcid'></a>
-        </p>
-      </li>
-      <li>
-        <p><strong>Sharla Gelfand</strong>. Contributor, reviewer. 
-        <br /><small>Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185</small></p>
-      </li>
-      <li>
-        <p><strong>Tim Trice</strong>. Reviewer. 
-        <br /><small>Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185</small></p>
-      </li>
-    </ul>
+<hr>
+<p>title: ‘hydroscoper: R interface to the Greek National Data Bank for Hydrological and Meteorological Information’ authors:</p>
+<ul>
+<li>affiliation: 1 name: Konstantinos Vantas orcid: 0000-0001-6387-8791 date: “01 Mar 2017” output: html_document: default pdf_document: default bibliography: paper.bib tags:</li>
+<li>R</li>
+<li>tidy data</li>
+<li>Hydrology</li>
+<li>Meteorology</li>
+<li>Greece affiliations:</li>
+<li>index: 1 name: Faculty of Engineering, Aristotle University of Thessaloniki, Greece —</li>
+</ul>
+<div id="summary" class="section level1">
+
+<p>The Greek National Data bank for Hydrological and Meteorological Information, Hydroscope [@hydroscope2018], is the result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. Its main purpose is the formation of the basic infrastructure for the implementation of the European Community Directives 2000/60/EC (i.e. establishment of a framework for Community action in the field of water policy) and 2007/60/EC, (i.e. assessment and management of flood risks).</p>
+<p>Hydroscope offers several national data sources in HTML and plain text files via a web interface, using the Enhydris database system [@christofides2011enhydris]. These data are well structured but are in Greek, thus limiting their usefulness. Furthermore, fully reproducible research [@peng2011reproducible] can be tedious and error-prone using Hydroscope’s web interface. On the contrary, using the Enhydris API for reproducibility requires external programs and scripting to import the data.</p>
+<p><code>hydroscoper</code> [@hydroscoper2018] provides functionality for automatic retrieval and translation of Hydroscope’s data to English for use in R [@Rbase]. The main functions that can be utilized is the family of functions, <code>get_stations</code>, <code>get_timeseries</code>, <code>get_data</code>, etc., to easily download JSON and TXT files as tidy data frames [@Wickham2014]. The internal databases of the package can be used to run queries on the available stations and time series, reducing the time needed for downloading and data wrangling [@kandel2011research], as these data are rarely modified.</p>
+<p>The data have many applications. In general, availability of meteorological and hydrological information is essential for water resources management, water quality assessment and global change studies [@vafiadis1994hydroscope]. Also, these data can be used by researchers to forward their studies when specific requirements of time series are required, such as the estimation of rainfall erosivity [@vantas_sid2017]. Finally, the data are crucial to Greek organizations for the implementation of the Water Framework Directive 2000-2027 [@WFD].</p>
+</div>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
+</div>
+
 
   </div>
 

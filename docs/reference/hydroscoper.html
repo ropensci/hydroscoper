@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>hydroscoper: Interface to Hydroscope � hydroscoper • hydroscoper</title>
+<title>hydroscoper: Interface to Hydroscope — hydroscoper • hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,26 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="hydroscoper: Interface to Hydroscope — hydroscoper" />
+
+<meta property="og:description" content="hydroscoper provides an R interface to the  Greek
+National Data Bank for Hydrological and Meteorological Information
+http://www.hydroscope.gr/.
+hydroscoper covers Hydroscope's data sources using the
+Enhydris API and provides functions to:
+Transform the available tables and data sets into
+       tibbles.
+Transliterate the Greek Unicode names to Latin.
+Translate various Greek terms to English.
+" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -76,7 +89,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -99,14 +112,14 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>hydroscoper: Interface to Hydroscope</h1>
+    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/hydroscoper_package.R'><code>R/hydroscoper_package.R</code></a></small>
     </div>
 
     
     <p><code>hydroscoper</code> provides an R interface to the  Greek
 National Data Bank for Hydrological and Meteorological Information
-<a href='http://www.hydroscope.gr/'>http://www.hydroscope.gr/</a>.
-
-    <code>hydroscoper</code> covers Hydroscope's data sources using the
+<a href='http://www.hydroscope.gr/'>http://www.hydroscope.gr/</a>.</p>
+<p><code>hydroscoper</code> covers Hydroscope's data sources using the
 <a href='http://bit.ly/2CLlAAA'>Enhydris API</a> and provides functions to:</p><ol>
 <li><p>Transform the available tables and data sets into
        <a href='http://bit.ly/2Dg1sHY'>tibbles</a>.</p></li>
@@ -182,3 +195,4 @@ Other contributors:
 
   </body>
 </html>
+

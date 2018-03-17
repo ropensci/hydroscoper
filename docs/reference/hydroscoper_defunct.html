@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Defunct functions in hydroscoper � hydroscoper_defunct • hydroscoper</title>
+<title>Defunct functions in hydroscoper — hydroscoper_defunct • hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,17 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Defunct functions in hydroscoper — hydroscoper_defunct" />
+
+<meta property="og:description" content="These functions are no longer available in hydroscoper." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -76,7 +80,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -99,6 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Defunct functions in hydroscoper</h1>
+    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/defunct.R'><code>R/defunct.R</code></a></small>
     </div>
 
     
@@ -118,7 +123,8 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Defunct functions:</p><ul>
+    <p>Defunct functions:</p>
+<ul>
 <li><p><code>get_coords</code>: This function is defunct. Please use
  <code><a href='hydro_coords.html'>hydro_coords</a></code> to convert Hydroscope's points raw format to a
  tidy data frame.</p></li>
@@ -151,3 +157,4 @@
 
   </body>
 </html>
+

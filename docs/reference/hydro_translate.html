@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Translate Greek names and terms to English � hydro_translate • hydroscoper</title>
+<title>Translate Greek names and terms to English — hydro_translate • hydroscoper</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,18 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Translate Greek names and terms to English — hydro_translate" />
+
+<meta property="og:description" content="hydro_translate translates various Hydroscope's names and
+terms to English." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -76,7 +81,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -99,6 +104,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Translate Greek names and terms to English</h1>
+    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/hydro_translate.R'><code>R/hydro_translate.R</code></a></small>
     </div>
 
     
@@ -131,7 +137,8 @@ terms to English.</p>
 <li><p><code>division</code>, Water Division.</p></li>
 </ul><p>returns a character vector with translations of various hydrometeorological
 terms or organizations' names from Greek (with latin characters) to English.</p>
-<p>The organizations' names in <code>owner</code> are:</p><table><tr><td>
+<p>The organizations' names in <code>owner</code> are:</p>
+<table><tr><td>
 <strong>Code</strong>       </td>
 <td> <strong>Name</strong> </td>
 </tr><tr><td>
@@ -164,7 +171,8 @@ crete_natural_museum </td>
 </tr></table>
 
 
-<p>The Greek Water Divisions codes in <code>division</code> are:</p><table><tr><td>
+<p>The Greek Water Divisions codes in <code>division</code> are:</p>
+<table><tr><td>
 <strong>Code</strong>  </td>
 <td> <strong>Name</strong> </td>
 </tr><tr><td>
@@ -214,7 +222,8 @@ GR14 </td>
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>The dictionary used for the Greek to English translation is:</p><table><tr><td>
+    <p>The dictionary used for the Greek to English translation is:</p>
+<table><tr><td>
  <strong>Transliterated term</strong> </td>
 <td> <strong>English term</strong> </td>
 </tr><tr><td>
@@ -478,3 +487,4 @@ GR14 </td>
 
   </body>
 </html>
+
