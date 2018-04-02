@@ -89,7 +89,7 @@ test_that("Test that returns a JSON file as a tibble, no translit", {
   expect_is(enhydris_get("kyy", api_value = "owner", translit = FALSE),
             "tbl_df")
 })
-test_that("Test that returns a TXT file as a tibble", {
+test_that("Test that KYY returns a TXT file as a tibble", {
   skip_on_cran()
   skip_on_travis()
   skip_on_appveyor()
@@ -97,7 +97,24 @@ test_that("Test that returns a TXT file as a tibble", {
   expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
             "tbl_df")
 
+  test_that("Test that KYY returns a TXT file as a tibble", {
+    skip_on_cran()
+    skip_on_travis()
+    skip_on_appveyor()
+    skip_if_not_online("kyy")
+    expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
+              "tbl_df")
 })
+
+test_that("Test that YPAAT returns a TXT file as a tibble", {
+    skip_on_cran()
+    skip_on_travis()
+    skip_on_appveyor()
+    skip_if_not_online("ypaat")
+    expect_is(enhydris_get("ypaat", api_value = "time_data", time_id = 181),
+              "tbl_df")
+})
+
 test_that("Test that returns an error if time-series doesn't exist", {
   skip_on_cran()
   skip_on_travis()
