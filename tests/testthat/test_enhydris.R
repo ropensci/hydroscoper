@@ -96,6 +96,7 @@ test_that("Test that KYY returns a TXT file as a tibble", {
   skip_if_not_online("kyy")
   expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
             "tbl_df")
+})
 
   test_that("Test that KYY returns a TXT file as a tibble", {
     skip_on_cran()
