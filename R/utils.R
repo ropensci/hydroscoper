@@ -10,11 +10,17 @@ server_alive <- function(subdomain) {
   err_msg <- paste("The server for that data source is probably down,",
                    "get more info at hydroscope@hydroscope.gr or try",
                    "again later.")
-  if (all(is.na(pingr::ping_port(server_address(subdomain),
-                                 port = 80L,
-                                 count = 3)))) {
+  tryCatch({
+    pingr::ping_port(server_address(subdomain),
+                     port = 80L,
+                     count = 1)
+    if (all(is.na(pingr::ping_port(server_address(subdomain),
+                                   port = 80L,
+                                   count = 3)))) stop()
+  },
+  error = function(e) {
     stop(err_msg, call. = FALSE)
-  }
+  })
 }
 
 #' create coords from points
