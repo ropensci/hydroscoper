@@ -156,7 +156,7 @@ hydro_translate <- function(x,
   # match translate values
   value <- match.arg(value)
 
-  # transalte x
+  # translate x
   switch (value,
           owner = map_owners(x),
           variable = map_variables(x),
