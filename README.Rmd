@@ -79,7 +79,7 @@ ts_raw
 
 Let's create a plot:
 
-```{r plot_time_series}
+```{r plot_time_series, fig.height = 4, fig.width = 6}
 ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
@@ -93,11 +93,26 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 * Licence:
     + All code is licensed MIT.
     + All data are from the public data sources in http://www.hydroscope.gr/.
-* Get citation information for `hydroscoper` in R by running:
+* To cite `hydroscoper` please use:
 ```
-citation("hydroscoper")
+Vantas K., (2018). hydroscoper: R interface to the Greek National Data Bank for
+Hydrological and Meteorological Information. Journal of Open Source Software,
+3(23), 625 DOI:10.21105/joss.00625
 ```
-
+or the BibTeX entry:
+```
+@Article{kvantas2018,
+author = {Konstantinos Vantas},
+title = {{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information},
+doi = {10.21105/joss.00625},
+year = {2018},
+month = {mar},
+publisher = {The Open Journal},
+volume = {2},
+number = {23},
+journal = {The Journal of Open Source Software}
+}
+```
 ## References
 [Hydroscope](http://www.hydroscope.gr/)
 

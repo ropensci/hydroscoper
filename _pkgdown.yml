@@ -1,6 +1,10 @@
 title: hydroscoper
 
 reference:
+  - title: Find Data
+    desc: Functions that can be used to find data
+    contents:
+    - find_stations
   - title: Download tables
     desc: Funtions that retrieve tibbles with Hydroscope's data for a given data source
     contents:

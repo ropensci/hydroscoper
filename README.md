@@ -90,13 +90,29 @@ Meta
 -   Licence:
     -   All code is licensed MIT.
     -   All data are from the public data sources in <http://www.hydroscope.gr/>.
--   Get citation information for `hydroscoper` in R by running:
+-   To cite `hydroscoper` please use:
 
-        citation("hydroscoper")
+        Vantas K., (2018). hydroscoper: R interface to the Greek National Data Bank for
+        Hydrological and Meteorological Information. Journal of Open Source Software,
+        3(23), 625 DOI:10.21105/joss.00625
 
-References
-----------
+    or the BibTeX entry:
 
-[Hydroscope](http://www.hydroscope.gr/)
+        @Article{kvantas2018,
+        author = {Konstantinos Vantas},
+        title = {{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information},
+        doi = {10.21105/joss.00625},
+        year = {2018},
+        month = {mar},
+        publisher = {The Open Journal},
+        volume = {2},
+        number = {23},
+        journal = {The Journal of Open Source Software}
+        }
+
+    References
+    ----------
+
+    [Hydroscope](http://www.hydroscope.gr/)
 
 [![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
