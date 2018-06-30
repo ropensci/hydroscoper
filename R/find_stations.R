@@ -8,7 +8,7 @@
 #' @param latitude  a numeric value in degrees
 #'
 #' @return If the given longitude is in [24, 38] and the latitude is in [34, 42]
-#' (i.e. are valid values for Greece) returns are ordered tibble with the
+#' (i.e. are valid values for Greece) returns an ordered tibble with the
 #' station_id, name, subdomain and distance values in km. The station's data
 #' that are used  come from the `stations` dataset. Otherwise returns an error
 #' message.
