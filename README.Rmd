@@ -79,7 +79,7 @@ ts_raw
 
 Let's create a plot:
 
-```{r plot_time_series, fig.height = 4, fig.width = 6}
+```{r plot_time_series}
 ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
