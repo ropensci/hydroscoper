@@ -21,16 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Get tibbles from Hydroscope — get_tables" />
 
 <meta property="og:description" content="A family of functions that return a tibble from a specific
  database from Hydroscope using the Enhydris API. get_database returns
  a named list of tibbles using all the family's functions." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +61,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hydroscoper</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hydroscoper</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -94,6 +106,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -101,18 +114,21 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get tibbles from Hydroscope</h1>
-    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/get_tables.R'><code>R/get_tables.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/hydroscoper/blob/master/R/get_tables.R'><code>R/get_tables.R</code></a></small>
+    <div class="hidden name"><code>get_tables.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A family of functions that return a tibble from a specific
  database from Hydroscope using the Enhydris API. <code>get_database</code> returns
  a named list of tibbles using all the family's functions.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_stations</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -147,7 +163,7 @@
 
 <span class='fu'>get_database</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -277,6 +293,8 @@ Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com<
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

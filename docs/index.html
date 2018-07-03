@@ -8,8 +8,8 @@
 <title>Interface to the Greek National Data Bank for Hydrometeorological Information • hydroscoper</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the Greek National Data Bank for Hydrometeorological Information">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="Interface to the Greek National Data Bank for Hydrometeorological Information">
 <meta property="og:description" content="R interface to the Greek National Data Bank for Hydrological and 
     Meteorological Information &lt;http://www.hydroscope.gr/&gt;. It covers 
     Hydroscope's data sources and provides functions to transliterate, 
@@ -21,7 +21,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -30,8 +30,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">hydroscoper</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">hydroscoper</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -79,12 +83,11 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     
 
     
     
-<div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <p><img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align="right" width="120/"><code>hydroscoper</code> is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, <a href="http://www.hydroscope.gr/">Hydroscope</a>. For more details checkout the package’s <a href="https://ropensci.github.io/hydroscoper/">website</a> and the vignettes:</p>
@@ -98,10 +101,10 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install the stable release from CRAN with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"hydroscoper"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"hydroscoper"</span>)</a></code></pre></div>
 <p>You can install the development version from GitHub with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/hydroscoper"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"ropensci/hydroscoper"</span>)</a></code></pre></div>
 </div>
 <div id="using-hydroscoper" class="section level2">
 <h2 class="hasAnchor">
@@ -133,33 +136,33 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a minimal example which shows how to get the station’s <a href="(http://kyy.hydroscope.gr/stations/d/200200/)">200200</a> precipitation time series <a href="http://kyy.hydroscope.gr/timeseries/d/56/">56</a> from the <a href="http://kyy.hydroscope.gr">kyy</a> sub-domain.</p>
 <p>Load libraries and get data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hydroscoper)
-<span class="kw">library</span>(tibble)
-<span class="kw">library</span>(ggplot2)
-
-ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)
-ts_raw
-<span class="co">#&gt; # A tibble: 147,519 x 3</span>
-<span class="co">#&gt;    date                value comment</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span>
-<span class="co">#&gt;  1 1985-05-06 08:00:00    0. 1      </span>
-<span class="co">#&gt;  2 1985-05-06 08:30:00    0. 1      </span>
-<span class="co">#&gt;  3 1985-05-06 09:00:00    0. 1      </span>
-<span class="co">#&gt;  4 1985-05-06 09:30:00    0. 1      </span>
-<span class="co">#&gt;  5 1985-05-06 10:00:00    0. 1      </span>
-<span class="co">#&gt;  6 1985-05-06 10:30:00    0. 1      </span>
-<span class="co">#&gt;  7 1985-05-06 11:00:00    0. 1      </span>
-<span class="co">#&gt;  8 1985-05-06 11:30:00    0. 1      </span>
-<span class="co">#&gt;  9 1985-05-06 12:00:00    0. 1      </span>
-<span class="co">#&gt; 10 1985-05-06 12:30:00    0. 1      </span>
-<span class="co">#&gt; # ... with 147,509 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(hydroscoper)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">library</span>(tibble)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">ts_raw &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_data.html">get_data</a></span>(<span class="dt">subdomain =</span> <span class="st">"kyy"</span>, <span class="dt">time_id =</span> <span class="dv">56</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">ts_raw</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; # A tibble: 147,519 x 3</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt;    date                value comment</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  1 1985-05-06 08:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  2 1985-05-06 08:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  3 1985-05-06 09:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  4 1985-05-06 09:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  5 1985-05-06 10:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  6 1985-05-06 10:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  7 1985-05-06 11:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  8 1985-05-06 11:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co">#&gt;  9 1985-05-06 12:00:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co">#&gt; 10 1985-05-06 12:30:00     0 1      </span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co">#&gt; # ... with 147,509 more rows</span></a></code></pre></div>
 <p>Let’s create a plot:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="dt">data =</span> ts_raw, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value))<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/geom_path">geom_line</a></span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">title=</span> <span class="st">"30 min precipitation for station 200200"</span>,
-       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain height (mm)"</span>)<span class="op">+</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_classic</a></span>()</code></pre></div>
-<p><img src="/home/kostis/Projects/Rprojects/hydroscoper/man/figures/README-plot_time_series-1.png" width="576"></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts_raw, <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> value))<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_line</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span> <span class="st">"30 min precipitation for station 200200"</span>,</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">       <span class="dt">x=</span><span class="st">"Date"</span>, <span class="dt">y =</span> <span class="st">"Rain height (mm)"</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">theme_classic</span>()</a></code></pre></div>
+<p><img src="reference/figures/README-plot_time_series-1.png" width="576"></p>
 </div>
 <div id="meta" class="section level2">
 <h2 class="hasAnchor">
@@ -172,8 +175,8 @@ ts_raw
 <li>All data are from the public data sources in <a href="http://www.hydroscope.gr/" class="uri">http://www.hydroscope.gr/</a>.</li>
 </ul>
 </li>
-<li>
-<p>To cite <code>hydroscoper</code> please use:</p>
+<li>To cite <code>hydroscoper</code> please use:</li>
+</ul>
 <pre><code>Vantas K., (2018). hydroscoper: R interface to the Greek National Data Bank for
 Hydrological and Meteorological Information. Journal of Open Source Software,
 3(23), 625 DOI:10.21105/joss.00625</code></pre>
@@ -189,37 +192,49 @@ volume = {2},
 number = {23},
 journal = {The Journal of Open Source Software}
 }</code></pre>
-<h2 id="references">References</h2>
-<p><a href="http://www.hydroscope.gr/">Hydroscope</a></p>
-</li>
-</ul>
-<p><a href="https://ropensci.org"><img src="http://ropensci.org/public_images/github_footer.png" alt="ropensci_footer"></a></p>
 </div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<p><a href="http://www.hydroscope.gr/">Hydroscope</a></p>
+<p><a href="https://ropensci.org"><img src="http://ropensci.org/public_images/github_footer.png" alt="ropensci_footer"></a></p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=hydroscoper">https://​cran.r-project.org/​package=hydroscoper</a>
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=hydroscoper">https://​cloud.r-project.org/​package=hydroscoper</a>
 </li>
 <li>Browse source code at <br><a href="https://github.com/ropensci/hydroscoper">https://​github.com/​ropensci/​hydroscoper</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/ropensci/hydroscoper/issues%20%20%20%20%20%20%20%20%20%20%20%20%20">https://​github.com/​ropensci/​hydroscoper/​issues             </a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p><a href="license.html">Full license</a><br><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a><small></small></small></p>
+<ul class="list-unstyled">
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+</ul>
+</div>
+<div class="citation">
 <h2>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing hydroscoper</a></li>
 </ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Konstantinos Vantas <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6387-8791" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid"></a> </li>
+<li>Konstantinos Vantas <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6387-8791" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/ropensci/hydroscoper"><img src="https://travis-ci.org/ropensci/hydroscoper.svg?branch=master" alt="Travis-CI Build Status"></a></li>
@@ -233,6 +248,7 @@ journal = {The Journal of Open Source Software}
 <li><a href="https://doi.org/10.5281/zenodo.1196540"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg" alt="DOI"></a></li>
 <li><a href="https://doi.org/10.21105/joss.00625"><img src="http://joss.theoj.org/papers/10.21105/joss.00625/status.svg" alt="DOI"></a></li>
 </ul>
+</div>
 </div>
 
 </div>
@@ -248,6 +264,8 @@ journal = {The Journal of Open Source Software}
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

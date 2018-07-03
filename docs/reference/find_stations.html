@@ -21,16 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Find nearest stations using a point's coordinates — find_stations" />
 
 <meta property="og:description" content="find_stations returns a tibble with the stations'
 distances using a given point's longitude and latitude values. This function
 uses the Haversine formula for distance calculation in km." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +61,12 @@ uses the Haversine formula for distance calculation in km." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hydroscoper</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hydroscoper</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -94,6 +106,7 @@ uses the Haversine formula for distance calculation in km." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -101,22 +114,25 @@ uses the Haversine formula for distance calculation in km." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Find nearest stations using a point's coordinates</h1>
-    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/find_stations.R'><code>R/find_stations.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/hydroscoper/blob/master/R/find_stations.R'><code>R/find_stations.R</code></a></small>
+    <div class="hidden name"><code>find_stations.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><code>find_stations</code> returns a tibble with the stations'
 distances using a given point's longitude and latitude values. This function
 uses the Haversine formula for distance calculation in km.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>find_stations</span>(<span class='kw'>longitude</span> <span class='kw'>=</span> <span class='fl'>24</span>, <span class='kw'>latitude</span> <span class='kw'>=</span> <span class='fl'>38</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -132,7 +148,7 @@ uses the Haversine formula for distance calculation in km.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>If the given longitude is in [24, 38] and the latitude is in [34, 42]
-(i.e. are valid values for Greece) returns are ordered tibble with the
+(i.e. are valid values for Greece) returns an ordered tibble with the
 station_id, name, subdomain and distance values in km. The station's data
 that are used  come from the `stations` dataset. Otherwise returns an error
 message.</p>
@@ -176,6 +192,8 @@ message.</p>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

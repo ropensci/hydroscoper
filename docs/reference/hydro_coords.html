@@ -21,16 +21,24 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Convert coordinates from Hydroscope's points to a tibble — hydro_coords" />
 
 <meta property="og:description" content="hydro_coords returns a tibble with the stations'
 longitude and latitude using as input the variable point
 from get_stations function." />
 <meta name="twitter:card" content="summary" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -53,8 +61,12 @@ from get_stations function." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hydroscoper</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hydroscoper</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -94,6 +106,7 @@ from get_stations function." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -101,22 +114,25 @@ from get_stations function." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert coordinates from Hydroscope's points to a tibble</h1>
-    <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/R/hydro_coords.R'><code>R/hydro_coords.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/hydroscoper/blob/master/R/hydro_coords.R'><code>R/hydro_coords.R</code></a></small>
+    <div class="hidden name"><code>hydro_coords.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><code>hydro_coords</code> returns a tibble with the stations'
 longitude and latitude using as input the variable <code>point</code>
 from <code>get_stations</code> function.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>hydro_coords</span>(<span class='no'>x</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -167,6 +183,8 @@ Konstantinos Vantas, <a href='mailto:kon.vantas@gmail.com'>kon.vantas@gmail.com<
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

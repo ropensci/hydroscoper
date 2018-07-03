@@ -21,11 +21,19 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Changelog" />
+
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -48,8 +56,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">hydroscoper</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">hydroscoper</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -89,6 +101,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -96,30 +109,34 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small></small></h1>
-      <small>Source: <a href='https:/github.com/ropensci/hydroscoper/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <h1>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/ropensci/hydroscoper/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
     <div id="hydroscoper-1-0-0-release-date-2018-03-16" class="section level1">
 <h1 class="page-header">
 <a href="#hydroscoper-1-0-0-release-date-2018-03-16" class="anchor"></a>hydroscoper 1.0.0 (Release date: 2018-03-16)<small> 2018-03-16 </small>
 </h1>
 <ul>
 <li><p><code>hydroscoper</code> was transfered to rOpenSci: <a href="https://github.com/ropensci/hydroscoper" class="uri">https://github.com/ropensci/hydroscoper</a></p></li>
-<li><p>General</p></li>
+<li>
+<p>General</p>
+<ul>
 <li>This is a major update. All the functions are rewritten utilizing the Enhydris API.</li>
 <li>The included data in the package cover all Hydroscope’s databases.</li>
 <li>Add vignettes “An introduction to <code>hydroscoper</code>” and “Using <code>hydroscoper</code>’s data”.</li>
 <li>Add package documentation site.</li>
 <li>Use pingr package to check if a sub-domain is alive.</li>
 <li>All the functions return tibbles.</li>
-<li><p>Add <code>greece_borders</code> dataset.</p></li>
-<li><p>New functionality:</p></li>
+<li>Add <code>greece_borders</code> dataset.</li>
+</ul>
+</li>
+<li>
+<p>New functionality:</p>
+<ul>
 <li>
 <code><a href="../reference/get_tables.html">get_instruments()</a></code> returns a data frame with the instruments’ data.</li>
 <li>
@@ -144,13 +161,27 @@
 <code><a href="../reference/get_tables.html">get_database()</a></code> returns a data frame with the Water Basins data.</li>
 <li>
 <code>hydro_coords</code> returns a data frame with the stations’ longitudes and latitudes using as input the variable <code>point</code> from <code>get_stations</code> function.</li>
-<li><p><code><a href="../reference/hydro_translate.html">hydro_translate()</a></code> translates various Greek terms to English.</p></li>
-<li><p>Changes</p></li>
+<li>
+<code><a href="../reference/hydro_translate.html">hydro_translate()</a></code> translates various Greek terms to English.</li>
+</ul>
+</li>
+<li>
+<p>Changes</p>
+<ul>
 <li>
 <code>get_stations</code> and <code>get_timeseries</code> use the Enhydris API and are considerably faster.</li>
-<li><p><code>get_data</code> uses lower case variable naming: <code>date, value, comment</code></p></li>
-<li><p>Defuncs</p></li>
-<li><p><code>get_coords</code> has been removed from the package. Please use <code>hydro_coords</code> to convert Hydroscope’s points’ raw format to a tidy data frame.</p></li>
+<li>
+<code>get_data</code> uses lower case variable naming: <code>date, value, comment</code>
+</li>
+</ul>
+</li>
+<li>
+<p>Defuncs</p>
+<ul>
+<li>
+<code>get_coords</code> has been removed from the package. Please use <code>hydro_coords</code> to convert Hydroscope’s points’ raw format to a tidy data frame.</li>
+</ul>
+</li>
 </ul>
 <hr>
 </div>
@@ -162,7 +193,6 @@
 <li>Initial submission to CRAN.</li>
 </ul>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -188,6 +218,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>
