@@ -19,7 +19,7 @@ that are used  come from the `stations` dataset. Otherwise returns an error
 message.
 }
 \description{
-\code{find_stations} returns a tibble with the stations'
+\code{find_stations} returns a tibble with the nearest stations'
 distances using a given point's longitude and latitude values. This function
 uses the Haversine formula for distance calculation in km.
 }

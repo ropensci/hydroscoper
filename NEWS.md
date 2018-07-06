@@ -1,3 +1,10 @@
+# hydroscoper 1.1.0 (Release date: 2018-07-06)
+
+* New functionality:
+
+  - `find_stations()` returns a tibble with the nearest hydroscope's stations' distances using a given point coordinates.
+
+
 # hydroscoper 1.0.0 (Release date: 2018-03-16)
 
 * `hydroscoper` was transfered to rOpenSci: https://github.com/ropensci/hydroscoper
@@ -14,18 +21,18 @@
 
 * New functionality:
 
-  - `get_instruments()` returns a data frame with the instruments' data.
-  - `get_water_basins()` returns a data frame with the Water Basins' data.
-  - `get_water_divisions()` returns a data frame with the Water Divisions' data.
-  - `get_political_divisions()` returns a data frame with the Political Divisions' data.
-  - `get_variables()` returns a data frame with the Variables' data.
-  - `get_units_of_measurement()` returns a data frame with the Units' data.
-  - `get_time_steps()` returns a data frame with the Time Steps' data.
-  - `get_owners()` returns a data frame with the Owners' data.
-  - `get_instruments_type()`returns a data frame with the Instruments' type data.
-  - `get_station_type()` returns a data frame with the Water Basins data.
-  - `get_database()` returns a data frame with the Water Basins data.
-  - `hydro_coords` returns a data frame with the stations' longitudes and latitudes using as input the variable `point` from `get_stations` function.
+  - `get_instruments()` returns a tibble with the instruments' data.
+  - `get_water_basins()` returns a tibble with the Water Basins' data.
+  - `get_water_divisions()` returns a tibble with the Water Divisions' data.
+  - `get_political_divisions()` returns a tibble with the Political Divisions' data.
+  - `get_variables()` returns a tibble with the Variables' data.
+  - `get_units_of_measurement()` returns a tibble with the Units' data.
+  - `get_time_steps()` returns a tibble with the Time Steps' data.
+  - `get_owners()` returns a tibble with the Owners' data.
+  - `get_instruments_type()`returns a tibble with the Instruments' type data.
+  - `get_station_type()` returns a tibble with the Water Basins data.
+  - `get_database()` returns a tibble with the Water Basins data.
+  - `hydro_coords` returns a tibble with the stations' longitudes and latitudes using as input the variable `point` from `get_stations` function.
   - `hydro_translate()` translates various Greek terms to English.
 
 * Changes
@@ -35,7 +42,7 @@
 
 * Defuncs
 
-  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points' raw format to a tidy data frame.
+  - `get_coords` has been removed from the package. Please use `hydro_coords` to convert Hydroscope's points' raw format to a tibble.
 
 --------------------------------------------------------------------------------
 

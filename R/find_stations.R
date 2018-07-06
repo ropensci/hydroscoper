@@ -1,6 +1,6 @@
 #' Find nearest stations using a point's coordinates
 #'
-#' @description \code{find_stations} returns a tibble with the stations'
+#' @description \code{find_stations} returns a tibble with the nearest stations'
 #' distances using a given point's longitude and latitude values. This function
 #' uses the Haversine formula for distance calculation in km.
 #'
