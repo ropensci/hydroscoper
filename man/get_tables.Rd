@@ -142,12 +142,6 @@ databases:
 European Terrestrial Reference System 1989 (ETRS),
 \url{http://bit.ly/2kJwFuf}
 
-Greek Water Divisions,
-\url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
-
-Greek Water Basins,
-\url{http://bit.ly/2Dvzo1W}
-
 Tibble, \url{http://tibble.tidyverse.org/}
 }
 \author{

@@ -133,11 +133,6 @@
 #' }
 #'
 #'
-#' @references
-#'
-#' Greek Water Divisions,
-#' \url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
-#'
 #' @export hydro_translate
 #'
 #' @examples

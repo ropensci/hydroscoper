@@ -151,7 +151,3 @@ owners_names <- hydro_translate(kyy_owners$name, "owner")
 vars <- hydro_translate(kyy_vars$descr, "variable")
 }
 }
-\references{
-Greek Water Divisions,
-\url{http://bit.ly/2kk0tOm}, \url{http://bit.ly/2ltQC8O}
-}

@@ -55,5 +55,5 @@
 #'   \item{piece}{piece, integer}
 #'   \item{group}{group, numeric}
 #' }
-#' @source \url{http://geodata.gov.gr/}
+#' @source Konstantinos Vantas
 "greece_borders"

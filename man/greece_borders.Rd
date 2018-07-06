@@ -14,7 +14,7 @@
   \item{group}{group, numeric}
 }}
 \source{
-\url{http://geodata.gov.gr/}
+Konstantinos Vantas
 }
 \usage{
 greece_borders
