@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hydroscoper</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.1</span>
       </span>
     </div>
 
@@ -130,9 +130,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_stations</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>get_stations</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>get_timeseries</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_timeseries</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_instruments</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
   <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -146,14 +148,17 @@
 <span class='fu'>get_political_divisions</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
   <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>get_variables</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_variables</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_units_of_measurement</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
   <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>get_time_steps</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_time_steps</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>get_owners</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>get_owners</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>get_instruments_type</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
   <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
@@ -161,7 +166,8 @@
 <span class='fu'>get_station_type</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
   <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
-<span class='fu'>get_database</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>), <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>get_database</span>(<span class='kw'>subdomain</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kyy"</span>, <span class='st'>"ypaat"</span>, <span class='st'>"emy"</span>, <span class='st'>"deh"</span>),
+  <span class='kw'>translit</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

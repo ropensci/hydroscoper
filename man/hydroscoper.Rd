@@ -5,7 +5,6 @@
 \alias{hydroscoper}
 \alias{_PACKAGE}
 \alias{hydroscoper-package}
-\alias{hydroscoper-package}
 \title{hydroscoper: Interface to Hydroscope}
 \description{
 \code{hydroscoper} provides an R interface to the  Greek
@@ -55,8 +54,8 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Sharla Gelfand (Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [contributor, NA]
-  \item Tim Trice (Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [NA]
+  \item Sharla Gelfand (Sharla Gelfand reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [contributor, reviewer]
+  \item Tim Trice (Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185) [reviewer]
 }
 
 }

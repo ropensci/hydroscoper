@@ -1,3 +1,7 @@
+# hydroscoper 1.1.1 (Release date: 2018-08-25)
+
+* This version fixes the errors found in CRAN Package Check Results.
+
 # hydroscoper 1.1.0 (Release date: 2018-07-06)
 
 * New functionality:

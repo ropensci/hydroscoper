@@ -9,15 +9,16 @@ Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://t
 Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper)
 [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
 [![minimal R
-version](https://img.shields.io/badge/R%3E%3D-3.5.0-6666ff.svg)](https://cran.r-project.org/)
+version](https://img.shields.io/badge/R%3E%3D-3.4.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.1.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.1.1-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](http://cran.rstudio.com/web/packages/hydroscoper/index.html)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00625/status.svg)](https://doi.org/10.21105/joss.00625)
 
 <img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align = "right" width = 120/>
+
 `hydroscoper` is an R interface to the Greek National Data Bank for
 Hydrological and Meteorological Information,
 [Hydroscope](http://www.hydroscope.gr/). For more details checkout the
@@ -122,7 +123,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 
 <!-- end list -->
 
-    Vantas K., (2018). hydroscoper: R interface to the Greek National Data Bank for
+    Vantas Konstantinos, (2018). hydroscoper: R interface to the Greek National Data Bank for
     Hydrological and Meteorological Information. Journal of Open Source Software,
     3(23), 625 DOI:10.21105/joss.00625
 
