@@ -34,10 +34,12 @@ skip_if_not_online <- function(subdomain) {
 
 # helper function to check if all expected tables exist
 expect_names_in_api <- function(subdomain) {
-  exp_names <- c("Station", "Timeseries", "Instrument", "WaterBasin",
-                 "WaterDivision", "PoliticalDivision", "Variable",
-                 "UnitOfMeasurement", "TimeStep", "Organization",
-                 "InstrumentType", "StationType")
+  exp_names <- c(
+    "Station", "Timeseries", "Instrument", "WaterBasin",
+    "WaterDivision", "PoliticalDivision", "Variable",
+    "UnitOfMeasurement", "TimeStep", "Organization",
+    "InstrumentType", "StationType"
+  )
   expect_true(all(exp_names %in% names(enhydris_list(subdomain))))
 }
 
@@ -86,34 +88,42 @@ test_that("Test that returns a JSON file as a tibble, no translit", {
   skip_on_travis()
   skip_on_appveyor()
   skip_if_not_online("kyy")
-  expect_is(enhydris_get("kyy", api_value = "owner", translit = FALSE),
-            "tbl_df")
+  expect_is(
+    enhydris_get("kyy", api_value = "owner", translit = FALSE),
+    "tbl_df"
+  )
 })
 test_that("Test that KYY returns a TXT file as a tibble", {
   skip_on_cran()
   skip_on_travis()
   skip_on_appveyor()
   skip_if_not_online("kyy")
-  expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
-            "tbl_df")
+  expect_is(
+    enhydris_get("kyy", api_value = "time_data", time_id = 2173),
+    "tbl_df"
+  )
 })
 
-  test_that("Test that KYY returns a TXT file as a tibble", {
-    skip_on_cran()
-    skip_on_travis()
-    skip_on_appveyor()
-    skip_if_not_online("kyy")
-    expect_is(enhydris_get("kyy", api_value = "time_data", time_id = 2173),
-              "tbl_df")
+test_that("Test that KYY returns a TXT file as a tibble", {
+  skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
+  skip_if_not_online("kyy")
+  expect_is(
+    enhydris_get("kyy", api_value = "time_data", time_id = 2173),
+    "tbl_df"
+  )
 })
 
 test_that("Test that YPAAT returns a TXT file as a tibble", {
-    skip_on_cran()
-    skip_on_travis()
-    skip_on_appveyor()
-    skip_if_not_online("ypaat")
-    expect_is(enhydris_get("ypaat", api_value = "time_data", time_id = 181),
-              "tbl_df")
+  skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
+  skip_if_not_online("ypaat")
+  expect_is(
+    enhydris_get("ypaat", api_value = "time_data", time_id = 181),
+    "tbl_df"
+  )
 })
 
 test_that("Test that returns an error if time-series doesn't exist", {

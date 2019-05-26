@@ -24,11 +24,13 @@ enhydris_txt <- function(hydro_url) {
   suppressWarnings(
     # use readr to get values
     readr::read_csv(url(hydro_url),
-                    col_names = c("date", "value", "comment"),
-                    col_types = list(
-                      readr::col_datetime(format = tm_format),
-                      readr::col_double(),
-                      readr::col_character()))
+      col_names = c("date", "value", "comment"),
+      col_types = list(
+        readr::col_datetime(format = tm_format),
+        readr::col_double(),
+        readr::col_character()
+      )
+    )
   )
 }
 
@@ -40,26 +42,27 @@ enhydris_txt <- function(hydro_url) {
 enhydris_names <- function(val) {
   switch(
     val,
-    stations            = "Station",
-    timeseries          = "Timeseries",
-    time_data           = "tsdata",
-    instruments         = "Instrument",
-    water_basin         = "WaterBasin",
-    water_division      = "WaterDivision",
-    political_division  = "PoliticalDivision",
-    variable            = "Variable",
+    stations = "Station",
+    timeseries = "Timeseries",
+    time_data = "tsdata",
+    instruments = "Instrument",
+    water_basin = "WaterBasin",
+    water_division = "WaterDivision",
+    political_division = "PoliticalDivision",
+    variable = "Variable",
     unit_of_measurement = "UnitOfMeasurement",
-    time_step           = "TimeStep",
-    owner               = "Organization",
-    instrument_type     = "InstrumentType",
-    station_type        = "StationType",
-    stop("Not a valid Enhydris API", call. = FALSE))
+    time_step = "TimeStep",
+    owner = "Organization",
+    instrument_type = "InstrumentType",
+    station_type = "StationType",
+    stop("Not a valid Enhydris API", call. = FALSE)
+  )
 }
 
 #' Create an URL using the subdomain and Enhydris API value
 #'
 #' @noRd
-enhydris_url <- function(subdomain, api, time_id = NULL){
+enhydris_url <- function(subdomain, api, time_id = NULL) {
   if (is.null(time_id)) {
     paste0("http://", subdomain, ".hydroscope.gr/api/", api, "/?format=json") # nolint
   } else {
@@ -110,8 +113,11 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
   },
   error = function(e) {
     closeAllConnections()
-    err_msg <- paste("Could not download data for that source.",
-                     "Please check that it exists or try again later.")
+    err_msg <- paste(
+      "Could not download data for that source.",
+      "Please check that it exists or try again later."
+    )
     stop(err_msg, call. = FALSE)
-  })
+  }
+  )
 }

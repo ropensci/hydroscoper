@@ -1,3 +1,7 @@
+# hydroscoper 1.2 (Release date: 2019-05-26)
+
+* This version removes plyr dependency.
+
 # hydroscoper 1.1.1 (Release date: 2018-08-25)
 
 * This version fixes the errors found in CRAN Package Check Results.
@@ -11,7 +15,7 @@
 
 # hydroscoper 1.0.0 (Release date: 2018-03-16)
 
-* `hydroscoper` was transfered to rOpenSci: https://github.com/ropensci/hydroscoper
+* `hydroscoper` was transferred to rOpenSci: https://github.com/ropensci/hydroscoper
 
 * General
 

@@ -145,17 +145,19 @@
 #' vars <- hydro_translate(kyy_vars$descr, "variable")
 #' }
 hydro_translate <- function(x,
-                            value = c("owner", "variable", "timestep",
-                                      "division")) {
+                            value = c(
+                              "owner", "variable", "timestep",
+                              "division"
+                            )) {
 
   # match translate values
   value <- match.arg(value)
 
   # translate x
-  switch (value,
-          owner = map_owners(x),
-          variable = map_variables(x),
-          timestep = map_ts(x),
-          division = map_wd(x))
-
+  switch(value,
+    owner = map_owners(x),
+    variable = map_variables(x),
+    timestep = map_ts(x),
+    division = map_wd(x)
+  )
 }

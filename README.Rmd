@@ -91,7 +91,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 ## Meta
 
 * Bug reports, suggestions, and code are welcome. Please see [Contributing](/CONTRIBUTING.md).
-* Licence:
+* License:
     + All code is licensed MIT.
     + All data are from the public data sources in http://www.hydroscope.gr/.
 * To cite `hydroscoper` please use:

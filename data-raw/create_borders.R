@@ -3,11 +3,11 @@ library(ggplot2)
 library(broom)
 library(rgdal)
 
-#load greece polygon
+# load greece polygon
 greece_borders <- readOGR(dsn = "./data-raw/greece_shp", layer = "greece")
-proj4string(greece_borders) = CRS("+init=epsg:2100")
+proj4string(greece_borders) <- CRS("+init=epsg:2100")
 
-#convert to ETRS89
+# convert to ETRS89
 etrs89 <- CRS("+init=epsg:4258")
 greece_borders <- spTransform(greece_borders, etrs89)
 

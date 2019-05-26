@@ -131,7 +131,6 @@ kyy_st_type <- get_station_type(subdomain)
 
 # use all the get_ functions above to create a named list with tibbles
 kyy_db <- get_database(subdomain)
-
 }
 
 }

@@ -27,7 +27,7 @@
 #'   \item Ministry of Rural Development and Food.
 #'   \item  National Meteorological Service.
 #'   \item  Greek Public Power Corporation.
-#'}
+#' }
 #'
 #' @name hydroscoper
 #' @aliases hydroscoper-package

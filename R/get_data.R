@@ -40,7 +40,7 @@
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change.
 #' \item Ministry of Rural Development and Food.
-#'}
+#' }
 #'
 #' Tibble, \url{http://tibble.tidyverse.org/}
 
@@ -51,6 +51,8 @@ get_data <- function(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id) {
   # check that time_id is not NULL
   if (is.null(time_id)) stop("Argument 'time_id' is missing.")
 
-  enhydris_get(subdomain = subdomain, api_value = "time_data",
-               time_id = time_id)
+  enhydris_get(
+    subdomain = subdomain, api_value = "time_data",
+    time_id = time_id
+  )
 }

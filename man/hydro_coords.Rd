@@ -20,7 +20,7 @@ from \code{get_stations} function.
 \examples{
 \dontrun{
 # get stations from the Greek Ministry of Environment and Energy
-kyy_stations <-get_stations("kyy")
+kyy_stations <- get_stations("kyy")
 
 # create a tibble with stations' coords
 coords <- hydro_coords(kyy_stations$point)

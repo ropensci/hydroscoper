@@ -79,6 +79,11 @@ Load libraries and get data:
 library(hydroscoper)
 library(tibble)
 library(ggplot2)
+#> Registered S3 methods overwritten by 'ggplot2':
+#>   method         from 
+#>   [.quosures     rlang
+#>   c.quosures     rlang
+#>   print.quosures rlang
 
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
@@ -114,7 +119,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 
   - Bug reports, suggestions, and code are welcome. Please see
     [Contributing](/CONTRIBUTING.md).
-  - Licence:
+  - License:
       - All code is licensed MIT.
       - All data are from the public data sources in
         <http://www.hydroscope.gr/>.

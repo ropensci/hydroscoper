@@ -7,34 +7,46 @@ server_address <- function(subdomain) {
 #' Ping a remote server to see if its alive
 #' @noRd
 server_alive <- function(subdomain) {
-  err_msg <- paste("The server for that data source is probably down,",
-                   "get more info at hydroscope@hydroscope.gr or try",
-                   "again later.")
+  err_msg <- paste(
+    "The server for that data source is probably down,",
+    "get more info at hydroscope@hydroscope.gr or try",
+    "again later."
+  )
   tryCatch({
     pingr::ping_port(server_address(subdomain),
-                     port = 80L,
-                     count = 1)
+      port = 80L,
+      count = 1
+    )
     if (all(is.na(pingr::ping_port(server_address(subdomain),
-                                   port = 80L,
-                                   count = 3)))) stop()
+      port = 80L,
+      count = 3
+    )))) {
+      stop()
+    }
   },
   error = function(e) {
     stop(err_msg, call. = FALSE)
-  })
+  }
+  )
 }
 
 #' create coords from points
 #' @noRd
 create_coords <- function(str) {
-
-  str_split <- stringr::str_split(string = str, pattern = "[\\(  \\)]",
-                                  simplify = TRUE)
+  str_split <- stringr::str_split(
+    string = str, pattern = "[\\(  \\)]",
+    simplify = TRUE
+  )
   if (NCOL(str_split) == 5) {
-    tibble::tibble(long = as.numeric(str_split[, 3]),
-                   lat = as.numeric(str_split[, 4]))
+    tibble::tibble(
+      long = as.numeric(str_split[, 3]),
+      lat = as.numeric(str_split[, 4])
+    )
   } else {
-    tibble::tibble(long = rep(NA, NROW(str)),
-                   lat = rep(NA, NROW(str)))
+    tibble::tibble(
+      long = rep(NA, NROW(str)),
+      lat = rep(NA, NROW(str))
+    )
   }
 }
 
@@ -50,7 +62,6 @@ deg_to_rads <- function(degrees) {
 #' lon2,lat2, then the Haversine Formula is:
 #' @noRd
 haversine <- function(lat1, lon1, lat2, lon2) {
-
   lat1 <- deg_to_rads(lat1)
   lat2 <- deg_to_rads(lat2)
   lon1 <- deg_to_rads(lon1)
@@ -64,7 +75,6 @@ haversine <- function(lat1, lon1, lat2, lon2) {
   r_earh <- 6373
 
   # compute distance
-  a <- (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlon/2))^2
-  r_earh * 2 * atan2( sqrt(a), sqrt(1-a) )
-
+  a <- (sin(dlat / 2))^2 + cos(lat1) * cos(lat2) * (sin(dlon / 2))^2
+  r_earh * 2 * atan2(sqrt(a), sqrt(1 - a))
 }

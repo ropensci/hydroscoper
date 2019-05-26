@@ -15,13 +15,11 @@
 #' @examples
 #' \dontrun{
 #' # get stations from the Greek Ministry of Environment and Energy
-#' kyy_stations <-get_stations("kyy")
+#' kyy_stations <- get_stations("kyy")
 #'
 #' # create a tibble with stations' coords
 #' coords <- hydro_coords(kyy_stations$point)
 #' }
 hydro_coords <- function(x) {
-
   tibble::as_tibble(do.call(rbind, lapply(x, create_coords)))
-
 }
