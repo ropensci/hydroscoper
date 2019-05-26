@@ -209,7 +209,7 @@ timeseries <- ldply(subdomain, function(id){
     "subdomain" = rep(id, nrow(res)), 
     stringsAsFactors = FALSE)
 })
-timeseries <- as.tibble(timeseries)
+timeseries <- as_tibble(timeseries)
 timeseries
 ```
 

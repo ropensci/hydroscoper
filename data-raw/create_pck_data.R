@@ -67,7 +67,7 @@ stations <- plyr::ldply(subdomain, function(id){
                  subdomain = rep(id, nrow(res)))
 
 })
-stations <- tibble::as.tibble(stations)
+stations <- tibble::as_tibble(stations)
 # save data
 devtools::use_data(stations,  overwrite = TRUE)
 
@@ -133,7 +133,7 @@ timeseries <- plyr::ldply(subdomain, function(id){
     "subdomain" = rep(id, nrow(res))
   )
 })
-timeseries <- tibble::as.tibble(timeseries)
+timeseries <- tibble::as_tibble(timeseries)
 
 # save time series data
 devtools::use_data(timeseries,  overwrite = TRUE)

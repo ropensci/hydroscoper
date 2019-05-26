@@ -96,7 +96,7 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
   tryCatch({
     if (is.null(time_id)) {
       # data are a JSON file
-      result <- tibble::as.tibble(enhydris_json(hydro_url))
+      result <- tibble::as_tibble(enhydris_json(hydro_url))
       if (translit) {
         # translitarate values
         trasnlit_all(result)
