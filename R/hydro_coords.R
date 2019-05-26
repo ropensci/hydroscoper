@@ -21,6 +21,7 @@
 #' coords <- hydro_coords(kyy_stations$point)
 #' }
 hydro_coords <- function(x) {
-  coords <- plyr::ldply(x, create_coords)
-  tibble::as.tibble(coords)
+
+  tibble::as_tibble(do.call(rbind, lapply(x, create_coords)))
+
 }

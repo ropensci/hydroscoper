@@ -137,3 +137,8 @@ timeseries <- tibble::as.tibble(timeseries)
 
 # save time series data
 devtools::use_data(timeseries,  overwrite = TRUE)
+
+
+# convert stations names to ASCII
+stations$name <- iconv(stations$name, "UTF-8", "ASCII")
+devtools::use_data(stations,  overwrite = TRUE)
