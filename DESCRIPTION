@@ -16,7 +16,7 @@ Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the Greek National Data Bank for Hydrological and 
     Meteorological Information <http://www.hydroscope.gr/>. It covers 
     Hydroscope's data sources and provides functions to transliterate, 
-    translate and download them into tidy dataframes (tibbles).
+    translate and download them into tidy dataframes.
 URL: https://github.com/ropensci/hydroscoper,
     https://ropensci.github.io/hydroscoper/
 BugReports: https://github.com/ropensci/hydroscoper/issues             

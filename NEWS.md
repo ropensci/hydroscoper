@@ -1,4 +1,4 @@
-# hydroscoper 1.2 (Release date: 2019-05-26)
+# hydroscoper 1.2 (Release date: 2019-06-02)
 
 * This version removes plyr dependency.
 
