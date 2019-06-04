@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.2-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.rstudio.com/web/packages/hydroscoper/index.html)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00625/status.svg)](https://doi.org/10.21105/joss.00625)
