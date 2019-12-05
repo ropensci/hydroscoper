@@ -193,7 +193,7 @@
   "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/hydroscoper/blob/master/README.md",
   "fileSize": "478.798KB",
-  "relatedLink": ["https://ropensci.github.io/hydroscoper/", "https://CRAN.R-project.org/package=hydroscoper"],
+  "relatedLink": ["https://docs.ropensci.org/hydroscoper/", "https://CRAN.R-project.org/package=hydroscoper"],
   "copyrightHolder": {},
   "funder": {},
   "review": {

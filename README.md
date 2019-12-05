@@ -22,14 +22,14 @@ version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-pr
 `hydroscoper` is an R interface to the Greek National Data Bank for
 Hydrological and Meteorological Information,
 [Hydroscope](http://www.hydroscope.gr/). For more details checkout the
-package’s [website](https://ropensci.github.io/hydroscoper/) and the
+package’s [website](https://docs.ropensci.org/hydroscoper/) and the
 vignettes:
 
   - [An introduction to
-    `hydroscoper`](https://ropensci.github.io/hydroscoper/articles/intro_hydroscoper.html)
+    `hydroscoper`](https://docs.ropensci.org/hydroscoper/articles/intro_hydroscoper.html)
     with details about the Hydroscope project and the package.
   - [Using `hydroscoper`’s data
-    sets](https://ropensci.github.io/hydroscoper/articles/stations_with_data.html)
+    sets](https://docs.ropensci.org/hydroscoper/articles/stations_with_data.html)
     with a simple example of how to use the package’s internal data
     sets.
 
