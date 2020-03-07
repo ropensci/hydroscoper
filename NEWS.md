@@ -1,4 +1,4 @@
-# hydroscoper 1.3 (Release date: 2019-06-02)
+# hydroscoper 1.3 (Release date: 2020-07-03)
 
 * update dependencies
 
