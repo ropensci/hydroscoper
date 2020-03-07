@@ -4,8 +4,7 @@
 \alias{hydro_translate}
 \title{Translate Greek names and terms to English}
 \usage{
-hydro_translate(x, value = c("owner", "variable", "timestep",
-  "division"))
+hydro_translate(x, value = c("owner", "variable", "timestep", "division"))
 }
 \arguments{
 \item{x}{a string vector}

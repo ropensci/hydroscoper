@@ -17,44 +17,43 @@
 \alias{get_database}
 \title{Get tibbles from Hydroscope}
 \usage{
-get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_instruments(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_instruments(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_water_basins(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_water_basins(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_water_divisions(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_water_divisions(
+  subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE
+)
 
-get_political_divisions(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_political_divisions(
+  subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE
+)
 
-get_variables(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_variables(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_units_of_measurement(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_units_of_measurement(
+  subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE
+)
 
-get_time_steps(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_time_steps(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_owners(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_owners(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_instruments_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_instruments_type(
+  subdomain = c("kyy", "ypaat", "emy", "deh"),
+  translit = TRUE
+)
 
-get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 
-get_database(subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE)
+get_database(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of Hydroscope in the vector

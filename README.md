@@ -11,7 +11,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.2-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.3-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
@@ -79,11 +79,6 @@ Load libraries and get data:
 library(hydroscoper)
 library(tibble)
 library(ggplot2)
-#> Registered S3 methods overwritten by 'ggplot2':
-#>   method         from 
-#>   [.quosures     rlang
-#>   c.quosures     rlang
-#>   print.quosures rlang
 
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
@@ -100,7 +95,7 @@ ts_raw
 #>  8 1985-05-06 11:30:00     0 1      
 #>  9 1985-05-06 12:00:00     0 1      
 #> 10 1985-05-06 12:30:00     0 1      
-#> # ... with 147,509 more rows
+#> # … with 147,509 more rows
 ```
 
 Let’s create a plot:
@@ -123,8 +118,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
       - All code is licensed MIT.
       - All data are from the public data sources in
         <http://www.hydroscope.gr/>.
-  - To cite `hydroscoper` please
-    use:
+  - To cite `hydroscoper` please use:
 
 <!-- end list -->
 
