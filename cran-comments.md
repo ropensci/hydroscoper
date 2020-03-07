@@ -1,5 +1,5 @@
 ## Test environments
-* local windows 10 install, R 3.6
+* local Mac OS X install, R 3.6.2
 * travis.ci Linux, x64, R 3.5.0
 * travis.ci Mac OS X,  R 3.5.0
 * ci.appveyor, R 3.5.0
