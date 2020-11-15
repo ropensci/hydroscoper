@@ -4,7 +4,8 @@
 \name{stations}
 \alias{stations}
 \title{stations}
-\format{A tibble with 2,322 rows and 9 variables:
+\format{
+A tibble with 2,322 rows and 9 variables:
 \describe{
     \item{station_id}{The station's ID from the domain's database}
     \item{name}{The station's name}
@@ -15,7 +16,8 @@
     \item{latitude}{The station's latitude in decimal degrees, ETRS89}
     \item{altitude}{The station's altitude, meters above sea level}
     \item{subdomain}{The corresponding Hydroscope's database}
-}}
+}
+}
 \usage{
 stations
 }

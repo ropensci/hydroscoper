@@ -4,7 +4,8 @@
 \name{timeseries}
 \alias{timeseries}
 \title{timeseries}
-\format{A tibble with 10,804 rows and 9 variables:
+\format{
+A tibble with 10,804 rows and 9 variables:
 \describe{
     \item{time_id}{The time series ID}
     \item{station_id}{The corresponding station's ID}
@@ -14,7 +15,8 @@
     \item{start_date}{The starting date of time series values}
     \item{end_date}{The ending date of time series values}
     \item{subdomain}{The corresponding Hydroscope's database}
-}}
+}
+}
 \usage{
 timeseries
 }

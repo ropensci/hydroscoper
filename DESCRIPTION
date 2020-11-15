@@ -24,7 +24,7 @@ Depends: R (>= 3.4)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Imports: stringi (>= 1.4),
     stringr (>= 1.4), 
     tibble(>= 2.1),
