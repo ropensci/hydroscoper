@@ -1,7 +1,7 @@
 Package: hydroscoper
 Type: Package
 Title: Interface to the Greek National Data Bank for Hydrometeorological Information
-Version: 1.3
+Version: 1.4
 Authors@R: c(person("Konstantinos", "Vantas",
                     role = c("aut", "cre"),
                     email = "kon.vantas@gmail.com",
@@ -14,7 +14,7 @@ Authors@R: c(person("Konstantinos", "Vantas",
                     comment = "Tim Trice reviewed the package for rOpenSci, see https://github.com/ropensci/onboarding/issues/185"))
 Maintainer: Konstantinos Vantas <kon.vantas@gmail.com>
 Description: R interface to the Greek National Data Bank for Hydrological and 
-    Meteorological Information <http://www.hydroscope.gr/>. It covers 
+    Meteorological Information. It covers 
     Hydroscope's data sources and provides functions to transliterate, 
     translate and download them into tidy dataframes.
 URL: https://github.com/ropensci/hydroscoper,
@@ -24,16 +24,16 @@ Depends: R (>= 3.4)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
-Imports: stringi (>= 1.4),
+RoxygenNote: 7.1.1
+Imports: stringi (>= 1.5),
     stringr (>= 1.4), 
-    tibble(>= 2.1),
+    tibble(>= 3.1),
     pingr (>= 2.0),
-    readr (>= 1.3),
-    jsonlite (>= 1.6)
+    readr (>= 1.4),
+    jsonlite (>= 1.7)
 Suggests: 
-    ggplot2 (>= 3.0),
-    knitr (>= 1.28),
-    rmarkdown (>= 2.1),
-    testthat (>= 2.3)
+    ggplot2 (>= 3.3),
+    knitr (>= 1.31),
+    rmarkdown (>= 2.7),
+    testthat (>= 3.0)
 VignetteBuilder: knitr

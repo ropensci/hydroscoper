@@ -75,8 +75,7 @@
 #'
 #' @references
 #'
-#' The data are retrieved from the Hydroscope's \url{http://www.hydroscope.gr/}
-#' databases:
+#' The data are retrieved from the Hydroscope's site databases:
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change.
 #' \item Ministry of Rural Development and Food.
@@ -84,10 +83,6 @@
 #' \item Greek Public Power Corporation.
 #' }
 #'
-#' European Terrestrial Reference System 1989 (ETRS),
-#' \url{http://bit.ly/2kJwFuf}
-#'
-#' Tibble, \url{http://tibble.tidyverse.org/}
 #'
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #'

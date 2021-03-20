@@ -27,6 +27,17 @@ test_that("enhydris_url table address", {
 # helper function to skip tests if a server in not alive
 skip_if_not_online <- function(subdomain) {
   h_url <- paste0(subdomain, ".hydroscope.gr")
+
+  tryCatch(
+    expr = {
+      if (all(is.na(pingr::ping_port(h_url, port = 80L, count = 3)))) {
+        skip(paste(h_url, "is not online"))
+      }
+    },
+    error = function(e){
+      skip(paste("Cannot resolve host name", h_url))
+    }
+  )
   if (all(is.na(pingr::ping_port(h_url, port = 80L, count = 3)))) {
     skip(paste(h_url, "is not online"))
   }

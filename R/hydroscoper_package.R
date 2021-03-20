@@ -2,22 +2,21 @@
 #'
 #' @description \code{hydroscoper} provides an R interface to the  Greek
 #' National Data Bank for Hydrological and Meteorological Information
-#' \url{http://www.hydroscope.gr/}.
+#' \code{http://www.hydroscope.gr}.
 #'
 #' \code{hydroscoper} covers Hydroscope's data sources using the
-#' \href{http://bit.ly/2CLlAAA}{Enhydris API} and provides functions to:
+#' \code{Enhydris API} and provides functions to:
 #' \enumerate{
 #'   \item {Transform the available tables and data sets into
-#'        \href{http://bit.ly/2Dg1sHY}{tibbles}.}
+#'        \href{https://tibble.tidyverse.org/}{tibbles}.}
 #'   \item{Transliterate the Greek Unicode names to Latin.}
 #'   \item{Translate various Greek terms to English.}
 #' }
 #'
 #' @section Enhydris API:
 #'
-#' The Enhydris database is implemented in PostgreSQL. Details about the
-#' database can be found \href{http://bit.ly/2D0cZgA}{here}  and about the
-#' Web-service API \href{http://bit.ly/2FlRtBB}{here}.
+#' The Enhydris database is implemented in PostgreSQL. Details
+#' can be found \href{https://enhydris.readthedocs.io}{here}
 #'
 #' @section Data Sources:
 #'

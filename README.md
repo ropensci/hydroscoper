@@ -20,15 +20,14 @@ version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-pr
 <img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align = "right" width = 120/>
 
 `hydroscoper` is an R interface to the Greek National Data Bank for
-Hydrological and Meteorological Information,
-[Hydroscope](http://www.hydroscope.gr/). For more details checkout the
-package’s [website](https://docs.ropensci.org/hydroscoper/) and the
-vignettes:
+Hydrological and Meteorological Information, *Hydroscope*. For more
+details checkout the package’s
+[website](https://docs.ropensci.org/hydroscoper/) and the vignettes:
 
-  - [An introduction to
+-   [An introduction to
     `hydroscoper`](https://docs.ropensci.org/hydroscoper/articles/intro_hydroscoper.html)
     with details about the Hydroscope project and the package.
-  - [Using `hydroscoper`’s data
+-   [Using `hydroscoper`’s data
     sets](https://docs.ropensci.org/hydroscoper/articles/stations_with_data.html)
     with a simple example of how to use the package’s internal data
     sets.
@@ -52,19 +51,19 @@ devtools::install_github("ropensci/hydroscoper")
 
 The functions that are provided by `hydroscoper` are:
 
-  - `get_stations, get_timeseries, ..., etc.` family functions, to
+-   `get_stations, get_timeseries, ..., etc.` family functions, to
     retrieve tibbles with Hydroscope’s data for a given data source.
-  - `get_data`, to retrieve a tibble with time series’ values.  
-  - `hydro_coords`, to convert Hydroscope’s points’ raw format to a
+-   `get_data`, to retrieve a tibble with time series’ values.  
+-   `hydro_coords`, to convert Hydroscope’s points’ raw format to a
     tibble.
-  - `hydro_translate` to translate various terms and names from Greek to
+-   `hydro_translate` to translate various terms and names from Greek to
     English.
 
 The data sets that are provided by `hydroscoper` are:
 
-  - `stations` a tibble with stations’ data from Hydroscope.
-  - `timeseries` a tibble with time series’ data from Hydroscope.
-  - `greece_borders` a tibble with the borders of Greece.
+-   `stations` a tibble with stations’ data from Hydroscope.
+-   `timeseries` a tibble with time series’ data from Hydroscope.
+-   `greece_borders` a tibble with the borders of Greece.
 
 ## Example
 
@@ -82,20 +81,6 @@ library(ggplot2)
 
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
-#> # A tibble: 147,519 x 3
-#>    date                value comment
-#>    <dttm>              <dbl> <chr>  
-#>  1 1985-05-06 08:00:00     0 1      
-#>  2 1985-05-06 08:30:00     0 1      
-#>  3 1985-05-06 09:00:00     0 1      
-#>  4 1985-05-06 09:30:00     0 1      
-#>  5 1985-05-06 10:00:00     0 1      
-#>  6 1985-05-06 10:30:00     0 1      
-#>  7 1985-05-06 11:00:00     0 1      
-#>  8 1985-05-06 11:30:00     0 1      
-#>  9 1985-05-06 12:00:00     0 1      
-#> 10 1985-05-06 12:30:00     0 1      
-#> # … with 147,509 more rows
 ```
 
 Let’s create a plot:
@@ -108,19 +93,17 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
   theme_classic()
 ```
 
-![](man/figures/README-plot_time_series-1.png)<!-- -->
-
 ## Meta
 
-  - Bug reports, suggestions, and code are welcome. Please see
+-   Bug reports, suggestions, and code are welcome. Please see
     [Contributing](https://github.com/ropensci/hydroscoper/blob/master/CONTRIBUTING.md).
-  - License:
-      - All code is licensed MIT.
-      - All data are from the public data sources in
-        <http://www.hydroscope.gr/>.
-  - To cite `hydroscoper` please use:
+-   License:
+    -   All code is licensed MIT.
+    -   All data are from the public data sources in
+        `http://www.hydroscope.gr/`.
+-   To cite `hydroscoper` please use:
 
-<!-- end list -->
+<!-- -->
 
     Vantas Konstantinos, (2018). hydroscoper: R interface to the Greek National Data Bank for
     Hydrological and Meteorological Information. Journal of Open Source Software,

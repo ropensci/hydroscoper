@@ -6,12 +6,25 @@ editor_options:
 ---
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, echo=FALSE, message=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-"
 )
+
+chk_online <- FALSE
+
+library(pingr)
+
+# helper function to check if a sub-domain is online
+online <- function(h_url){
+  !is.na(pingr::ping(h_url, count = 1))
+}
+
+# check if sub-domains are online
+chk_online   <- online("kyy.hydroscope.gr")
+
 ```
  
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://travis-ci.org/ropensci/hydroscoper)
@@ -28,7 +41,7 @@ knitr::opts_chunk$set(
 <img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align = "right" width = 120/>
 
 `hydroscoper` is an R interface to the  Greek National Data Bank for Hydrological and Meteorological Information,
-[Hydroscope](http://www.hydroscope.gr/). For more details checkout the package's [website](https://docs.ropensci.org/hydroscoper/) and the vignettes:
+*Hydroscope*. For more details checkout the package's [website](https://docs.ropensci.org/hydroscoper/) and the vignettes:
 
  * [An introduction to `hydroscoper`](https://docs.ropensci.org/hydroscoper/articles/intro_hydroscoper.html) with details about the Hydroscope project and the package.
  * [Using `hydroscoper`'s data sets](https://docs.ropensci.org/hydroscoper/articles/stations_with_data.html) with a simple example of how to use the package's internal data sets.
@@ -69,7 +82,7 @@ This is a minimal example which shows how to get the station's [200200](http://k
 
 Load libraries and get data:
 
-```{r load_libraries}
+```{r load_libraries, eval = chk_online}
 library(hydroscoper)
 library(tibble)
 library(ggplot2)
@@ -80,7 +93,7 @@ ts_raw
 
 Let's create a plot:
 
-```{r plot_time_series}
+```{r plot_time_series, eval = chk_online}
 ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation for station 200200",
@@ -93,7 +106,7 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 * Bug reports, suggestions, and code are welcome. Please see [Contributing](https://github.com/ropensci/hydroscoper/blob/master/CONTRIBUTING.md).
 * License:
     + All code is licensed MIT.
-    + All data are from the public data sources in http://www.hydroscope.gr/.
+    + All data are from the public data sources in `http://www.hydroscope.gr/`.
 * To cite `hydroscoper` please use:
 ```
 Vantas Konstantinos, (2018). hydroscoper: R interface to the Greek National Data Bank for

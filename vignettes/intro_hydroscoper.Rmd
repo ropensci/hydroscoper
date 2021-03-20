@@ -14,6 +14,19 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+chk_online <- FALSE
+
+library(pingr)
+
+# helper function to check if a sub-domain is online
+online <- function(h_url){
+  !is.na(pingr::ping(h_url, count = 1))
+}
+
+# check if sub-domains are online
+chk_online   <- online("kyy.hydroscope.gr")
+
 ```
 
 ## What is Hydroscope?
@@ -127,21 +140,21 @@ ggplot() +
 
 To get the time series' data for the station `200200` (http://kyy.hydroscope.gr/stations/d/200200/) we can use:
 
-```{r subset_timeseries}
+```{r subset_timeseries, eval = chk_online}
 station_ts <- subset(timeseries, station_id == 200200)
 station_ts
 ```
 
 We can download the station's  precipitation time series **56** (http://kyy.hydroscope.gr/timeseries/d/56/):
 
-``` {r get_timeseries}
+``` {r get_timeseries, eval = chk_online}
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
 ```
 
 Let's create a plot:
 
-``` {r plot_time_series}
+``` {r plot_time_series, eval = chk_online}
 ggplot(data = ts_raw, aes(x = date, y = value))+
   geom_line()+
   labs(title= "30 min precipitation", 

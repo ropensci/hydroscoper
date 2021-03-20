@@ -19,7 +19,8 @@ If \code{subdomain} is one of:
 \item{\code{deh}, Greek Public Power Corporation}
 \item{\code{emy}, National Meteorological Service}
 }
-and \code{time_id} exists in that \code{subdomain}, returns a tibble with the time series values. Otherwise returns an error message.
+and \code{time_id} exists in that \code{subdomain}, returns a tibble with
+the time series values. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
@@ -46,13 +47,11 @@ time_series <- get_data("kyy", 912)
 }
 \references{
 Stations' data are retrieved from the Hydroscope's
-\url{http://www.hydroscope.gr/} databases:
+databases:
 \itemize{
 \item Ministry of Environment, Energy and Climate Change.
 \item Ministry of Rural Development and Food.
 }
-
-Tibble, \url{http://tibble.tidyverse.org/}
 }
 \author{
 Konstantinos Vantas, \email{kon.vantas@gmail.com}
