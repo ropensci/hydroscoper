@@ -11,9 +11,9 @@ Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.3-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.4-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/onboarding/issues/185)
+[![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/software-review/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00625/status.svg)](https://doi.org/10.21105/joss.00625)
 
@@ -67,10 +67,8 @@ The data sets that are provided by `hydroscoper` are:
 
 ## Example
 
-This is a minimal example which shows how to get the station’s
-[200200](http://kyy.hydroscope.gr/stations/d/200200/) precipitation time
-series [56](http://kyy.hydroscope.gr/timeseries/d/56/) from the
-[kyy](http://kyy.hydroscope.gr) sub-domain.
+This is a minimal example which shows how to get the station’s *200200*
+precipitation time series *56* from the *kyy* sub-domain.
 
 Load libraries and get data:
 
@@ -122,9 +120,5 @@ or the BibTeX entry:
     number = {23},
     journal = {The Journal of Open Source Software}
     }
-
-## References
-
-[Hydroscope](http://www.hydroscope.gr/)
 
 [![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

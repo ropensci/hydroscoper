@@ -1,6 +1,12 @@
+# hydroscoper 1.4 (Release date: 2021-03-20)
+
+* Fail gracefully with an informative message if the hydroscope site is not 
+  available or has changed
+* Update dependencies
+
 # hydroscoper 1.3 (Release date: 2020-07-03)
 
-* update dependencies
+* Update dependencies
 
 # hydroscoper 1.2 (Release date: 2019-06-02)
 

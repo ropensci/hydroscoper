@@ -89,7 +89,7 @@
 </h1>
                         <h4 class="author">Konstantinos Vantas</h4>
             
-            <h4 class="date">2021-03-20</h4>
+            <h4 class="date">2021-03-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/hydroscoper/blob/master/vignettes/intro_hydroscoper.Rmd"><code>vignettes/intro_hydroscoper.Rmd</code></a></small>
       <div class="hidden name"><code>intro_hydroscoper.Rmd</code></div>
@@ -101,7 +101,7 @@
 <div id="what-is-hydroscope" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-hydroscope" class="anchor"></a>What is Hydroscope?</h2>
-<p><a href="http://www.hydroscope.gr/">Hydroscope</a> is the Greek National Data Bank for Hydrological and Meteorological Information, a result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
+<p><code>Hydroscope</code> is the Greek National Data Bank for Hydrological and Meteorological Information, a result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
 <p>This National Data Bank provides several data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using a database system for the storage and management of information. These organisations are:</p>
 <ul>
 <li>Ministry of Environment and Energy.</li>
@@ -116,12 +116,12 @@
 <div id="what-does-hydroscoper" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-does-hydroscoper" class="anchor"></a>What does <code>hydroscoper</code>?</h2>
-<p><code>hydroscoper</code> provides functionality for automatic retrieval and translation of Hydroscope’s data to English. The main functions that can be utilized is the family of functions, <code>get_stations</code>, <code>get_timeseries</code>, <code>get_data</code>, etc., to easily download Hydroscope’s data as <a href="http://tibble.tidyverse.org/">tibbles</a>.</p>
-<p>The package covers Hydroscope’s data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found <a href="http://bit.ly/2D0cZgA">here</a>, and about the Web-service API <a href="http://bit.ly/2FlRtBB">here</a>.</p>
+<p><code>hydroscoper</code> provides functionality for automatic retrieval and translation of Hydroscope’s data to English. The main functions that can be utilized is the family of functions, <code>get_stations</code>, <code>get_timeseries</code>, <code>get_data</code>, etc., to easily download Hydroscope’s data as <code>tibbles</code>.</p>
+<p>The package covers Hydroscope’s data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the about the Web-service API <a href="http://enhydris.readthedocs.io">here</a>.</p>
 <div id="internal-datasets" class="section level3">
 <h3 class="hasAnchor">
 <a href="#internal-datasets" class="anchor"></a>Internal datasets</h3>
-<p>The internal datasets of the package can be used to run queries on the available Hydroscope’s stations and time series data, reducing the time needed for downloading and <a href="http://bit.ly/1KslZb7">data wrangling</a>, as these data are rarely modified. These datasets are:</p>
+<p>The internal datasets of the package can be used to run queries on the available Hydroscope’s stations and time series data, reducing the time needed for downloading and data wrangling, as these data are rarely modified. These datasets are:</p>
 <div id="stations" class="section level4">
 <h4 class="hasAnchor">
 <a href="#stations" class="anchor"></a><code>stations</code>
@@ -139,9 +139,9 @@
 <li>
 <code>owner</code> The station’s owner.</li>
 <li>
-<code>longitude</code> The station’s longitude in decimal degrees, <a href="http://bit.ly/2kJwFuf">ETRS89</a>.</li>
+<code>longitude</code> The station’s longitude in decimal degrees, (ETRS89).</li>
 <li>
-<code>latitude</code> The station’s latitude in decimal degrees, <a href="http://bit.ly/2kJwFuf">ETRS89</a>.</li>
+<code>latitude</code> The station’s latitude in decimal degrees, (ETRS89).</li>
 <li>
 <code>altitude</code> The station’s altitude, meters above sea level.</li>
 <li>
@@ -195,7 +195,7 @@
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows how to get the stations’ and time series’ data from the Hydroscope’s Ministry of Environment and Energy database, <a href="http://kyy.hydroscope.gr/" class="uri">http://kyy.hydroscope.gr/</a>.</p>
+<p>This is a basic example which shows how to get the stations’ and time series’ data from the Hydroscope’s Ministry of Environment and Energy database, <code>http://kyy.hydroscope.gr/</code>.</p>
 <p>Load libraries:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/hydroscoper">hydroscoper</a></span><span class="op">)</span>
@@ -239,11 +239,11 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Warning: Removed 11 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="intro_hydroscoper_files/figure-html/kyy_stations_map-1.png" width="700"></p>
-<p>To get the time series’ data for the station <code>200200</code> (<a href="http://kyy.hydroscope.gr/stations/d/200200/" class="uri">http://kyy.hydroscope.gr/stations/d/200200/</a>) we can use:</p>
+<p>To get the time series’ data for the station <code>200200</code> we can use:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">station_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">timeseries</span>, <span class="va">station_id</span> <span class="op">==</span> <span class="fl">200200</span><span class="op">)</span>
 <span class="va">station_ts</span></code></pre></div>
-<p>We can download the station’s precipitation time series <strong>56</strong> (<a href="http://kyy.hydroscope.gr/timeseries/d/56/" class="uri">http://kyy.hydroscope.gr/timeseries/d/56/</a>):</p>
+<p>We can download the station’s precipitation time series <strong>56</strong>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ts_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, time_id <span class="op">=</span> <span class="fl">56</span><span class="op">)</span>
 <span class="va">ts_raw</span></code></pre></div>

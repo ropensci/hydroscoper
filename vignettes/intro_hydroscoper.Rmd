@@ -31,7 +31,7 @@ chk_online   <- online("kyy.hydroscope.gr")
 
 ## What is Hydroscope?
 
-[Hydroscope](http://www.hydroscope.gr/) is the  Greek National Data Bank for Hydrological and Meteorological Information, a result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.
+`Hydroscope` is the  Greek National Data Bank for Hydrological and Meteorological Information, a result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.
 
 This National Data Bank provides several data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using a database system for the storage and management of information. These organisations are:
 
@@ -46,13 +46,13 @@ The above data are structured as tables and space separated text files, but are 
 
 ## What does `hydroscoper`?
 
-`hydroscoper` provides functionality for automatic retrieval and translation of Hydroscope's data to English.  The main functions that can be utilized is the family of functions, `get_stations`, `get_timeseries`, `get_data`, etc., to easily download Hydroscope's data as [tibbles](http://tibble.tidyverse.org/). 
+`hydroscoper` provides functionality for automatic retrieval and translation of Hydroscope's data to English.  The main functions that can be utilized is the family of functions, `get_stations`, `get_timeseries`, `get_data`, etc., to easily download Hydroscope's data as `tibbles`. 
 
-The package covers Hydroscope's data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the database can be found [here](http://bit.ly/2D0cZgA),  and about the Web-service API [here](http://bit.ly/2FlRtBB).
+The package covers Hydroscope's data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the  about the Web-service API [here](http://enhydris.readthedocs.io).
 
 ### Internal datasets
 
-The internal datasets of the package can be used to run queries on the available Hydroscope's stations and time series data, reducing the time needed for downloading and [data wrangling](http://bit.ly/1KslZb7), as these data are rarely modified.  These datasets are:
+The internal datasets of the package can be used to run queries on the available Hydroscope's stations and time series data, reducing the time needed for downloading and data wrangling, as these data are rarely modified.  These datasets are:
 
 #### `stations`
 
@@ -63,8 +63,8 @@ It is a comprehensive look-up table with geographical and ownership information 
   3. `water_basin` The station's Water Basin.
   4. `water_division` The station's Water Division.
   5. `owner` The station's owner.
-  6. `longitude` The station's longitude in decimal degrees, [ETRS89](http://bit.ly/2kJwFuf).
-  7. `latitude` The station's latitude in decimal degrees, [ETRS89](http://bit.ly/2kJwFuf).
+  6. `longitude` The station's longitude in decimal degrees, (ETRS89).
+  7. `latitude` The station's latitude in decimal degrees, (ETRS89).
   8. `altitude` The station's altitude, meters above sea level.
   9. `subdomain` The corresponding Hydroscope's database.
 
@@ -98,7 +98,7 @@ Note that:
 
 ## Example
 
-This is a basic example which shows how to get the stations' and time series' data from the Hydroscope's Ministry of Environment and Energy database, http://kyy.hydroscope.gr/.
+This is a basic example which shows how to get the stations' and time series' data from the Hydroscope's Ministry of Environment and Energy database, `http://kyy.hydroscope.gr/`.
 
 Load libraries:
 
@@ -138,14 +138,14 @@ ggplot() +
 ```
 
 
-To get the time series' data for the station `200200` (http://kyy.hydroscope.gr/stations/d/200200/) we can use:
+To get the time series' data for the station `200200`  we can use:
 
 ```{r subset_timeseries, eval = chk_online}
 station_ts <- subset(timeseries, station_id == 200200)
 station_ts
 ```
 
-We can download the station's  precipitation time series **56** (http://kyy.hydroscope.gr/timeseries/d/56/):
+We can download the station's  precipitation time series **56**:
 
 ``` {r get_timeseries, eval = chk_online}
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
