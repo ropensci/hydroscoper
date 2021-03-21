@@ -5,19 +5,18 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "hydroscoper",
-  "description": "R interface to the Greek National Data Bank for Hydrological and \n    Meteorological Information <http://www.hydroscope.gr/>. It covers \n    Hydroscope's data sources and provides functions to transliterate, \n    translate and download them into tidy dataframes.",
+  "description": "R interface to the Greek National Data Bank for Hydrological and \n    Meteorological Information. It covers \n    Hydroscope's data sources and provides functions to transliterate, \n    translate and download them into tidy dataframes.",
   "name": "hydroscoper: Interface to the Greek National Data Bank for Hydrometeorological Information",
   "codeRepository": "https://github.com/ropensci/hydroscoper",
   "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.2",
+  "version": "1.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -54,7 +53,7 @@
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
-      "version": ">= 3.1",
+      "version": ">= 3.3",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -67,7 +66,7 @@
       "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
-      "version": ">= 1.20",
+      "version": ">= 1.31",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -80,7 +79,7 @@
       "@type": "SoftwareApplication",
       "identifier": "rmarkdown",
       "name": "rmarkdown",
-      "version": ">= 1.10",
+      "version": ">= 2.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -93,7 +92,7 @@
       "@type": "SoftwareApplication",
       "identifier": "testthat",
       "name": "testthat",
-      "version": ">= 2.1",
+      "version": ">= 3.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -114,7 +113,7 @@
       "@type": "SoftwareApplication",
       "identifier": "stringi",
       "name": "stringi",
-      "version": ">= 1.4",
+      "version": ">= 1.5",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -140,7 +139,7 @@
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
-      "version": ">= 2.1",
+      "version": ">= 3.1",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -153,7 +152,7 @@
       "@type": "SoftwareApplication",
       "identifier": "pingr",
       "name": "pingr",
-      "version": ">= 1.1.2",
+      "version": ">= 2.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -166,7 +165,7 @@
       "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
-      "version": ">= 1.3",
+      "version": ">= 1.4",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -179,7 +178,7 @@
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
-      "version": ">= 1.6",
+      "version": ">= 1.7",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -189,19 +188,36 @@
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     }
   ],
-  "contIntegration": "https://travis-ci.org/ropensci/hydroscoper",
+  "contIntegration": ["https://travis-ci.org/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://codecov.io/gh/ropensci/hydroscoper"],
   "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/hydroscoper/blob/master/README.md",
-  "fileSize": "478.798KB",
-  "relatedLink": ["https://docs.ropensci.org/hydroscoper/", "https://CRAN.R-project.org/package=hydroscoper"],
+  "fileSize": "1811.65KB",
+  "relatedLink": [
+    "https://docs.ropensci.org/hydroscoper/",
+    "https://CRAN.R-project.org/package=hydroscoper"
+  ],
   "copyrightHolder": {},
   "funder": {},
   "review": {
     "@type": "Review",
-    "url": "https://github.com/ropensci/onboarding/issues/185",
-    "provider": "http://ropensci.org"
+    "url": "https://github.com/ropensci/software-review/issues/185",
+    "provider": "https://ropensci.org"
   },
-  "keywords": ["climate", "hydroscope", "hydrometeorology", "hydrology", "tidy-data", "time-series", "greece", "water-resources", "meteorological-stations", "meteorological-data", "r", "rstats", "r-package", "peer-reviewed"],
+  "keywords": [
+    "climate",
+    "hydroscope",
+    "hydrometeorology",
+    "hydrology",
+    "tidy-data",
+    "time-series",
+    "greece",
+    "water-resources",
+    "meteorological-stations",
+    "meteorological-data",
+    "r",
+    "rstats",
+    "r-package",
+    "peer-reviewed"
+  ],
   "citation": [
     {
       "@type": "ScholarlyArticle",
