@@ -1,3 +1,7 @@
+# hydroscoper 1.4.1 (Release date: 2021-05-14)
+
+* remove call to closeAllConnections() command
+
 # hydroscoper 1.4 (Release date: 2021-03-20)
 
 * Fail gracefully with an informative message if the hydroscope site is not 
