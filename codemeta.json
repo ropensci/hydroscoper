@@ -10,13 +10,13 @@
   "codeRepository": "https://github.com/ropensci/hydroscoper",
   "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.4",
+  "version": "1.4.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.0.4 (2021-02-15)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -190,7 +190,7 @@
   ],
   "contIntegration": ["https://travis-ci.org/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://codecov.io/gh/ropensci/hydroscoper"],
   "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
-  "fileSize": "1811.65KB",
+  "fileSize": "1788.432KB",
   "relatedLink": [
     "https://docs.ropensci.org/hydroscoper/",
     "https://CRAN.R-project.org/package=hydroscoper"
