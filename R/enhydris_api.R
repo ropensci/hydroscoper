@@ -112,7 +112,6 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
     }
   },
   error = function(e) {
-    closeAllConnections()
     err_msg <- paste(
       "Could not download data for that source.",
       "Please check that it exists or try again later."

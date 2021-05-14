@@ -1,7 +1,7 @@
 Package: hydroscoper
 Type: Package
 Title: Interface to the Greek National Data Bank for Hydrometeorological Information
-Version: 1.4
+Version: 1.4.1
 Authors@R: c(person("Konstantinos", "Vantas",
                     role = c("aut", "cre"),
                     email = "kon.vantas@gmail.com",
