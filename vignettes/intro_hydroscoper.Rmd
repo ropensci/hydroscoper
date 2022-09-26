@@ -137,12 +137,16 @@ ggplot() +
   theme_bw()
 ```
 
-
 To get the time series' data for the station `200200`  we can use:
 
 ```{r subset_timeseries, eval = chk_online}
 station_ts <- subset(timeseries, station_id == 200200)
 station_ts
+```
+
+
+```{r echo=FALSE, message=FALSE}
+chk_online   <- online("kyy.hydroscope.gr")
 ```
 
 We can download the station's  precipitation time series **56**:

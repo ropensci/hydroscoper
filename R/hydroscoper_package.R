@@ -31,4 +31,5 @@
 #' @name hydroscoper
 #' @aliases hydroscoper-package
 #' @docType package
+
 "_PACKAGE"

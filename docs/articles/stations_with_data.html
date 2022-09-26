@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hydroscoper</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropensci/hydroscoper/">
+  <a href="https://github.com/ropensci/hydroscoper/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,15 +78,16 @@
 
       
 
-      </header><script src="stations_with_data_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using <code>hydroscoper</code>’s data</h1>
-                        <h4 class="author">Konstantinos Vantas</h4>
+                        <h4 data-toc-skip class="author">Konstantinos
+Vantas</h4>
             
-            <h4 class="date">2021-05-14</h4>
+            <h4 data-toc-skip class="date">2022-09-26</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/hydroscoper/blob/master/vignettes/stations_with_data.Rmd"><code>vignettes/stations_with_data.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/hydroscoper/blob/HEAD/vignettes/stations_with_data.Rmd" class="external-link"><code>vignettes/stations_with_data.Rmd</code></a></small>
       <div class="hidden name"><code>stations_with_data.Rmd</code></div>
 
     </div>
@@ -98,94 +95,104 @@
     
     
 <p>This vignette shows how to use the package’s internal data sets.</p>
-<div id="load-libraries" class="section level2">
-<h2 class="hasAnchor">
-<a href="#load-libraries" class="anchor"></a>Load libraries</h2>
+<div class="section level2">
+<h2 id="load-libraries">Load libraries<a class="anchor" aria-label="anchor" href="#load-libraries"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/hydroscoper">hydroscoper</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/hydroscoper" class="external-link">hydroscoper</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="data-sets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-sets" class="anchor"></a>Data sets</h2>
-<p>There are three data sets stored in the package. <code>stations</code> is comprised of the stations’ id, name, longitude, latitude, etc.</p>
+<div class="section level2">
+<h2 id="data-sets">Data sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
+</h2>
+<p>There are three data sets stored in the package.
+<code>stations</code> is comprised of the stations’ id, name, longitude,
+latitude, etc.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stations</span>
-<span class="co">#&gt; # A tibble: 2,322 x 9</span>
-<span class="co">#&gt;    station_id name  water_basin water_division owner longitude latitude altitude</span>
-<span class="co">#&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     501032 AG. … "KOURTALIO… GR13           min_…      NA       NA        NA </span>
-<span class="co">#&gt;  2     200246 GEPH… "ALPHEIOS … GR01           min_…      22.0     37.5     318 </span>
-<span class="co">#&gt;  3     200237 TROP… "ALPHEIOS … GR01           min_…      22.0     37.7     728.</span>
-<span class="co">#&gt;  4     200231 BYTI… "ALPHEIOS … GR01           min_…      22.2     37.7    1011.</span>
-<span class="co">#&gt;  5     200200 LYKO… "ALPHEIOS … GR01           min_…      22.2     37.9     758.</span>
-<span class="co">#&gt;  6     200236 MEGA… "ALPHEIOS … GR01           min_…      22.1     37.4     429.</span>
-<span class="co">#&gt;  7     200244 ODOG… "REMA CHOR… GR01           min_…      21.8     37.0     182.</span>
-<span class="co">#&gt;  8     200204 TRIP… "ALPHEIOS … GR01           min_…      21.9     37.9     570.</span>
-<span class="co">#&gt;  9     200198 KAST… "ALPHEIOS … GR01           min_…      22.0     37.9     792.</span>
-<span class="co">#&gt; 10     200239 PERD… "ALPHEIOS … GR01           min_…      22.0     37.7     837.</span>
-<span class="co">#&gt; # … with 2,312 more rows, and 1 more variable: subdomain &lt;chr&gt;</span></code></pre></div>
-<p><code>timeseries</code> of the time series’ id, the corresponding station, variable type, time step etc.</p>
+<code class="sourceCode R"><span><span class="va">stations</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,322 × 9</span></span></span>
+<span><span class="co">#&gt;    station_id name         water…¹ water…² owner longi…³ latit…⁴ altit…⁵ subdo…⁶</span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     <span style="text-decoration: underline;">501</span>032 AG. BASILEI… <span style="color: #949494;">"</span>KOURT… GR13    min_…    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>  kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     <span style="text-decoration: underline;">200</span>246 GEPH. KOKKO… <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.5    318  kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     <span style="text-decoration: underline;">200</span>237 TROPAIA      <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.7    728. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     <span style="text-decoration: underline;">200</span>231 BYTINA       <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.2    37.7   <span style="text-decoration: underline;">1</span>011. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     <span style="text-decoration: underline;">200</span>200 LYKOURIA     <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.2    37.9    758. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     <span style="text-decoration: underline;">200</span>236 MEGALOPOLE   <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.1    37.4    429. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     <span style="text-decoration: underline;">200</span>244 ODOG. AG. S… <span style="color: #949494;">"</span>REMA … GR01    min_…    21.8    37.0    182. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     <span style="text-decoration: underline;">200</span>204 TRIPOTAMA    <span style="color: #949494;">"</span>ALPHE… GR01    min_…    21.9    37.9    570. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">200</span>198 KASTELLIO    <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.9    792. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     <span style="text-decoration: underline;">200</span>239 PERDIKONERI  <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.7    837. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 2,312 more rows, and abbreviated variable names ¹​water_basin,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​water_division, ³​longitude, ⁴​latitude, ⁵​altitude, ⁶​subdomain</span></span></span></code></pre></div>
+<p><code>timeseries</code> of the time series’ id, the corresponding
+station, variable type, time step etc.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">timeseries</span>
-<span class="co">#&gt; # A tibble: 10,804 x 8</span>
-<span class="co">#&gt;    time_id station_id variable  timestep units start_date   end_date   subdomain</span>
-<span class="co">#&gt;      &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;    </span>
-<span class="co">#&gt;  1    2248     501049 temperat… &lt;NA&gt;     °     2009-02-01T… 2010-08-3… kyy      </span>
-<span class="co">#&gt;  2     430     200103 wind_dir… &lt;NA&gt;     °     1950-10-26T… 1997-07-1… kyy      </span>
-<span class="co">#&gt;  3     905     200247 wind_dir… &lt;NA&gt;     °     1967-01-01T… 1997-12-3… kyy      </span>
-<span class="co">#&gt;  4    2243     501058 temperat… &lt;NA&gt;     °     1999-01-01T… 2010-08-3… kyy      </span>
-<span class="co">#&gt;  5     438     200105 wind_dir… &lt;NA&gt;     °     1950-06-05T… 1997-07-3… kyy      </span>
-<span class="co">#&gt;  6     553     200135 wind_dir… &lt;NA&gt;     °     1964-11-21T… 1997-08-3… kyy      </span>
-<span class="co">#&gt;  7     966     200265 wind_dir… &lt;NA&gt;     °     1967-01-01T… 1997-03-3… kyy      </span>
-<span class="co">#&gt;  8     775     200203 wind_dir… &lt;NA&gt;     °     1964-05-20T… 1997-06-3… kyy      </span>
-<span class="co">#&gt;  9    2245     501046 temperat… &lt;NA&gt;     °     2007-07-01T… 2010-07-0… kyy      </span>
-<span class="co">#&gt; 10     247     200034 wind_dir… &lt;NA&gt;     °     1969-11-25T… 1997-09-1… kyy      </span>
-<span class="co">#&gt; # … with 10,794 more rows</span></code></pre></div>
-<p><code>greece_borders</code> is a data-frame for use with the function <code>geom_polygon</code> from the <code>ggplot2</code> package.</p>
+<code class="sourceCode R"><span><span class="va">timeseries</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10,804 × 8</span></span></span>
+<span><span class="co">#&gt;    time_id station_id variable        timestep units start_date  end_d…¹ subdo…²</span></span>
+<span><span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    <span style="text-decoration: underline;">2</span>248     <span style="text-decoration: underline;">501</span>049 temperature_max <span style="color: #BB0000;">NA</span>       °     2009-02-01… 2010-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     430     <span style="text-decoration: underline;">200</span>103 wind_direction  <span style="color: #BB0000;">NA</span>       °     1950-10-26… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     905     <span style="text-decoration: underline;">200</span>247 wind_direction  <span style="color: #BB0000;">NA</span>       °     1967-01-01… 1997-1… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    <span style="text-decoration: underline;">2</span>243     <span style="text-decoration: underline;">501</span>058 temperature_max <span style="color: #BB0000;">NA</span>       °     1999-01-01… 2010-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     438     <span style="text-decoration: underline;">200</span>105 wind_direction  <span style="color: #BB0000;">NA</span>       °     1950-06-05… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     553     <span style="text-decoration: underline;">200</span>135 wind_direction  <span style="color: #BB0000;">NA</span>       °     1964-11-21… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     966     <span style="text-decoration: underline;">200</span>265 wind_direction  <span style="color: #BB0000;">NA</span>       °     1967-01-01… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     775     <span style="text-decoration: underline;">200</span>203 wind_direction  <span style="color: #BB0000;">NA</span>       °     1964-05-20… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    <span style="text-decoration: underline;">2</span>245     <span style="text-decoration: underline;">501</span>046 temperature_max <span style="color: #BB0000;">NA</span>       °     2007-07-01… 2010-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     247     <span style="text-decoration: underline;">200</span>034 wind_direction  <span style="color: #BB0000;">NA</span>       °     1969-11-25… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 10,794 more rows, and abbreviated variable names ¹​end_date, ²​subdomain</span></span></span></code></pre></div>
+<p><code>greece_borders</code> is a data-frame for use with the function
+<code>geom_polygon</code> from the <code>ggplot2</code> package.</p>
 </div>
-<div id="stations-location" class="section level2">
-<h2 class="hasAnchor">
-<a href="#stations-location" class="anchor"></a>Stations location</h2>
-<p><code>stations</code> and <code>greece_borders</code> can be used to create a map with all Hydroscope’s stations. Unfortunately, there is a number of them that have erroneous coordinates (over the sea and far from Greece). Also, there are 120 stations with missing coordinates.</p>
+<div class="section level2">
+<h2 id="stations-location">Stations location<a class="anchor" aria-label="anchor" href="#stations-location"></a>
+</h2>
+<p><code>stations</code> and <code>greece_borders</code> can be used to
+create a map with all Hydroscope’s stations. Unfortunately, there is a
+number of them that have erroneous coordinates (over the sea and far
+from Greece). Also, there are 120 stations with missing coordinates.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,
-               fill <span class="op">=</span> <span class="st">"grey"</span>,
-               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stations</span>,
-             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span>, color <span class="op">=</span> <span class="va">subdomain</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#E64B35FF"</span>, <span class="st">"#4DBBD5FF"</span>, <span class="st">"#00A087FF"</span>, 
-                              <span class="st">"#3C5488FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Removed 120 rows containing missing values (geom_point).</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html" class="external-link">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,</span>
+<span>               fill <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stations</span>,</span>
+<span>             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span>, color <span class="op">=</span> <span class="va">subdomain</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#E64B35FF"</span>, <span class="st">"#4DBBD5FF"</span>, <span class="st">"#00A087FF"</span>, </span>
+<span>                              <span class="st">"#3C5488FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 120 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="stations_with_data_files/figure-html/all_stations-1.png" width="700"></p>
 </div>
-<div id="stations-with-available-time-series" class="section level2">
-<h2 class="hasAnchor">
-<a href="#stations-with-available-time-series" class="anchor"></a>Stations with available time series</h2>
-<p>The location of the stations with time series available to download are presented at the following map.</p>
+<div class="section level2">
+<h2 id="stations-with-available-time-series">Stations with available time series<a class="anchor" aria-label="anchor" href="#stations-with-available-time-series"></a>
+</h2>
+<p>The location of the stations with time series available to download
+are presented at the following map.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stations_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">station_id</span> <span class="op">%in%</span> <span class="va">timeseries</span><span class="op">$</span><span class="va">station_id</span> <span class="op">&amp;</span>
-                        <span class="va">subdomain</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span><span class="op">)</span><span class="op">)</span>
-
-
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,
-               fill <span class="op">=</span> <span class="st">"grey"</span>,
-               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stations_ts</span>,
-             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span>, color <span class="op">=</span> <span class="va">subdomain</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#00A087FF"</span>, <span class="st">"#3C5488FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Removed 10 rows containing missing values (geom_point).</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">stations_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">station_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">timeseries</span><span class="op">$</span><span class="va">station_id</span> <span class="op">&amp;</span></span>
+<span>                        <span class="va">subdomain</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html" class="external-link">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,</span>
+<span>               fill <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">stations_ts</span>,</span>
+<span>             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span>, color <span class="op">=</span> <span class="va">subdomain</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#00A087FF"</span>, <span class="st">"#3C5488FF"</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 10 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="stations_with_data_files/figure-html/stations_with_timeseries-1.png" width="700"></p>
-<p>Although there is a large number of stations with available data, there is heterogeneity in the coverage of the country.</p>
+<p>Although there is a large number of stations with available data,
+there is heterogeneity in the coverage of the country.</p>
 </div>
   </div>
 
@@ -200,11 +207,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Konstantinos Vantas.</p>
+  <p></p>
+<p>Developed by Konstantinos Vantas.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -212,6 +221,8 @@
 
   
 
+
+  
 
   </body>
 </html>

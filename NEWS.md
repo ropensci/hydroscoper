@@ -1,3 +1,8 @@
+# hydroscoper 1.4.1 (Release date: 2022-09-26)
+
+* remove defunct functions
+* fix pkgdown build reference error message
+
 # hydroscoper 1.4.1 (Release date: 2021-05-14)
 
 * remove call to closeAllConnections() command

@@ -1,6 +1,10 @@
 title: hydroscoper
 
 reference:
+  - title: Hydroscoper
+    desc: About the package
+    contents:
+      - hydroscoper
   - title: Find Data
     desc: Functions that can be used to find data
     contents:

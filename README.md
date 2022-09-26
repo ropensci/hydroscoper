@@ -10,7 +10,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?
 [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![packageversion](https://img.shields.io/badge/Package%20version-1.4.1-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/software-review/issues/185)
@@ -79,7 +79,7 @@ library(ggplot2)
 
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
-#> # A tibble: 147,519 x 3
+#> # A tibble: 147,519 × 3
 #>    date                value comment
 #>    <dttm>              <dbl> <chr>  
 #>  1 1985-05-06 08:00:00     0 1      
@@ -137,4 +137,4 @@ or the BibTeX entry:
     journal = {The Journal of Open Source Software}
     }
 
-[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
+[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hydroscoper</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropensci/hydroscoper/">
+  <a href="https://github.com/ropensci/hydroscoper/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,27 +78,36 @@
 
       
 
-      </header><script src="intro_hydroscoper_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>An introduction to <code>hydroscoper</code>
 </h1>
-                        <h4 class="author">Konstantinos Vantas</h4>
+                        <h4 data-toc-skip class="author">Konstantinos
+Vantas</h4>
             
-            <h4 class="date">2021-05-14</h4>
+            <h4 data-toc-skip class="date">2022-09-26</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/hydroscoper/blob/master/vignettes/intro_hydroscoper.Rmd"><code>vignettes/intro_hydroscoper.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/hydroscoper/blob/HEAD/vignettes/intro_hydroscoper.Rmd" class="external-link"><code>vignettes/intro_hydroscoper.Rmd</code></a></small>
       <div class="hidden name"><code>intro_hydroscoper.Rmd</code></div>
 
     </div>
 
     
     
-<div id="what-is-hydroscope" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-is-hydroscope" class="anchor"></a>What is Hydroscope?</h2>
-<p><code>Hydroscope</code> is the Greek National Data Bank for Hydrological and Meteorological Information, a result of long-standing efforts by numerous Greek scientists in collaboration with various companies and associations. It was implemented in three phases, funded by the Ministry of Development, the Ministry of Environment and Energy and the European Union.</p>
-<p>This National Data Bank provides several data sources from various organisations via a web interface. Each participating organisation keeps its data on its own server using a database system for the storage and management of information. These organisations are:</p>
+<div class="section level2">
+<h2 id="what-is-hydroscope">What is Hydroscope?<a class="anchor" aria-label="anchor" href="#what-is-hydroscope"></a>
+</h2>
+<p><code>Hydroscope</code> is the Greek National Data Bank for
+Hydrological and Meteorological Information, a result of long-standing
+efforts by numerous Greek scientists in collaboration with various
+companies and associations. It was implemented in three phases, funded
+by the Ministry of Development, the Ministry of Environment and Energy
+and the European Union.</p>
+<p>This National Data Bank provides several data sources from various
+organisations via a web interface. Each participating organisation keeps
+its data on its own server using a database system for the storage and
+management of information. These organisations are:</p>
 <ul>
 <li>Ministry of Environment and Energy.</li>
 <li>Ministry of Rural Development and Food.</li>
@@ -111,22 +116,37 @@
 <li>Greek Prefectures.</li>
 <li>Public Power Corporation.</li>
 </ul>
-<p>The above data are structured as tables and space separated text files, but are in Greek, thus limiting their usefulness. Another issue with Hydroscope is the lack of comprehensive look-up tables about the available data, which are spread across many different databases.</p>
+<p>The above data are structured as tables and space separated text
+files, but are in Greek, thus limiting their usefulness. Another issue
+with Hydroscope is the lack of comprehensive look-up tables about the
+available data, which are spread across many different databases.</p>
 </div>
-<div id="what-does-hydroscoper" class="section level2">
-<h2 class="hasAnchor">
-<a href="#what-does-hydroscoper" class="anchor"></a>What does <code>hydroscoper</code>?</h2>
-<p><code>hydroscoper</code> provides functionality for automatic retrieval and translation of Hydroscope’s data to English. The main functions that can be utilized is the family of functions, <code>get_stations</code>, <code>get_timeseries</code>, <code>get_data</code>, etc., to easily download Hydroscope’s data as <code>tibbles</code>.</p>
-<p>The package covers Hydroscope’s data sources using the Enhydris API. The Enhydris database is implemented in PostgreSQL and details about the about the Web-service API <a href="http://enhydris.readthedocs.io">here</a>.</p>
-<div id="internal-datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#internal-datasets" class="anchor"></a>Internal datasets</h3>
-<p>The internal datasets of the package can be used to run queries on the available Hydroscope’s stations and time series data, reducing the time needed for downloading and data wrangling, as these data are rarely modified. These datasets are:</p>
-<div id="stations" class="section level4">
-<h4 class="hasAnchor">
-<a href="#stations" class="anchor"></a><code>stations</code>
+<div class="section level2">
+<h2 id="what-does-hydroscoper">What does <code>hydroscoper</code>?<a class="anchor" aria-label="anchor" href="#what-does-hydroscoper"></a>
+</h2>
+<p><code>hydroscoper</code> provides functionality for automatic
+retrieval and translation of Hydroscope’s data to English. The main
+functions that can be utilized is the family of functions,
+<code>get_stations</code>, <code>get_timeseries</code>,
+<code>get_data</code>, etc., to easily download Hydroscope’s data as
+<code>tibbles</code>.</p>
+<p>The package covers Hydroscope’s data sources using the Enhydris API.
+The Enhydris database is implemented in PostgreSQL and details about the
+about the Web-service API <a href="http://enhydris.readthedocs.io" class="external-link">here</a>.</p>
+<div class="section level3">
+<h3 id="internal-datasets">Internal datasets<a class="anchor" aria-label="anchor" href="#internal-datasets"></a>
+</h3>
+<p>The internal datasets of the package can be used to run queries on
+the available Hydroscope’s stations and time series data, reducing the
+time needed for downloading and data wrangling, as these data are rarely
+modified. These datasets are:</p>
+<div class="section level4">
+<h4 id="stations">
+<code>stations</code><a class="anchor" aria-label="anchor" href="#stations"></a>
 </h4>
-<p>It is a comprehensive look-up table with geographical and ownership information of the available stations in all Hydroscope’s databases. The variables are:</p>
+<p>It is a comprehensive look-up table with geographical and ownership
+information of the available stations in all Hydroscope’s databases. The
+variables are:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>station_id</code> The station’s ID.</li>
@@ -139,20 +159,25 @@
 <li>
 <code>owner</code> The station’s owner.</li>
 <li>
-<code>longitude</code> The station’s longitude in decimal degrees, (ETRS89).</li>
+<code>longitude</code> The station’s longitude in decimal degrees,
+(ETRS89).</li>
 <li>
-<code>latitude</code> The station’s latitude in decimal degrees, (ETRS89).</li>
+<code>latitude</code> The station’s latitude in decimal degrees,
+(ETRS89).</li>
 <li>
-<code>altitude</code> The station’s altitude, meters above sea level.</li>
+<code>altitude</code> The station’s altitude, meters above sea
+level.</li>
 <li>
 <code>subdomain</code> The corresponding Hydroscope’s database.</li>
 </ol>
 </div>
-<div id="timeseries" class="section level4">
-<h4 class="hasAnchor">
-<a href="#timeseries" class="anchor"></a><code>timeseries</code>
+<div class="section level4">
+<h4 id="timeseries">
+<code>timeseries</code><a class="anchor" aria-label="anchor" href="#timeseries"></a>
 </h4>
-<p>It is also a look-up table with all the available measurements for a given station in a given Hydroscope’s database, with units of measurement and times of those measurements. The variables are:</p>
+<p>It is also a look-up table with all the available measurements for a
+given station in a given Hydroscope’s database, with units of
+measurement and times of those measurements. The variables are:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>time_id</code> The time series ID.</li>
@@ -165,7 +190,8 @@
 <li>
 <code>units</code> The units of the time series.</li>
 <li>
-<code>start_date</code> The starting date of time series values.</li>
+<code>start_date</code> The starting date of time series
+values.</li>
 <li>
 <code>end_date</code> The ending date of time series values.</li>
 <li>
@@ -174,108 +200,126 @@
 </div>
 </div>
 </div>
-<div id="data-sources" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-sources" class="anchor"></a>Data sources</h2>
+<div class="section level2">
+<h2 id="data-sources">Data sources<a class="anchor" aria-label="anchor" href="#data-sources"></a>
+</h2>
 <ul>
-<li>Ministry of Environment and Energy, National Observatory of Athens and Greek Prefectures, <code>http://kyy.hydroscope.gr/</code>.</li>
-<li>Ministry of Rural Development and Food, <code>http://ypaat.hydroscope.gr</code>.</li>
-<li>National Meteorological Service, <code>http://emy.hydroscope.gr</code>.</li>
-<li>Greek Public Power Corporation, <code>http://deh.hydroscope.gr</code>.</li>
+<li>Ministry of Environment and Energy, National Observatory of Athens
+and Greek Prefectures, <code>http://kyy.hydroscope.gr/</code>.</li>
+<li>Ministry of Rural Development and Food,
+<code>http://ypaat.hydroscope.gr</code>.</li>
+<li>National Meteorological Service,
+<code>http://emy.hydroscope.gr</code>.</li>
+<li>Greek Public Power Corporation,
+<code>http://deh.hydroscope.gr</code>.</li>
 </ul>
 <p>Note that:</p>
 <ol style="list-style-type: decimal">
-<li>Only the two Ministries allow to download time series values freely.</li>
+<li>Only the two Ministries allow to download time series values
+freely.</li>
 <li>
-<code>ypaat</code>, <code>emy</code> and <code>kyy</code> sub-domains are maintained by the National Technical University Of Athens and these servers work seamlessly.</li>
+<code>ypaat</code>, <code>emy</code> and <code>kyy</code>
+sub-domains are maintained by the National Technical University Of
+Athens and these servers work seamlessly.</li>
 <li>
-<code>deh</code> sub-domain is maintained by the Greek Public Power Corporation and occasionally the server is down.</li>
+<code>deh</code> sub-domain is maintained by the Greek Public Power
+Corporation and occasionally the server is down.</li>
 </ol>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows how to get the stations’ and time series’ data from the Hydroscope’s Ministry of Environment and Energy database, <code>http://kyy.hydroscope.gr/</code>.</p>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<p>This is a basic example which shows how to get the stations’ and time
+series’ data from the Hydroscope’s Ministry of Environment and Energy
+database, <code>http://kyy.hydroscope.gr/</code>.</p>
 <p>Load libraries:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/hydroscoper">hydroscoper</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></code></pre></div>
-<p>We will use the package’s data <code>stations</code> and <code>timeseries</code>, to reduce the time needed with data munging. We can subset the station’s data for the <code>kyy</code> sub-domain with:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/hydroscoper" class="external-link">hydroscoper</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></code></pre></div>
+<p>We will use the package’s data <code>stations</code> and
+<code>timeseries</code>, to reduce the time needed with data munging. We
+can subset the station’s data for the <code>kyy</code> sub-domain
+with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># load data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"stations"</span><span class="op">)</span>
-
-<span class="co"># subset stations data</span>
-<span class="va">kyy_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">subdomain</span> <span class="op">==</span> <span class="st">"kyy"</span><span class="op">)</span>
-
-<span class="co"># view kyy stations</span>
-<span class="va">kyy_stations</span>
-<span class="co">#&gt; # A tibble: 425 x 9</span>
-<span class="co">#&gt;    station_id name  water_basin water_division owner longitude latitude altitude</span>
-<span class="co">#&gt;         &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     501032 AG. … "KOURTALIO… GR13           min_…      NA       NA        NA </span>
-<span class="co">#&gt;  2     200246 GEPH… "ALPHEIOS … GR01           min_…      22.0     37.5     318 </span>
-<span class="co">#&gt;  3     200237 TROP… "ALPHEIOS … GR01           min_…      22.0     37.7     728.</span>
-<span class="co">#&gt;  4     200231 BYTI… "ALPHEIOS … GR01           min_…      22.2     37.7    1011.</span>
-<span class="co">#&gt;  5     200200 LYKO… "ALPHEIOS … GR01           min_…      22.2     37.9     758.</span>
-<span class="co">#&gt;  6     200236 MEGA… "ALPHEIOS … GR01           min_…      22.1     37.4     429.</span>
-<span class="co">#&gt;  7     200244 ODOG… "REMA CHOR… GR01           min_…      21.8     37.0     182.</span>
-<span class="co">#&gt;  8     200204 TRIP… "ALPHEIOS … GR01           min_…      21.9     37.9     570.</span>
-<span class="co">#&gt;  9     200198 KAST… "ALPHEIOS … GR01           min_…      22.0     37.9     792.</span>
-<span class="co">#&gt; 10     200239 PERD… "ALPHEIOS … GR01           min_…      22.0     37.7     837.</span>
-<span class="co">#&gt; # … with 415 more rows, and 1 more variable: subdomain &lt;chr&gt;</span></code></pre></div>
-<p>Let’s plot these stations using the package’s dataset <code>greece_borders</code>.</p>
+<code class="sourceCode R"><span><span class="co"># load data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"stations"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># subset stations data</span></span>
+<span><span class="va">kyy_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">subdomain</span> <span class="op">==</span> <span class="st">"kyy"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># view kyy stations</span></span>
+<span><span class="va">kyy_stations</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 425 × 9</span></span></span>
+<span><span class="co">#&gt;    station_id name         water…¹ water…² owner longi…³ latit…⁴ altit…⁵ subdo…⁶</span></span>
+<span><span class="co">#&gt;         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     <span style="text-decoration: underline;">501</span>032 AG. BASILEI… <span style="color: #949494;">"</span>KOURT… GR13    min_…    <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>  kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     <span style="text-decoration: underline;">200</span>246 GEPH. KOKKO… <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.5    318  kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     <span style="text-decoration: underline;">200</span>237 TROPAIA      <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.7    728. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     <span style="text-decoration: underline;">200</span>231 BYTINA       <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.2    37.7   <span style="text-decoration: underline;">1</span>011. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     <span style="text-decoration: underline;">200</span>200 LYKOURIA     <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.2    37.9    758. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     <span style="text-decoration: underline;">200</span>236 MEGALOPOLE   <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.1    37.4    429. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     <span style="text-decoration: underline;">200</span>244 ODOG. AG. S… <span style="color: #949494;">"</span>REMA … GR01    min_…    21.8    37.0    182. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     <span style="text-decoration: underline;">200</span>204 TRIPOTAMA    <span style="color: #949494;">"</span>ALPHE… GR01    min_…    21.9    37.9    570. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">200</span>198 KASTELLIO    <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.9    792. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     <span style="text-decoration: underline;">200</span>239 PERDIKONERI  <span style="color: #949494;">"</span>ALPHE… GR01    min_…    22.0    37.7    837. kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 415 more rows, and abbreviated variable names ¹​water_basin,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ²​water_division, ³​longitude, ⁴​latitude, ⁵​altitude, ⁶​subdomain</span></span></span></code></pre></div>
+<p>Let’s plot these stations using the package’s dataset
+<code>greece_borders</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,
-               fill <span class="op">=</span> <span class="st">"grey"</span>,
-               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">kyy_stations</span>,
-             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span><span class="op">)</span>,
-             color <span class="op">=</span> <span class="st">"#E64B35FF"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Warning: Removed 11 rows containing missing values (geom_point).</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html" class="external-link">geom_polygon</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">greece_borders</span>,</span>
+<span>               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">long</span>, <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span>,</span>
+<span>               fill <span class="op">=</span> <span class="st">"grey"</span>,</span>
+<span>               color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">kyy_stations</span>,</span>
+<span>             <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">longitude</span>, y <span class="op">=</span> <span class="va">latitude</span><span class="op">)</span>,</span>
+<span>             color <span class="op">=</span> <span class="st">"#E64B35FF"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span>ratio<span class="op">=</span><span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 11 rows containing missing values (geom_point).</span></span></code></pre></div>
 <p><img src="intro_hydroscoper_files/figure-html/kyy_stations_map-1.png" width="700"></p>
-<p>To get the time series’ data for the station <code>200200</code> we can use:</p>
+<p>To get the time series’ data for the station <code>200200</code> we
+can use:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">station_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">timeseries</span>, <span class="va">station_id</span> <span class="op">==</span> <span class="fl">200200</span><span class="op">)</span>
-<span class="va">station_ts</span>
-<span class="co">#&gt; # A tibble: 4 x 8</span>
-<span class="co">#&gt;   time_id station_id variable  timestep  units start_date   end_date   subdomain</span>
-<span class="co">#&gt;     &lt;int&gt;      &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;    </span>
-<span class="co">#&gt; 1     761     200200 wind_dir… &lt;NA&gt;      °     1948-01-01T… 1997-07-3… kyy      </span>
-<span class="co">#&gt; 2      56     200200 precipit… 30_minut… mm    1985-05-06T… 1997-01-0… kyy      </span>
-<span class="co">#&gt; 3     760     200200 snow      daily     mm    1948-01-01T… 1997-07-3… kyy      </span>
-<span class="co">#&gt; 4     759     200200 precipit… daily     mm    1953-03-01T… 2011-06-3… kyy</span></code></pre></div>
-<p>We can download the station’s precipitation time series <strong>56</strong>:</p>
+<code class="sourceCode R"><span><span class="va">station_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">timeseries</span>, <span class="va">station_id</span> <span class="op">==</span> <span class="fl">200200</span><span class="op">)</span></span>
+<span><span class="va">station_ts</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 8</span></span></span>
+<span><span class="co">#&gt;   time_id station_id variable       timestep   units start_date  end_d…¹ subdo…²</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     761     <span style="text-decoration: underline;">200</span>200 wind_direction <span style="color: #BB0000;">NA</span>         °     1948-01-01… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      56     <span style="text-decoration: underline;">200</span>200 precipitation  30_minutes mm    1985-05-06… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     760     <span style="text-decoration: underline;">200</span>200 snow           daily      mm    1948-01-01… 1997-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     759     <span style="text-decoration: underline;">200</span>200 precipitation  daily      mm    1953-03-01… 2011-0… kyy    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable names ¹​end_date, ²​subdomain</span></span></span></code></pre></div>
+<p>We can download the station’s precipitation time series
+<strong>56</strong>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ts_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, time_id <span class="op">=</span> <span class="fl">56</span><span class="op">)</span>
-<span class="va">ts_raw</span>
-<span class="co">#&gt; # A tibble: 147,519 x 3</span>
-<span class="co">#&gt;    date                value comment</span>
-<span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span>
-<span class="co">#&gt;  1 1985-05-06 08:00:00     0 1      </span>
-<span class="co">#&gt;  2 1985-05-06 08:30:00     0 1      </span>
-<span class="co">#&gt;  3 1985-05-06 09:00:00     0 1      </span>
-<span class="co">#&gt;  4 1985-05-06 09:30:00     0 1      </span>
-<span class="co">#&gt;  5 1985-05-06 10:00:00     0 1      </span>
-<span class="co">#&gt;  6 1985-05-06 10:30:00     0 1      </span>
-<span class="co">#&gt;  7 1985-05-06 11:00:00     0 1      </span>
-<span class="co">#&gt;  8 1985-05-06 11:30:00     0 1      </span>
-<span class="co">#&gt;  9 1985-05-06 12:00:00     0 1      </span>
-<span class="co">#&gt; 10 1985-05-06 12:30:00     0 1      </span>
-<span class="co">#&gt; # … with 147,509 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ts_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, time_id <span class="op">=</span> <span class="fl">56</span><span class="op">)</span></span>
+<span><span class="va">ts_raw</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 147,519 × 3</span></span></span>
+<span><span class="co">#&gt;    date                value comment</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1985-05-06 <span style="color: #949494;">08:00:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1985-05-06 <span style="color: #949494;">08:30:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1985-05-06 <span style="color: #949494;">09:00:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1985-05-06 <span style="color: #949494;">09:30:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1985-05-06 <span style="color: #949494;">10:00:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1985-05-06 <span style="color: #949494;">10:30:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1985-05-06 <span style="color: #949494;">11:00:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1985-05-06 <span style="color: #949494;">11:30:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1985-05-06 <span style="color: #949494;">12:00:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1985-05-06 <span style="color: #949494;">12:30:00</span>     0 1      </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 147,509 more rows</span></span></span></code></pre></div>
 <p>Let’s create a plot:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">ts_raw</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"30 min precipitation"</span>, 
-       subtitle <span class="op">=</span> <span class="st">"station 200200"</span>,
-       x<span class="op">=</span><span class="st">"Date"</span>, y <span class="op">=</span> <span class="st">"Rain height (mm)"</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">ts_raw</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span> <span class="st">"30 min precipitation"</span>, </span>
+<span>       subtitle <span class="op">=</span> <span class="st">"station 200200"</span>,</span>
+<span>       x<span class="op">=</span><span class="st">"Date"</span>, y <span class="op">=</span> <span class="st">"Rain height (mm)"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="intro_hydroscoper_files/figure-html/plot_time_series-1.png" width="700"></p>
 </div>
   </div>
@@ -291,11 +335,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Konstantinos Vantas.</p>
+  <p></p>
+<p>Developed by Konstantinos Vantas.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -303,6 +349,8 @@
 
   
 
+
+  
 
   </body>
 </html>
