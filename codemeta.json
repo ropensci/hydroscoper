@@ -1,26 +1,24 @@
 {
-  "@context": [
-    "http://purl.org/codemeta/2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "hydroscoper",
-  "description": "R interface to the Greek National Data Bank for Hydrological and \n    Meteorological Information. It covers \n    Hydroscope's data sources and provides functions to transliterate, \n    translate and download them into tidy dataframes.",
+  "description": "R interface to the Greek National Data Bank for Hydrological and Meteorological Information. It covers Hydroscope's data sources and provides functions to transliterate, translate and download them into tidy dataframes.",
   "name": "hydroscoper: Interface to the Greek National Data Bank for Hydrometeorological Information",
+  "relatedLink": ["https://docs.ropensci.org/hydroscoper/", "https://CRAN.R-project.org/package=hydroscoper"],
   "codeRepository": "https://github.com/ropensci/hydroscoper",
   "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.4 (2021-02-15)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
-    "name": "Central R Archive Network (CRAN)",
+    "name": "Comprehensive R Archive Network (CRAN)",
     "url": "https://cran.r-project.org"
   },
   "author": [
@@ -102,14 +100,14 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.4"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "stringi",
       "name": "stringi",
@@ -122,7 +120,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringi"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -135,7 +133,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -148,7 +146,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "pingr",
       "name": "pingr",
@@ -161,7 +159,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=pingr"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
@@ -174,7 +172,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=readr"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -186,38 +184,10 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
-    }
-  ],
-  "contIntegration": ["https://travis-ci.org/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://codecov.io/gh/ropensci/hydroscoper"],
-  "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
-  "fileSize": "1788.432KB",
-  "relatedLink": [
-    "https://docs.ropensci.org/hydroscoper/",
-    "https://CRAN.R-project.org/package=hydroscoper"
-  ],
-  "copyrightHolder": {},
-  "funder": {},
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/185",
-    "provider": "https://ropensci.org"
+    },
+    "SystemRequirements": null
   },
-  "keywords": [
-    "climate",
-    "hydroscope",
-    "hydrometeorology",
-    "hydrology",
-    "tidy-data",
-    "time-series",
-    "greece",
-    "water-resources",
-    "meteorological-stations",
-    "meteorological-data",
-    "r",
-    "rstats",
-    "r-package",
-    "peer-reviewed"
-  ],
+  "fileSize": "534.714KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -244,5 +214,12 @@
         }
       }
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
+  "contIntegration": ["https://travis-ci.org/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://codecov.io/gh/ropensci/hydroscoper"],
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/185",
+    "provider": "https://ropensci.org"
+  }
 }
