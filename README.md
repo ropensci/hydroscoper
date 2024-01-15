@@ -4,7 +4,7 @@ hydroscoper
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 [![tic](https://github.com/ropensci/hydroscoper/workflows/tic/badge.svg?branch=master)](https://github.com/ropensci/hydroscoper/actions)
-[![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
+[![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://app.codecov.io/gh/ropensci/hydroscoper)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
