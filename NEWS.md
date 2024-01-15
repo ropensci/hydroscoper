@@ -1,3 +1,7 @@
+# hydroscoper 1.6.0 (Release date: 2024-01-15)
+
+* Update dependencies
+
 # hydroscoper 1.5.0 (Release date: 2022-09-29)
 
 * remove defunct functions
