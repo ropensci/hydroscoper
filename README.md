@@ -3,10 +3,7 @@ hydroscoper
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-[![Travis-CI Build
-Status](https://travis-ci.org/ropensci/hydroscoper.svg?branch=master)](https://travis-ci.org/ropensci/hydroscoper)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper)
+[![tic](https://github.com/ropensci/hydroscoper/workflows/tic/badge.svg?branch=master)](https://github.com/ropensci/hydroscoper/actions)
 [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://codecov.io/gh/ropensci/hydroscoper)
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
@@ -24,13 +21,12 @@ Hydrological and Meteorological Information, *Hydroscope*. For more
 details checkout the package’s
 [website](https://docs.ropensci.org/hydroscoper/) and the vignettes:
 
--   [An introduction to
-    `hydroscoper`](https://docs.ropensci.org/hydroscoper/articles/intro_hydroscoper.html)
-    with details about the Hydroscope project and the package.
--   [Using `hydroscoper`’s data
-    sets](https://docs.ropensci.org/hydroscoper/articles/stations_with_data.html)
-    with a simple example of how to use the package’s internal data
-    sets.
+- [An introduction to
+  `hydroscoper`](https://docs.ropensci.org/hydroscoper/articles/intro_hydroscoper.html)
+  with details about the Hydroscope project and the package.
+- [Using `hydroscoper`’s data
+  sets](https://docs.ropensci.org/hydroscoper/articles/stations_with_data.html)
+  with a simple example of how to use the package’s internal data sets.
 
 ## Installation
 
@@ -51,19 +47,19 @@ devtools::install_github("ropensci/hydroscoper")
 
 The functions that are provided by `hydroscoper` are:
 
--   `get_stations, get_timeseries, ..., etc.` family functions, to
-    retrieve tibbles with Hydroscope’s data for a given data source.
--   `get_data`, to retrieve a tibble with time series’ values.  
--   `hydro_coords`, to convert Hydroscope’s points’ raw format to a
-    tibble.
--   `hydro_translate` to translate various terms and names from Greek to
-    English.
+- `get_stations, get_timeseries, ..., etc.` family functions, to
+  retrieve tibbles with Hydroscope’s data for a given data source.
+- `get_data`, to retrieve a tibble with time series’ values.  
+- `hydro_coords`, to convert Hydroscope’s points’ raw format to a
+  tibble.
+- `hydro_translate` to translate various terms and names from Greek to
+  English.
 
 The data sets that are provided by `hydroscoper` are:
 
--   `stations` a tibble with stations’ data from Hydroscope.
--   `timeseries` a tibble with time series’ data from Hydroscope.
--   `greece_borders` a tibble with the borders of Greece.
+- `stations` a tibble with stations’ data from Hydroscope.
+- `timeseries` a tibble with time series’ data from Hydroscope.
+- `greece_borders` a tibble with the borders of Greece.
 
 ## Example
 
@@ -92,7 +88,7 @@ ts_raw
 #>  8 1985-05-06 11:30:00     0 1      
 #>  9 1985-05-06 12:00:00     0 1      
 #> 10 1985-05-06 12:30:00     0 1      
-#> # … with 147,509 more rows
+#> # ℹ 147,509 more rows
 ```
 
 Let’s create a plot:
@@ -109,13 +105,13 @@ ggplot(data = ts_raw, aes(x = date, y = value))+
 
 ## Meta
 
--   Bug reports, suggestions, and code are welcome. Please see
-    [Contributing](https://github.com/ropensci/hydroscoper/blob/master/CONTRIBUTING.md).
--   License:
-    -   All code is licensed MIT.
-    -   All data are from the public data sources in
-        `http://www.hydroscope.gr/`.
--   To cite `hydroscoper` please use:
+- Bug reports, suggestions, and code are welcome. Please see
+  [Contributing](https://github.com/ropensci/hydroscoper/blob/master/CONTRIBUTING.md).
+- License:
+  - All code is licensed MIT.
+  - All data are from the public data sources in
+    `http://www.hydroscope.gr/`.
+- To cite `hydroscoper` please use:
 
 <!-- -->
 

@@ -16,3 +16,6 @@
 ^_pkgdown\.yml$
 ^codemeta\.json$
 ^CRAN-RELEASE$
+^\.ccache$
+^\.github$
+^tic\.R$
