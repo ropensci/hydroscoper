@@ -1,3 +1,7 @@
+# hydroscoper 1.7.0 (Release date: 2024-07-19)
+
+* remove pingr dependency 
+
 # hydroscoper 1.6.0 (Release date: 2024-01-15)
 
 * Update dependencies

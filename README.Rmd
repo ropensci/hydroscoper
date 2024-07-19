@@ -15,22 +15,28 @@ knitr::opts_chunk$set(
 
 chk_online <- FALSE
 
-library(pingr)
-
 # helper function to check if a sub-domain is online
-online <- function(h_url){
-  !is.na(pingr::ping(h_url, count = 1))
+online <- function(url = "kyy.hydroscope.gr") {
+  
+  # test the http capabilities of the current R build
+  if (!capabilities(what = "http/ftp")) return(FALSE)
+  
+  # test connection by trying to read first line of url
+  test <- try(suppressWarnings(readLines(url, n = 1)), silent = TRUE)
+  
+  # return FALSE if test inherits 'try-error' class
+  !inherits(test, "try-error")
 }
 
 # check if sub-domains are online
-chk_online   <- online("kyy.hydroscope.gr")
+chk_online   <- online()
 
 ```
 [![tic](https://github.com/ropensci/hydroscoper/workflows/tic/badge.svg?branch=master)](https://github.com/ropensci/hydroscoper/actions)
 [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://app.codecov.io/gh/ropensci/hydroscoper) 
 [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
-[![packageversion](https://img.shields.io/badge/Package%20version-1.6.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
+[![packageversion](https://img.shields.io/badge/Package%20version-1.7.0-orange.svg?style=flat-square)](https://github.com/ropensci/hydroscoper)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
 [![ropensci](https://badges.ropensci.org/185_status.svg)](https://github.com/ropensci/software-review/issues/185)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg)](https://doi.org/10.5281/zenodo.1196540)

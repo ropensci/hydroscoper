@@ -28,18 +28,17 @@ test_that("enhydris_url table address", {
 skip_if_not_online <- function(subdomain) {
   h_url <- paste0(subdomain, ".hydroscope.gr")
 
-  tryCatch(
-    expr = {
-      if (all(is.na(pingr::ping_port(h_url, port = 80L, count = 3)))) {
-        skip(paste(h_url, "is not online"))
-      }
-    },
-    error = function(e){
-      skip(paste("Cannot resolve host name", h_url))
-    }
-  )
-  if (all(is.na(pingr::ping_port(h_url, port = 80L, count = 3)))) {
-    skip(paste(h_url, "is not online"))
+  # test the http capabilities of the current R build
+  if (!capabilities(what = "http/ftp")) {
+    skip("The current R build has no http capabilities")
+  }
+
+  # test connection by trying to read first line of url
+  test <- try(suppressWarnings(readLines(url, n = 1)), silent = TRUE)
+
+  # return FALSE if test inherits 'try-error' class
+  if (inherits(test, "try-error")) {
+    skip(paste("Cannot read data from", h_url))
   }
 }
 
