@@ -16,4 +16,10 @@
 ^_pkgdown\.yml$
 ^codemeta\.json$
 ^CRAN-RELEASE$
+<<<<<<< HEAD
 ^CRAN-SUBMISSION$
+=======
+^\.ccache$
+^\.github$
+^tic\.R$
+>>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
