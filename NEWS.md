@@ -1,6 +1,7 @@
 # hydroscoper 1.7.0 (Release date: 2024-07-19)
 
-* remove pingr dependency 
+* `pingr` dependency has been removed. The check if a sub-domain is alive is
+  performed by a native R function. 
 
 # hydroscoper 1.6.0 (Release date: 2024-01-15)
 
@@ -49,7 +50,7 @@
   - The included data in the package cover all Hydroscope's databases.
   - Add vignettes "An introduction to `hydroscoper`" and  "Using `hydroscoper`'s data".
   - Add package documentation site.
-  - Use pingr package to check if a sub-domain is alive.
+  
   - All the functions return tibbles.
   - Add `greece_borders` dataset.
 

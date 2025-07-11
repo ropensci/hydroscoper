@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.4.1 (2024-06-14 ucrt)",
+  "runtimePlatform": "R version 4.5.0 (2025-04-11)",
   "author": [
     {
       "@type": "Person",
@@ -79,6 +79,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "httptest",
+      "name": "httptest",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httptest"
     },
     {
       "@type": "SoftwareApplication",
@@ -168,7 +180,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "510.698KB",
+  "fileSize": "507.75KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -197,12 +209,8 @@
     }
   ],
   "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
-<<<<<<< HEAD
-  "contIntegration": ["https://app.travis-ci.com/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://app.codecov.io/gh/ropensci/hydroscoper"],
-=======
   "readme": "https://github.com/ropensci/hydroscoper/blob/master/README.md",
-  "contIntegration": ["https://github.com/ropensci/hydroscoper/actions", "https://app.codecov.io/gh/ropensci/hydroscoper"],
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
+  "contIntegration": ["https://app.travis-ci.com/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://app.codecov.io/gh/ropensci/hydroscoper"],
   "review": {
     "@type": "Review",
     "url": "https://github.com/ropensci/software-review/issues/185",

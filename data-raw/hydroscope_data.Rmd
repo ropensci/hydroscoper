@@ -29,17 +29,16 @@ This vignette shows how to create a tidy data frame for the stations' and time s
 This vignette requires an internet connection to run and that the Hydroscope's subdomains to be online. We can check if the sub-domains are online using the `pingr` package:
 
 ```{r}
-library(pingr)
-
 # helper function to check if a sub-domain is online
 online <- function(h_url){
-  !is.na(pingr::ping(h_url, count = 1))
+  !inherits(try(suppressWarnings(readLines(h_url, n = 1)), silent = TRUE),
+            "try-error")
 }
 
 # check if sub-domains are online
-kyy   <- online("kyy.hydroscope.gr")
-emy   <- online("emy.hydroscope.gr")
-ypaat <- online("ypaat.hydroscope.gr")
+kyy   <- online("http://kyy.hydroscope.gr")
+emy   <- online("http://emy.hydroscope.gr")
+ypaat <- online("http://ypaat.hydroscope.gr")
 chk_online <- kyy & emy & ypaat
 print(paste("All sub-domains are online:", chk_online))
 ```

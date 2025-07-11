@@ -7,37 +7,24 @@ server_address <- function(subdomain) {
 #' Check if a remote server is alive
 #' @noRd
 server_alive <- function(subdomain) {
-
-  err_msg <- paste(
-    "The server for that data source is probably down,",
-    "get more info at hydroscope@hydroscope.gr or try",
-    "again later.")
-
-  tryCatch({
-    if (all(is.na(pingr::ping_port(server_address(subdomain),
-      port = 80L,
-      count = 3
-    )))) {
-      stop(err_msg, call. = FALSE)
-    }
-  },
-  error = function(e) {
-    # The original error message is now the default stop message
-    stop(err_msg, call. = FALSE)})
-
   # test the http capabilities of the current R build
   if (!capabilities(what = "http/ftp")) {
     stop("The current R build has no http capabilities")
   }
 
+  url <- server_address(subdomain)
   # test connection by trying to read first line of url
   test <- try(suppressWarnings(readLines(url, n = 1)), silent = TRUE)
 
   # return FALSE if test inherits 'try-error' class
   if (inherits(test, "try-error")) {
+    err_msg <- paste(
+      "The server for that data source is probably down,",
+      "get more info at hydroscope@hydroscope.gr or try",
+      "again later."
+    )
     stop(err_msg)
   }
-
 }
 
 #' create coords from points

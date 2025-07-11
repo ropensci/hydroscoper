@@ -26,7 +26,6 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Imports: stringi (>= 1.8),
-    pingr (>= 2.0),
     stringr (>= 1.5), 
     tibble(>= 3.2),
     readr (>= 2.1),
