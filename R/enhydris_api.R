@@ -79,7 +79,9 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
                          time_id = NULL) {
 
   # testing arguments and server availability ----------------------------------
-
+  if (!subdomain %in% c("kyy", "ypaat", "emy", "deh")) {
+    stop("Not a valid subdomain.", call. = FALSE)
+  }
   # match subdomain values
   subdomain <- match.arg(subdomain)
 

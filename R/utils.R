@@ -13,18 +13,15 @@ server_alive <- function(subdomain) {
     "again later."
   )
   tryCatch({
-    pingr::ping_port(server_address(subdomain),
-      port = 80L,
-      count = 1
-    )
     if (all(is.na(pingr::ping_port(server_address(subdomain),
       port = 80L,
       count = 3
     )))) {
-      stop()
+      stop(err_msg, call. = FALSE)
     }
   },
   error = function(e) {
+    # The original error message is now the default stop message
     stop(err_msg, call. = FALSE)
   }
   )

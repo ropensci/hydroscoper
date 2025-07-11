@@ -3,7 +3,6 @@
 \docType{package}
 \name{hydroscoper}
 \alias{hydroscoper}
-\alias{_PACKAGE}
 \alias{hydroscoper-package}
 \title{hydroscoper: Interface to Hydroscope}
 \description{
