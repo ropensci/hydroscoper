@@ -86,7 +86,7 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
   subdomain <- match.arg(subdomain)
 
   # check if server is alive
-  server_alive(subdomain)
+  # server_alive(subdomain)
 
   # create hydroscope url
   api <- enhydris_names(api_value)

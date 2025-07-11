@@ -1,42 +1,24 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
-<<<<<<< HEAD
 <url><loc>/CONDUCT.html</loc></url>
 <url><loc>/CONTRIBUTING.html</loc></url>
 <url><loc>/LICENSE-text.html</loc></url>
 <url><loc>/LICENSE.html</loc></url>
-=======
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 <url><loc>/articles/index.html</loc></url>
 <url><loc>/articles/intro_hydroscoper.html</loc></url>
 <url><loc>/articles/stations_with_data.html</loc></url>
 <url><loc>/authors.html</loc></url>
-<<<<<<< HEAD
 <url><loc>/index.html</loc></url>
-=======
-<url><loc>/CONDUCT.html</loc></url>
-<url><loc>/CONTRIBUTING.html</loc></url>
-<url><loc>/index.html</loc></url>
-<url><loc>/LICENSE-text.html</loc></url>
-<url><loc>/LICENSE.html</loc></url>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 <url><loc>/news/index.html</loc></url>
 <url><loc>/paper.html</loc></url>
 <url><loc>/reference/find_stations.html</loc></url>
 <url><loc>/reference/get_data.html</loc></url>
 <url><loc>/reference/get_tables.html</loc></url>
 <url><loc>/reference/greece_borders.html</loc></url>
-<<<<<<< HEAD
 <url><loc>/reference/hydro_coords.html</loc></url>
 <url><loc>/reference/hydro_translate.html</loc></url>
 <url><loc>/reference/hydroscoper.html</loc></url>
 <url><loc>/reference/hydroscoper_defunct.html</loc></url>
-=======
-<url><loc>/reference/hydroscoper.html</loc></url>
-<url><loc>/reference/hydroscoper_defunct.html</loc></url>
-<url><loc>/reference/hydro_coords.html</loc></url>
-<url><loc>/reference/hydro_translate.html</loc></url>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/stations.html</loc></url>
 <url><loc>/reference/timeseries.html</loc></url>

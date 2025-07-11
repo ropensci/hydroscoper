@@ -3,16 +3,8 @@ hydroscoper
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<<<<<<< HEAD
-[![Travis-CI Build
-Status](https://app.travis-ci.com/ropensci/hydroscoper.svg?branch=master)](https://app.travis-ci.com/ropensci/hydroscoper)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&svg=true)](https://ci.appveyor.com/project/ropensci/hydroscoper)
-[![codecov](https://app.codecov.io/gh/ropensci/hydroscoper/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ropensci/hydroscoper)
-=======
 [![tic](https://github.com/ropensci/hydroscoper/workflows/tic/badge.svg?branch=master)](https://github.com/ropensci/hydroscoper/actions)
 [![codecov](https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg)](https://app.codecov.io/gh/ropensci/hydroscoper)
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg)](https://cran.r-project.org/)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/hydroscoper)](https://cran.r-project.org/package=hydroscoper)
@@ -83,23 +75,6 @@ library(ggplot2)
 
 ts_raw <- get_data(subdomain = "kyy", time_id = 56)
 ts_raw
-<<<<<<< HEAD
-#> # A tibble: 147,519 × 3
-#>    date                value comment
-#>    <dttm>              <dbl> <chr>  
-#>  1 1985-05-06 08:00:00     0 1      
-#>  2 1985-05-06 08:30:00     0 1      
-#>  3 1985-05-06 09:00:00     0 1      
-#>  4 1985-05-06 09:30:00     0 1      
-#>  5 1985-05-06 10:00:00     0 1      
-#>  6 1985-05-06 10:30:00     0 1      
-#>  7 1985-05-06 11:00:00     0 1      
-#>  8 1985-05-06 11:30:00     0 1      
-#>  9 1985-05-06 12:00:00     0 1      
-#> 10 1985-05-06 12:30:00     0 1      
-#> # ℹ 147,509 more rows
-=======
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 ```
 
 Let’s create a plot:

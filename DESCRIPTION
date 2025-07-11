@@ -25,21 +25,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
-<<<<<<< HEAD
-Imports: stringi (>= 1.5),
-    stringr (>= 1.4), 
-    tibble(>= 3.1),
-    pingr (>= 2.0),
-    readr (>= 1.4),
-    jsonlite (>= 1.7)
-Suggests: 
-    ggplot2 (>= 3.3),
-    knitr (>= 1.31),
-    rmarkdown (>= 2.7),
-    httptest,
-    testthat (>= 3.0)
-=======
 Imports: stringi (>= 1.8),
+    pingr (>= 2.0),
     stringr (>= 1.5), 
     tibble(>= 3.2),
     readr (>= 2.1),
@@ -48,6 +35,6 @@ Suggests:
     ggplot2 (>= 3.5),
     knitr (>= 1.45),
     rmarkdown (>= 2.25),
+    httptest,
     testthat (>= 3.2)
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 VignetteBuilder: knitr

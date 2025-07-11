@@ -33,11 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hydroscoper</a>
-<<<<<<< HEAD
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.5.0</span>
-=======
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
       </span>
     </div>
 
@@ -88,11 +84,7 @@
 <div class="page-header"><h1 id="hydroscoper">hydroscoper<a class="anchor" aria-label="anchor" href="#hydroscoper"></a>
 </h1></div>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<<<<<<< HEAD
-<p><a href="https://app.travis-ci.com/ropensci/hydroscoper" class="external-link"><img src="https://app.travis-ci.com/ropensci/hydroscoper.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/ropensci/hydroscoper" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/ropensci/hydroscoper?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://app.codecov.io/gh/ropensci/hydroscoper" class="external-link"><img src="https://app.codecov.io/gh/ropensci/hydroscoper/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg" alt="minimal R version"></a> <a href="https://cran.r-project.org/package=hydroscoper" class="external-link"><img src="http://www.r-pkg.org/badges/version/hydroscoper" alt="CRAN_Status_Badge"></a> <a href="https://github.com/ropensci/hydroscoper" class="external-link"><img src="https://img.shields.io/badge/Package%20version-1.5.0-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://cran.r-project.org/package=hydroscoper" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper"></a> <a href="https://github.com/ropensci/software-review/issues/185" class="external-link"><img src="https://badges.ropensci.org/185_status.svg" alt="ropensci"></a> <a href="https://doi.org/10.5281/zenodo.1196540" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg" alt="DOI"></a> <a href="https://doi.org/10.21105/joss.00625" class="external-link"><img src="http://joss.theoj.org/papers/10.21105/joss.00625/status.svg" alt="DOI"></a></p>
-=======
 <p><a href="https://github.com/ropensci/hydroscoper/actions" class="external-link"><img src="https://github.com/ropensci/hydroscoper/workflows/tic/badge.svg?branch=master" alt="tic"></a> <a href="https://app.codecov.io/gh/ropensci/hydroscoper" class="external-link"><img src="https://codecov.io/github/ropensci/hydroscoper/branch/master/graphs/badge.svg" alt="codecov"></a> <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-3.4-6666ff.svg" alt="minimal R version"></a> <a href="https://cran.r-project.org/package=hydroscoper" class="external-link"><img src="http://www.r-pkg.org/badges/version/hydroscoper" alt="CRAN_Status_Badge"></a> <a href="https://github.com/ropensci/hydroscoper" class="external-link"><img src="https://img.shields.io/badge/Package%20version-1.7.0-orange.svg?style=flat-square" alt="packageversion"></a> <a href="https://cran.r-project.org/package=hydroscoper" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/hydroscoper"></a> <a href="https://github.com/ropensci/software-review/issues/185" class="external-link"><img src="https://badges.ropensci.org/185_status.svg" alt="ropensci"></a> <a href="https://doi.org/10.5281/zenodo.1196540" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1196540.svg" alt="DOI"></a> <a href="https://doi.org/10.21105/joss.00625" class="external-link"><img src="http://joss.theoj.org/papers/10.21105/joss.00625/status.svg" alt="DOI"></a></p>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 <p><img src="https://github.com/ropensci/hydroscoper/raw/master/man/figures/hydroscoper_hex.png" align="right" width="120/"></p>
 <p><code>hydroscoper</code> is an R interface to the Greek National Data Bank for Hydrological and Meteorological Information, <em>Hydroscope</em>. For more details checkout the package’s <a href="https://docs.ropensci.org/hydroscoper/" class="external-link">website</a> and the vignettes:</p>
 <ul>
@@ -148,25 +140,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ts_raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_data.html">get_data</a></span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, time_id <span class="op">=</span> <span class="fl">56</span><span class="op">)</span></span>
-<<<<<<< HEAD
-<span><span class="va">ts_raw</span></span>
-<span><span class="co">#&gt; # A tibble: 147,519 × 3</span></span>
-<span><span class="co">#&gt;    date                value comment</span></span>
-<span><span class="co">#&gt;    &lt;dttm&gt;              &lt;dbl&gt; &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt;  1 1985-05-06 08:00:00     0 1      </span></span>
-<span><span class="co">#&gt;  2 1985-05-06 08:30:00     0 1      </span></span>
-<span><span class="co">#&gt;  3 1985-05-06 09:00:00     0 1      </span></span>
-<span><span class="co">#&gt;  4 1985-05-06 09:30:00     0 1      </span></span>
-<span><span class="co">#&gt;  5 1985-05-06 10:00:00     0 1      </span></span>
-<span><span class="co">#&gt;  6 1985-05-06 10:30:00     0 1      </span></span>
-<span><span class="co">#&gt;  7 1985-05-06 11:00:00     0 1      </span></span>
-<span><span class="co">#&gt;  8 1985-05-06 11:30:00     0 1      </span></span>
-<span><span class="co">#&gt;  9 1985-05-06 12:00:00     0 1      </span></span>
-<span><span class="co">#&gt; 10 1985-05-06 12:30:00     0 1      </span></span>
-<span><span class="co">#&gt; # ℹ 147,509 more rows</span></span></code></pre></div>
-=======
 <span><span class="va">ts_raw</span></span></code></pre></div>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 <p>Let’s create a plot:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">ts_raw</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
@@ -261,11 +235,7 @@
 
 <div class="pkgdown">
   <p></p>
-<<<<<<< HEAD
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
-=======
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
->>>>>>> 5f92c0e554c5e22aa235c2fc0bec391976bb65f4
 </div>
 
       </footer>
