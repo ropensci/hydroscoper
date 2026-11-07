@@ -79,14 +79,13 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
                          time_id = NULL) {
 
   # testing arguments and server availability ----------------------------------
-  if (!subdomain %in% c("kyy", "ypaat", "emy", "deh")) {
+  if (length(subdomain) != 1 || !subdomain %in% c("kyy", "ypaat", "emy", "deh")) {
     stop("Not a valid subdomain.", call. = FALSE)
   }
+
   # match subdomain values
   subdomain <- match.arg(subdomain)
 
-  # check if server is alive
-  # server_alive(subdomain)
 
   # create hydroscope url
   api <- enhydris_names(api_value)
