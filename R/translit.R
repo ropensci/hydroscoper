@@ -66,7 +66,7 @@ map_variables <- function(y) {
       "aktinobolia", "anthraka", "dioxeidio", "ypoloipo", "argilio",
       "argilos", "arseniko", "pyritiou", "aera", "nephokalypse", "nephose",
       "axiosemeiota", "nephe", "kairos", "diafora", "atmosfairiki", "stathera",
-      "parousa", "parelthousa", "kalymeno", "el.", "meg.", "skleroteta",
+      "parousa", "parelthousa", "kalymeno", "el\\.", "meg\\.", "skleroteta",
       "eliophaneia", "eisroe_se_tamieuteres"
     ),
 
