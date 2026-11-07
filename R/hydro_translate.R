@@ -28,7 +28,7 @@
 #' natio_observ_athens \tab National Observatory of Athens \cr
 #' public_power_corp   \tab Public Power Corporation \cr
 #' natio_argic_resear  \tab National Agricultural Research Foundation \cr
-#' greek_perfectures   \tab Greek Prefectures \cr
+#' greek_prefectures   \tab Greek Prefectures \cr
 #' crete_eng_faculty   \tab Technical University of Crete \cr
 #' crete_natural_museum \tab Natural History Museum of Crete \cr
 #' }
