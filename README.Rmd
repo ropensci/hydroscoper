@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 chk_online <- FALSE
 
 # helper function to check if a sub-domain is online
-online <- function(url = "kyy.hydroscope.gr") {
+online <- function(url = "http://kyy.hydroscope.gr") {
   
   # test the http capabilities of the current R build
   if (!capabilities(what = "http/ftp")) return(FALSE)
@@ -26,7 +26,8 @@ online <- function(url = "kyy.hydroscope.gr") {
   
   # return FALSE if test inherits 'try-error' class
   !inherits(test, "try-error")
-}
+
+  }
 
 # check if sub-domains are online
 chk_online   <- online()
