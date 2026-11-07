@@ -1,4 +1,5 @@
 # Helper functions -------------------------------------------------------------
+testthat::skip_if_not_installed("httptest")
 library(httptest)
 
 test_that("enhydris_names returns error", {
