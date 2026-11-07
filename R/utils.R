@@ -42,8 +42,8 @@ create_coords <- function(str) {
     )
   } else {
     tibble::tibble(
-      long = rep(NA, NROW(str)),
-      lat = rep(NA, NROW(str))
+      long = rep(NA_real_, NROW(str)),
+      lat = rep(NA_real_, NROW(str))
     )
   }
 }
