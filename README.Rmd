@@ -127,7 +127,7 @@ doi = {10.21105/joss.00625},
 year = {2018},
 month = {mar},
 publisher = {The Open Journal},
-volume = {2},
+volume = {3},
 number = {23},
 journal = {The Journal of Open Source Software}
 }

@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.0 (2025-04-11)",
+  "runtimePlatform": "R version 4.6.1 (2026-06-24 ucrt)",
   "author": [
     {
       "@type": "Person",
@@ -180,7 +180,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "507.75KB",
+  "fileSize": "510.212KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -202,19 +202,10 @@
         "datePublished": "2018",
         "isPartOf": {
           "@type": ["PublicationVolume", "Periodical"],
-          "volumeNumber": "2",
+          "volumeNumber": "3",
           "name": "The Journal of Open Source Software"
         }
       }
     }
-  ],
-  "releaseNotes": "https://github.com/ropensci/hydroscoper/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/hydroscoper/blob/master/README.md",
-  "contIntegration": ["https://app.travis-ci.com/ropensci/hydroscoper", "https://ci.appveyor.com/project/ropensci/hydroscoper", "https://app.codecov.io/gh/ropensci/hydroscoper"],
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/185",
-    "provider": "https://ropensci.org"
-  },
-  "keywords": ["climate", "hydroscope", "hydrometeorology", "hydrology", "tidy-data", "time-series", "greece", "water-resources", "meteorological-stations", "meteorological-data", "r", "rstats", "r-package", "peer-reviewed"]
+  ]
 }

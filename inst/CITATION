@@ -1,6 +1,5 @@
-citHeader("To cite hydroscoper in publications, please use:")
-
 bibentry(
+
   bibtype = "Article",
   author = as.person("Konstantinos Vantas"),
   title = "{hydroscoper}: R interface to the Greek National Data Bank for Hydrological and Meteorological Information",
@@ -8,9 +7,11 @@ bibentry(
   year = 2018,
   month = "mar",
   publisher = "The Open Journal",
-  volume = 2,
+  volume = 3,
   number = 23,
   journal = "The Journal of Open Source Software",
+
+  header = "To cite hydroscoper in publications, please use:",
 
   textVersion = paste("Vantas K., (2018).",
   "hydroscoper: R interface to the Greek National Data Bank for Hydrological and Meteorological Information.",
