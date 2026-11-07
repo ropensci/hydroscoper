@@ -5,7 +5,7 @@
 \alias{timeseries}
 \title{timeseries}
 \format{
-A tibble with 10,804 rows and 9 variables:
+A tibble with 10,804 rows and 8 variables:
 \describe{
     \item{time_id}{The time series ID}
     \item{station_id}{The corresponding station's ID}
