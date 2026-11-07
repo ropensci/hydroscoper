@@ -27,7 +27,7 @@
 #' given Hydroscope's  database, with units of measurement and times  of
 #' those measurements.
 #'
-#' @format A tibble with 10,804 rows and 9 variables:
+#' @format A tibble with 10,804 rows and 8 variables:
 #' \describe{
 #'     \item{time_id}{The time series ID}
 #'     \item{station_id}{The corresponding station's ID}
@@ -46,7 +46,7 @@
 #' variables are created using the function tidy from the broom package. This
 #' data frame was created for use with the geom_polygon from ggplot2 package.
 #'
-#' @format A tibble with 18,474 rows and 8 variables:
+#' @format A tibble with 18,474 rows and 6 variables:
 #' \describe{
 #'   \item{long}{Longitude in decimal degrees, ETRS89}
 #'   \item{lat}{Latitude in decimal degrees, ETRS89}
