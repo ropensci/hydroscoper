@@ -49,7 +49,9 @@
 get_data <- function(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id) {
 
   # check that time_id is not NULL
-  if (is.null(time_id)) stop("Argument 'time_id' is missing.")
+  if (is.null(time_id) || is.null(time_id)) {
+    stop("Argument 'time_id' is missing.")
+  }
 
   enhydris_get(
     subdomain = subdomain, api_value = "time_data",
