@@ -1,7 +1,7 @@
 #' Create host name address using a subdomain
 #' @noRd
 server_address <- function(subdomain) {
-  paste0(subdomain, ".hydroscope.gr")
+  paste0("http://" ,subdomain, ".hydroscope.gr")
 }
 
 #' Check if a remote server is alive
