@@ -99,7 +99,7 @@ enhydris_get <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
       result <- tibble::as_tibble(enhydris_json(hydro_url))
       if (translit) {
         # translitarate values
-        trasnlit_all(result)
+        translit_all(result)
       } else {
         result
       }

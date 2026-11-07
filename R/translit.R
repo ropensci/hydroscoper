@@ -1,8 +1,11 @@
 
 #' translitarate all the columns of a dataframe from Greek to latin-ASCII
 #' @noRd
-trasnlit_all <- function(df) {
-  df[] <- lapply(df, function(x) {
+translit_all <- function(df) {
+
+  is_char <- vapply(df, is.character, logical(1))
+
+  df[is_char] <- lapply(df[is_char], function(x) {
     y <- stringi::stri_trans_general(x, "Latin")
     stringi::stri_trans_general(y, "latin-ascii")
   })
