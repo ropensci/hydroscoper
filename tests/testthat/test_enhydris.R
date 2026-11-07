@@ -54,16 +54,16 @@ with_mock_api({
 context("Test enhydris_get and enhydris_list functions")
 with_mock_api({
   test_that("Test that enhydris_get returns a JSON file as a tibble", {
-    expect_is(enhydris_get("kyy", api_value = "owner"), "tbl_df")
+    expect_s3_class(enhydris_get("kyy", api_value = "owner"), "tbl_df")
   })
   test_that("Test that returns a JSON file as a tibble, no translit", {
-    expect_is(
+    expect_s3_class(
       enhydris_get("kyy", api_value = "owner", translit = FALSE),
       "tbl_df"
     )
   })
   test_that("Test that KYY returns a TXT file as a tibble", {
-    expect_is(
+    expect_s3_class(
       enhydris_get("kyy", api_value = "time_data", time_id = 2173),
       "tbl_df"
     )
@@ -77,7 +77,7 @@ with_mock_api({
 context("Test enhydris_list function")
 with_mock_api({
   test_that("Test that enhydris_list function returns a list", {
-    expect_is(enhydris_list("kyy"), "list")
+    expect_type(enhydris_list("kyy"), "list")
   })
 })
 

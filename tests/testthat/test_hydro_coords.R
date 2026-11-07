@@ -15,6 +15,6 @@ test_that("hydro_coords returns a tibble with lat and long values", {
     long = c(22.41211, 25.91659, NA, NA, NA, NA, NA),
     lat = c(39.07562, 40.93200, NA, NA, NA, NA, NA)
   )
-  expect_is(hydro_coords(pnt), "tbl_df")
+  expect_s3_class(hydro_coords(pnt), "tbl_df")
   expect_equal(hydro_coords(pnt), res)
 })

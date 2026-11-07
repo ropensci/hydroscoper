@@ -6,8 +6,8 @@ test_that("translit_all returns a dataframe", {
     x2 = c("ddd", "asd")
   )
   df2 <- data.frame()
-  expect_is(translit_all(df), "data.frame")
-  expect_is(translit_all(df2), "data.frame")
+  expect_s3_class(translit_all(df), "data.frame")
+  expect_s3_class(translit_all(df2), "data.frame")
 })
 
 test_that("Organizations translations", {

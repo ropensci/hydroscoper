@@ -13,5 +13,5 @@ test_that("find_stations returns errors if coords are outside Greece", {
 
 
 test_that("find_stations returns a tibble", {
-  expect_is(find_stations(22, 40), "tbl_df")
+  expect_s3_class(find_stations(22, 40), "tbl_df")
 })
