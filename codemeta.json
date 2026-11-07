@@ -6,9 +6,9 @@
   "name": "hydroscoper: Interface to the Greek National Data Bank for Hydrometeorological Information",
   "relatedLink": "https://docs.ropensci.org/hydroscoper/",
   "codeRepository": "https://github.com/ropensci/hydroscoper",
-  "issueTracker": "https://github.com/ropensci/hydroscoper/issues             ",
+  "issueTracker": "https://github.com/ropensci/hydroscoper/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.7.0",
+  "version": "1.7.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -180,7 +180,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "510.212KB",
+  "fileSize": "510.443KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",

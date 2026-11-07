@@ -1,7 +1,7 @@
 Package: hydroscoper
 Type: Package
 Title: Interface to the Greek National Data Bank for Hydrometeorological Information
-Version: 1.7.0
+Version: 1.7.9000
 Authors@R: c(person("Konstantinos", "Vantas",
                     role = c("aut", "cre"),
                     email = "kon.vantas@gmail.com",
@@ -19,7 +19,7 @@ Description: R interface to the Greek National Data Bank for Hydrological and
     translate and download them into tidy dataframes.
 URL: https://github.com/ropensci/hydroscoper,
     https://docs.ropensci.org/hydroscoper/
-BugReports: https://github.com/ropensci/hydroscoper/issues             
+BugReports: https://github.com/ropensci/hydroscoper/issues
 Depends: R (>= 3.4)
 License: MIT + file LICENSE
 Encoding: UTF-8
