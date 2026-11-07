@@ -18,15 +18,11 @@ enhydris_json <- function(hydro_url) {
 #'
 #' @noRd
 enhydris_txt <- function(hydro_url) {
-
-  # enhydris time format
-  tm_format <- "%Y-%m-%d %H:%M"
   suppressWarnings(
-    # use readr to get values
-    readr::read_csv(url(hydro_url),
+    readr::read_csv(hydro_url,
       col_names = c("date", "value", "comment"),
       col_types = list(
-        readr::col_datetime(format = tm_format),
+        readr::col_datetime(),
         readr::col_double(),
         readr::col_character()
       )
