@@ -7,7 +7,7 @@
 #' @param longitude a numeric value in degrees
 #' @param latitude  a numeric value in degrees
 #'
-#' @return If the given longitude is in [24, 38] and the latitude is in [34, 42]
+#' @return If the given longitude is in [19, 30] and the latitude is in [34, 42]
 #' (i.e. are valid values for Greece) returns an ordered tibble with the
 #' station_id, name, subdomain and distance values in km. The station's data
 #' that are used  come from the `stations` dataset. Otherwise returns an error
@@ -24,8 +24,10 @@ find_stations <- function(longitude = 24, latitude = 38) {
   lon_lim <- c(19, 30)
   lat_lim <- c(34, 42)
 
-  if (longitude < lon_lim[1] | longitude > lon_lim[2] |
-    latitude < lat_lim[1] | latitude > lat_lim[2]) {
+  if (!is.numeric(longitude) || length(longitude) != 1 || is.na(longitude) ||
+      !is.numeric(latitude)  || length(latitude) != 1  || is.na(latitude)  ||
+      longitude < lon_lim[1] || longitude > lon_lim[2] ||
+      latitude < lat_lim[1]  || latitude > lat_lim[2]) {
     err_msg <- paste(
       "Valid longitude values for Greece are in [19, 30]",
       "and latitude values in [34, 42]."
