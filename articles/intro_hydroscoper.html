@@ -159,10 +159,10 @@ variables are:</p>
 <code>owner</code> The station’s owner.</li>
 <li>
 <code>longitude</code> The station’s longitude in decimal degrees,
-(ETRS89).</li>
+WGS84 (EPSG:4326).</li>
 <li>
 <code>latitude</code> The station’s latitude in decimal degrees,
-(ETRS89).</li>
+WGS84 (EPSG:4326).</li>
 <li>
 <code>altitude</code> The station’s altitude, meters above sea
 level.</li>
@@ -283,7 +283,7 @@ with:</p>
 <p>To get the time series’ data for the station <code>200200</code> we
 can use:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">station_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">timeseries</span>, <span class="va">station_id</span> <span class="op">==</span> <span class="fl">200200</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">station_ts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">timeseries</span>, <span class="va">subdomain</span> <span class="op">==</span> <span class="st">"kyy"</span> <span class="op">&amp;</span> <span class="va">station_id</span> <span class="op">==</span> <span class="fl">200200</span><span class="op">)</span></span>
 <span><span class="va">station_ts</span></span></code></pre></div>
 <p>We can download the station’s precipitation time series
 <strong>56</strong>:</p>

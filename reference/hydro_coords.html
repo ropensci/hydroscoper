@@ -85,6 +85,13 @@ from <code>get_stations</code> function.</p>
     <h2>Value</h2>
     <p>a tibble with the longitude and latitude values.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>Accepts two-dimensional POINT strings with optional SRID=4326.
+  Points without an SRID are assumed to use WGS84. No transformation is
+  performed. Unsupported explicit SRIDs cause an error. Missing, malformed
+  or out-of-range points return NA coordinates, retaining the input rows.</p>
+    </div>
     <div id="author">
     <h2>Author</h2>
     <p>Konstantinos Vantas, <a href="mailto:kon.vantas@gmail.com">kon.vantas@gmail.com</a></p>
