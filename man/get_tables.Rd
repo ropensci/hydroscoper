@@ -17,43 +17,31 @@
 \alias{get_database}
 \title{Get tibbles from Hydroscope}
 \usage{
-get_stations(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_stations(subdomain = "kyy", translit = TRUE)
 
-get_timeseries(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_timeseries(subdomain = "kyy", translit = TRUE)
 
-get_instruments(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_instruments(subdomain = "kyy", translit = TRUE)
 
-get_water_basins(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_water_basins(subdomain = "kyy", translit = TRUE)
 
-get_water_divisions(
-  subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE
-)
+get_water_divisions(subdomain = "kyy", translit = TRUE)
 
-get_political_divisions(
-  subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE
-)
+get_political_divisions(subdomain = "kyy", translit = TRUE)
 
-get_variables(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_variables(subdomain = "kyy", translit = TRUE)
 
-get_units_of_measurement(
-  subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE
-)
+get_units_of_measurement(subdomain = "kyy", translit = TRUE)
 
-get_time_steps(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_time_steps(subdomain = "kyy", translit = TRUE)
 
-get_owners(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_owners(subdomain = "kyy", translit = TRUE)
 
-get_instruments_type(
-  subdomain = c("kyy", "ypaat", "emy", "deh"),
-  translit = TRUE
-)
+get_instruments_type(subdomain = "kyy", translit = TRUE)
 
-get_station_type(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_station_type(subdomain = "kyy", translit = TRUE)
 
-get_database(subdomain = c("kyy", "ypaat", "emy", "deh"), translit = TRUE)
+get_database(subdomain = "kyy", translit = TRUE)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of Hydroscope in the vector
@@ -82,8 +70,7 @@ Objects' IDs are not unique among the different Hydroscope databases.
 For example, time series' IDs from http://kyy.hydroscope.gr have same values
 with time series' from http://ypaat.hydroscope.gr.
 
-The coordinates of the stations are based on the European Terrestrial
-Reference System 1989 (ETRS89).
+Station coordinates are supplied in WGS84 (EPSG:4326).
 }
 \examples{
 

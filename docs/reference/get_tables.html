@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hydroscoper</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.9000</span>
       </span>
     </div>
 
@@ -70,43 +70,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_stations</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_stations</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_timeseries</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_timeseries</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_instruments</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_instruments</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_water_basins</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_water_basins</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_water_divisions</span><span class="op">(</span></span>
-<span>  subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>,</span>
-<span>  translit <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu">get_water_divisions</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_political_divisions</span><span class="op">(</span></span>
-<span>  subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>,</span>
-<span>  translit <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu">get_political_divisions</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_variables</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_variables</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_units_of_measurement</span><span class="op">(</span></span>
-<span>  subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>,</span>
-<span>  translit <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu">get_units_of_measurement</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_time_steps</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_time_steps</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_owners</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_owners</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_instruments_type</span><span class="op">(</span></span>
-<span>  subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>,</span>
-<span>  translit <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
+<span><span class="fu">get_instruments_type</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_station_type</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">get_station_type</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">get_database</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"kyy"</span>, <span class="st">"ypaat"</span>, <span class="st">"emy"</span>, <span class="st">"deh"</span><span class="op">)</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">get_database</span><span class="op">(</span>subdomain <span class="op">=</span> <span class="st">"kyy"</span>, translit <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -136,8 +124,7 @@ database. Otherwise returns an error message.</p>
     <p>Objects' IDs are not unique among the different Hydroscope databases.
 For example, time series' IDs from http://kyy.hydroscope.gr have same values
 with time series' from http://ypaat.hydroscope.gr.</p>
-<p>The coordinates of the stations are based on the European Terrestrial
-Reference System 1989 (ETRS89).</p>
+<p>Station coordinates are supplied in WGS84 (EPSG:4326).</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -213,7 +200,7 @@ Reference System 1989 (ETRS89).</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>

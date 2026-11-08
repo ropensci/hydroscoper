@@ -23,8 +23,7 @@
 #' For example, time series' IDs from http://kyy.hydroscope.gr have same values
 #' with time series' from http://ypaat.hydroscope.gr.
 #'
-#' The coordinates of the stations are based on the European Terrestrial
-#' Reference System 1989 (ETRS89).
+#' Station coordinates are supplied in WGS84 (EPSG:4326).
 #'
 #' @examples
 #'
@@ -91,124 +90,92 @@ NULL
 
 #' @rdname get_tables
 #' @export get_stations
-get_stations <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                         translit = TRUE) {
-  api <- "stations"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_stations <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "stations", translit)
 }
 
 #' @rdname get_tables
 #' @export get_timeseries
-get_timeseries <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                           translit = TRUE) {
-  api <- "timeseries"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_timeseries <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "timeseries", translit)
 }
 
 #' @rdname get_tables
 #' @export get_instruments
-get_instruments <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                            translit = TRUE) {
-  api <- "instruments"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_instruments <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "instruments", translit)
 }
 
 #' @rdname get_tables
 #' @export get_water_basins
-get_water_basins <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                             translit = TRUE) {
-  api <- "water_basin"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_water_basins <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "water_basin", translit)
 }
 
 #' @rdname get_tables
 #' @export get_water_divisions
-get_water_divisions <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                                translit = TRUE) {
-  api <- "water_division"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_water_divisions <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "water_division", translit)
 }
 
 #' @rdname get_tables
 #' @export get_political_divisions
-get_political_divisions <- function(subdomain = c(
-                                      "kyy", "ypaat", "emy",
-                                      "deh"
-                                    ),
-                                    translit = TRUE) {
-  api <- "political_division"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_political_divisions <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "political_division", translit)
 }
 
 #' @rdname get_tables
 #' @export get_variables
-get_variables <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                          translit = TRUE) {
-  api <- "variable"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_variables <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "variable", translit)
 }
 
 #' @rdname get_tables
 #' @export get_units_of_measurement
-get_units_of_measurement <- function(subdomain = c(
-                                       "kyy", "ypaat", "emy",
-                                       "deh"
-                                     ),
-                                     translit = TRUE) {
-  api <- "unit_of_measurement"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_units_of_measurement <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "unit_of_measurement", translit)
 }
 
 #' @rdname get_tables
 #' @export get_time_steps
-get_time_steps <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                           translit = TRUE) {
-  api <- "time_step"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_time_steps <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "time_step", translit)
 }
 
 
 #' @rdname get_tables
 #' @export get_owners
-get_owners <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                       translit = TRUE) {
-  api <- "owner"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_owners <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "owner", translit)
 }
 
 
 #' @rdname get_tables
 #' @export get_instruments_type
-get_instruments_type <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                                 translit = TRUE) {
-  api <- "instrument_type"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_instruments_type <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "instrument_type", translit)
 }
 
 #' @rdname get_tables
 #' @export get_station_type
-get_station_type <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                             translit = TRUE) {
-  api <- "station_type"
-  enhydris_get(subdomain = subdomain, api_value = api, translit = translit)
+get_station_type <- function(subdomain = "kyy", translit = TRUE) {
+  enhydris_get(subdomain, "station_type", translit)
 }
 
 #' @rdname get_tables
 #' @export get_database
-get_database <- function(subdomain = c("kyy", "ypaat", "emy", "deh"),
-                         translit = TRUE) {
-  list(
-    "stations" = get_stations(subdomain, translit),
-    "timeseries" = get_timeseries(subdomain, translit),
-    "instruments" = get_instruments(subdomain, translit),
-    "water_basins" = get_water_basins(subdomain, translit),
-    "water_divisions" = get_water_divisions(subdomain, translit),
-    "political_divisions" = get_political_divisions(subdomain, translit),
-    "variables" = get_variables(subdomain, translit),
-    "units_of_measurement" = get_units_of_measurement(subdomain, translit),
-    "time_steps" = get_time_steps(subdomain, translit),
-    "owners" = get_owners(subdomain, translit),
-    "instruments_type" = get_instruments_type(subdomain, translit),
-    "stations_type" = get_station_type(subdomain, translit)
-  )
+get_database <- function(subdomain = "kyy", translit = TRUE) {
+  list(stations = get_stations(subdomain, translit),
+       timeseries = get_timeseries(subdomain, translit),
+       instruments = get_instruments(subdomain, translit),
+       water_basins = get_water_basins(subdomain, translit),
+       water_divisions = get_water_divisions(subdomain, translit),
+       political_divisions = get_political_divisions(subdomain, translit),
+       variables = get_variables(subdomain, translit),
+       units_of_measurement = get_units_of_measurement(subdomain, translit),
+       time_steps = get_time_steps(subdomain, translit),
+       owners = get_owners(subdomain, translit),
+       instruments_type = get_instruments_type(subdomain, translit),
+       stations_type = get_station_type(subdomain, translit))
 }
+

@@ -92,3 +92,36 @@ test_that("Water Divisions are translated", {
 
   expect_equal(hydro_translate(wd_raw, "division"), wd_trans)
 })
+
+
+testthat::test_that("abbreviation patterns do not corrupt full words", {
+  x <- c("YGRASIA (SCHETIKE)", "STATHME (PLEMMYRA)",
+         "ELIOPHANEIA (DIARKEIA)", "PIESE (STATHME THALASSES)")
+  testthat::expect_equal(hydro_translate(x, "variable"),
+                         c("humidity_relative", "level_flood", "sunshine_duration", "pressure_level_sea"))
+})
+
+testthat::test_that("bundled labels no longer contain known corruption", {
+  bad <- c("humidity_rmintive", "levminflood", "minophaneia_duration",
+           "pressure_levminsea")
+  testthat::expect_false(any(hydroscoper::timeseries$variable %in% bad))
+})
+
+testthat::test_that("full division names and truncated aliases map exactly", {
+  x <- c("ANATOLIKE PELOPONNESOS", "ANATOLIKE PELOPONNES",
+         "anatolike\tsterea ellada", "ANATOLIKE STEREA ELL", "unknown", NA)
+  testthat::expect_equal(hydro_translate(x, "division"),
+                         c("GR03", "GR03", "GR07", "GR07", "unknown", NA_character_))
+})
+
+
+testthat::test_that("transliteration preserves units and numeric IDs", {
+  original <- data.frame(id = 1:2, name = c("\u0391\u0398\u0397\u039d\u0391", NA),
+                         symbol = c("\u03bcg/L", "\u03bcS/cm"),
+                         url = c("https://example.org/\u03bc", "https://example.org/"))
+  result <- translit_all(original)
+  testthat::expect_equal(result$name, c("ATHENA", NA_character_))
+  testthat::expect_identical(result[c("id", "symbol", "url")],
+                             original[c("id", "symbol", "url")])
+  testthat::expect_identical(translit_all(data.frame()), data.frame())
+})

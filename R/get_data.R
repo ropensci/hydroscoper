@@ -6,6 +6,9 @@
 #'
 #' @param subdomain One of the subdomains of hydroscope.gr
 #' @param time_id A time series ID
+#' @param utc_offset Optional fixed source offset from UTC, in minutes.
+#'   Positive values are east of UTC. If NULL, resolve it from the legacy
+#'   Timeseries and TimeZone metadata. For example, 120 means UTC+02:00.
 #'
 #' @return If \code{subdomain} is one of:
 #' \itemize{
@@ -19,10 +22,14 @@
 #'
 #' The dataframe columns are:
 #' \describe{
-#'     \item{date}{The time series Dates (POSIXct)}
+#'     \item{date}{The time series Dates (POSIXct, UTC)}
 #'     \item{value}{The time series values (numeric)}
 #'     \item{comment}{Comments about the values (character)}
 #' }
+#'
+#' @details Legacy timestamps have no explicit offset. Dates are converted to
+#'   UTC using the source's fixed offset. Missing metadata causes an error;
+#'   UTC is never assumed silently.
 #'
 #' @note Data are not available freely in the sub-domains:  \code{"deh"}
 #' (Greek Public Power Corporation) and
@@ -40,21 +47,15 @@
 #' databases:
 #' \itemize{
 #' \item Ministry of Environment, Energy and Climate Change.
-#' \item Ministry of Rural Development and Food.
+#' \item Ministry of Rural Development.
 #' }
 #'
 
 #' @author Konstantinos Vantas, \email{kon.vantas@gmail.com}
 #' @export get_data
-get_data <- function(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id) {
-
-  # check that time_id is not NULL
-  if (is.null(time_id) || is.null(time_id)) {
-    stop("Argument 'time_id' is missing.")
+get_data <- function(subdomain = "kyy", time_id, utc_offset = NULL) {
+  if (missing(time_id) || is.null(time_id)) {
+    stop("Argument 'time_id' is missing.", call. = FALSE)
   }
-
-  enhydris_get(
-    subdomain = subdomain, api_value = "time_data",
-    time_id = time_id
-  )
+  enhydris_get(subdomain, "time_data", time_id = time_id, utc_offset = utc_offset)
 }

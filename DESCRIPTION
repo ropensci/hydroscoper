@@ -20,20 +20,19 @@ Description: R interface to the Greek National Data Bank for Hydrological and
 URL: https://github.com/ropensci/hydroscoper,
     https://docs.ropensci.org/hydroscoper/
 BugReports: https://github.com/ropensci/hydroscoper/issues
-Depends: R (>= 3.4)
+Depends: R (>= 4.6)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: stringi (>= 1.8),
-    stringr (>= 1.5), 
-    tibble(>= 3.2),
-    readr (>= 2.1),
-    jsonlite (>= 1.8)
+    stringr (>= 1.6),
+    tibble(>= 3.3),
+    readr (>= 2.2),
+    jsonlite (>= 2.0)
 Suggests: 
-    ggplot2 (>= 3.5),
-    knitr (>= 1.45),
-    rmarkdown (>= 2.25),
-    httptest,
-    testthat (>= 3.2)
+    ggplot2 (>= 4.0),
+    knitr (>= 1.52),
+    rmarkdown (>= 2.32),
+    testthat (>= 3.3.2)
 VignetteBuilder: knitr
 Config/roxygen2/version: 8.1.0

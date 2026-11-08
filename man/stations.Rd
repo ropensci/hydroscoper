@@ -12,8 +12,8 @@ A tibble with 2,322 rows and 9 variables:
     \item{water_basin}{The station's Water Basin}
     \item{water_division}{The station's Water Division}
     \item{owner}{The station's owner}
-    \item{longitude}{The station's longitude in decimal degrees, ETRS89}
-    \item{latitude}{The station's latitude in decimal degrees, ETRS89}
+    \item{longitude}{The station's longitude in decimal degrees, WGS84 (EPSG:4326)}
+    \item{latitude}{The station's latitude in decimal degrees, WGS84 (EPSG:4326)}
     \item{altitude}{The station's altitude, meters above sea level}
     \item{subdomain}{The corresponding Hydroscope's database}
 }

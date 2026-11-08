@@ -17,6 +17,12 @@ a tibble with the longitude and latitude values.
 longitude and latitude using as input the variable \code{point}
 from \code{get_stations} function.
 }
+\details{
+Accepts two-dimensional POINT strings with optional SRID=4326.
+  Points without an SRID are assumed to use WGS84. No transformation is
+  performed. Unsupported explicit SRIDs cause an error. Missing, malformed
+  or out-of-range points return NA coordinates, retaining the input rows.
+}
 \examples{
 \dontrun{
 # get stations from the Greek Ministry of Environment and Energy

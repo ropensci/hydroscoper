@@ -1,24 +1,15 @@
-# load packages
-library(ggplot2)
-library(broom)
-library(rgdal)
-
-# load greece polygon
-greece_borders <- readOGR(dsn = "./data-raw/greece_shp", layer = "greece")
-proj4string(greece_borders) <- CRS("+init=epsg:2100")
-
-# convert to ETRS89
-etrs89 <- CRS("+init=epsg:4258")
-greece_borders <- spTransform(greece_borders, etrs89)
-
-# convert shp file to dataframe
-greece_borders <- broom::tidy(greece_borders)
-
-# remove id variable (no values in there)
-greece_borders$id <- NULL
-
-# convert to a tibble
-greece_borders <- tibble::as_tibble(greece_borders)
-
-# save data
-devtools::use_data(greece_borders, overwrite = TRUE)
+shape <- sf::st_read("data-raw/greece_shp/greece.shp", quiet = TRUE)
+stopifnot(!is.na(sf::st_crs(shape)), sf::st_crs(shape) == sf::st_crs(2100))
+shape <- sf::st_set_crs(shape, 2100)
+geometry <- sf::st_cast(sf::st_geometry(sf::st_transform(
+  shape, 4258, allow_ballpark = FALSE)),
+  "MULTIPOLYGON")
+xy <- sf::st_coordinates(geometry)
+# L1=ring, L2=polygon, L3=feature for MULTIPOLYGON coordinates.
+stopifnot(all(c("X", "Y", "L1", "L2", "L3") %in% colnames(xy)))
+rings <- interaction(xy[, "L3"], xy[, "L2"], xy[, "L1"], drop = TRUE)
+greece_borders <- tibble::tibble(long = xy[, "X"], lat = xy[, "Y"],
+                                 order = as.integer(ave(seq_len(nrow(xy)), rings, FUN = seq_along)),
+                                 hole = xy[, "L1"] > 1,
+                                 piece = interaction(xy[, "L3"], xy[, "L2"], drop = TRUE), group = rings)
+usethis::use_data(greece_borders, overwrite = TRUE)

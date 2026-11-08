@@ -51,8 +51,8 @@ It is a comprehensive look-up table with geographical and ownership information 
   3. `water_basin` The station's Water Basin.
   4. `water_division` The station's Water Division.
   5. `owner` The station's owner.
-  6. `longitude` The station's longitude in decimal degrees, (ETRS89).
-  7. `latitude` The station's latitude in decimal degrees, (ETRS89).
+  6. `longitude` The station's longitude in decimal degrees, WGS84 (EPSG:4326).
+  7. `latitude` The station's latitude in decimal degrees, WGS84 (EPSG:4326).
   8. `altitude` The station's altitude, meters above sea level.
   9. `subdomain` The corresponding Hydroscope's database.
 
@@ -128,7 +128,7 @@ ggplot() +
 To get the time series' data for the station `200200`  we can use:
 
 ```{r subset_timeseries, eval = FALSE}
-station_ts <- subset(timeseries, station_id == 200200)
+station_ts <- subset(timeseries, subdomain == "kyy" & station_id == 200200)
 station_ts
 ```
 

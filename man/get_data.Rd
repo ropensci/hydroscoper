@@ -4,12 +4,16 @@
 \alias{get_data}
 \title{Get time series values in a tibble}
 \usage{
-get_data(subdomain = c("kyy", "ypaat", "emy", "deh"), time_id)
+get_data(subdomain = "kyy", time_id, utc_offset = NULL)
 }
 \arguments{
 \item{subdomain}{One of the subdomains of hydroscope.gr}
 
 \item{time_id}{A time series ID}
+
+\item{utc_offset}{Optional fixed source offset from UTC, in minutes.
+Positive values are east of UTC. If NULL, resolve it from the legacy
+Timeseries and TimeZone metadata. For example, 120 means UTC+02:00.}
 }
 \value{
 If \code{subdomain} is one of:
@@ -24,7 +28,7 @@ the time series values. Otherwise returns an error message.
 
 The dataframe columns are:
 \describe{
-    \item{date}{The time series Dates (POSIXct)}
+    \item{date}{The time series Dates (POSIXct, UTC)}
     \item{value}{The time series values (numeric)}
     \item{comment}{Comments about the values (character)}
 }
@@ -32,6 +36,11 @@ The dataframe columns are:
 \description{
 \code{get_data} returns a tibble from  a Hydroscope's
 time-series text file.
+}
+\details{
+Legacy timestamps have no explicit offset. Dates are converted to
+  UTC using the source's fixed offset. Missing metadata causes an error;
+  UTC is never assumed silently.
 }
 \note{
 Data are not available freely in the sub-domains:  \code{"deh"}
@@ -50,7 +59,7 @@ Stations' data are retrieved from the Hydroscope's
 databases:
 \itemize{
 \item Ministry of Environment, Energy and Climate Change.
-\item Ministry of Rural Development and Food.
+\item Ministry of Rural Development.
 }
 }
 \author{
